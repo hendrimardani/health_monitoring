@@ -18,6 +18,8 @@
         @yield('container')
     </div>
 
+    {{-- Footer --}}
+    @include('partials.footer')
 
 </body>
 

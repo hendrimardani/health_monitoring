@@ -93,41 +93,7 @@
         <feGaussianBlur stdDeviation="180.9" result="effect1_foregroundBlur_106_50"></feGaussianBlur>
       </filter>
     </defs>
-  </svg><img src="2-1.png" class="w-[199px] h-14 absolute left-[19px] top-3.5 object-none" /><svg width="30" height="30"
-    viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[30px] h-[30px]"
-    preserveAspectRatio="xMidYMid meet">
-    <mask id="mask0_106_52" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
-      <rect width="30" height="30" fill="#D9D9D9"></rect>
-    </mask>
-    <g mask="url(#mask0_106_52)">
-      <path
-        d="M15 15C13.625 15 12.4479 14.5104 11.4688 13.5312C10.4896 12.5521 10 11.375 10 10C10 8.625 10.4896 7.44792 11.4688 6.46875C12.4479 5.48958 13.625 5 15 5C16.375 5 17.5521 5.48958 18.5312 6.46875C19.5104 7.44792 20 8.625 20 10C20 11.375 19.5104 12.5521 18.5312 13.5312C17.5521 14.5104 16.375 15 15 15ZM5 25V21.5C5 20.7917 5.18229 20.1406 5.54688 19.5469C5.91146 18.9531 6.39583 18.5 7 18.1875C8.29167 17.5417 9.60417 17.0573 10.9375 16.7344C12.2708 16.4115 13.625 16.25 15 16.25C16.375 16.25 17.7292 16.4115 19.0625 16.7344C20.3958 17.0573 21.7083 17.5417 23 18.1875C23.6042 18.5 24.0885 18.9531 24.4531 19.5469C24.8177 20.1406 25 20.7917 25 21.5V25H5ZM7.5 22.5H22.5V21.5C22.5 21.2708 22.4427 21.0625 22.3281 20.875C22.2135 20.6875 22.0625 20.5417 21.875 20.4375C20.75 19.875 19.6146 19.4531 18.4688 19.1719C17.3229 18.8906 16.1667 18.75 15 18.75C13.8333 18.75 12.6771 18.8906 11.5312 19.1719C10.3854 19.4531 9.25 19.875 8.125 20.4375C7.9375 20.5417 7.78646 20.6875 7.67188 20.875C7.55729 21.0625 7.5 21.2708 7.5 21.5V22.5ZM15 12.5C15.6875 12.5 16.276 12.2552 16.7656 11.7656C17.2552 11.276 17.5 10.6875 17.5 10C17.5 9.3125 17.2552 8.72396 16.7656 8.23438C16.276 7.74479 15.6875 7.5 15 7.5C14.3125 7.5 13.724 7.74479 13.2344 8.23438C12.7448 8.72396 12.5 9.3125 12.5 10C12.5 10.6875 12.7448 11.276 13.2344 11.7656C13.724 12.2552 14.3125 12.5 15 12.5Z"
-        fill="#1C1B1F"></path>
-    </g>
-  </svg><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
-    class="w-[30px] h-[30px]" preserveAspectRatio="xMidYMid meet">
-    <mask id="mask0_106_55" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
-      <rect width="30" height="30" fill="#D9D9D9"></rect>
-    </mask>
-    <g mask="url(#mask0_106_55)">
-      <path
-        d="M24.5 26.25L16.625 18.375C16 18.875 15.2812 19.2708 14.4688 19.5625C13.6562 19.8542 12.7917 20 11.875 20C9.60417 20 7.68229 19.2135 6.10938 17.6406C4.53646 16.0677 3.75 14.1458 3.75 11.875C3.75 9.60417 4.53646 7.68229 6.10938 6.10938C7.68229 4.53646 9.60417 3.75 11.875 3.75C14.1458 3.75 16.0677 4.53646 17.6406 6.10938C19.2135 7.68229 20 9.60417 20 11.875C20 12.7917 19.8542 13.6562 19.5625 14.4688C19.2708 15.2812 18.875 16 18.375 16.625L26.25 24.5L24.5 26.25ZM11.875 17.5C13.4375 17.5 14.7656 16.9531 15.8594 15.8594C16.9531 14.7656 17.5 13.4375 17.5 11.875C17.5 10.3125 16.9531 8.98438 15.8594 7.89062C14.7656 6.79688 13.4375 6.25 11.875 6.25C10.3125 6.25 8.98438 6.79688 7.89062 7.89062C6.79688 8.98438 6.25 10.3125 6.25 11.875C6.25 13.4375 6.79688 14.7656 7.89062 15.8594C8.98438 16.9531 10.3125 17.5 11.875 17.5Z"
-        fill="#1C1B1F"></path>
-    </g>
   </svg>
-  <div class="w-[81px] h-8 absolute left-[682px] top-6 rounded bg-[#183e9f]"></div>
-  <p class="w-[62px] h-[29px] absolute left-[693px] top-[29px] text-xl font-bold text-left text-white">
-    HOME
-  </p>
-  <p class="w-[159px] h-[29px] absolute left-[793px] top-[29px] text-xl font-bold text-center text-black">
-    JADWAL ANDA
-  </p>
-  <p class="w-32 h-[29px] absolute left-[517px] top-[29px] text-xl font-bold text-center text-black">
-    CEK PASIEN
-  </p>
-  <p class="w-[106px] h-[29px] absolute left-[990px] top-[29px] text-xl font-bold text-left text-black">
-    ABOUT US
-  </p>
   <div class="w-[818px] h-[189px]">
     <p class="w-[800px] h-[83px] absolute left-80 top-[418px] text-8xl font-bold text-center text-black">
       HALLO, DOKTER!
@@ -136,12 +102,18 @@
       Dunia sehat karena dedikasi seperti Anda. Siap memulai hari ini?
     </p>
   </div>
-  <img src="tanya-(1)-3.png" class="w-[327px] h-[118px] absolute left-[1171px] top-[543px] object-none" /><img
-    src="tanya-(1)-4.png" class="w-[502px] h-[181px] absolute left-[1053px] top-[177px] object-none" /><img
-    src="tanya-(1)-5.png" class="w-[522px] h-[187px] absolute left-[866px] top-[836px] object-none" /><img
-    src="tanya-(1)-1.png" class="w-[342px] h-[123px] absolute left-[193px] top-[235px] object-none" /><img
-    src="tanya-(1)-2.png" class="w-[410px] h-[148px] absolute left-[114px] top-[724px] object-none" /><img
-    src="tanya-(1)-6.png" class="w-[522px] h-[187px] absolute left-[-255px] top-[371px] object-none" />
+  <img src="{{ asset('assets/tanya-(1)-3.png') }}"
+    class="w-[327px] h-[118px] absolute left-[1171px] top-[543px] object-none" /><img
+    src="{{ asset('assets/tanya-(1)-4.png') }}"
+    class="w-[502px] h-[181px] absolute left-[1053px] top-[177px] object-none" /><img
+    src="{{ asset('assets/tanya-(1)-5.png') }}"
+    class="w-[522px] h-[187px] absolute left-[866px] top-[836px] object-none" /><img
+    src="{{ asset('assets/tanya-(1)-1.png') }}"
+    class="w-[342px] h-[123px] absolute left-[193px] top-[235px] object-none" /><img
+    src="{{ asset('assets/tanya-(1)-2.png') }}"
+    class="w-[410px] h-[148px] absolute left-[114px] top-[724px] object-none" /><img
+    src="{{ asset('assets/tanya-(1)-6.png') }}"
+    class="w-[522px] h-[187px] absolute left-[-200px] top-[371px] object-none" />
   <div class="w-[837px] h-[377px]">
     <p class="w-[541px] h-[76px] absolute left-[449px] top-[1413px] text-[64px] font-bold text-left text-black">
       Sudah Lebih Dari
@@ -155,69 +127,16 @@
       1.000.000++
     </p>
   </div>
-  <div class="w-[1676px] h-[563px] absolute left-[-122px] top-[2801px] bg-[#183e9f]"></div>
-  <img src="tanya-2.png" class="w-[813px] h-[813px] absolute left-[805px] top-[2546px] object-cover" />
+  <div class="w-[1676px] h-[563px] absolute left-[-122px] top-[2801px] bg-[#183e9f] rounded-[100px] shadow-2xl"></div>
+  <img src="{{ asset('assets/tanya-2.png') }}"
+    class="w-[813px] h-[813px] absolute left-[805px] top-[2546px] object-cover" />
   <p class="w-[622px] h-[383px] absolute left-[113px] top-[2892px] text-[64px] font-bold text-right text-white">
     Waktunya berubah, jaga kesehatan dengan konsultasi mudah bersama iHeal+h!
   </p>
   <p class="w-[842px] h-[175px] absolute left-[299px] top-[3552px] text-[64px] font-bold text-center text-[#1c1b1f]">
     Konsultasi Mudah, Kesehatan Terjaga dengan
   </p>
-  <img src="2-2.png" class="w-[481px] h-[155px] absolute left-[479px] top-[3731px] object-none" />
-  <div class="w-[1440px] h-[529px] absolute left-[-1px] top-[4078px] bg-[#183e9f]"></div>
-  <div class="w-[1440px] h-[100px] absolute left-[-1px] top-[4507px] bg-[#112556]"></div>
-  <img src="4-1.png" class="w-[309px] h-[100px] absolute left-[564px] top-[4374px] object-none" />
-  <div class="w-[190px] h-[145px]">
-    <p class="w-[161px] h-[29px] absolute left-[119px] top-[4119px] text-2xl font-semibold text-center text-white">
-      Layanan Kami
-    </p>
-    <p class="w-[190px] h-[107px] absolute left-[119px] top-[4157px] text-base font-medium text-left text-white">
-      <span class="w-[190px] h-[107px] text-base font-medium text-left text-white">Konsultasi Online</span><br /><span
-        class="w-[190px] h-[107px] text-base font-medium text-left text-white">Informasi Medis</span><br /><span
-        class="w-[190px] h-[107px] text-base font-medium text-left text-white">Pemesanan Obat</span><br /><span
-        class="w-[190px] h-[107px] text-base font-medium text-left text-white">Tes Kesehatan di Rumah</span>
-    </p>
-  </div>
-  <div class="w-[190px] h-[145px]">
-    <p class="w-[161px] h-[29px] absolute left-[380px] top-[4119px] text-2xl font-semibold text-left text-white">
-      Dukungan
-    </p>
-    <p class="w-[190px] h-[107px] absolute left-[380px] top-[4157px] text-base font-medium text-left text-white">
-      <span class="w-[190px] h-[107px] text-base font-medium text-left text-white">FAQ</span><br /><span
-        class="w-[190px] h-[107px] text-base font-medium text-left text-white">Syarat &#x26; Ketentuan</span><br /><span
-        class="w-[190px] h-[107px] text-base font-medium text-left text-white">Kebijakan Privasi</span><br /><span
-        class="w-[190px] h-[107px] text-base font-medium text-left text-white">Bantuan Pelanggan</span>
-    </p>
-  </div>
-  <div class="w-[190px] h-[118px]">
-    <p class="w-[161px] h-[29px] absolute left-[641px] top-[4119px] text-2xl font-semibold text-left text-white">
-      Perusahaan
-    </p>
-    <p class="w-[190px] h-20 absolute left-[641px] top-[4157px] text-base font-medium text-left text-white">
-      <span class="w-[190px] h-20 text-base font-medium text-left text-white">About Us</span><br /><span
-        class="w-[190px] h-20 text-base font-medium text-left text-white">Karir</span><br /><span
-        class="w-[190px] h-20 text-base font-medium text-left text-white">Blog</span>
-    </p>
-  </div>
-  <div class="w-[419px] h-[118px]">
-    <p class="w-[161px] h-[29px] absolute left-[902px] top-[4119px] text-2xl font-semibold text-left text-white">
-      Contact Us
-    </p>
-    <p class="w-[65px] h-20 absolute left-[902px] top-[4157px] text-base font-medium text-left text-white">
-      <span class="w-[65px] h-20 text-base font-medium text-left text-white">Email </span><br /><span
-        class="w-[65px] h-20 text-base font-medium text-left text-white">Telepon</span><br /><span
-        class="w-[65px] h-20 text-base font-medium text-left text-white">Alamat</span>
-    </p>
-    <p class="w-[339px] h-20 absolute left-[982px] top-[4157px] text-base font-medium text-left text-white">
-      <span class="w-[339px] h-20 text-base font-medium text-left text-white">= support@ihealth.com</span><br /><span
-        class="w-[339px] h-20 text-base font-medium text-left text-white">= 08123456789</span><br /><span
-        class="w-[339px] h-20 text-base font-medium text-left text-white">= Jalan Kesehatan No. 2, Jakarta,
-        Indonesia</span>
-    </p>
-  </div>
-  <p class="w-[182px] h-[29px] absolute left-[119px] top-[4543px] text-2xl font-semibold text-center text-white">
-    © 2024 iHealth
-  </p>
+  <img src="{{ asset('assets/2-2.png') }}" class="w-[481px] h-[155px] absolute left-[479px] top-[3731px] object-none" />
   <svg width="469" height="43" viewBox="0 0 469 43" fill="none" xmlns="http://www.w3.org/2000/svg"
     class="w-[469px] h-[43px] absolute left-[486px] top-[4536px]" preserveAspectRatio="none">
     <g clip-path="url(#clip0_106_98)">
@@ -232,12 +151,6 @@
       <path
         d="M251 6.11436C249.124 6.95381 247.107 7.52116 244.99 7.77632C247.151 6.47001 248.81 4.4016 249.591 1.93708C247.569 3.14648 245.33 4.02488 242.947 4.49832C241.038 2.44704 238.319 1.16519 235.309 1.16519C229.531 1.16519 224.846 5.89081 224.846 11.7195C224.846 12.5467 224.938 13.3523 225.117 14.1248C216.421 13.6846 208.711 9.48268 203.55 3.09718C202.65 4.65601 202.134 6.46907 202.134 8.40332C202.134 12.065 203.981 15.2956 206.789 17.1882C205.073 17.1335 203.46 16.6587 202.049 15.8682C202.048 15.9122 202.048 15.9564 202.048 16.0009C202.048 21.1147 205.655 25.3806 210.442 26.3501C209.564 26.5913 208.639 26.7202 207.685 26.7202C207.011 26.7202 206.355 26.6542 205.717 26.5309C207.048 30.7242 210.912 33.7756 215.491 33.8609C211.91 36.6916 207.398 38.3789 202.496 38.3789C201.651 38.3789 200.819 38.3291 200 38.2316C204.63 41.2262 210.13 42.9734 216.039 42.9734C235.285 42.9734 245.809 26.8907 245.809 12.9434C245.809 12.4858 245.799 12.0306 245.779 11.578C247.823 10.0899 249.597 8.23095 251 6.11436Z"
         fill="white"></path>
-    </g>
-    <g clip-path="url(#clip2_106_98)">
-      <path
-        d="M368.653 6.70673C367.941 4.06877 365.885 2.00811 363.254 1.29428C358.521 0 339.469 0 339.469 0C339.469 0 320.417 0.0392207 315.683 1.3335C313.052 2.04733 310.996 4.10799 310.284 6.74595C308.853 15.1784 308.297 28.0271 310.324 36.1222C311.036 38.7602 313.091 40.8209 315.722 41.5347C320.456 42.829 339.508 42.829 339.508 42.829C339.508 42.829 358.56 42.829 363.293 41.5347C365.925 40.8209 367.98 38.7602 368.692 36.1222C370.202 27.678 370.668 14.8372 368.653 6.70673Z"
-        fill="white"></path>
-      <path d="M333.405 30.5921L349.21 21.4145L333.405 12.2368V30.5921Z" fill="#112556"></path>
     </g>
     <g clip-path="url(#clip3_106_98)">
       <path
@@ -259,15 +172,13 @@
       </clipPath>
     </defs>
   </svg>
-  <div class="w-[1440px] h-[95px] absolute left-0 top-[2293px] overflow-hidden">
-    <img src="2-4.png" class="w-[311px] h-[95px] absolute left-[-1px] top-[-1px] object-none" /><img src="2-4.png"
-      class="w-[311px] h-[95px] absolute left-[310px] top-[-1px] object-none" /><img src="2-4.png"
-      class="w-[311px] h-[95px] absolute left-[621px] top-[-1px] object-none" /><img src="2-4.png"
-      class="w-[311px] h-[95px] absolute left-[932px] top-[-1px] object-none" /><img src="2-4.png"
-      class="w-[311px] h-[95px] absolute left-[1243px] top-[-1px] object-none" /><img src="2-4.png"
-      class="w-[311px] h-[95px] absolute left-[1554px] top-[-1px] object-none" /><img src="2-4.png"
-      class="w-[311px] h-[95px] absolute left-[1865px] top-[-1px] object-none" /><img src="2-4.png"
-      class="w-[311px] h-[95px] absolute left-[2176px] top-[-1px] object-none" />
+  <div class="w-[1440px] h-[95px] absolute left-0 top-[2293px]">
+    <img src="{{ asset('assets/2-4.png') }}"
+      class="w-[311px] h-[95px] absolute left-[-1px] top-[-1px] object-none" /><img src="{{ asset('assets/2-4.png') }}"
+      class="w-[311px] h-[95px] absolute left-[310px] top-[-1px] object-none" /><img src="{{ asset('assets/2-4.png') }}"
+      class="w-[311px] h-[95px] absolute left-[621px] top-[-1px] object-none" /><img src="{{ asset('assets/2-4.png') }}"
+      class="w-[311px] h-[95px] absolute left-[932px] top-[-1px] object-none" /><img src="{{ asset('assets/2-4.png') }}"
+      class="w-[311px] h-[95px] absolute left-[1243px] top-[-1px] object-none" />
   </div>
 </div>
 @endsection
