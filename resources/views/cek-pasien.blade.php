@@ -5,7 +5,7 @@
 
 <!-- Blur Background -->
 <div>
-    <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[300px] -ml-[400px] z-10">
+    <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[300px] -ml-[400px] opacity-80">
     </div>
 </div>
 
@@ -89,7 +89,8 @@
 
 <!-- Blur Background -->
 <div class="relative overflow-x-clip">
-    <div class="relative rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[400px] ml-[1600px] -z-[100]">
+    <div
+        class="relative rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[400px] ml-[1600px] -z-[100] opacity-80">
     </div>
 </div>
 

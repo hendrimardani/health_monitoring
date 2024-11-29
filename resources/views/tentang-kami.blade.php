@@ -9,7 +9,7 @@
             <!-- Blur Background and Image -->
             <div class="relative flex items-center justify-center">
                 <!-- Blur Background -->
-                <div class="absolute rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl"></div>
+                <div class="absolute rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl opacity-80"></div>
                 <!-- Centered Image -->
                 <img src="{{ asset('assets/_(1000-x-1000-piksel)-1.png') }}"
                     class="relative z-10 w-[600px] h-[600px] object-cover rounded-full" />
@@ -18,7 +18,7 @@
         <!-- Div kedua -->
         <div class="mt-[450px] w-[800px]">
             <!-- Blur Background -->
-            <div class="absolute rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl">
+            <div class="absolute rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl opacity-80">
             </div>
 
             <!-- Text Content -->
