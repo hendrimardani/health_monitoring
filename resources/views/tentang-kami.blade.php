@@ -18,7 +18,8 @@
         <!-- Div kedua -->
         <div class="mt-[450px] w-[800px]">
             <!-- Blur Background -->
-            <div class="absolute rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl"></div>
+            <div class="absolute rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl">
+            </div>
 
             <!-- Text Content -->
             <div class="mt-[200px]">
@@ -38,78 +39,88 @@
     </p>
     <div class="flex flex-wrap justify-center gap-12">
         <!-- Card 1 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
-            <div class="relative">
-                <!-- Shadow -->
-                <div class="absolute inset-0 w-[335px] h-[335px] rounded-lg"></div>
-                <!-- Gambar -->
-                <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-1.png') }}"
-                    class="relative w-[335px] h-[335px] object-cover z-10" alt="Dr. Emma Williams" />
-            </div>
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
+            <!-- Shadow -->
+            <div class="absolute inset-0 w-[335px] h-[335px] rounded-lg"></div>
+            <!-- Gambar -->
+            <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-1.png') }}"
+                class="relative w-[335px] h-[335px] object-cover z-10" alt="Dr. Emma Williams" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Emma Williams</p>
         </div>
         <!-- Card 2 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-2.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Alexander King" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Alexander King</p>
         </div>
         <!-- Card 3 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-3.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Mia Parker" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Mia Parker</p>
         </div>
         <!-- Card 4 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-4.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Liam Foste" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Amanda Davis</p>
         </div>
         <!-- Card 5 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-5.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Benjamin Reed" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Benjamin Reed</p>
         </div>
         <!-- Card 6 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-6.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Emily Smith" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Emily Smith</p>
         </div>
         <!-- Card 7 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-7.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Alexander King" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Alexander King</p>
         </div>
         <!-- Card 8 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-8.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Natalie Anderson" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Natalie Anderson</p>
         </div>
         <!-- Card 9 -->
-        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-9.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. John Wilson" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. John Wilson</p>
         </div>
         <!-- Card 10 -->
-        <div class="flex flex-col items-center shadow-lg shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-10.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Anthony Hill" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Anthony Hill</p>
         </div>
         <!-- Card 11 -->
-        <div class="flex flex-col items-center shadow-lg shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-11.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Emma Williams" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Emma Williams</p>
         </div>
         <!-- Card 12 -->
-        <div class="flex flex-col items-center shadow-lg shadow-blue-500/50 p-9 basis-1/8">
+        <div
+            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-12.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Liam Foste" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Liam Foste</p>
