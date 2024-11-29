@@ -4,8 +4,8 @@
 <h1 class="text-6xl font-bold text-center font-serif">PASIEN ANDA <br> HARI INI</h1>
 
 <!-- Blur Background -->
-<div class="relative">
-    <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[300px] -ml-[400px] -z-10">
+<div>
+    <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[300px] -ml-[400px] z-10">
     </div>
 </div>
 
