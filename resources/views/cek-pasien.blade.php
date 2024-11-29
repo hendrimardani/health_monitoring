@@ -4,19 +4,19 @@
 <h1 class="text-6xl font-bold text-center font-serif">PASIEN ANDA <br> HARI INI</h1>
 
 <!-- Blur Background -->
-<div>
-    <div class="absolute rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[400px] -ml-[400px]">
+<div class="relative">
+    <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[300px] -ml-[400px] -z-10">
     </div>
 </div>
 
-<div class="flex justify-center mt-12 mb-12">
-    <table class=" text-sm text-left rtl:text-right rounded-lg shadow-2xl">
+<div class="relative rounded-3xl overflow-hidden shadow-2xl mx-20 -mt-[200px]">
+    <table class="w-full text-sm text-left rtl:text-right">
         <thead class="text-xs text-white bg-[#183e9f]">
-            <tr>
+            <tr class="bg-[#183e9f]">
                 <th scope="col" class="px-6 py-3">
                     <h1 class="text-4xl">Nama</h1>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 hover:bg-slate-700">
                     <h1 class="text-4xl">Keluhan Pasien</h1>
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -25,19 +25,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-blue-500">
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <h1 class="text-3xl text-white">Michael Anderson</h1>
+            <tr class="bg-blue-500 ">
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                    <h1 class="text-3xl text-white ">Michael Anderson</h1>
                 </td>
                 <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white"> Demam tinggi selama tiga hari, disertai sakit kepala dan nyeri otot
+                    <h1 class="text-3xl text-white">Demam tinggi selama tiga hari, disertai sakit kepala dan nyeri otot
                     </h1>
                 </td>
                 <td class="px-6 py-4">
                     <h1 class="text-3xl text-white">Antrian ke-10</h1>
                 </td>
             </tr>
-            <tr class="bg-blue-500">
+            <tr class="bg-blue-500 ">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     <h1 class="text-3xl text-white">Sarah Williams</h1>
                 </td>
@@ -85,6 +85,7 @@
         </tbody>
     </table>
 </div>
+
 
 <!-- Blur Background -->
 <div class="relative overflow-x-clip">
