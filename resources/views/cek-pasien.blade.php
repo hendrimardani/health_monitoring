@@ -94,13 +94,11 @@
     </div>
 </div>
 
-<div class="flex justify-around mt-[300px] mb-24">
+<div class="flex justify-around mt-[300px]">
     <img src="{{ asset('assets/2-4.png') }}" alt="">
     <img src="{{ asset('assets/2-4.png') }}" alt="">
     <img src="{{ asset('assets/2-4.png') }}" alt="">
     <img src="{{ asset('assets/2-4.png') }}" alt="">
 </div>
-
-
 
 @endsection

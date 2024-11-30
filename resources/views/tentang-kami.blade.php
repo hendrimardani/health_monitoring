@@ -177,7 +177,7 @@
     </div>
     <div class="flex flex-wrap justify-around items-center">
         <div class="flex justify-center items-center gap-8">
-            <div class="relative bg-[#183e9f] p-9 -mt-[240px] rounded-lg w-[700px] h-[300px]">
+            <div class="relative bg-[#183e9f] p-9 -mt-[200px] rounded-lg w-[700px] h-[300px]">
                 <h1 class="text-3xl text-white">
                     Menjadi platform kesehatan terdepan yang memberikan akses mudah dan cepat untuk
                     layanan kesehatan berkualitas, memberdayakan masyarakat untuk hidup lebih sehat dan lebih baik.

@@ -79,7 +79,7 @@
   </div>
 </div>
 
-<div class="mt-[200px] mb-[200px]">
+<div class="mt-[200px]">
   <h1 class="text-6xl text-black text-center font-bold">Konsultasi Mudah,</h1><br>
   <h1 class="text-6xl text-black text-center font-bold">Kesehatan Terjaga dengan</h1>
   <img src="{{ asset('assets/2-4.png') }}" alt="" class="mx-auto">
