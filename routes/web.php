@@ -31,3 +31,15 @@ Route::get('/tentang-kami', function() {
         'title' => 'Tentang Kami'
     ]);
 });
+
+Route::get('/login', function() {
+    return view('login', [
+        'title' => 'Login'
+    ]); 
+});
+
+Route::get('/daftar', function() {
+    return view('daftar', [
+        'title' => 'daftar'
+    ]);
+});
