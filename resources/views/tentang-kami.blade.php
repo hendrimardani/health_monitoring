@@ -128,7 +128,7 @@
     </div>
 </div>
 
-<div class="bg-[#183e9f] py-16 mt-[200px]">
+<div class="bg-[#183e9f] py-16 mt-[200px] rounded-[200px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)]">
     <!-- Text Content -->
     <div class="text-center text-white mb-10">
         <h1 class="text-4xl font-bold">TERBUKTI DENGAN ADANYA KAMI</h1>
@@ -215,7 +215,7 @@
         slidesPerView: 1,
         spaceBetween: 20,
         autoplay: {
-            delay: 3000,
+            delay: 1500,
             disableOnInteraction: false,
         },
         });

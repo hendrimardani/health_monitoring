@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome', [
@@ -43,3 +44,11 @@ Route::get('/daftar', function() {
         'title' => 'daftar'
     ]);
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/dashboard/riwayat-saya', function() {
+    return view('dashboard.riwayat-saya', [
+        'title' => 'Riwayat Saya'
+    ]); 
+})->name('dashboard/riwayat-saya');
