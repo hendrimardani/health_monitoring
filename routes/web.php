@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PasienController;
 
 Route::get('/', function () {
     return view('welcome', [
@@ -34,16 +35,13 @@ Route::get('/tentang-kami', function() {
 });
 
 Route::get('/login', function() {
-    return view('login', [
+    return view('login.index', [
         'title' => 'Login'
     ]); 
 });
 
-Route::get('/daftar', function() {
-    return view('daftar', [
-        'title' => 'daftar'
-    ]);
-});
+Route::get('/register', [PasienController::class, 'index']);
+Route::post('/register', [PasienController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
