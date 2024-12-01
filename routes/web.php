@@ -45,10 +45,10 @@ Route::get('/daftar', function() {
     ]);
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/dashboard/riwayat-saya', function() {
     return view('dashboard.riwayat-saya', [
         'title' => 'Riwayat Saya'
     ]); 
-})->name('dashboard/riwayat-saya');
+});

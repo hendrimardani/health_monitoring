@@ -8,12 +8,12 @@
     </div>
     <nav class="text-white text-base font-semibold pt-3">
         <a href="/dashboard"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard') ? 'active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-tachometer-alt mr-3 "></i>
             Dashboard
         </a>
         <a href="/dashboard/riwayat-saya"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat-saya') ? 'active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat-saya') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             Riwayat Saya
         </a>
