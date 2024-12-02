@@ -25,7 +25,8 @@
             </div>
         </div>
         <div class="mt-[200px] border-2 border-[#183e9f] p-9 rounded-2xl w-[500px]">
-            <form class="">
+            <form action=""  method="post">
+                @csrf
                 <h1 class="text-4xl font-bold mb-5 text-center">Masuk</h1>
                 <div class="mb-5">
                     <input type="email" id="email"
@@ -38,7 +39,7 @@
                         placeholder=" Password Anda" required />
                 </div>
                 <div class="flex items-start mb-5">
-                    <span>Belum memiliki akun ? daftar<a href="/daftar" class="text-blue-500">
+                    <span>Belum memiliki akun ? daftar<a href="/register" class="text-blue-500">
                             disini</a></span>
                 </div>
                 <button type="submit"

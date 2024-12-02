@@ -13,7 +13,7 @@ class PasienController extends Controller
     public function index()
     {
         return view('register.index', [
-            'title' => 'Daftar Pasien'
+            'title' => 'Registrasi Pasien'
         ]);
     }
 
@@ -30,19 +30,26 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        //         // 'unique:users' Pada bagian ini users adalah nama tabel
-        //         $validatedData = $request->validate([
-        //             'name' => 'required|max:255',
-        //             'username' => ['required', 'min:3', 'max:255', 'unique:users', 'alpha'],
-        //             'email' => 'required|email:dns|unique:users',
-        //             'password' => 'required|min:5|max:255'
-        //         ]);
-        //         // Bisa menggunakan ini
-        //         // $validatedData['password'] = bcrypt($validatedData['password'])
-        // $validateData = $request->validate([
-            
-        // ]);
+        $validatedData = $request->validate([
+            'nama_pasien' => 'required',
+            'email_pasien' => 'required',
+            'password' => 'required',
+            'nik' => 'required',
+            'alamat' => 'required',
+            'no_telepon' => 'required',
+            'riwayat_penyakit' => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required'
+        ]);
+    
+        // Encrypt password
+        $validatedData['password'] = bcrypt($validatedData['password']);
+    
+        // Save to database
+        Pasien::create($validatedData);
+    
+        // Redirect with success message
+        return redirect('/login')->with('success', 'Berhasil Registrasi');    
     }
 
     /**

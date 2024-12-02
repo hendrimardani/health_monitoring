@@ -24,8 +24,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pasien::create([
-            'nama' => 'Andi Junardi',
-            'slug' => 'andi-junardi',
+            'nama_pasien' => 'Andi Junardi',
+            'email_pasien' => 'andijunardi@gmail.com',
+            'password' => bcrypt('12345'),
             'nik' => '3278062903010007',
             'alamat' => '082499030928',
             'no_telepon' => '089100889200',
@@ -35,87 +36,75 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Dokter::create([
-            'nama' => 'Dr. Johan Marohan',
-            'slug' => 'dr-johan-marohan',
+            'nama_dokter' => 'Dr. Johan Marohan',
             'no_telepon' => '082499030928',
             'spesialisasi' => 'Penyakit Dalam (Internist)'
         ]);
 
         Dokter::create([
-            'nama' => 'Dr. Chelsea Island',
-            'slug' => 'dr-chelsea-island',
+            'nama_dokter' => 'Dr. Chelsea Island',
             'no_telepon' => '081392889192',
             'spesialisasi' => 'Bedah (Surgeon)'
         ]);
 
         Dokter::create([
-            'nama' => 'Dr. Mia Parker',
-            'slug' => 'dr-mia-parker',
+            'nama_dokter' => 'Dr. Mia Parker',
             'no_telepon' => '089289289994',
             'spesialisasi' => 'Saraf (Neurolog)'
         ]);
 
         Dokter::create([
-            'nama' => 'Dr. Amanda Davis',
-            'slug' => 'dr-amanda-davis',
+            'nama_dokter' => 'Dr. Amanda Davis',
             'no_telepon' => '082988199281',
             'spesialisasi' => 'Jantung dan Pembuluh Darah (Kardiolog)'
         ]);
 
         Dokter::create([
-            'nama' => 'Dr. Benjamin Reed',
-            'slug' => 'dr-benjamin-reed',
+            'nama_dokter' => 'Dr. Benjamin Reed',
             'no_telepon' => '082729991282',
             'spesialisasi' => 'Saraf (Neurolog)'
         ]);
 
         Dokter::create([
-            'nama' => 'Dr. Emily Smith',
-            'slug' => 'dr-emily-smith',
+            'nama_dokter' => 'Dr. Emily Smith',
             'no_telepon' => '0858827771990',
             'spesialisasi' => 'Paru (Pulmonolog)'
         ]); 
 
         
         Dokter::create([
-            'nama' => 'Dr. Alexander King',
-            'slug' => 'dr-alexander-king',
+            'nama_dokter' => 'Dr. Alexander King',
             'no_telepon' => '0819928123495',
             'spesialisasi' => 'Saraf (Neurolog)'
         ]); 
 
         
         Dokter::create([
-            'nama' => 'Dr. Natalie Anderson',
-            'slug' => 'dr-natalie-anderson',
+            'nama_dokter' => 'Dr. Natalie Anderson',
             'no_telepon' => '0858827771990',
             'spesialisasi' => 'Bedah (Surgeon)'
         ]); 
 
         Dokter::create([
-            'nama' => 'Dr. John Wilson',
-            'slug' => 'dr-john-wilson',
+            'nama_dokter' => 'Dr. John Wilson',
             'no_telepon' => '0827490003881',
             'spesialisasi' => 'Penyakit Dalam (Internist)'
         ]);
         
         Dokter::create([
-            'nama' => 'Dr. Anthony Hill',
-            'slug' => 'dr-anthony-hill',
+            'nama_dokter' => 'Dr. Anthony Hill',
             'no_telepon' => '0892799991212',
             'spesialisasi' => 'Jantung dan Pembuluh Darah (Kardiolog)'
         ]); 
 
         Dokter::create([
-            'nama' => 'Dr. Emma Williams',
-            'slug' => 'dr-emma-williams',
+            'nama_dokter' => 'Dr. Emma Williams',
             'no_telepon' => '0887299918772',
             'spesialisasi' => 'Paru (Pulmonolog)'
         ]); 
 
         Dokter::create([
-            'nama' => 'Dr. Liam Foste',
-            'slug' => 'dr-liam-foste',
+            'nama_dokter' => 'Dr. Liam Foste',
             'no_telepon' => '0887299918772',
             'spesialisasi' => 'Penyakit Dalam (Internist)'
         ]); 

@@ -41,7 +41,7 @@ Route::get('/login', function() {
 });
 
 Route::get('/register', [PasienController::class, 'index']);
-Route::post('/register', [PasienController::class, 'store']);
+Route::post('/register', [PasienController::class, 'store'])->name('register');
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
