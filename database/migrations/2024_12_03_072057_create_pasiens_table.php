@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pasien');
-            $table->string('email_pasien');
-            $table->string('password');
+            $table->unsignedBigInteger('id_user'); // Foreign key
             $table->string('nik')->unique();
-            $table->string('alamat');
             $table->string('no_telepon');
-            $table->string('riwayat_penyakit');
+            $table->string('usia');
             $table->string('jenis_kelamin');
-            $table->date('tanggal_lahir');
+            $table->string('alamat');
+            $table->string('riwayat_penyakit');
             $table->timestamps();
+            
+            // Relasi tabel
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

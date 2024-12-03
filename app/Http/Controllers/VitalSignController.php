@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pasien;
+use App\Models\VitalSign;
 use Illuminate\Http\Request;
 
-class PasienController extends Controller
+class VitalSignController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('register.index', [
-            'title' => 'Registrasi Pasien'
-        ]);
+        //
     }
 
     /**
@@ -30,13 +28,13 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pasien $pasien)
+    public function show(VitalSign $vitalSign)
     {
         //
     }
@@ -44,7 +42,7 @@ class PasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pasien $pasien)
+    public function edit(VitalSign $vitalSign)
     {
         //
     }
@@ -52,7 +50,7 @@ class PasienController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pasien $pasien)
+    public function update(Request $request, VitalSign $vitalSign)
     {
         //
     }
@@ -60,7 +58,7 @@ class PasienController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pasien $pasien)
+    public function destroy(VitalSign $vitalSign)
     {
         //
     }

@@ -24,16 +24,16 @@
                 <img src="{{ asset('assets/2-2.png') }}" alt="" class="w-[700px] -mt-[450px]">
             </div>
         </div>
-        <div class="mt-[20px] border-2 border-[#183e9f] p-9 rounded-2xl w-[500px] h-[900px]">
+        <div class="mt-[200px] border-2 border-[#183e9f] p-9 rounded-2xl w-[500px] h-[400px]">
             <form action="{{ route('register') }}" method="post">
                 @csrf
                 <h1 class="text-4xl font-bold mb-5 text-center">{{ $title }}</h1>
                 <div class="mb-5">
-                    <input type="text" id="nama_pasien"
+                    <input type="text" id="nama"
                         class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Nama Anda" name="nama_pasien" value="{{ old('nama_pasien') }}" required />
+                        placeholder="Nama Anda" name="nama" value="{{ old('nama') }}" required />
                 </div>
-                @error('nama_pasien')
+                @error('nama')
                 <div>
                     <div class="relative">
                         <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
@@ -45,12 +45,11 @@
                 </div>
                 @enderror
                 <div class="mb-5">
-                    <input type="email" id="email_pasien"
+                    <input type="email" id="email"
                         class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Email Anda" name="email_pasien" value="{{ old('email_pasien') }}" autofocus
-                        required />
+                        placeholder="Email Anda" name="email" value="{{ old('email') }}" autofocus required />
                 </div>
-                @error('email_pasien')
+                @error('email')
                 <div>
                     <div class="relative">
                         <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
@@ -67,109 +66,6 @@
                         placeholder=" Password Anda" name="password" autofocus required />
                 </div>
                 @error('password')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
-                @enderror
-                <div class="mb-5">
-                    <input type="number" id="nik"
-                        class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="NIK Anda" name="nik" value="{{ old('nik') }}" autofocus required />
-                </div>
-                @error('nik')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
-                @enderror
-                <div class="mb-5">
-                    <input type="text" id="alamat"
-                        class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Alamat Anda" name="alamat" value="{{ old('alamat') }}" autofocus required />
-                </div>
-                @error('alamat')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
-                @enderror
-                <div class="mb-5">
-                    <input type="number" id="no_telepon"
-                        class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="No Telepon Anda" name="no_telepon" value="{{ old('no_telepon') }}" autofocus
-                        required />
-                </div>
-                @error('no_telepon')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
-                @enderror
-                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Riwayat
-                    Penyakit</label>
-                <textarea id="riwayat_penyakit" rows="4"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Tulis Riwayat Penyakit Anda Misalnya: Pernah mengalami sesak nafas dalam jangka berapa hari, atau panas yang tidak sembuh-sembuh"
-                    name="riwayat_penyakit" value="{{ old('riwayat_penyakit') }}">
-            </textarea>
-                @error('riwayat_Penyakit')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
-                @enderror
-                <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis
-                    Kelamin</label>
-                <select id="jenis_kelamin" name="jenis_kelamin"
-                    class="bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="laki-laki">Laki-laki</option>
-                    <option value="perempuan">Perempuan</option>
-                </select>
-                @error('jenis_kelamin')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
-                @enderror
-                <div class="mb-5">
-                    <h3 class="font-semibold text-gray-900 dark:text-white">Tanggal Lahir</h3>
-                    <input type="date" id="tanggal_lahir"
-                        class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Tanggal Lahir Anda" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}"
-                        autofocus required />
-                </div>
-                @error('tanggal_lahir')
                 <div>
                     <div class="relative">
                         <input type="text" id="outlined_error" aria-describedby="outlined_error_help"

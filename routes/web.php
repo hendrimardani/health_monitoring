@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PasienController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+
 
 Route::get('/', function () {
     return view('welcome', [
@@ -34,14 +36,12 @@ Route::get('/tentang-kami', function() {
     ]);
 });
 
-Route::get('/login', function() {
-    return view('login.index', [
-        'title' => 'Login'
-    ]); 
-});
+Route::get('/register', [UserController::class, 'index']);
+Route::post('/register', [UserController::class, 'store'])->name('register');
 
-Route::get('/register', [PasienController::class, 'index']);
-Route::post('/register', [PasienController::class, 'store'])->name('register');
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 

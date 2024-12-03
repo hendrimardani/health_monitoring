@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pasien;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class PasienController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,13 +30,26 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ]);
+    
+        // Encrypt password
+        $validatedData['password'] = bcrypt($validatedData['password']);
+    
+        // Save to database
+        User::create($validatedData);
+    
+        // Redirect with success message
+        return redirect('/login')->with('success', 'Berhasil Registrasi');  
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pasien $pasien)
+    public function show(User $user)
     {
         //
     }
@@ -44,7 +57,7 @@ class PasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pasien $pasien)
+    public function edit(User $user)
     {
         //
     }
@@ -52,7 +65,7 @@ class PasienController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pasien $pasien)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -60,7 +73,7 @@ class PasienController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pasien $pasien)
+    public function destroy(User $user)
     {
         //
     }
