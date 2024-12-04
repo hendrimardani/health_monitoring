@@ -48,8 +48,10 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard/riwayat-saya', function() {
+    $pasien = Pasien::where('id_user', auth()->id())->first();
     return view('dashboard.riwayat.riwayat-saya', [
-        'title' => 'Riwayat Saya'
+        'title' => 'Riwayat Saya',
+        'pasien' => $pasien
     ]); 
 });
 
