@@ -52,7 +52,7 @@ Route::get('/dashboard/riwayat-saya', function() {
     return view('dashboard.riwayat.riwayat-saya', [
         'title' => 'Riwayat Saya',
         'pasien' => $pasien
-    ]); 
+    ]);
 });
 
 Route::resource('/dashboard/riwayat', DashboardPasienController::class)->middleware('auth');
