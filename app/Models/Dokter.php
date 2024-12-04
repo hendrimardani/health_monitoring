@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dokter extends Model
 {
+    protected $guarded = ['id'];
     public function diagnosa()
     {
         return $this->belongsTo(Diagnosa::class);

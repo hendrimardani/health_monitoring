@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user'); // Foreign key
-            $table->string('nik')->unique();
+            $table->string('nik');
             $table->string('no_telepon');
             $table->string('usia');
-            $table->string('jenis_kelamin');
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->string('alamat');
             $table->string('riwayat_penyakit');
             $table->timestamps();

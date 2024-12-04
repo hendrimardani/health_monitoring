@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resep extends Model
 {
+    protected $guarded = ['id'];
     public function obat() 
     {
         return $this->belongsTo(Obat::class);

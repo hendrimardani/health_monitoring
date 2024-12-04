@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="mt-[200px] border-2 border-[#183e9f] p-9 rounded-2xl w-[500px]">
-            @if (@session()->has('success'))
+            @if (session()->has('success'))
             <div id="alert-3"
                 class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
                 role="alert">

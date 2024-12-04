@@ -18,7 +18,7 @@ class pivotable extends Seeder
     {
         $id_pemeriksaan = Pemeriksaan::firstOrCreate(['id' => 1]);
         VitalSign::create([
-            'id_pemeriksaan' => $id_pemeriksaan->id,  // Menggunakan id pemeriksaan yang sudah ditemukan
+            'id_pemeriksaan' => 1,  // Menggunakan id pemeriksaan yang sudah ditemukan
             'saturasi_oksigen' => '60.0',
             'detak_jantung' => '120',
             'suhu_badan' => '38.0',
@@ -28,8 +28,8 @@ class pivotable extends Seeder
             'waktu_pengukuran' => '2024-08-19'
         ]);
 
-        $id_pasien = Pasien::firstOrCreate(['id' => 3]);
-        $id_diagnosa = Diagnosa::firstOrCreate(['id' => 2]);
+        $id_pasien = Pasien::firstOrCreate(['id' => 1]);
+        $id_diagnosa = Diagnosa::firstOrCreate(['id' => 1]);
         Pemeriksaan::create([
             'id_pasien' => $id_pasien->id,
             'id_diagnosa' => $id_diagnosa->id,
