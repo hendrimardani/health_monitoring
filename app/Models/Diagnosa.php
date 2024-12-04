@@ -10,11 +10,11 @@ class Diagnosa extends Model
     protected $guarded = ['id'];
     public function pemeriksaan()
     {
-        return $this->belongsTo(Pemeriksaan::class);
+        return $this->hasMany(Pemeriksaan::class);
     }
 
     public function dokter()
     {
-        return $this->belongsTo(dokter::class);
+        return $this->belongsTo(Dokter::class, 'id_dokter');
     }
 }

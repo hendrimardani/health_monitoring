@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('vital_signs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pemeriksaan'); // Foreign Key
             $table->string('saturasi_oksigen');
             $table->string('detak_jantung');
             $table->string('suhu_badan');
@@ -22,9 +21,6 @@ return new class extends Migration
             $table->string('tekanan_darah_diastol');
             $table->date('waktu_pengukuran');
             $table->timestamps();
-
-            // Relasi tabel
-            $table->foreign('id_pemeriksaan')->references('id')->on('pemeriksaans')->onDelete('cascade');
         });
     }
 

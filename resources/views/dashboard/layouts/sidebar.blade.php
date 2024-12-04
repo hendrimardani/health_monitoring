@@ -12,12 +12,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
     </head>
     <div class="mx-9">
-        <a href="/dashboard" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+        @if (auth()->user()->role === 'pasien')
+        <a href="/dashboard/pasien" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Pasien</a>
+        @elseif (auth()->user()->role === 'dokter')
+        <a href="/dashboard/dokter" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Dokter</a>
+        @else
+        <a href="/dashboard/admin" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+        @endif
     </div>
 
     <nav class="text-white text-base font-semibold pt-3">
-        <a href="/dashboard"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+        @if (auth()->user()->role === 'pasien')
+        <a href="/dashboard/pasien"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/pasien') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-tachometer-alt mr-3 "></i>
             Dashboard
         </a>
@@ -26,11 +33,23 @@
             <i class="fas fa-sticky-note mr-3"></i>
             Akun Saya
         </a>
-        <a href="/dashboard/riwayat-saya"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat-saya') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+        <a href="/dashboard/riwayat"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             Riwayat Saya
         </a>
+        @elseif (auth()->user()->role === 'dokter')
+        <a href="/dashboard/dokter"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/dokter') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            <i class="fas fa-tachometer-alt mr-3 "></i>
+            Dashboard
+        </a>
+        <a href="#"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            <i class="fas fa-sticky-note mr-3"></i>
+            Pasien Anda
+        </a>
+        @endif
     </nav>
     <form action="/logout" method="post">
         @csrf

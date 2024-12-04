@@ -31,6 +31,23 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345678')
         ]);
 
+        User::create([
+            'nama' => 'Dr.Johan Marohan',
+            'email' => 'johanmarohan@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'dokter',
+        ]);
+
+        VitalSign::create([
+            'saturasi_oksigen' => '70.5',
+            'detak_jantung' => '120',
+            'suhu_badan' => '37.5',
+            'berat_badan' => '160 cm',
+            'tekanan_darah_sistol' => '70 mg',
+            'tekanan_darah_diastol' => '110 mg',
+            'waktu_pengukuran' => now()
+        ]);
+
         Farmasi::create([
             'nama_perusahaan' => 'PT Global Indonesia',
             'alamat_perusahaan' => 'Jalan Cijawura Girang'
@@ -60,6 +77,7 @@ class DatabaseSeeder extends Seeder
 
         Pasien::create([
             'id_user' => 1,
+            'nama_pasien' => 'Erik Mardani',
             'nik' => '3290182948291',
             'no_telepon' => '08290291028192',
             'usia' => '20 tahun',

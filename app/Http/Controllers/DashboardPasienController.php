@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DashboardPasien;
 use App\Models\Pasien;
+use App\Models\Pemeriksaan;
+use App\Models\Diagnosa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +16,14 @@ class DashboardPasienController extends Controller
      */
     public function index()
     {
-        //
+        // user saat ini login
+        $pasien = Pasien::where('id_user', auth()->id())->first();
+        $pasiens = Pasien::with(['user'])->get();
+        return view('dashboard.pasien.riwayat', [
+            'title' => 'Riwayat Saya',
+            'pasien' => $pasien,
+            'pasiens' => $pasiens
+        ]);
     }
 
     /**
@@ -31,6 +40,7 @@ class DashboardPasienController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'nama_pasien' => 'required',
             'nik' => 'required',
             'no_telepon' => 'required',
             'usia' => 'required',
@@ -43,7 +53,7 @@ class DashboardPasienController extends Controller
 
         Pasien::create($validatedData);
         
-        return redirect('/dashboard')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('/dashboard/riwayat')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

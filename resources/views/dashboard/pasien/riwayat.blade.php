@@ -242,77 +242,22 @@
         <table class="w-full bg-white">
             <thead class="bg-gray-800 text-white">
                 <tr>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone</th>
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Nama Pasien</th>
+                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Keluhan</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">
+                @foreach ($pasiens as $pasien)
                 <tr>
-                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a>
+                    <td class="w-1/3 text-left py-3 px-4">{{ $pasien->nama_pasien }}</td>
+                    <td class="w-1/3 text-left py-3 px-4">{{ $pasien->riwayat_penyakit }}</td>
+                    {{-- <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
+                            href="tel:622322662">622322662</a>
                     </td>
                     <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td> --}}
                 </tr>
-                <tr class="bg-gray-200">
-                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a>
-                    </td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                </tr>
-                <tr>
-                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a>
-                    </td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                </tr>
-                <tr class="bg-gray-200">
-                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a>
-                    </td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                </tr>
-                <tr>
-                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a>
-                    </td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                </tr>
-                <tr class="bg-gray-200">
-                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a>
-                    </td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                </tr>
-                <tr>
-                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a>
-                    </td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                </tr>
-                <tr class="bg-gray-200">
-                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a>
-                    </td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

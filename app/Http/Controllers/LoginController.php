@@ -17,18 +17,25 @@ class LoginController extends Controller
         ]);
     }
         
-    public function authenticate(Request $request) {
+    public function authenticated(Request $request) {
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
         if (Auth::attempt($credentials)) {  
-            // Regenerasi sesi untuk mencegah serangan session fixation
+            // Regenerasi sesi untuk mencegah serangan session 
             $request->session()->regenerate();
+            $user = Auth::user();
+
+            if ($user->role === 'dokter') {
+                return redirect()->route('dashboard.dokter');
+            } elseif ($user->role === 'pasien') {
+                return redirect()->route('dashboard.pasien');
+            }
         
-            // Redirect ke halaman yang diminta sebelumnya atau ke '/dashboard' jika tidak ada
-            return redirect()->intended('/dashboard');
+            // Jika maksa akses ke dashboard diatas maka akan redirect ke login
+            return redirect()->intended('/login');
         }
         return back()->with('loginError', 'Login failed !');
     }
