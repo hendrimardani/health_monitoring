@@ -23,7 +23,9 @@ class DashboardAdminFarmasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.admin.farmasi.create', [
+            'title' => 'Tambah Farmasi'
+        ]);
     }
 
     /**
@@ -52,9 +54,13 @@ class DashboardAdminFarmasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Farmasi $farmasi)
+    public function edit($id)
     {
-        //
+        $farmasi = Farmasi::findOrFail($id);
+        return view('dashboard.admin.farmasi.index', [
+            'title' => 'Farmasi',
+            'farmasi' => $farmasi
+        ]);
     }
 
     /**

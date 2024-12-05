@@ -50,12 +50,11 @@
 </div>
 @endif
 
-
-{{-- Modal Toggled --}}
-<button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-    class="mb-5 w-[200px] border-1 border-blue-500 text-blue-500 font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-500 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
+<a href="/dashboard/admin/farmasi/create"
+    class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
     <i class="fas fa-plus mr-[10px]"></i>Tambah Data
-</button>
+</a>
+
 
 <!-- Main modal -->
 <div id="authentication-modal" tabindex="-1" aria-hidden="true"
@@ -66,7 +65,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Tambah Data Farmasi
+                    Edit Data Farmasi
                 </h3>
                 <button type="button"
                     class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -81,7 +80,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form action="/dashboard/admin/farmasi" method="post">
+                <form action="/dashboard/admin/farmasi" method="post" id="modal-form">
                     @csrf
                     <div class="mb-5">
                         <input type="text" id="nama_perusahaan"
@@ -117,14 +116,14 @@
                                 $message }}</span></p>
                     </div>
                     @enderror
-                    <button type="submit"
+                    <button type="submit" id="modal-submit"
                         class="mt-9 px-[162px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 transition ease-in-out duration-500">Tambah</button>
                 </form>
-
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -160,7 +159,8 @@
                     <div class="flex flex-wrap justify-start gap-4">
                         <div
                             class="inline-block border-[1px] border-orange-500 p-1 hover:bg-orange-500 transition ease-in-out duration-500">
-                            <a href="#">
+                            <a href="/dashboard/admin/farmasi/edit/{{ $farmasi->id }}"
+                                data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange"
                                     class="bi bi-pencil " viewBox="0 0 16 16">
                                     <path
@@ -170,7 +170,7 @@
                         </div>
                         <div
                             class="inline-block border-[1px] border-red-500 p-1 hover:bg-red-500 transition ease-in-out duration-500">
-                            <form action="{{ route('farmasi.destroy', $farmasi->id) }}" method="POST">
+                            <form action="{{ route('farmasi.destroy', $farmasi->id) }}" method="POST" id="modal-form">
                                 @method('DELETE')
                                 @csrf
                                 <button>
