@@ -58,6 +58,7 @@ Route::middleware(['auth', 'role:dokter'])->group(function() {
 Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
     Route::resource('/dashboard/admin/farmasi', DashboardAdminFarmasiController::class);
+    Route::delete('/dashboard/admin/farmasi/{id}', [DashboardAdminFarmasiController::class, 'destroy'])->name('farmasi.destroy');
 });
 
 

@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\DashboardAdminFarmasi;
 use App\Models\Farmasi;
 use Illuminate\Http\Request;
 
@@ -46,7 +44,7 @@ class DashboardAdminFarmasiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DashboardAdminFarmasi $dashboardAdminFarmasi)
+    public function show(Farmasi $farmasi)
     {
         //
     }
@@ -54,7 +52,7 @@ class DashboardAdminFarmasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DashboardAdminFarmasi $dashboardAdminFarmasi)
+    public function edit(Farmasi $farmasi)
     {
         //
     }
@@ -62,7 +60,7 @@ class DashboardAdminFarmasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DashboardAdminFarmasi $dashboardAdminFarmasi)
+    public function update(Request $request, Farmasi $farmasi)
     {
         //
     }
@@ -70,8 +68,12 @@ class DashboardAdminFarmasiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DashboardAdminFarmasi $dashboardAdminFarmasi)
+    public function destroy($id)
     {
-        //
+        $farmasi = Farmasi::find($id);
+        if ($farmasi) {
+            $farmasi->delete();
+            return redirect('/dashboard/admin/farmasi')->with('success_delete', 'Data Berhasil Dihapus');
+        }
     }
 }
