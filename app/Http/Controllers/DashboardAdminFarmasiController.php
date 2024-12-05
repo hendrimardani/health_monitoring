@@ -57,9 +57,9 @@ class DashboardAdminFarmasiController extends Controller
     public function edit($id)
     {
         $farmasi = Farmasi::findOrFail($id);
-        return view('dashboard.admin.farmasi.index', [
+        return view('dashboard.admin.farmasi.edit', [
             'title' => 'Farmasi',
-            'farmasi' => $farmasi
+            'farmasi' => $farmasi,
         ]);
     }
 
@@ -68,7 +68,17 @@ class DashboardAdminFarmasiController extends Controller
      */
     public function update(Request $request, Farmasi $farmasi)
     {
-        //
+        $rules = [
+            'nama_perusahaan' => 'required',
+            'alamat_perusahaan' => 'required'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Farmasi::where('id', $farmasi->id)
+                ->update($validatedData);
+
+        return redirect('/dashboard/admin/farmasi')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

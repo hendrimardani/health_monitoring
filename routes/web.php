@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardAdminFarmasiController;
+use App\Http\Controllers\DashboardAdminObatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDokterController;
@@ -59,6 +60,5 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
     Route::resource('/dashboard/admin/farmasi', DashboardAdminFarmasiController::class);
     Route::delete('/dashboard/admin/farmasi/{id}', [DashboardAdminFarmasiController::class, 'destroy'])->name('farmasi.destroy');
+    Route::resource('/dashboard/admin/obat', DashboardAdminObatController::class);
 });
-
-

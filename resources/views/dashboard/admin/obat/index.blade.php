@@ -50,7 +50,7 @@
 </div>
 @endif
 
-<a href="/dashboard/admin/farmasi/create"
+<a href="/dashboard/admin/obat/create"
     class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
     <i class="fas fa-plus mr-[10px]"></i>Tambah Data
 </a>
@@ -60,13 +60,22 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
+                    No
+                </th>
+                <th scope="col" class="px-6 py-3">
                     ID Perusahaan
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama Perusahaan
+                    Nama Obat
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Alamat Perusahaan
+                    Kategori
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Dosis Tersedia
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Unit
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Aksi
@@ -74,22 +83,31 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($farmasis as $farmasi)
+            @foreach ($obats as $obat)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $farmasi->id }}
+                    {{ $loop->iteration }}
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $obat->id_perusahaan }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ $farmasi->nama_perusahaan }}
+                    {{ $obat->nama_obat }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $farmasi->alamat_perusahaan }}
+                    {{ $obat->kategori }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $obat->dosis_tersedia }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $obat->unit }}
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex flex-wrap justify-start gap-4">
                         <div
                             class="inline-block border-[1px] border-orange-500 p-1 hover:bg-orange-500 transition ease-in-out duration-500">
-                            <a href="/dashboard/admin/farmasi/{{ $farmasi->id }}/edit">
+                            <a href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange"
                                     class="bi bi-pencil " viewBox="0 0 16 16">
                                     <path
@@ -99,7 +117,7 @@
                         </div>
                         <div
                             class="inline-block border-[1px] border-red-500 p-1 hover:bg-red-500 transition ease-in-out duration-500">
-                            <form action="{{ route('farmasi.destroy', $farmasi->id) }}" method="POST" id="modal-form">
+                            <form action="#" method="POST" id="modal-form">
                                 @method('DELETE')
                                 @csrf
                                 <button>

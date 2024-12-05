@@ -35,7 +35,7 @@
             Akun Saya
         </a>
         <a href="/dashboard/pasien/riwayat"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/pasien/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             Riwayat Saya
         </a>
@@ -47,29 +47,29 @@
             Dashboard
         </a>
         <a href="/dashboard/dokter/pasien"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/dokter/pasien') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             Pasien Anda
         </a>
         {{-- dashboard admin --}}
         @elseif (auth()->user()->role === 'admin')
         <a href="/dashboard/admin"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/dokter') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/admin') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-tachometer-alt mr-3 "></i>
             Dashboard
         </a>
         <a href="/dashboard/admin/farmasi"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/admin/farmasi') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             Farmasi
         </a>
-        <a href="#"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+        <a href="/dashboard/admin/obat"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/admin/obat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             Obat
         </a>
-        <a href="#"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+        <a href="/dashboard/admin/user"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/admin/user') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             User
         </a>

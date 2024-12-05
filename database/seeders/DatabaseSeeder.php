@@ -61,11 +61,115 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 1,
+            'id_perusahaan' => 6,
             'nama_obat' => 'paracetamol',
             'kategori' => 'tablet',
-            'dosis_tersedia' => '500 mg',
+            'dosis_tersedia' => '300 mg',
             'unit' => '5'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 6,
+            'nama_obat' => 'paracetamol',
+            'kategori' => 'tablet',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '15'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 6,
+            'nama_obat' => 'paracetamol',
+            'kategori' => 'cair',
+            'dosis_tersedia' => '100 mg',
+            'unit' => '10'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 6,
+            'nama_obat' => 'paracetamol',
+            'kategori' => 'cair',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '15'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 7,
+            'nama_obat' => 'antibiotik',
+            'kategori' => 'kapsul',
+            'dosis_tersedia' => '100 mg',
+            'unit' => '5'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 7,
+            'nama_obat' => 'antibiotik',
+            'kategori' => 'kapsul',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '15'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 7,
+            'nama_obat' => 'antibiotik',
+            'kategori' => 'tablet',
+            'dosis_tersedia' => '100 mg',
+            'unit' => '35'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 7,
+            'nama_obat' => 'antibiotik',
+            'kategori' => 'tablet',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '5'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 7,
+            'nama_obat' => 'antibiotik',
+            'kategori' => 'cair',
+            'dosis_tersedia' => '100 mg',
+            'unit' => '25'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 7,
+            'nama_obat' => 'antibiotik',
+            'kategori' => 'cair',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '5'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 8,
+            'nama_obat' => 'Obat Lambung',
+            'kategori' => 'tablet',
+            'dosis_tersedia' => '100 mg',
+            'unit' => '45'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 8,
+            'nama_obat' => 'Obat Lambung',
+            'kategori' => 'tablet',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '15'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 8,
+            'nama_obat' => 'Obat Lambung',
+            'kategori' => 'cair',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '15'
+        ]);
+
+        Obat::create([
+            'id_perusahaan' => 8,
+            'nama_obat' => 'Obat Lambung',
+            'kategori' => 'cair',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '15'
         ]);
 
         Resep::create([
@@ -73,6 +177,34 @@ class DatabaseSeeder extends Seeder
             'frekuensi' => 'Setelah makan',
             'cara_penggunaan' => 'ditelan dengan air setelah makan',
             'durasi_hari' => 2
+        ]);
+
+        Resep::create([
+            'id_obat' => 2,
+            'frekuensi' => 'Setelah makan',
+            'cara_penggunaan' => 'ditelan dengan air setelah makan',
+            'durasi_hari' => 3
+        ]);
+
+        Resep::create([
+            'id_obat' => 3,
+            'frekuensi' => 'Sebelum makan',
+            'cara_penggunaan' => 'ditelan dengan air sebelum makan',
+            'durasi_hari' => 4
+        ]);
+
+        Resep::create([
+            'id_obat' => 4,
+            'frekuensi' => 'Setelah makan',
+            'cara_penggunaan' => 'ditelan dengan air setelah makan',
+            'durasi_hari' => 2
+        ]);
+
+        Resep::create([
+            'id_obat' => 5,
+            'frekuensi' => 'Sebelum makan',
+            'cara_penggunaan' => 'ditelan dengan air setelah makan',
+            'durasi_hari' => 3
         ]);
 
         Dokter::create([
