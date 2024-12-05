@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardAdminFarmasiController;
 use App\Http\Controllers\DashboardAdminObatController;
+use App\Http\Controllers\DashboardAdminUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDokterController;
@@ -62,4 +63,5 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::post('/dashboard/admin/farmasi/{id}', [DashboardAdminFarmasiController::class, 'destroy'])->name('farmasi.destroy');
     Route::resource('/dashboard/admin/obat', DashboardAdminObatController::class);
     Route::post('/dashboard/admin/obat/{id}', [DashboardAdminObatController::class, 'destroy'])->name('obat.destroy');
+    Route::resource('/dashboard/admin/user', DashboardAdminUserController::class);
 });
