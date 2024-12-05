@@ -11,7 +11,7 @@ class DashboardAdminFarmasiController extends Controller
      */
     public function index()
     {
-        $farmasis = Farmasi::all();
+        $farmasis = Farmasi::paginate(10);
         return view('dashboard.admin.farmasi.index', [
             'title' => 'Farmasi',
             'farmasis' => $farmasis
