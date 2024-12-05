@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardAdminUserController extends Controller
@@ -11,8 +12,10 @@ class DashboardAdminUserController extends Controller
      */
     public function index()
     {
+        $users = User::all();
         return view('dashboard.admin.user.index', [
-            'title' => 'User'
+            'title' => 'User',
+            'users' => $users
         ]);
     }
 
@@ -21,7 +24,9 @@ class DashboardAdminUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.admin.user.create', [
+            'title' => 'User'
+        ]);
     }
 
     /**
@@ -29,7 +34,16 @@ class DashboardAdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'password' => 'required',
+            'email' => 'required'
+        ]);
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        User::create($validatedData);
+
+        return redirect('/dashboard/admin/user')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -61,6 +75,11 @@ class DashboardAdminUserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        if( $user ) {
+            $user->delete();
+            return redirect('/dashboard/admin/user')->with('sucess_delete', 'Data Berhasil Dihapus');
+        }
     }
 }

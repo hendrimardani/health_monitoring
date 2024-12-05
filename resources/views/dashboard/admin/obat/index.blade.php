@@ -107,7 +107,7 @@
                     <div class="flex flex-wrap justify-start gap-4">
                         <div
                             class="inline-block border-[1px] border-orange-500 p-1 hover:bg-orange-500 transition ease-in-out duration-500">
-                            <a href="#">
+                            <a href="/dashboard/admin/obat/{{ $obat->id }}/edit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange"
                                     class="bi bi-pencil " viewBox="0 0 16 16">
                                     <path
@@ -137,6 +137,42 @@
             @endforeach
         </tbody>
     </table>
+
+    <!-- Menampilkan navigasi paginasi -->
+    @if ($obats->hasPages())
+    <div class="pagination-container mt-4">
+        <ul class="pagination flex justify-center items-center space-x-2">
+            {{-- Previous Page Link --}}
+            @if ($obats->onFirstPage())
+            <li class="disabled px-3 py-1">Sebelum</li>
+            @else
+            <li>
+                <a href="{{ $obats->previousPageUrl() }}" class="px-3 py-1">Sebelum</a>
+            </li>
+            @endif
+
+            {{-- Pagination Links --}}
+            @foreach ($obats->getUrlRange(1, $obats->lastPage()) as $page => $url)
+            <li>
+                <a href="{{ $url }}"
+                    class="{{ $page == $obats->currentPage() ? 'bg-blue-500 text-white px-3 py-1' : 'bg-white text-blue-500 px-3 py-1' }}">
+                    {{ $page }}
+                </a>
+            </li>
+            @endforeach
+
+            {{-- Next Page Link --}}
+            @if ($obats->hasMorePages())
+            <li>
+                <a href="{{ $obats->nextPageUrl() }}" class="px-3 py-1">Sesudah</a>
+            </li>
+            @else
+            <li class="disabled px-3 py-1">Sesudah</li>
+            @endif
+        </ul>
+    </div>
+    @endif
+
 </div>
 
 @endsection

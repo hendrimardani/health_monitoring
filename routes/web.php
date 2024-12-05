@@ -64,4 +64,5 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::resource('/dashboard/admin/obat', DashboardAdminObatController::class);
     Route::post('/dashboard/admin/obat/{id}', [DashboardAdminObatController::class, 'destroy'])->name('obat.destroy');
     Route::resource('/dashboard/admin/user', DashboardAdminUserController::class);
+    Route::post('/dashboard/admin/user/{id}', [DashboardAdminUserController::class, 'destroy'])->name('user.destroy');
 });

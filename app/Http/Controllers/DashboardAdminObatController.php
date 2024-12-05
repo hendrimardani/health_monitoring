@@ -13,7 +13,7 @@ class DashboardAdminObatController extends Controller
      */
     public function index()
     {
-        $obats = Obat::all();
+        $obats = Obat::paginate(10);
         return view('dashboard.admin.obat.index', [
             'title' => 'Obat',
             'obats' => $obats
@@ -42,8 +42,7 @@ class DashboardAdminObatController extends Controller
             'nama_obat' => 'required',
             'kategori' => 'required',
             'dosis_tersedia' => 'required',
-            'unit' => 'required',
-            'created_at' => now()
+            'unit' => 'required'
         ]);
 
         Obat::create($validatedData);
@@ -64,7 +63,13 @@ class DashboardAdminObatController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $obat = Obat::findOrFail($id);
+        $farmasis = Farmasi::all();
+        return view('dashboard.admin.obat.edit', [
+            'title' => 'Obat',
+            'obat' => $obat,
+            'farmasis' => $farmasis
+        ]);
     }
 
     /**
@@ -72,7 +77,9 @@ class DashboardAdminObatController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            
+        ]);
     }
 
     /**
@@ -83,7 +90,7 @@ class DashboardAdminObatController extends Controller
         $obat = Obat::findOrFail($id);
         if ($obat) {
             $obat->delete();
-            return redirect('/dashboard/admin/obat')->with('success', 'Data Berhasil Dihapus');
+            return redirect('/dashboard/admin/obat')->with('success_delete', 'Data Berhasil Dihapus');
         }
     }
 }
