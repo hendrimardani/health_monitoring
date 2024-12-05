@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardAdminFarmasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardDokterController;
 use App\Http\Controllers\DashboardPasienController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
@@ -45,11 +47,17 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware(['auth', 'role:pasien'])->group(function() {
     Route::get('/dashboard/pasien', [DashboardController::class, 'pasien'])->name('dashboard.pasien');
-    Route::resource('/dashboard/riwayat', DashboardPasienController::class)->middleware('auth');
+    Route::resource('/dashboard/pasien/riwayat', DashboardPasienController::class);
 });
 
 Route::middleware(['auth', 'role:dokter'])->group(function() {
     Route::get('/dashboard/dokter', [DashboardController::class, 'dokter'])->name('dashboard.dokter');
+    Route::resource('/dashboard/dokter/pasien', DashboardDokterController::class);
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function() {
+    Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
+    Route::resource('/dashboard/admin/farmasi', DashboardAdminFarmasiController::class);
 });
 
 

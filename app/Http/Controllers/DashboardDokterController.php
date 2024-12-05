@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemeriksaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardDokterController extends Controller
 {
@@ -11,7 +13,16 @@ class DashboardDokterController extends Controller
      */
     public function index()
     {
-        return view('dashboard.dokter.index');
+        // Mendapatkan id dokter yang sedang login
+        $dokterId = Auth::id();
+        
+        $pemeriksaans = Pemeriksaan::where('id_dokter', 2)
+                                    ->with(['dokter', 'pasien'])
+                                    ->get();
+        return view('dashboard.dokter.pasien', [
+            'title' => 'Dashboard Dokter',
+            'pemeriksaans' => $pemeriksaans
+        ]);
     }
 
     /**

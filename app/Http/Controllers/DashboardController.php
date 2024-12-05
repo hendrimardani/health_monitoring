@@ -23,4 +23,10 @@ class DashboardController extends Controller
             'title' => 'Dashboard Dokter',
         ]);
     }
+
+    public function admin() {
+        return view('dashboard.admin.index', [
+            'title' => 'Dashboard Admin',
+        ]);
+    }
 }

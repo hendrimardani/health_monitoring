@@ -16,12 +16,13 @@
         <a href="/dashboard/pasien" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Pasien</a>
         @elseif (auth()->user()->role === 'dokter')
         <a href="/dashboard/dokter" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Dokter</a>
-        @else
+        @elseif (auth()->user()->role === 'admin')
         <a href="/dashboard/admin" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
         @endif
     </div>
 
     <nav class="text-white text-base font-semibold pt-3">
+        {{-- dashboard pasien --}}
         @if (auth()->user()->role === 'pasien')
         <a href="/dashboard/pasien"
             class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/pasien') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
@@ -33,21 +34,44 @@
             <i class="fas fa-sticky-note mr-3"></i>
             Akun Saya
         </a>
-        <a href="/dashboard/riwayat"
+        <a href="/dashboard/pasien/riwayat"
             class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             Riwayat Saya
         </a>
+        {{-- dashboard dokter --}}
         @elseif (auth()->user()->role === 'dokter')
         <a href="/dashboard/dokter"
             class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/dokter') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-tachometer-alt mr-3 "></i>
             Dashboard
         </a>
-        <a href="#"
+        <a href="/dashboard/dokter/pasien"
             class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <i class="fas fa-sticky-note mr-3"></i>
             Pasien Anda
+        </a>
+        {{-- dashboard admin --}}
+        @elseif (auth()->user()->role === 'admin')
+        <a href="/dashboard/admin"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/dokter') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            <i class="fas fa-tachometer-alt mr-3 "></i>
+            Dashboard
+        </a>
+        <a href="/dashboard/admin/farmasi"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            <i class="fas fa-sticky-note mr-3"></i>
+            Farmasi
+        </a>
+        <a href="#"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            <i class="fas fa-sticky-note mr-3"></i>
+            Obat
+        </a>
+        <a href="#"
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/riwayat') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            <i class="fas fa-sticky-note mr-3"></i>
+            User
         </a>
         @endif
     </nav>

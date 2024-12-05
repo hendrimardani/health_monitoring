@@ -13,7 +13,7 @@ class LoginController extends Controller
     public function index()
     {
         return view('login.index', [
-            'title' => 'Login Pasien'
+            'title' => 'Login'
         ]);
     }
         
@@ -32,6 +32,8 @@ class LoginController extends Controller
                 return redirect()->route('dashboard.dokter');
             } elseif ($user->role === 'pasien') {
                 return redirect()->route('dashboard.pasien');
+            } elseif ($user->role === 'admin') {
+                return redirect()->route('dashboard.admin');
             }
         
             // Jika maksa akses ke dashboard diatas maka akan redirect ke login

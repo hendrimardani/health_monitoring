@@ -4,7 +4,7 @@
 
 {{-- Modal Toggled --}}
 <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-    class="w-[200px] bg-blue-500 text-white cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 flex items-center justify-center p-[10px]">
+    class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
     <i class="fas fa-plus mr-[10px]"></i>Tambah Riwayat
 </button>
 
@@ -32,7 +32,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form action="/dashboard/riwayat" method="post">
+                <form action="/dashboard/pasien/riwayat" method="post">
                     @csrf
                     <div class="mb-5">
                         <input type="text" id="nama_pasien"

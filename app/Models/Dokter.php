@@ -16,4 +16,9 @@ class Dokter extends Model
     {
         return $this->belongsTo(Resep::class);
     }
+
+    public function pemeriksaan()
+    {
+        return $this->hasMany(Dokter::class);
+    }
 }

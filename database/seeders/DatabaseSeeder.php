@@ -38,6 +38,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'dokter',
         ]);
 
+        User::create([
+            'nama' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'admin',
+        ]);
+
         VitalSign::create([
             'saturasi_oksigen' => '70.5',
             'detak_jantung' => '120',

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pasien');
             $table->unsignedBigInteger('id_diagnosa');
             $table->unsignedBigInteger('id_vital_sign'); 
+            $table->unsignedBigInteger('id_dokter');
             $table->string('keluhan');
             $table->string('catatan');
             $table->date('waktu_pemeriksaan');
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->foreign('id_pasien')->references('id')->on('pasiens')->onDelete('cascade');
             $table->foreign('id_diagnosa')->references('id')->on('diagnosas')->onDelete('cascade');
             $table->foreign('id_vital_sign')->references('id')->on('vital_signs')->onDelete('cascade');
+            $table->foreign('id_dokter')->references('id')->on('dokters')->onDelete('cascade');
         });
     }
 
