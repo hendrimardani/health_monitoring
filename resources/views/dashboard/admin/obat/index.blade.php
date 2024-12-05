@@ -117,7 +117,7 @@
                         </div>
                         <div
                             class="inline-block border-[1px] border-red-500 p-1 hover:bg-red-500 transition ease-in-out duration-500">
-                            <form action="#" method="POST" id="modal-form">
+                            <form action="{{ route('obat.destroy', $obat->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button>

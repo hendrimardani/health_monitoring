@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Farmasi;
 use App\Models\Obat;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,11 @@ class DashboardAdminObatController extends Controller
      */
     public function create()
     {
-        //
+        $farmasis = Farmasi::all();
+        return view('dashboard.admin.obat.create', [
+            'title' => 'Obat',
+            'farmasis' => $farmasis
+        ]);
     }
 
     /**
@@ -32,7 +37,18 @@ class DashboardAdminObatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_perusahaan' => 'required|exists:farmasis,id',
+            'nama_obat' => 'required',
+            'kategori' => 'required',
+            'dosis_tersedia' => 'required',
+            'unit' => 'required',
+            'created_at' => now()
+        ]);
+
+        Obat::create($validatedData);
+
+        return redirect('/dashboard/admin/obat')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -64,6 +80,10 @@ class DashboardAdminObatController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $obat = Obat::findOrFail($id);
+        if ($obat) {
+            $obat->delete();
+            return redirect('/dashboard/admin/obat')->with('success', 'Data Berhasil Dihapus');
+        }
     }
 }
