@@ -98,7 +98,7 @@
                     <div class="flex flex-wrap justify-start gap-4">
                         <div
                             class="inline-block border-[1px] border-orange-500 p-1 hover:bg-orange-500 transition ease-in-out duration-500">
-                            <a href="#">
+                            <a href="/dashboard/admin/user/{{ $user->id }}/edit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange"
                                     class="bi bi-pencil " viewBox="0 0 16 16">
                                     <path

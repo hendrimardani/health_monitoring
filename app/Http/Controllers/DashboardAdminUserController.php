@@ -59,7 +59,11 @@ class DashboardAdminUserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('dashboard.admin.user.edit', [
+            'title' => 'User',
+            'user' => $user
+        ]);
     }
 
     /**
@@ -67,7 +71,18 @@ class DashboardAdminUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required'
+        ]);
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+        User::where('id', $id)
+            ->update($validatedData);
+        
+        return redirect('/dashboard/admin/user')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

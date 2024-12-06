@@ -75,11 +75,19 @@ class DashboardAdminObatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Obat $obat)
     {
         $validatedData = $request->validate([
-            
+            'id_perusahaan' => 'required|exists:farmasis,id',
+            'nama_obat' => 'required',
+            'kategori' => 'required',
+            'unit' => 'required'
         ]);
+
+        Obat::where('id', $obat->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/admin/obat')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

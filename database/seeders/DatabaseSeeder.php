@@ -25,18 +25,18 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::create([
-            'nama' => 'Erik Mardani',
-            'email' => 'erikmardani@gmail.com',
-            'password' => bcrypt('12345678')
-        ]);
+        // User::create([
+        //     'nama' => 'Erik Mardani',
+        //     'email' => 'erikmardani@gmail.com',
+        //     'password' => bcrypt('12345678')
+        // ]);
 
-        User::create([
-            'nama' => 'Dr.Johan Marohan',
-            'email' => 'johanmarohan@gmail.com',
-            'password' => bcrypt('12345678'),
-            'role' => 'dokter',
-        ]);
+        // User::create([
+        //     'nama' => 'Dr.Johan Marohan',
+        //     'email' => 'johanmarohan@gmail.com',
+        //     'password' => bcrypt('12345678'),
+        //     'role' => 'dokter',
+        // ]);
 
         User::create([
             'nama' => 'admin',
