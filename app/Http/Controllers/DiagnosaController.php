@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pasien;
 use Illuminate\Http\Request;
 
 class DiagnosaController extends Controller
@@ -9,9 +10,9 @@ class DiagnosaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard.dokter.pasien.diagnosa.index');
+        //
     }
 
     /**
@@ -35,7 +36,11 @@ class DiagnosaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pasien = Pasien::with('user')->findOrFail($id);
+        return view('dashboard.dokter.pasien.diagnosa.index', [
+            'title' => 'Diagnosa',
+            'pasien' => $pasien
+        ]);
     }
 
     /**

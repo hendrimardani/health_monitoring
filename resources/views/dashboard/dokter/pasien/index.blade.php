@@ -54,7 +54,8 @@
             <td class="px-6 py-4">
                 <div
                     class="group inline-flex items-center gap-1 border-orange-500 border-2 p-2 rounded-lg hover:bg-orange-500 hover:text-white transition duration-500">
-                    <a href="/dashboard/dokter/pasien/diagnosa" class="flex items-center gap-1">
+                    <a href="{{ route('dokter.diagnosa.show', $pemeriksaan->pasien->id) }}"
+                        class="flex items-center gap-1">
                         <svg class="w-6 h-6 text-orange-500 group-hover:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
