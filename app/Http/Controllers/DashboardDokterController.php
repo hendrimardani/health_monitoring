@@ -13,11 +13,11 @@ class DashboardDokterController extends Controller
      */
     public function index()
     {
-        // Mendapatkan id dokter yang sedang login
-        $dokterId = Auth::id();
-        
-        $pemeriksaans = Pemeriksaan::where('id_dokter', 2)
-                                    ->with(['dokter', 'pasien'])
+        // Dokter yang saat ini sedang login, ambil id nya
+        $user = Auth::user()->id;
+        // Kode dari pasien.user berarti tabel pasien memanggil tabel user
+        $pemeriksaans = Pemeriksaan::with(['dokter', 'pasien.user'])
+                                    ->where('id_dokter', $user)
                                     ->get();
         return view('dashboard.dokter.pasien', [
             'title' => 'Dashboard Dokter',

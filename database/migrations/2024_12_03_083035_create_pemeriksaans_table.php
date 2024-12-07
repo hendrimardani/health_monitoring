@@ -26,7 +26,8 @@ return new class extends Migration
             $table->foreign('id_pasien')->references('id')->on('pasiens')->onDelete('cascade');
             $table->foreign('id_diagnosa')->references('id')->on('diagnosas')->onDelete('cascade');
             $table->foreign('id_vital_sign')->references('id')->on('vital_signs')->onDelete('cascade');
-            $table->foreign('id_dokter')->references('id')->on('dokters')->onDelete('cascade');
+            // id_dokter pada metode references adalah id_dokter dari tabel dokters
+            $table->foreign('id_dokter')->references('id_dokter')->on('dokters')->onDelete('cascade');
         });
     }
 

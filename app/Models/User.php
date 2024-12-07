@@ -28,6 +28,11 @@ class User extends Authenticatable
         return $this->belongsTo(Pasien::class);
     }
 
+    public function dokter()
+    {
+        return $this->belongsTo(Dokter::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

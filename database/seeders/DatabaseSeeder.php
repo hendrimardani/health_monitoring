@@ -25,18 +25,18 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::create([
-        //     'nama' => 'Erik Mardani',
-        //     'email' => 'erikmardani@gmail.com',
-        //     'password' => bcrypt('12345678')
-        // ]);
+        User::create([
+            'nama' => 'Erik Mardani',
+            'email' => 'erikmardani@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
 
-        // User::create([
-        //     'nama' => 'Dr.Johan Marohan',
-        //     'email' => 'johanmarohan@gmail.com',
-        //     'password' => bcrypt('12345678'),
-        //     'role' => 'dokter',
-        // ]);
+        User::create([
+            'nama' => 'Dr.Johan Marohan',
+            'email' => 'johanmarohan@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'dokter',
+        ]);
 
         User::create([
             'nama' => 'admin',
@@ -60,8 +60,18 @@ class DatabaseSeeder extends Seeder
             'alamat_perusahaan' => 'Jalan Cijawura Girang'
         ]);
 
+        Farmasi::create([
+            'nama_perusahaan' => 'PT Denso Indonesia',
+            'alamat_perusahaan' => 'Jalan Perintis Kemerdekaan No. 21'
+        ]);
+
+        Farmasi::create([
+            'nama_perusahaan' => 'PT Dicoding Indonesia',
+            'alamat_perusahaan' => 'Jalan Buah Batu no, 102'
+        ]);
+
         Obat::create([
-            'id_perusahaan' => 6,
+            'id_perusahaan' => 1,
             'nama_obat' => 'paracetamol',
             'kategori' => 'tablet',
             'dosis_tersedia' => '300 mg',
@@ -69,7 +79,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 6,
+            'id_perusahaan' => 1,
             'nama_obat' => 'paracetamol',
             'kategori' => 'tablet',
             'dosis_tersedia' => '200 mg',
@@ -77,7 +87,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 6,
+            'id_perusahaan' => 1,
             'nama_obat' => 'paracetamol',
             'kategori' => 'cair',
             'dosis_tersedia' => '100 mg',
@@ -85,7 +95,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 6,
+            'id_perusahaan' => 1,
             'nama_obat' => 'paracetamol',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
@@ -93,7 +103,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 7,
+            'id_perusahaan' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'kapsul',
             'dosis_tersedia' => '100 mg',
@@ -101,7 +111,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 7,
+            'id_perusahaan' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'kapsul',
             'dosis_tersedia' => '200 mg',
@@ -109,7 +119,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 7,
+            'id_perusahaan' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'tablet',
             'dosis_tersedia' => '100 mg',
@@ -117,7 +127,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 7,
+            'id_perusahaan' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'tablet',
             'dosis_tersedia' => '200 mg',
@@ -125,7 +135,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 7,
+            'id_perusahaan' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'cair',
             'dosis_tersedia' => '100 mg',
@@ -133,7 +143,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 7,
+            'id_perusahaan' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
@@ -141,7 +151,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 8,
+            'id_perusahaan' => 3,
             'nama_obat' => 'Obat Lambung',
             'kategori' => 'tablet',
             'dosis_tersedia' => '100 mg',
@@ -149,7 +159,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 8,
+            'id_perusahaan' => 3,
             'nama_obat' => 'Obat Lambung',
             'kategori' => 'tablet',
             'dosis_tersedia' => '200 mg',
@@ -157,7 +167,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 8,
+            'id_perusahaan' => 3,
             'nama_obat' => 'Obat Lambung',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
@@ -165,7 +175,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 8,
+            'id_perusahaan' => 3,
             'nama_obat' => 'Obat Lambung',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
@@ -209,6 +219,7 @@ class DatabaseSeeder extends Seeder
 
         Dokter::create([
             'id_resep' => 1,
+            'id_dokter' => 2,
             'nama_dokter' => 'Dr. Johan Marohan',
             'no_telepon' => '082499030928',
             'spesialisasi' => 'Penyakit Dalam (Internist)'
@@ -226,7 +237,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Diagnosa::create([
-            'id_dokter' => 1,
+            'id_dokter' => 2,
             'kode_icd' => 'A001',
             'deskripsi' => 'Kondisi tekanan darah pasien lebih tinggi dari normal dengan tekanan sistolik > 140 mmHg dan diastolik > 90 mmHg. Gejala meliputi sakit kepala, pusing, dan kelelahan',
             'rekomendasi' => 'Pasien disarankan untuk mengurangi konsumsi garam, melakukan aktivitas fisik ringan secara rutin, dan memonitor tekanan darah setiap hari. Jika tekanan darah terus meningkat, segera konsultasi ke dokter spesialis.'

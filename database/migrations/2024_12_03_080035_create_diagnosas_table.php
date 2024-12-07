@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
             
             // Relasi tabel
-            $table->foreign('id_dokter')->references('id')->on('dokters')->onDelete('cascade');
+            $table->foreign('id_dokter')->references('id_dokter')->on('dokters')->onDelete('cascade');
         });
     }
 
