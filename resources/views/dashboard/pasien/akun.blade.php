@@ -1,9 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('body')
-
-
-<form action="/dashboard/admin/user/{{ $user->id }}" method="post" class="mt-5">
+<form action="/dashboard/pasien/akun/{{ $user->id }}" method="post" class="mt-5">
     @csrf
     @method('PUT')
     <div class="mb-5">
@@ -41,7 +39,7 @@
     <div class="mb-5">
         <input type="password" id="password"
             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="password" name="password" value="" autofocus required />
+            placeholder="password" name="password" value="{{ $user->password }}" autofocus required />
     </div>
     @error('password')
     <div>

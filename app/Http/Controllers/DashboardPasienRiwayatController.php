@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DashboardPasien;
 use App\Models\Pasien;
-use App\Models\Pemeriksaan;
-use App\Models\Diagnosa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
-class DashboardPasienController extends Controller
+class DashboardPasienRiwayatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -59,7 +57,7 @@ class DashboardPasienController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DashboardPasien $dashboardPasien)
+    public function show(string $id)
     {
         //
     }
@@ -67,7 +65,7 @@ class DashboardPasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DashboardPasien $dashboardPasien)
+    public function edit(string $id)
     {
         //
     }
@@ -75,7 +73,7 @@ class DashboardPasienController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DashboardPasien $dashboardPasien)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -83,7 +81,7 @@ class DashboardPasienController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DashboardPasien $dashboardPasien)
+    public function destroy(string $id)
     {
         //
     }

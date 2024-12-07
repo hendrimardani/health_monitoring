@@ -69,9 +69,6 @@
                     Email
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Password
-                </th>
-                <th scope="col" class="px-6 py-3">
                     Role
                 </th>
             </tr>
@@ -87,9 +84,6 @@
                 </th>
                 <td class="px-6 py-4">
                     {{ $user->email }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $user->password }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $user->role }}

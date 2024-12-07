@@ -6,7 +6,8 @@ use App\Http\Controllers\DashboardAdminUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDokterController;
-use App\Http\Controllers\DashboardPasienController;
+use App\Http\Controllers\DashboardPasienRiwayatController;
+use App\Http\Controllers\DashboardPasienAkunController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 
@@ -49,7 +50,8 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware(['auth', 'role:pasien'])->group(function() {
     Route::get('/dashboard/pasien', [DashboardController::class, 'pasien'])->name('dashboard.pasien');
-    Route::resource('/dashboard/pasien/riwayat', DashboardPasienController::class);
+    Route::resource('/dashboard/pasien/riwayat', DashboardPasienRiwayatController::class);
+    // Route::resource('/dashboard/pasien/akun', DashboardPasienAkunController::class);
 });
 
 Route::middleware(['auth', 'role:dokter'])->group(function() {
