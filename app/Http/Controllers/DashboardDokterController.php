@@ -19,7 +19,7 @@ class DashboardDokterController extends Controller
         $pemeriksaans = Pemeriksaan::with(['dokter', 'pasien.user'])
                                     ->where('id_dokter', $user)
                                     ->get();
-        return view('dashboard.dokter.pasien', [
+        return view('dashboard.dokter.pasien.index', [
             'title' => 'Dashboard Dokter',
             'pemeriksaans' => $pemeriksaans
         ]);

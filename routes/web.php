@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDokterController;
 use App\Http\Controllers\DashboardPasienRiwayatController;
 use App\Http\Controllers\DashboardPasienAkunController;
+use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 
@@ -54,17 +55,18 @@ Route::middleware(['auth', 'role:pasien'])->group(function() {
     // Route::resource('/dashboard/pasien/akun', DashboardPasienAkunController::class);
 });
 
-Route::middleware(['auth', 'role:dokter'])->group(function() {
-    Route::get('/dashboard/dokter', [DashboardController::class, 'dokter'])->name('dashboard.dokter');
-    Route::resource('/dashboard/dokter/pasien', DashboardDokterController::class);
+Route::prefix('dashboard')->middleware(['auth', 'role:dokter'])->group(function() {
+    Route::get('/dokter', [DashboardController::class, 'dokter'])->name('dashboard.dokter');
+    Route::resource('/dokter/pasien', DashboardDokterController::class);
+    Route::resource('/dokter/pasien/diagnosa', DiagnosaController::class);
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function() {
-    Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
-    Route::resource('/dashboard/admin/farmasi', DashboardAdminFarmasiController::class);
-    Route::post('/dashboard/admin/farmasi/{id}', [DashboardAdminFarmasiController::class, 'destroy'])->name('farmasi.destroy');
-    Route::resource('/dashboard/admin/obat', DashboardAdminObatController::class);
-    Route::post('/dashboard/admin/obat/{id}', [DashboardAdminObatController::class, 'destroy'])->name('obat.destroy');
-    Route::resource('/dashboard/admin/user', DashboardAdminUserController::class);
-    Route::post('/dashboard/admin/user/{id}', [DashboardAdminUserController::class, 'destroy'])->name('user.destroy');
+Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function() {
+    Route::get('/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
+    Route::resource('/admin/farmasi', DashboardAdminFarmasiController::class);
+    Route::post('/admin/farmasi/{id}', [DashboardAdminFarmasiController::class, 'destroy'])->name('farmasi.destroy');
+    Route::resource('/admin/obat', DashboardAdminObatController::class);
+    Route::post('/admin/obat/{id}', [DashboardAdminObatController::class, 'destroy'])->name('obat.destroy');
+    Route::resource('/admin/user', DashboardAdminUserController::class);
+    Route::post('/admin/user/{id}', [DashboardAdminUserController::class, 'destroy'])->name('user.destroy');
 });

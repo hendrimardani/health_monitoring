@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Diagnosa;
 use Illuminate\Http\Request;
 
 class DiagnosaController extends Controller
@@ -12,7 +11,7 @@ class DiagnosaController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.dokter.pasien.diagnosa.index');
     }
 
     /**
@@ -34,7 +33,7 @@ class DiagnosaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Diagnosa $diagnosa)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class DiagnosaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Diagnosa $diagnosa)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class DiagnosaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Diagnosa $diagnosa)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class DiagnosaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Diagnosa $diagnosa)
+    public function destroy(string $id)
     {
         //
     }
