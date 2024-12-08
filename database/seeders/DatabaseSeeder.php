@@ -226,7 +226,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pasien::create([
-            'id_user' => 1,
+            'id_pasien' => 1,
             'nama_pasien' => 'Erik Mardani',
             'nik' => '3290182948291',
             'no_telepon' => '08290291028192',
@@ -234,6 +234,7 @@ class DatabaseSeeder extends Seeder
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jalan Cagak',
             'riwayat_penyakit' => 'Sakit kepala',
+            'status' => 'menunggu'
         ]);
 
         Diagnosa::create([

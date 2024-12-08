@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
             
             // Relasi tabel
-            $table->foreign('id_pasien')->references('id')->on('pasiens')->onDelete('cascade');
+            $table->foreign('id_pasien')->references('id_pasien')->on('pasiens')->onDelete('cascade');
             $table->foreign('id_diagnosa')->references('id')->on('diagnosas')->onDelete('cascade');
             $table->foreign('id_vital_sign')->references('id')->on('vital_signs')->onDelete('cascade');
             // id_dokter pada metode references adalah id_dokter dari tabel dokters

@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pasiens', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_user'); // Foreign key
+            $table->unsignedBigInteger('id_pasien')->primary(); // Foreign key diubah menjadi primary key
             $table->string('nama_pasien');
             $table->string('nik');
             $table->string('no_telepon');
@@ -21,10 +20,11 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->string('alamat');
             $table->string('riwayat_penyakit');
+            $table->enum('status', ['menunggu', 'selesai']);
             $table->timestamps();
             
             // Relasi tabel
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_pasien')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
