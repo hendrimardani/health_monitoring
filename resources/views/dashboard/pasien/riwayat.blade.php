@@ -35,7 +35,7 @@
                 <form action="/dashboard/pasien/riwayat" method="post">
                     @csrf
                     <div class="mb-5">
-                        <input type="text" id="nama_pasien"
+                        <input type="hidden" id="nama_pasien"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Nama Anda" name="nama_pasien" value="{{ $pasien->user->nama }}" autofocus
                             required />
@@ -43,7 +43,7 @@
                     @error('nama_pasien')
                     <div>
                         <div class="relative">
-                            <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
+                            <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                                 placeholder=" " />
                         </div>
@@ -53,7 +53,7 @@
                     </div>
                     @enderror
                     <div class="mb-5">
-                        <input type="email" id="email_pasien"
+                        <input type="hidden" id="email_pasien"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Email Anda" name="email_pasien" value="{{ $pasien->user->email }}" autofocus
                             required />
@@ -61,7 +61,7 @@
                     @error('email_pasien')
                     <div>
                         <div class="relative">
-                            <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
+                            <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                                 placeholder=" " />
                         </div>
@@ -71,7 +71,7 @@
                     </div>
                     @enderror
                     <div class="mb-5">
-                        <input type="password" id="password"
+                        <input type="hidden" id="password"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder=" Password Anda" name="password" value="{{ $pasien->user->password }}" autofocus
                             required />
@@ -79,7 +79,7 @@
                     @error('password')
                     <div>
                         <div class="relative">
-                            <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
+                            <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                                 placeholder=" " />
                         </div>
@@ -89,14 +89,14 @@
                     </div>
                     @enderror
                     <div class="mb-5">
-                        <input type="number" id="nik"
+                        <input type="hidden" id="nik"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="NIK Anda" name="nik" value="{{ $pasien->nik }}" autofocus required />
                     </div>
                     @error('nik')
                     <div>
                         <div>
-                            <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
+                            <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                                 placeholder=" " />
                         </div>
@@ -106,7 +106,7 @@
                     </div>
                     @enderror
                     <div class="mb-5">
-                        <input type="number" id="no_telepon"
+                        <input type="hidden" id="no_telepon"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="No Telepon Anda" name="no_telepon" value="{{ $pasien->no_telepon }}" autofocus
                             required />
@@ -114,7 +114,7 @@
                     @error('no_telepon')
                     <div>
                         <div>
-                            <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
+                            <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                                 placeholder=" " />
                         </div>
@@ -124,15 +124,14 @@
                     </div>
                     @enderror
                     <div class="mb-5">
-                        <h3 class="font-semibold text-gray-900 dark:text-white">Usia</h3>
-                        <input type="text" id="usia"
+                        <input type="hidden" id="usia"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Usia Anda" name="usia" value="{{ $pasien->usia }}" autofocus required />
                     </div>
                     @error('usia')
                     <div>
                         <div>
-                            <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
+                            <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                                 placeholder=" " />
                         </div>
@@ -141,11 +140,9 @@
                                 $message }}</span></p>
                     </div>
                     @enderror
-                    <label for="jenis_kelamin"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis
-                        Kelamin</label>
-                    <select id="jenis_kelamin" name="jenis_kelamin"
-                        class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="jenis_kelamin" name="jenis_kelamin" type="hidden"
+                        class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        style="display: none;">
                         <option value="laki-laki" {{ old('jenis_kelamin')=='laki-laki' ? 'selected' : '' }}>
                             laki-laki</option>
                         <option value="perempuan" {{ old('jenis_kelamin')=='perempuan' ? 'selected' : '' }}>
@@ -154,7 +151,7 @@
                     @error('jenis_kelamin')
                     <div>
                         <div class="relative">
-                            <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
+                            <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                                 placeholder=" " />
                         </div>
@@ -164,14 +161,14 @@
                     </div>
                     @enderror
                     <div class="mb-5">
-                        <input type="text" id="alamat"
+                        <input type="hidden" id="alamat"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus required />
                     </div>
                     @error('alamat')
                     <div>
                         <div>
-                            <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
+                            <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                                 placeholder=" " />
                         </div>
@@ -180,14 +177,17 @@
                                 $message }}</span></p>
                     </div>
                     @enderror
+                    <div class="-mt-2">
+
+                    </div>
                     <label for="riwayat_penyakit"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Riwayat
+                        class="block mb-2 -mt-[30px] text-sm font-medium text-gray-900 dark:text-white">Riwayat
                         Penyakit</label>
                     <textarea id="riwayat_penyakit" rows="4"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Tulis Riwayat Penyakit Anda Misalnya: Pernah mengalami sesak nafas dalam jangka berapa hari, atau panas yang tidak sembuh-sembuh"
-                        name="riwayat_penyakit" value="{{ old('riwayat_penyakit') }}">
-            </textarea>
+                        name="riwayat_penyakit"></textarea>
+                    </textarea>
                     @error('riwayat_Penyakit')
                     <div>
                         <div class="relative">
@@ -243,7 +243,8 @@
             <thead class="bg-gray-800 text-white">
                 <tr>
                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Nama Pasien</th>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Keluhan</th>
+                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Riwayat Penyakit</th>
+                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Status</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">
@@ -251,11 +252,7 @@
                 <tr>
                     <td class="w-1/3 text-left py-3 px-4">{{ $pasien->nama_pasien }}</td>
                     <td class="w-1/3 text-left py-3 px-4">{{ $pasien->riwayat_penyakit }}</td>
-                    {{-- <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="tel:622322662">622322662</a>
-                    </td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500"
-                            href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td> --}}
+                    <td class="w-1/3 text-left py-3 px-4">{{ $pasien->status }}</td>
                 </tr>
                 @endforeach
             </tbody>
