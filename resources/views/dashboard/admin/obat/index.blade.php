@@ -59,32 +59,19 @@
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    No
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama Perusahaan
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama Obat
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Kategori
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Dosis Tersedia
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Unit
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Aksi
-                </th>
+                <th scope="col" class="px-6 py-3">No</th>
+                <th scope="col" class="px-6 py-3">Nama Perusahaan</th>
+                <th scope="col" class="px-6 py-3">Nama Obat</th>
+                <th scope="col" class="px-6 py-3">Kategori</th>
+                <th scope="col" class="px-6 py-3">Dosis Tersedia</th>
+                <th scope="col" class="px-6 py-3">Unit</th>
+                <th scope="col" class="px-6 py-3">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($obats as $obat)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr
+                class="{{ $loop->iteration % 2 == 0 ? 'bg-gray-100' : 'bg-white' }} border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $loop->iteration }}
                 </th>
@@ -109,7 +96,7 @@
                             class="inline-block border-[1px] border-orange-500 p-1 hover:bg-orange-500 transition ease-in-out duration-500">
                             <a href="/dashboard/admin/obat/{{ $obat->id }}/edit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange"
-                                    class="bi bi-pencil " viewBox="0 0 16 16">
+                                    class="bi bi-pencil" viewBox="0 0 16 16">
                                     <path
                                         d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
                                 </svg>
@@ -137,6 +124,7 @@
             @endforeach
         </tbody>
     </table>
+
 
     <!-- Menampilkan navigasi paginasi -->
     @if ($obats->hasPages())

@@ -58,9 +58,7 @@ Route::middleware(['auth', 'role:pasien'])->group(function() {
 Route::prefix('dashboard')->middleware(['auth', 'role:dokter'])->group(function() {
     Route::get('/dokter', [DashboardController::class, 'dokter'])->name('dashboard.dokter');
     Route::resource('/dokter/pasien', DashboardDokterController::class);
-    Route::resource('/dokter/diagnosa', DiagnosaController::class)->names([
-        'show' => 'dokter.diagnosa.show'
-    ]);
+    Route::resource('/dokter/pasien/diagnosa', DiagnosaController::class);
 });
 
 Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function() {

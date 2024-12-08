@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diagnosa;
 use App\Models\Pasien;
+use App\Models\Pemeriksaan;
+use App\Models\VitalSign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DiagnosaController extends Controller
 {
@@ -12,7 +16,6 @@ class DiagnosaController extends Controller
      */
     public function index(Request $request)
     {
-        //
     }
 
     /**
@@ -28,7 +31,41 @@ class DiagnosaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'saturasi_oksigen' => 'required',
+            'detak_jantung' => 'required',
+            'suhu_badan' => 'required',
+            'berat_badan' => 'required',
+            'tekanan_darah_sistol' => 'required',
+            'tekanan_darah_diastol' => 'required',
+            'waktu_pengukuran' => 'required'
+        ]);
+        $vitalSign = VitalSign::create($validatedData);
+        // Ambil id_vitalSign yang baru saja dibuat
+        $id_vitalSign = $vitalSign->id;
+
+        $validatedData = $request->validate([
+            'kode_icd' => 'required',
+            'deskripsi' => 'required',
+            'rekomendasi' => 'required',
+        ]);
+        $validatedData['id_dokter'] = Auth::user()->id;
+        $diagnosa = Diagnosa::create($validatedData);
+        // Ambil id_diagnosa yang baru saja dibuat
+        $id_diagnosa = $diagnosa->id;
+
+        $validatedData = $request->validate([
+            'id_pasien' => 'required',
+            'keluhan' => 'required',
+            'catatan' => 'required',
+            'waktu_pemeriksaan' => 'required'
+        ]);
+        $validatedData['id_diagnosa'] = $id_diagnosa;
+        $validatedData['id_vital_sign'] = $id_vitalSign;
+        $validatedData['id_dokter'] = Auth::user()->id;
+        Pemeriksaan::create($validatedData);
+
+        return redirect('/dashboard/dokter/pasien')->with('success', 'Data berhasil di diagnosa');
     }
 
     /**
@@ -36,11 +73,7 @@ class DiagnosaController extends Controller
      */
     public function show(string $id)
     {
-        $pasien = Pasien::with('user')->findOrFail($id);
-        return view('dashboard.dokter.pasien.diagnosa.index', [
-            'title' => 'Diagnosa',
-            'pasien' => $pasien
-        ]);
+
     }
 
     /**
