@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_obat');
             $table->string('frekuensi');
             $table->string('durasi_hari');
-            $table->string('cara_Penggunaan');
+            $table->string('cara_penggunaan');
             $table->timestamps();
         });
     }

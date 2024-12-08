@@ -12,7 +12,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="overflow-clip">
   <div>
     <img src="{{ asset('assets/2-2.png') }}" alt="" class="w-[300px] mx-auto mb-20">
   </div>
@@ -40,19 +40,18 @@
     <img src="{{ asset('assets/tanya-1.png') }}" alt="" class="w-[650px] -mt-[850px] mx-auto">
   </div>
   <div class="relative ml-[100px] -mt-[700px]">
-    <h1 class="text-6xl text-white w-[400px] font-bold">Halo, dok! Terima kasih telah bergabung dengan
-      iHealth</h1>
+    <h1 class="text-6xl text-white w-[400px] font-bold">Kesehatan Anda adalah prioritas kami.</h1>
   </div>
 
-  <div class="relative ml-[1300px] mt-[200px]">
-    <h1 class="text-6xl text-white w-[600px] font-bold">Selamat datang, Dok! Mari bersama jaga kesehatan
-      pasien.</h1>
+  <div class="relative ml-[1300px] mt-[120px]">
+    <h1 class="text-6xl text-white w-[600px] font-bold">Bersiaplah untuk memonitor kesehatan Anda dengan cara yang lebih
+      mudah, cepat, dan terpercaya. iHealth hadir untuk Anda.</h1>
   </div>
   <div class="relative -mt-[50px] text-center">
     <a href="/login"
       class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-blue-800 group-hover:from-blue-100 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
       <span
-        class="relative px-[150px] py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-4xl">
+        class="relative px-[150px] py-2.5 transition-all ease-in duration500 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-4xl">
         Mari Mulai
       </span>
     </a>

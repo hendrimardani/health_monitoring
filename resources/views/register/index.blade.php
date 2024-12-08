@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="relative">
-                <img src="{{ asset('assets/2-2.png') }}" alt="" class="w-[700px] -mt-[450px]">
+                <img src="{{ asset('assets/2-1.png') }}" alt="" class="w-[700px] -mt-[450px]">
             </div>
         </div>
         <div class="mt-[200px] border-2 border-[#183e9f] p-9 rounded-2xl w-[500px] h-[400px]">

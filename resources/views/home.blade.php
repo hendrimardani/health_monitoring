@@ -25,8 +25,8 @@
 </div>
 
 <div class="relative">
-  <h1 class="text-8xl font-bold text-center -mt-[700px]">HALLO, DOKTER!</h1>
-  <h1 class="text-3xl font-bold text-center">Dunia sehat karena dedikasi seperti anda.<br>Siap memulai hari
+  <h1 class="text-8xl font-bold text-center -mt-[700px]">HALLO, Pasien!</h1>
+  <h1 class="text-3xl font-bold text-center">Siap memulai hari
     ini ?</h1>
 </div>
 

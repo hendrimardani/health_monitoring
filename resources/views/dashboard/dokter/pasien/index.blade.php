@@ -4,6 +4,11 @@
 
 <h1 class="text-3xl text-black mt-2">Pasien Anda</h1>
 
+{{-- @foreach ($obatKategori as $item)
+<h1>{{ $item }}</h1>
+
+@endforeach --}}
+
 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -31,32 +36,32 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($pemeriksaans as $pemeriksaan)
+        @foreach ($pasiens as $pasien)
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{ $loop->iteration }}
             </th>
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ $pemeriksaan->pasien->user->nama }}
+                {{ $pasien->nama_pasien }}
             </th>
             <td class="px-6 py-4">
-                {{ $pemeriksaan->pasien->nik }}
+                {{ $pasien->nik }}
             </td>
             <td class="px-6 py-4">
-                {{ $pemeriksaan->pasien->usia }}
+                {{ $pasien->usia }}
             </td>
             <td class="px-6 py-4">
-                {{ $pemeriksaan->pasien->jenis_kelamin }}
+                {{ $pasien->jenis_kelamin }}
             </td>
             <td class="px-6 py-4">
-                {{ $pemeriksaan->pasien->riwayat_penyakit }}
+                {{ $pasien->riwayat_penyakit }}
             </td>
             <td class="px-6 py-4">
                 <div
                     class="group inline-flex items-center gap-1 border-orange-500 border-2 p-2 rounded-lg hover:bg-orange-500 hover:text-white transition duration-500">
-                    {{-- Fungsi dari '@json($pemeriksaan->pasien)' untuk mengirimkan data ke modal --}}
+                    {{-- Fungsi dari '@json($pasien)' untuk mengirimkan data ke modal --}}
                     <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-                        data-pasien='@json($pemeriksaan->pasien)' class="flex items-center gap-1">
+                        data-pasien='@json($pasien)' class="flex items-center gap-1">
                         <svg class="w-6 h-6 text-orange-500 group-hover:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -238,8 +243,38 @@
                             Pemeriksaan</label>
                         <input type="date" id="waktu_pemeriksaan"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="waktu_pemeriksaan" autofocus required />
+                            name="waktu_pemeriksaan" value="{{ now()->toDateString() }}" autofocus required disabled />
                     </div>
+                    <h1 class="text-3xl text-black mt-2">Obat Pasien</h1>
+                    <hr>
+                    <select id="nama_obat" name="nama_obat"
+                        class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option disabled selected>Pilih Obat</option>
+                        <option value="paracetamol">paracetamol</option>
+                        <option value="antibiotik">antibiotik</option>
+                        <option value="obat lambung">obat lambung</option>
+                    </select>
+                    <select id="kategori" name="kategori"
+                        class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option disabled selected>Kategori Obat</option>
+
+                        <option value="tablet">tablet</option>
+                        <option value="cair">cair</option>
+                        <option value="kapsul">kapsul</option>
+                    </select>
+                    <select id="dosis_tersedia" name="dosis_tersedia"
+                        class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option disabled selected>Dosis Obat</option>
+                        <option value="100 mg">100 mg</option>
+                        <option value="200 mg">200 mg</option>
+                        <option value="300 mg">300 mg</option>
+                    </select>
+                    <div class="mt-2">
+                        <input type="number" id="unit"
+                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            name="unit" placeholder="Unit Obat" autofocus required />
+                    </div>
+
                     <!-- Tombol submit -->
                     <div class="col-span-2 text-center">
                         <button
@@ -262,8 +297,8 @@
         button.addEventListener('click', function() {
             const pasienData = JSON.parse(this.getAttribute('data-pasien'));
 
-            document.getElementById('id_pasien').value = pasienData.id;
-            document.getElementById('nama_pasien').value = pasienData.user.nama;
+            document.getElementById('id_pasien').value = pasienData.id_pasien;
+            document.getElementById('nama_pasien').value = pasienData.nama_pasien;
             document.getElementById('usia').value = pasienData.usia;
             document.getElementById('jenis_kelamin').value = pasienData.jenis_kelamin;
             document.getElementById('riwayat_penyakit').value = pasienData.riwayat_penyakit;

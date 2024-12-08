@@ -31,6 +31,7 @@ class DiagnosaController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $validatedData = $request->validate([
             'saturasi_oksigen' => 'required',
             'detak_jantung' => 'required',

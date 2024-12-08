@@ -31,12 +31,20 @@
         </a>
         <a href="/dashboard/pasien/akun"
             class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/akun-saya*') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
-            <i class="fas fa-sticky-note mr-3"></i>
+            <svg class="w-6 h-6 text-gray-800 dark:text- mr-3 -ml-1" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 9h3m-3 3h3m-3 3h3m-6 1c-.306-.613-.933-1-1.618-1H7.618c-.685 0-1.312.387-1.618 1M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm7 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+            </svg>
             Akun Saya
         </a>
         <a href="/dashboard/pasien/riwayat"
             class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/pasien/riwayat*') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
-            <i class="fas fa-sticky-note mr-3"></i>
+            <svg class="w-6 h-6 text-gray-800 dark:text-white -ml-1 mr-2" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4" />
+            </svg>
             Riwayat Saya
         </a>
         {{-- dashboard dokter --}}
@@ -98,7 +106,7 @@
         <button type="submit"
             class="bg-white absolute w-full upgrade-btn bottom-0 active-nav-link text-red-900 font-bold flex items-center justify-center py-4 hover:bg-gray-300">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                class="bi bi-box-arrow-left mr-2" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
                 <path fill-rule="evenodd"
