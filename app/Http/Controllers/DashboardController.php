@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function pasien() {
         // user saat ini login
-        $pasien = Pasien::where('id_user', auth()->id())->first();
+        $pasien = Pasien::where('id_pasien', auth()->id())->first();
         $pasiens = Pasien::with(['user'])->get();
         return view('dashboard.pasien.index', [
             'title' => 'Dashboard Pasien',
