@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->string('alamat');
             $table->string('riwayat_penyakit');
-            $table->enum('status', ['menunggu', 'selesai']);
+            $table->enum('status', ['menunggu', 'selesai'])->default('menunggu');
             $table->timestamps();
             
             // Relasi tabel

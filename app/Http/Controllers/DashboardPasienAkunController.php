@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pasien;
 use Illuminate\Http\Request;
 
 class DashboardPasienAkunController extends Controller
@@ -11,10 +12,16 @@ class DashboardPasienAkunController extends Controller
      */
     public function index()
     {
-        // $pasien = Pasien::findOrFail()
-        // return view('dashboard.pasien.akun', [
-        //     'title' => 'Pasien'
-        // ]);
+        // ->get(); // Kalau menggunakan get() ini berarti mengembalikan banyak data
+
+        $pasienId = auth()->user()->id;
+        $pasien = Pasien::with('user')
+                        ->where('id_pasien', $pasienId)
+                        ->first();
+        return view('dashboard.pasien.akun', [
+            'title' => 'Pasien',
+            'pasien' => $pasien
+        ]);
     }
 
     /**

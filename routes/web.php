@@ -52,7 +52,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::middleware(['auth', 'role:pasien'])->group(function() {
     Route::get('/dashboard/pasien', [DashboardController::class, 'pasien'])->name('dashboard.pasien');
     Route::resource('/dashboard/pasien/riwayat', DashboardPasienRiwayatController::class);
-    // Route::resource('/dashboard/pasien/akun', DashboardPasienAkunController::class);
+    Route::resource('/dashboard/pasien/akun', DashboardPasienAkunController::class);
 });
 
 Route::prefix('dashboard')->middleware(['auth', 'role:dokter'])->group(function() {

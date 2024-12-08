@@ -230,7 +230,7 @@ class DatabaseSeeder extends Seeder
             'nama_pasien' => 'Erik Mardani',
             'nik' => '3290182948291',
             'no_telepon' => '08290291028192',
-            'usia' => '20 tahun',
+            'usia' => '20',
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jalan Cagak',
             'riwayat_penyakit' => 'Sakit kepala',

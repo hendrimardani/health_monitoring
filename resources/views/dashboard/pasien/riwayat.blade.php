@@ -239,22 +239,26 @@
         <i class="fas fa-list mr-3"></i> Riwayat Saya Terakhir
     </p>
     <div>
-        <table class="w-full bg-white">
-            <thead class="bg-gray-800 text-white">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Nama Pasien</th>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Riwayat Penyakit</th>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Status</th>
+                    <th scope="col" class="px-6 py-3">Nama Pasien</th>
+                    <th scope="col" class="px-6 py-3">Riwayat Penyakit</th>
+                    <th scope="col" class="px-6 py-3">Status</th>
                 </tr>
             </thead>
-            <tbody class="text-gray-700">
-                @foreach ($pasiens as $pasien)
-                <tr>
-                    <td class="w-1/3 text-left py-3 px-4">{{ $pasien->nama_pasien }}</td>
-                    <td class="w-1/3 text-left py-3 px-4">{{ $pasien->riwayat_penyakit }}</td>
-                    <td class="w-1/3 text-left py-3 px-4">{{ $pasien->status }}</td>
+            <tbody>
+                <tr class="border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $pasien->nama_pasien }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ $pasien->riwayat_penyakit }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $pasien->status }}
+                    </td>
                 </tr>
-                @endforeach
             </tbody>
         </table>
     </div>

@@ -16,11 +16,9 @@ class DashboardPasienRiwayatController extends Controller
     {
         // user saat ini login
         $pasien = Pasien::where('id_pasien', auth()->id())->first();
-        $pasiens = Pasien::with(['user'])->get();
         return view('dashboard.pasien.riwayat', [
             'title' => 'Riwayat Saya',
             'pasien' => $pasien,
-            'pasiens' => $pasiens
         ]);
     }
 
@@ -37,6 +35,7 @@ class DashboardPasienRiwayatController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $validatedData = $request->validate([
             'nama_pasien' => 'required',
             'nik' => 'required',
