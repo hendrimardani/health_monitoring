@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('obats', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_perusahaan'); // Foreign key
+            $table->unsignedBigInteger('id_obat'); // Primary key dari foreign key
             $table->string('nama_obat');
             $table->string('kategori');
             $table->string('dosis_tersedia');
@@ -21,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Relasi tabel
-            $table->foreign('id_perusahaan')->references('id')->on('farmasis')->onDelete('cascade');
+            $table->foreign('id_obat')->references('id')->on('farmasis')->onDelete('cascade');
         });
     }
 

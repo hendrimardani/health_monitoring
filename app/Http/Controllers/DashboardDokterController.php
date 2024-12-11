@@ -24,9 +24,20 @@ class DashboardDokterController extends Controller
         //                             ->get();
 
         $pasiens = Pasien::paginate(10);
+        // Mendapatkan data kategori yang unik
+        $namaObat = DB::table('obats')
+                        ->select('id_obat', 'nama_obat')
+                        ->distinct()
+                        ->get();
+        $kategoriObat = DB::table('obats')
+                        ->select('kategori')
+                        ->distinct()
+                        ->get();
         return view('dashboard.dokter.pasien.index', [
             'title' => 'Dashboard Dokter',
             'pasiens' => $pasiens,
+            'namaObat' => $namaObat,
+            'kategoriObat' => $kategoriObat
         ]);
     }
 

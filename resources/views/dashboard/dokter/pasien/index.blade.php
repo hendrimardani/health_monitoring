@@ -4,8 +4,6 @@
 
 <h1 class="text-3xl text-black mt-2">Pasien Anda</h1>
 
-
-
 @if (session()->has('success'))
 <div id="alert-3"
     class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
@@ -276,7 +274,7 @@
                             <input type="date" id="waktu_pemeriksaan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="waktu_pemeriksaan" value="{{ now()->toDateString() }}" autofocus required
-                                disabled />
+                                readonly />
                         </div>
                         <div class="flex flex-wrap justify-between">
                             <!-- Tombol Kembali -->
@@ -310,20 +308,23 @@
 
                     <!-- Step 3 -->
                     <div class="modal-step modal-step-3 hidden">
+                        <input type="hidden" id="id_obat"
+                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            name="id_obat" autofocus required />
                         <select id="nama_obat" name="nama_obat"
                             class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option disabled selected>Pilih Obat</option>
-                            <option value="paracetamol">paracetamol</option>
-                            <option value="antibiotik">antibiotik</option>
-                            <option value="obat lambung">obat lambung</option>
+                            @foreach ($namaObat as $itemObat)
+                            <option value="{{ $itemObat->nama_obat }}" data-id="{{ $itemObat->id_obat }}">{{
+                                $itemObat->nama_obat }}</option>
+                            @endforeach
                         </select>
                         <select id="kategori" name="kategori"
                             class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option disabled selected>Kategori Obat</option>
-
-                            <option value="tablet">tablet</option>
-                            <option value="cair">cair</option>
-                            <option value="kapsul">kapsul</option>
+                            @foreach ($kategoriObat as $itemObat)
+                            <option value="{{ $itemObat->kategori }}">{{ $itemObat->kategori }}</option>
+                            @endforeach
                         </select>
                         <select id="dosis_tersedia" name="dosis_tersedia"
                             class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -349,7 +350,7 @@
                                 name="durasi_hari" placeholder="Durasi hari penggunaan obat" autofocus required />
                         </div>
                         <div class="mt-2">
-                            <input type="text" id="unit"
+                            <input type="text" id="cara_penggunaan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="cara_penggunaan" placeholder="Cara penggunaan" autofocus required />
                         </div>
@@ -369,7 +370,7 @@
                             </div>
                             <!-- Tombol Diagnosa -->
                             <div class="col-span-2 text-center mt-4">
-                                <button type="button" id="next-step-3"
+                                <button type="submit" id="diagnosa-submit"
                                     class="w-[150px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
                                     Diagnosa
                                 </button>
@@ -391,8 +392,28 @@
         const step3 = document.querySelector('.modal-step-3');
         const nextStep1Button = document.getElementById('next-step-1');
         const nextStep2Button = document.getElementById('next-step-2');
+        const diagnosaSubmit = document.getElementById('diagnosa-submit');
         const backToStep1Button = document.getElementById('back-to-step-1');
         const backToStep2Button = document.getElementById('back-to-step-2');
+
+        // Mendapatkan elemen select dan input hidden
+        const namaObatSelect = document.getElementById('nama_obat');
+        const idObatInput = document.getElementById('id_obat');
+
+        // Menangani perubahan pada select nama_obat
+        namaObatSelect.addEventListener('change', function() {
+        // Mendapatkan elemen option yang dipilih
+        const selectedOption = namaObatSelect.options[namaObatSelect.selectedIndex];
+        
+        // Mengambil data-id dari option yang dipilih
+        const idObat = selectedOption.getAttribute('data-id');
+
+        // Debug
+        console.log(idObat);
+        
+        // Memasukkan id_obat ke dalam input hidden
+        idObatInput.value = idObat;
+        });
 
         diagnosaButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -466,6 +487,20 @@
             step1.classList.add('hidden');
             step2.classList.remove('hidden');
             step3.classList.add('hidden');
+        });
+
+        diagnosaSubmit.addEventListener('click', function() {
+            if (
+                !document.getElementById('nama_obat').value ||
+                !document.getElementById('kategori').value ||
+                !document.getElementById('dosis_tersedia').value ||
+                !document.getElementById('unit').value ||
+                !document.getElementById('frekuensi').value ||
+                !document.getElementById('cara_penggunaan')
+            ) {
+                alert('Data tidak boleh ada yang kosong !');
+                return;
+            }   
         });
     });
 </script>

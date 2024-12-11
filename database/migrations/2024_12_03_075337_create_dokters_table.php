@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dokters', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_resep'); // Foreign key
             $table->unsignedBigInteger('id_dokter')->primary(); // Foreign key dijadikan primary key
             $table->string('nama_dokter');
             $table->string('no_telepon');
@@ -20,7 +19,6 @@ return new class extends Migration
             $table->timestamps();
             
             // Relasi tabel
-            $table->foreign('id_resep')->references('id')->on('reseps')->onDelete('cascade');
             $table->foreign('id_dokter')->references('id')->on('users')->onDelete('cascade');
         });
     }

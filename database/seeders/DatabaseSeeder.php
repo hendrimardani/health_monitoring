@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 1,
+            'id_obat' => 1,
             'nama_obat' => 'paracetamol',
             'kategori' => 'tablet',
             'dosis_tersedia' => '300 mg',
@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 1,
+            'id_obat' => 1,
             'nama_obat' => 'paracetamol',
             'kategori' => 'tablet',
             'dosis_tersedia' => '200 mg',
@@ -87,7 +87,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 1,
+            'id_obat' => 1,
             'nama_obat' => 'paracetamol',
             'kategori' => 'cair',
             'dosis_tersedia' => '100 mg',
@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 1,
+            'id_obat' => 1,
             'nama_obat' => 'paracetamol',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 2,
+            'id_obat' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'kapsul',
             'dosis_tersedia' => '100 mg',
@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 2,
+            'id_obat' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'kapsul',
             'dosis_tersedia' => '200 mg',
@@ -119,7 +119,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 2,
+            'id_obat' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'tablet',
             'dosis_tersedia' => '100 mg',
@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 2,
+            'id_obat' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'tablet',
             'dosis_tersedia' => '200 mg',
@@ -135,7 +135,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 2,
+            'id_obat' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'cair',
             'dosis_tersedia' => '100 mg',
@@ -143,7 +143,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 2,
+            'id_obat' => 2,
             'nama_obat' => 'antibiotik',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
@@ -151,7 +151,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 3,
+            'id_obat' => 3,
             'nama_obat' => 'Obat Lambung',
             'kategori' => 'tablet',
             'dosis_tersedia' => '100 mg',
@@ -159,7 +159,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 3,
+            'id_obat' => 3,
             'nama_obat' => 'Obat Lambung',
             'kategori' => 'tablet',
             'dosis_tersedia' => '200 mg',
@@ -167,7 +167,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 3,
+            'id_obat' => 3,
             'nama_obat' => 'Obat Lambung',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
@@ -175,15 +175,47 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Obat::create([
-            'id_perusahaan' => 3,
+            'id_obat' => 3,
             'nama_obat' => 'Obat Lambung',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
             'unit' => '15'
         ]);
+        
+        Dokter::create([
+            'id_dokter' => 2,
+            'nama_dokter' => 'Dr. Johan Marohan',
+            'no_telepon' => '082499030928',
+            'spesialisasi' => 'Penyakit Dalam (Internist)'
+        ]);
 
         Resep::create([
             'id_obat' => 1,
+            'id_dokter' => 2,
+            'frekuensi' => 'Setelah makan',
+            'cara_penggunaan' => 'ditelan dengan air setelah makan',
+            'durasi_hari' => 2
+        ]);
+
+        Resep::create([
+            'id_obat' => 1,
+            'id_dokter' => 2,
+            'frekuensi' => 'Setelah makan',
+            'cara_penggunaan' => 'ditelan dengan air setelah makan',
+            'durasi_hari' => 3
+        ]);
+
+        Resep::create([
+            'id_obat' => 1,
+            'id_dokter' => 2,
+            'frekuensi' => 'Sebelum makan',
+            'cara_penggunaan' => 'ditelan dengan air sebelum makan',
+            'durasi_hari' => 4
+        ]);
+
+        Resep::create([
+            'id_obat' => 2,
+            'id_dokter' => 2,
             'frekuensi' => 'Setelah makan',
             'cara_penggunaan' => 'ditelan dengan air setelah makan',
             'durasi_hari' => 2
@@ -191,38 +223,10 @@ class DatabaseSeeder extends Seeder
 
         Resep::create([
             'id_obat' => 2,
-            'frekuensi' => 'Setelah makan',
-            'cara_penggunaan' => 'ditelan dengan air setelah makan',
-            'durasi_hari' => 3
-        ]);
-
-        Resep::create([
-            'id_obat' => 3,
-            'frekuensi' => 'Sebelum makan',
-            'cara_penggunaan' => 'ditelan dengan air sebelum makan',
-            'durasi_hari' => 4
-        ]);
-
-        Resep::create([
-            'id_obat' => 4,
-            'frekuensi' => 'Setelah makan',
-            'cara_penggunaan' => 'ditelan dengan air setelah makan',
-            'durasi_hari' => 2
-        ]);
-
-        Resep::create([
-            'id_obat' => 5,
-            'frekuensi' => 'Sebelum makan',
-            'cara_penggunaan' => 'ditelan dengan air setelah makan',
-            'durasi_hari' => 3
-        ]);
-
-        Dokter::create([
-            'id_resep' => 1,
             'id_dokter' => 2,
-            'nama_dokter' => 'Dr. Johan Marohan',
-            'no_telepon' => '082499030928',
-            'spesialisasi' => 'Penyakit Dalam (Internist)'
+            'frekuensi' => 'Sebelum makan',
+            'cara_penggunaan' => 'ditelan dengan air setelah makan',
+            'durasi_hari' => 3
         ]);
 
         Pasien::create([

@@ -14,6 +14,6 @@ class Resep extends Model
 
     public function dokters()
     {
-        return $this->hasMany(Dokter::class);
+        return $this->belongsTo(Dokter::class, 'id_dokter');
     }
 }

@@ -26,7 +26,7 @@ class Dokter extends Model
 
     public function resep()
     {
-        return $this->belongsTo(Resep::class);
+        return $this->hasMany(Resep::class);
     }
 
     public function pemeriksaan()

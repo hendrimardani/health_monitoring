@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Diagnosa;
 use App\Models\Pasien;
 use App\Models\Pemeriksaan;
+use App\Models\Resep;
 use App\Models\VitalSign;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class DiagnosaController extends Controller
@@ -33,8 +33,7 @@ class DiagnosaController extends Controller
     public function store(Request $request)
     {
         try {
-            dd($request);
-            $validatedData = $request->validate([
+            $validatedPasien = $request->validate([
                 'id_pasien' => 'required',
                 'nama_pasien' => 'required',
                 'nik' => 'required',
@@ -43,83 +42,56 @@ class DiagnosaController extends Controller
                 'alamat' => 'required',
                 'jenis_kelamin' => 'required|in:laki-laki,perempuan',
                 'riwayat_penyakit' => 'required',
-                'status' => 'required'
+                'status' => 'required',
             ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+            $validatedVitalSign = $request->validate([
+                'saturasi_oksigen' => 'required',
+                'detak_jantung' => 'required',
+                'suhu_badan' => 'required',
+                'detak_jantung' => 'required',
+                'berat_badan' => 'required',
+                'tekanan_darah_sistol' => 'required',
+                'tekanan_darah_diastol' => 'required',
+                'waktu_pengukuran' => 'required'
+            ]);
+            $validatedDiagnosa = $request->validate([
+                'kode_icd' => 'required',
+                'deskripsi' => 'required',
+                'rekomendasi' => 'required',
+            ]);
+            $validatedResep = $request->validate([
+                'id_obat' => 'required',
+                'frekuensi' => 'required',
+                'durasi_hari' => 'required',
+                'cara_penggunaan' => 'required'
+            ]);
+            $validatedPemeriksaan = $request->validate([
+                'keluhan' => 'required',
+                'catatan' => 'required',
+                'waktu_pemeriksaan' => 'required'
+            ]);
+        } catch (ValidationException $e) {
             dd($e->errors());
         }
-        Pasien::where('id_pasien', $validatedData['id_pasien'])
-            ->update($validatedData);
+        Pasien::where('id_pasien', $validatedPasien['id_pasien'])
+            ->update($validatedPasien);
+
+        $vitalSign = VitalSign::create($validatedVitalSign);
+        
+        $userId = auth()->id();
+        $validatedDiagnosa['id_dokter'] = $userId;
+        $diagnosa = Diagnosa::create($validatedDiagnosa);
+
+        $validatedResep['id_dokter'] = $userId;
+        Resep::create($validatedResep);
+
+        $validatedPemeriksaan['id_pasien'] = $validatedPasien['id_pasien']; // Gunakan ID pasien yang valid
+        $validatedPemeriksaan['id_diagnosa'] = $diagnosa->id; // ID diagnosa yang baru dibuat
+        $validatedPemeriksaan['id_vital_sign'] = $vitalSign->id;
+        $validatedPemeriksaan['id_dokter'] = $userId; // ID dokter yang sedang login
+        Pemeriksaan::create($validatedPemeriksaan);
 
         return redirect('/dashboard/dokter/pasien')->with('success', 'Pasien berhasil didiagnosa');
-
-
-            // $validatedData = $request->validate([
-            //     // 'id_pasien' => 'required',
-            //     // 'nama_pasien' => 'required',
-            //     // 'nik' => 'required',
-            //     // 'no_telepon' => 'required',
-            //     // 'usia' => 'required',
-            //     // 'alamat' => 'required',
-            //     // 'jenis_kelamin' => 'required',
-            //     // 'riwayat_penyakit' => 'required',
-            //     'saturasi_oksigen' => 'required',
-            //     'detak_jantung' => 'required',
-            //     'suhu_badan' => 'required',
-            //     'detak_jantung' => 'required',
-            //     'berat_badan' => 'required',
-            //     'tekanan_darah_sistol' => 'required',
-            //     'tekanan_darah_diastol' => 'required',
-            //     'waktu_pengukuran' => 'required',
-            //     'kode_icd' => 'required',
-            //     'detak_jantung' => 'required',
-            //     'keluhan' => 'required',
-            //     'catatan' => 'required',
-            //     'deskripsi' => 'required',
-            //     'rekomendasi' => 'required',
-            //     'waktu_pemeriksaan' => 'required',
-            //     'nama_obat' => 'required',
-            //     'kategori' => 'required',
-            //     'dosis_tersedia' => 'required',
-            //     'unit' => 'required',
-            //     'frekuensi' => 'required',
-            //     'durasi_hari' => 'required',
-            //     'cara_penggunaan' => 'required'
-            // ]);
-        // $validatedData = $request->validate([
-        //     'saturasi_oksigen' => 'required',
-        //     'detak_jantung' => 'required',
-        //     'suhu_badan' => 'required',
-        //     'berat_badan' => 'required',
-        //     'tekanan_darah_sistol' => 'required',
-        //     'tekanan_darah_diastol' => 'required',
-        //     'waktu_pengukuran' => 'required'
-        // ]);
-        // $vitalSign = VitalSign::create($validatedData);
-        // $id_vitalSign = $vitalSign->id;
-
-        // $validatedData = $request->validate([
-        //     'kode_icd' => 'required',
-        //     'deskripsi' => 'required',
-        //     'rekomendasi' => 'required',
-        // ]);
-        // $validatedData['id_dokter'] = Auth::user()->id;
-        // $diagnosa = Diagnosa::create($validatedData);
-        // // Ambil id_diagnosa yang baru saja dibuat
-        // $id_diagnosa = $diagnosa->id;
-
-        // $validatedData = $request->validate([
-        //     'id_pasien' => 'required',
-        //     'keluhan' => 'required',
-        //     'catatan' => 'required',
-        //     'waktu_pemeriksaan' => 'required'
-        // ]);
-        // $validatedData['id_diagnosa'] = $id_diagnosa;
-        // $validatedData['id_vital_sign'] = $id_vitalSign;
-        // $validatedData['id_dokter'] = Auth::user()->id;
-        // Pemeriksaan::create($validatedData);
-
-        // return redirect('/dashboard/dokter/pasien')->with('success', 'Data berhasil di diagnosa');
     }
 
     /**
