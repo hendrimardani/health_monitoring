@@ -154,7 +154,8 @@
                     </div>
                     <div>
                         <select id="jenis_kelamin" name="jenis_kelamin"
-                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            style="display: none;">
                             <option disabled selected>Jenis Kelamin</option>
                             <option value="laki-laki">laki-laki</option>
                             <option value="perempuan">perempuan</option>
