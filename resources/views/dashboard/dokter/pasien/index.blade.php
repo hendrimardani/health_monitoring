@@ -4,6 +4,8 @@
 
 <h1 class="text-3xl text-black mt-2">Pasien Anda</h1>
 
+
+
 @if (session()->has('success'))
 <div id="alert-3"
     class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
@@ -124,150 +126,205 @@
             </div>
             <!-- Modal Body -->
             <div class="p-4">
-                <form action="/dashboard/dokter/pasien/diagnosa/save-temp-data" method="post" id="modal-diagnosa-form"
+                <form action="/dashboard/dokter/pasien/diagnosa" method="post" id="modal-diagnosa-form"
                     class="modal-diagnosa-form mt-5">
                     @csrf
-                    <input type="hidden" name="id_pasien" id="id_pasien">
-                    <div>
-                        <input type="hidden" id="nama_pasien"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Nama Pasien" name="nama_pasien" value="" autofocus required readonly />
-                    </div>
-                    <div>
-                        <input type="hidden" id="nik"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="NIK Pasien" name="nik" value="" autofocus required readonly />
-                    </div>
-                    <div>
-                        <input type="hidden" id="no_telepon"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="No Telepon Pasien" name="no_telepon" value="" autofocus required readonly />
-                    </div>
-                    <div>
-                        <input type="hidden" id="usia"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Usia" name="usia" value="" autofocus required readonly />
-                    </div>
-                    <div>
-                        <input type="hidden" id="alamat"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Alamat Pasien" name="alamat" value="" autofocus required readonly />
-                    </div>
-                    <div>
-                        <select id="jenis_kelamin" name="jenis_kelamin"
-                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            style="display: none;">
-                            <option disabled selected>Jenis Kelamin</option>
-                            <option value="laki-laki">laki-laki</option>
-                            <option value="perempuan">perempuan</option>
-                        </select>
-                    </div>
-                    <div>
-                        <input type="hidden" id="riwayat_penyakit"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Riwayat Penyakit" name="riwayat_penyakit" value="" autofocus required
-                            readonly />
-                    </div>
-                    <input type="hidden" id="status"
-                        class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Riwayat Penyakit" name="status" value="selesai" autofocus required readonly />
-                    <div>
-                        <label for="saturasi_oksigen"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Saturasi
-                            Oksigen</label>
-                        <input type="number" step="0.01" id="saturasi_oksigen"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Cnth: 70.5" name="saturasi_oksigen" autofocus required />
-                    </div>
-                    <div>
-                        <label for="detak_jantung"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detak
-                            Jantung</label>
-                        <input type="number" step="0.01" id="detak_jantung"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Cnth: 120" name="detak_jantung" autofocus required />
-                    </div>
-                    <div>
-                        <label for="suhu_badan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Suhu
-                            Badan</label>
-                        <input type="number" step="0.01" id="suhu_badan"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Cnth: 37.5" name="suhu_badan" autofocus required />
-                    </div>
-                    <div>
-                        <label for="berat_badan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Berat
-                            Badan</label>
-                        <input type="number" step="0.01" id="berat_badan"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Cnth: 160" name="berat_badan" autofocus required />
-                    </div>
-                    <div>
-                        <label for="tekanan_darah_sistol"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tekanan Darah
-                            Sistol</label>
-                        <input type="number" step="0.01" id="tekanan_darah_sistol"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Cnth: 120" name="tekanan_darah_sistol" autofocus required />
-                    </div>
-                    <div>
-                        <label for="tekanan_darah_diastol"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tekanan Darah
-                            Diastol</label>
-                        <input type="number" step="0.01" id="tekanan_darah_diastol"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Cnth: 120" name="tekanan_darah_diastol" autofocus required />
-                    </div>
-                    <div class="mt-2">
-                        <label for="waktu_pengukuran"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu
-                            Pengukuran</label>
-                        <input type="date" id="waktu_pengukuran"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="waktu_pengukuran" value="{{ now()->toDateString() }}" autofocus required readonly />
+                    <!-- Step 1 -->
+                    <div class="modal-step modal-step-1">
+                        <!-- Hidden Inputs -->
+                        <input type="hidden" name="id_pasien" id="id_pasien">
+                        <input type="hidden" id="nama_pasien" name="nama_pasien" value="" required readonly />
+                        <input type="hidden" id="nik" name="nik" value="" required readonly />
+                        <input type="hidden" id="no_telepon" name="no_telepon" value="" required readonly />
+                        <input type="hidden" id="usia" name="usia" value="" required readonly />
+                        <input type="hidden" id="alamat" name="alamat" value="" required readonly />
+
+                        <!-- Jenis Kelamin -->
+                        <div>
+                            <select id="jenis_kelamin" name="jenis_kelamin"
+                                class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                style="display: none;">
+                                <option disabled selected>Jenis Kelamin</option>
+                                <option value="laki-laki">laki-laki</option>
+                                <option value="perempuan">perempuan</option>
+                            </select>
+                        </div>
+
+                        <!-- Riwayat Penyakit & Status -->
+                        <input type="hidden" id="riwayat_penyakit" name="riwayat_penyakit" value="" required readonly />
+                        <input type="hidden" id="status" name="status" value="selesai" required readonly />
+
+                        <!-- Vital Signs -->
+                        <div>
+                            <label for="saturasi_oksigen"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Saturasi
+                                Oksigen</label>
+                            <input type="number" step="0.01" id="saturasi_oksigen"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Cnth: 70.5" name="saturasi_oksigen" required />
+                        </div>
+                        <div>
+                            <label for="detak_jantung"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Detak
+                                Jantung</label>
+                            <input type="number" step="0.01" id="detak_jantung"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Cnth: 120" name="detak_jantung" required />
+                        </div>
+                        <div>
+                            <label for="suhu_badan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Suhu
+                                Badan</label>
+                            <input type="number" step="0.01" id="suhu_badan"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Cnth: 37.5" name="suhu_badan" required />
+                        </div>
+                        <div>
+                            <label for="berat_badan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Berat
+                                Badan</label>
+                            <input type="number" step="0.01" id="berat_badan"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Cnth: 160" name="berat_badan" required />
+                        </div>
+                        <div>
+                            <label for="tekanan_darah_sistol"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tekanan Darah
+                                Sistol</label>
+                            <input type="number" step="0.01" id="tekanan_darah_sistol"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Cnth: 120" name="tekanan_darah_sistol" required />
+                        </div>
+                        <div>
+                            <label for="tekanan_darah_diastol"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tekanan Darah
+                                Diastol</label>
+                            <input type="number" step="0.01" id="tekanan_darah_diastol"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Cnth: 120" name="tekanan_darah_diastol" required />
+                        </div>
+                        <div class="mt-2">
+                            <label for="waktu_pengukuran"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu
+                                Pengukuran</label>
+                            <input type="date" id="waktu_pengukuran"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="waktu_pengukuran" value="{{ now()->toDateString() }}" required readonly />
+                        </div>
+
+                        <!-- Tombol Lanjut -->
+                        <div class="col-span-2 text-center">
+                            <button type="button" id="next-step-1"
+                                class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                Lanjut
+                            </button>
+                        </div>
                     </div>
 
-                    <!-- Tombol submit -->
-                    <div class="col-span-2 text-center">
-                        <button
-                            class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
-                            Lanjut
-                        </button>
+                    <!-- Step 2 -->
+                    <div class="modal-step modal-step-2 hidden">
+                        <div>
+                            <label for="kode_icd"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode
+                                ICD</label>
+                            <input type="text" id="kode_icd"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="kode_icd" placeholder="Cnth: A001" required />
+                        </div>
+                        <div>
+                            <label for="keluhan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keluhan</label>
+                            <input type="text" id="keluhan"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="keluhan" placeholder="Keluhan" required />
+                        </div>
+                        <div>
+                            <label for="catatan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Catatan</label>
+                            <input type="text" id="catatan"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="catatan" placeholder="Catatan" required />
+                        </div>
+                        <!-- Tombol Kirim -->
+                        <div class="col-span-2 text-center">
+                            <button type="button" id="next-step-2"
+                                class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                Lanjut
+                            </button>
+                        </div>
+                        <!-- Tombol Kembali -->
+                        <div class="col-span-2 text-center mt-4">
+                            <button type="button" id="back-to-step-1"
+                                class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                Kembali
+                            </button>
+                        </div>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const diagnosaButtons = document.querySelectorAll('button[data-pasien]');
-    const modalForm = document.getElementById('modal-diagnosa-form');
+        const diagnosaButtons = document.querySelectorAll('button[data-pasien]');
+        const modalForm = document.getElementById('modal-diagnosa-form');
+        const errorsMessages = document.getElementById('errors-messages');
+        const step1 = document.querySelector('.modal-step-1');
+        const step2 = document.querySelector('.modal-step-2');
+        const nextStep1Button = document.getElementById('next-step-1');
+        const backToStep1Button = document.getElementById('back-to-step-1');
 
-    diagnosaButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const pasienData = JSON.parse(this.getAttribute('data-pasien'));
+        diagnosaButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const pasienData = JSON.parse(this.getAttribute('data-pasien'));
 
-            document.getElementById('id_pasien').value = pasienData.id_pasien;
-            document.getElementById('nama_pasien').value = pasienData.nama_pasien;
-            document.getElementById('nik').value = pasienData.nik;
-            document.getElementById('no_telepon').value = pasienData.no_telepon;
-            document.getElementById('alamat').value = pasienData.alamat;    
-            document.getElementById('usia').value = pasienData.usia;
-            document.getElementById('jenis_kelamin').value = pasienData.jenis_kelamin;
-            document.getElementById('riwayat_penyakit').value = pasienData.riwayat_penyakit;
-            document.getElementById('keluhan').value = pasienData.riwayat_penyakit;
+                document.getElementById('id_pasien').value = pasienData.id_pasien;
+                document.getElementById('nama_pasien').value = pasienData.nama_pasien;
+                document.getElementById('nik').value = pasienData.nik;
+                document.getElementById('no_telepon').value = pasienData.no_telepon;
+                document.getElementById('alamat').value = pasienData.alamat;    
+                document.getElementById('usia').value = pasienData.usia;
+                document.getElementById('jenis_kelamin').value = pasienData.jenis_kelamin;
+                document.getElementById('riwayat_penyakit').value = pasienData.riwayat_penyakit;
 
-            // Update data
-            // modalForm.action = `/dashboard/dokter/pasien/diagnosa/save-temp-data`;
-            // Debug
-            console.log(pasienData);
+                // Reset step1 and step2 visibility
+                step1.classList.remove('hidden');
+                step2.classList.add('hidden');
+
+                // Debug
+                console.log(pasienData);
+            });
+        });
+
+        nextStep1Button.addEventListener('click', function() {
+            // Ambil data riwayat_penyakit dan tampilkan di input keluhan
+            document.getElementById('keluhan').value = document.getElementById('riwayat_penyakit').value;
+            // Validasi input step1 jika diperlukan
+            if (
+                (document.getElementById('saturasi_oksigen').value === '') || 
+                (document.getElementById('detak_jantung').value === '') || 
+                (document.getElementById('suhu_badan').value === '') || 
+                (document.getElementById('berat_badan').value === '') || 
+                (document.getElementById('tekanan_darah_sistol').value === '') || 
+                (document.getElementById('tekanan_darah_diastol').value === '')
+            ) {
+                alert('Data tidak boleh ada yang kosong!');
+                return;
+            }
+            // Hide step1, show step2
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+        });
+
+            // Logika tombol Kembali
+            backToStep1Button.addEventListener('click', function() {
+            // Hide step2, show step1
+            step2.classList.add('hidden');
+            step1.classList.remove('hidden');
         });
     });
-});
 </script>
-
 
 @endsection
