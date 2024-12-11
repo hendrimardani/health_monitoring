@@ -4,10 +4,30 @@
 
 <h1 class="text-3xl text-black mt-2">Pasien Anda</h1>
 
-{{-- @foreach ($obatKategori as $item)
-<h1>{{ $item }}</h1>
-
-@endforeach --}}
+@if (session()->has('success'))
+<div id="alert-3"
+    class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+    role="alert">
+    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+        viewBox="0 0 20 20">
+        <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+    </svg>
+    <span class="sr-only">Info</span>
+    <div class="ms-3 text-sm font-medium">
+        <strong>{{ session('success') }}</strong>
+    </div>
+    <button type="button"
+        class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"
+        data-dismiss-target="#alert-3" aria-label="Close">
+        <span class="sr-only">Close</span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+        </svg>
+    </button>
+</div>
+@endif
 
 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -33,6 +53,9 @@
             <th scope="col" class="px-6 py-3">
                 Periksa
             </th>
+            <th scope="col" class="px-6 py-3">
+                Status
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -55,6 +78,9 @@
             </td>
             <td class="px-6 py-4">
                 {{ $pasien->riwayat_penyakit }}
+            </td>
+            <td class="px-6 py-4">
+                {{ $pasien->status }}
             </td>
             <td class="px-6 py-4">
                 <div
@@ -101,44 +127,48 @@
                 <form action="" method="post" id="modal-diagnosa-form" class="modal-diagnosa-form mt-5">
                     @csrf
                     <input type="hidden" name="id_pasien" id="id_pasien">
-                    <h1 class="text-3xl text-black mt-2">Identitas Pasien</h1>
-                    <hr>
                     <div>
-                        <label for="nama_pasien"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                            Pasien</label>
-                        <input type="text" id="nama_pasien"
+                        <input type="hidden" id="nama_pasien"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Nama Pasien" name="nama_pasien" value="" autofocus required readonly />
                     </div>
                     <div>
-                        <label for="usia"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usia</label>
-                        <input type="text" id="usia"
+                        <input type="hidden" id="nik"
+                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="NIK Pasien" name="nik" value="" autofocus required readonly />
+                    </div>
+                    <div>
+                        <input type="hidden" id="no_telepon"
+                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="No Telepon Pasien" name="no_telepon" value="" autofocus required readonly />
+                    </div>
+                    <div>
+                        <input type="hidden" id="usia"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Usia" name="usia" value="" autofocus required readonly />
                     </div>
                     <div>
-                        <label for="jenis_kelamin"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis
-                            Kelamin</label>
+                        <input type="hidden" id="alamat"
+                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Alamat Pasien" name="alamat" value="" autofocus required readonly />
+                    </div>
+                    <div>
                         <select id="jenis_kelamin" name="jenis_kelamin"
-                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            disabled>
+                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option disabled selected>Jenis Kelamin</option>
                             <option value="laki-laki">laki-laki</option>
                             <option value="perempuan">perempuan</option>
                         </select>
                     </div>
                     <div>
-                        <label for="riwayat_penyakit"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Riwayat
-                            Penyakit</label>
-                        <input type="text" id="riwayat_penyakit"
+                        <input type="hidden" id="riwayat_penyakit"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Riwayat Penyakit" name="riwayat_penyakit" value="" autofocus required
                             readonly />
                     </div>
+                    <input type="hidden" id="status"
+                        class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        placeholder="Riwayat Penyakit" name="status" value="selesai" autofocus required readonly />
                     <h1 class="text-3xl text-black mt-2">Vital Sign</h1>
                     <hr>
                     <div>
@@ -195,7 +225,7 @@
                             Pengukuran</label>
                         <input type="date" id="waktu_pengukuran"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="waktu_pengukuran" autofocus required />
+                            name="waktu_pengukuran" value="{{ now()->toDateString() }}" autofocus required readonly />
                     </div>
                     <div class="mt-2">
                         <input type="hidden" id="id_dokter"
@@ -274,6 +304,22 @@
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             name="unit" placeholder="Unit Obat" autofocus required />
                     </div>
+                    <select id="frekuensi" name="frekuensi"
+                        class="mt-2 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option disabled selected>Frekuensi Obat</option>
+                        <option value="setelah makan">Setelah Makan</option>
+                        <option value="sebelum makan">Sebelum Makan</option>
+                    </select>
+                    <div class="mt-2">
+                        <input type="number" id="durasi_hari"
+                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            name="durasi_hari" placeholder="Durasi hari penggunaan obat" autofocus required />
+                    </div>
+                    <div class="mt-2">
+                        <input type="text" id="unit"
+                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            name="cara_penggunaan" placeholder="Cara penggunaan" autofocus required />
+                    </div>
 
                     <!-- Tombol submit -->
                     <div class="col-span-2 text-center">
@@ -299,6 +345,9 @@
 
             document.getElementById('id_pasien').value = pasienData.id_pasien;
             document.getElementById('nama_pasien').value = pasienData.nama_pasien;
+            document.getElementById('nik').value = pasienData.nik;
+            document.getElementById('no_telepon').value = pasienData.no_telepon;
+            document.getElementById('alamat').value = pasienData.alamat;    
             document.getElementById('usia').value = pasienData.usia;
             document.getElementById('jenis_kelamin').value = pasienData.jenis_kelamin;
             document.getElementById('riwayat_penyakit').value = pasienData.riwayat_penyakit;

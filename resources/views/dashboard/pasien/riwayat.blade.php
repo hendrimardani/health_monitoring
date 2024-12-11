@@ -5,7 +5,7 @@
 {{-- Modal Toggled --}}
 <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
     class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
-    <i class="fas fa-plus mr-[10px]"></i>Tambah Riwayat
+    <i class="fas fa-plus mr-[10px]"></i>Tambah Keluhan
 </button>
 
 <!-- Main modal -->

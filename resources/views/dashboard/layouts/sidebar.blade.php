@@ -30,7 +30,7 @@
             Dashboard
         </a>
         <a href="/dashboard/pasien/akun"
-            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/akun-saya*') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
+            class="flex items-center py-4 pl-6 nav-item {{ Request::is('dashboard/pasien/akun*') ? 'bg-blue-700 active-nav-link text-white' : 'opacity-75 hover:opacity-100' }}">
             <svg class="w-6 h-6 text-gray-800 dark:text- mr-3 -ml-1" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -71,7 +71,7 @@
         <tbody>
             @foreach ($obats as $obat)
             <tr
-                class="{{ $loop->iteration % 2 == 0 ? 'bg-gray-100' : 'bg-white' }} border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100">
+                class="{{ $loop->iteration % 2 == 0 ? 'bg-gray-50' : 'bg-white' }} border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $loop->iteration }}
                 </th>
