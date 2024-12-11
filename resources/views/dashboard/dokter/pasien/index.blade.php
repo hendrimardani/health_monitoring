@@ -205,9 +205,11 @@
                             <label for="waktu_pengukuran"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu
                                 Pengukuran</label>
-                            <input type="date" id="waktu_pengukuran"
+                            <input type="datetime-local" id="waktu_pengukuran"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="waktu_pengukuran" value="{{ now()->toDateString() }}" required readonly />
+                                name="waktu_pengukuran" value="{{ now()->format('Y-m-d\TH:i:s') }}" autofocus required
+                                readonly />
+
                         </div>
                         <!-- Tombol Lanjut -->
                         <div class="col-span-2 text-center">
@@ -271,9 +273,9 @@
                             <label for="waktu_pemeriksaan"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu
                                 Pemeriksaan</label>
-                            <input type="date" id="waktu_pemeriksaan"
+                            <input type="datetime-local" id="waktu_pemeriksaan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="waktu_pemeriksaan" value="{{ now()->toDateString() }}" autofocus required
+                                name="waktu_pemeriksaan" value="{{ now()->format('Y-m-d\TH:i:s') }}" autofocus required
                                 readonly />
                         </div>
                         <div class="flex flex-wrap justify-between">

@@ -49,9 +49,9 @@ class DatabaseSeeder extends Seeder
             'saturasi_oksigen' => '70.5',
             'detak_jantung' => '120',
             'suhu_badan' => '37.5',
-            'berat_badan' => '160 cm',
-            'tekanan_darah_sistol' => '70 mg',
-            'tekanan_darah_diastol' => '110 mg',
+            'berat_badan' => '160',
+            'tekanan_darah_sistol' => '70',
+            'tekanan_darah_diastol' => '110',
             'waktu_pengukuran' => now()
         ]);
 

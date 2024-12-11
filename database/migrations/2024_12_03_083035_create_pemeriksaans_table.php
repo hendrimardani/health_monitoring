@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_dokter');
             $table->string('keluhan');
             $table->string('catatan');
-            $table->date('waktu_pemeriksaan');
+            $table->timestamp('waktu_pemeriksaan');
             $table->timestamps();
             
             // Relasi tabel
