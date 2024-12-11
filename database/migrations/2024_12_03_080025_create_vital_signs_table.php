@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('berat_badan');
             $table->string('tekanan_darah_sistol');
             $table->string('tekanan_darah_diastol');
-            $table->date('waktu_pengukuran');
+            $table->timestamp('waktu_pengukuran');
             $table->timestamps();
         });
     }
