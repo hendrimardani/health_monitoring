@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardPasienRiwayatController;
 use App\Http\Controllers\DashboardPasienAkunController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
@@ -59,6 +60,7 @@ Route::prefix('dashboard')->middleware(['auth', 'role:dokter'])->group(function(
     Route::get('/dokter', [DashboardController::class, 'dokter'])->name('dashboard.dokter');
     Route::resource('/dokter/pasien', DashboardDokterController::class);
     Route::resource('/dokter/pasien/diagnosa', DiagnosaController::class);
+    Route::post('/dokter/pasien/diagnosa/save-temp-data', [DiagnosaController::class, 'saveTempData']);
 });
 
 Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function() {

@@ -124,7 +124,8 @@
             </div>
             <!-- Modal Body -->
             <div class="p-4">
-                <form action="" method="post" id="modal-diagnosa-form" class="modal-diagnosa-form mt-5">
+                <form action="/dashboard/dokter/pasien/diagnosa/save-temp-data" method="post" id="modal-diagnosa-form"
+                    class="modal-diagnosa-form mt-5">
                     @csrf
                     <input type="hidden" name="id_pasien" id="id_pasien">
                     <div>
@@ -170,8 +171,6 @@
                     <input type="hidden" id="status"
                         class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Riwayat Penyakit" name="status" value="selesai" autofocus required readonly />
-                    <h1 class="text-3xl text-black mt-2">Vital Sign</h1>
-                    <hr>
                     <div>
                         <label for="saturasi_oksigen"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Saturasi
@@ -228,105 +227,12 @@
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             name="waktu_pengukuran" value="{{ now()->toDateString() }}" autofocus required readonly />
                     </div>
-                    <div class="mt-2">
-                        <input type="hidden" id="id_dokter"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="id_dokter" autofocus required />
-                    </div>
-                    <div class="mt-2">
-                        <label for="kode_icd" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode
-                            ICD</label>
-                        <input type="text" id="kode_icd"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="kode_icd" placeholder="Cnth: A001" autofocus required />
-                    </div>
-                    <div class="mt-2">
-                        <label for="keluhan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keluhan</label>
-                        <input type="text" id="keluhan"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="keluhan" placeholder="Keluhan" autofocus required readonly />
-                    </div>
-                    <div class="mt-2">
-                        <label for="catatan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Catatan</label>
-                        <input type="text" id="catatan"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="catatan" placeholder="Catatan" autofocus required />
-                    </div>
-                    <div class="mt-2">
-                        <label for="deskripsi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
-                        <input type="text" id="deskripsi"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="deskripsi" placeholder="Deskripsi" autofocus required />
-                    </div>
-                    <div class="mt-2">
-                        <label for="rekomendasi"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rekomendasi</label>
-                        <input type="text" id="rekomendasi"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="rekomendasi" placeholder="Rekomendasi" autofocus required />
-                    </div>
-                    <div class="mt-2">
-                        <label for="waktu_pemeriksaan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu
-                            Pemeriksaan</label>
-                        <input type="date" id="waktu_pemeriksaan"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="waktu_pemeriksaan" value="{{ now()->toDateString() }}" autofocus required disabled />
-                    </div>
-                    <h1 class="text-3xl text-black mt-2">Obat Pasien</h1>
-                    <hr>
-                    <select id="nama_obat" name="nama_obat"
-                        class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option disabled selected>Pilih Obat</option>
-                        <option value="paracetamol">paracetamol</option>
-                        <option value="antibiotik">antibiotik</option>
-                        <option value="obat lambung">obat lambung</option>
-                    </select>
-                    <select id="kategori" name="kategori"
-                        class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option disabled selected>Kategori Obat</option>
-
-                        <option value="tablet">tablet</option>
-                        <option value="cair">cair</option>
-                        <option value="kapsul">kapsul</option>
-                    </select>
-                    <select id="dosis_tersedia" name="dosis_tersedia"
-                        class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option disabled selected>Dosis Obat</option>
-                        <option value="100 mg">100 mg</option>
-                        <option value="200 mg">200 mg</option>
-                        <option value="300 mg">300 mg</option>
-                    </select>
-                    <div class="mt-2">
-                        <input type="number" id="unit"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="unit" placeholder="Unit Obat" autofocus required />
-                    </div>
-                    <select id="frekuensi" name="frekuensi"
-                        class="mt-2 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option disabled selected>Frekuensi Obat</option>
-                        <option value="setelah makan">Setelah Makan</option>
-                        <option value="sebelum makan">Sebelum Makan</option>
-                    </select>
-                    <div class="mt-2">
-                        <input type="number" id="durasi_hari"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="durasi_hari" placeholder="Durasi hari penggunaan obat" autofocus required />
-                    </div>
-                    <div class="mt-2">
-                        <input type="text" id="unit"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="cara_penggunaan" placeholder="Cara penggunaan" autofocus required />
-                    </div>
 
                     <!-- Tombol submit -->
                     <div class="col-span-2 text-center">
                         <button
                             class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
-                            Diagnosa
+                            Lanjut
                         </button>
                     </div>
             </div>
@@ -355,7 +261,7 @@
             document.getElementById('keluhan').value = pasienData.riwayat_penyakit;
 
             // Update data
-            modalForm.action = `/dashboard/dokter/pasien/diagnosa`;
+            // modalForm.action = `/dashboard/dokter/pasien/diagnosa/save-temp-data`;
             // Debug
             console.log(pasienData);
         });

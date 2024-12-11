@@ -151,4 +151,37 @@ class DiagnosaController extends Controller
     {
         //
     }
+
+    public function saveTempData(Request $request)
+    {
+        try {
+            // Validasi data input
+            $validatedPasien = $request->validate([
+                'id_pasien' => 'required',
+                'nama_pasien' => 'required|string|max:255',
+                'nik' => 'required|numeric',
+                'usia' => 'required|numeric',
+                'alamat' => 'required|string|max:255',
+                'riwayat_penyakit' => 'required|string|max:255',
+            ]);
+            // Simpan data ke session
+            session(['temp_pasien' => $validatedPasien]);
+
+            $validatedVitalSign = $request->validate([
+                'saturasi_oksigen' => 'required|numeric',
+                'detak_jantung' => 'required|numeric',
+                'suhu_badan' => 'required|numeric',
+                'berat_badan' => 'required|numeric',
+                'tekanan_darah_sistol' => 'required|numeric',
+                'tekanan_darah_diastol' => 'required|numeric',
+                'waktu_pengukuran' => 'required'
+            ]);
+            // Simpan data ke session
+            session(['temp_vitalSign' => $validatedVitalSign]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            dd($e->errors());
+        }
+        // Cek apakah hasilnya sudah masuk ke session
+        dd(session());
+    }
 }
