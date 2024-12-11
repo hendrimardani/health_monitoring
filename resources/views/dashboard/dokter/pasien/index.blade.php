@@ -51,10 +51,10 @@
                 Riwayat Penyakit
             </th>
             <th scope="col" class="px-6 py-3">
-                Periksa
+                Status
             </th>
             <th scope="col" class="px-6 py-3">
-                Status
+                Periksa
             </th>
         </tr>
     </thead>
