@@ -211,18 +211,28 @@
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="waktu_pengukuran" value="{{ now()->toDateString() }}" required readonly />
                         </div>
-
                         <!-- Tombol Lanjut -->
                         <div class="col-span-2 text-center">
                             <button type="button" id="next-step-1"
-                                class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                class="group w-full text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-500 border border-blue-500">
                                 Lanjut
+                                <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m9 5 7 7-7 7" />
+                                </svg>
                             </button>
                         </div>
                     </div>
 
                     <!-- Step 2 -->
                     <div class="modal-step modal-step-2 hidden">
+                        <div class="mt-2">
+                            <input type="hidden" id="id_dokter"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="id_dokter" autofocus required />
+                        </div>
                         <div>
                             <label for="kode_icd"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode
@@ -236,7 +246,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keluhan</label>
                             <input type="text" id="keluhan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="keluhan" placeholder="Keluhan" required />
+                                name="keluhan" placeholder="Keluhan" required readonly />
                         </div>
                         <div>
                             <label for="catatan"
@@ -245,19 +255,125 @@
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="catatan" placeholder="Catatan" required />
                         </div>
-                        <!-- Tombol Kirim -->
-                        <div class="col-span-2 text-center">
-                            <button type="button" id="next-step-2"
-                                class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
-                                Lanjut
-                            </button>
+                        <div class="mt-2">
+                            <label for="deskripsi"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+                            <input type="text" id="deskripsi"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="deskripsi" placeholder="Deskripsi" autofocus required />
                         </div>
-                        <!-- Tombol Kembali -->
-                        <div class="col-span-2 text-center mt-4">
-                            <button type="button" id="back-to-step-1"
-                                class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
-                                Kembali
-                            </button>
+                        <div class="mt-2">
+                            <label for="rekomendasi"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rekomendasi</label>
+                            <input type="text" id="rekomendasi"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="rekomendasi" placeholder="Rekomendasi" autofocus required />
+                        </div>
+                        <div class="mt-2">
+                            <label for="waktu_pemeriksaan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu
+                                Pemeriksaan</label>
+                            <input type="date" id="waktu_pemeriksaan"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="waktu_pemeriksaan" value="{{ now()->toDateString() }}" autofocus required
+                                disabled />
+                        </div>
+                        <div class="flex flex-wrap justify-between">
+                            <!-- Tombol Kembali -->
+                            <div class="mt-4">
+                                <button type="button" id="back-to-step-1"
+                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m15 19-7-7 7-7" />
+                                    </svg>
+                                    Kembali
+                                </button>
+                            </div>
+                            <!-- Tombol Lanjut -->
+                            <div class="mt-4">
+                                <button type="button" id="next-step-2"
+                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    Lanjut
+                                    <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m9 5 7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="modal-step modal-step-3 hidden">
+                        <select id="nama_obat" name="nama_obat"
+                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option disabled selected>Pilih Obat</option>
+                            <option value="paracetamol">paracetamol</option>
+                            <option value="antibiotik">antibiotik</option>
+                            <option value="obat lambung">obat lambung</option>
+                        </select>
+                        <select id="kategori" name="kategori"
+                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option disabled selected>Kategori Obat</option>
+
+                            <option value="tablet">tablet</option>
+                            <option value="cair">cair</option>
+                            <option value="kapsul">kapsul</option>
+                        </select>
+                        <select id="dosis_tersedia" name="dosis_tersedia"
+                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option disabled selected>Dosis Obat</option>
+                            <option value="100 mg">100 mg</option>
+                            <option value="200 mg">200 mg</option>
+                            <option value="300 mg">300 mg</option>
+                        </select>
+                        <div class="mt-2">
+                            <input type="number" id="unit"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="unit" placeholder="Unit Obat" autofocus required />
+                        </div>
+                        <select id="frekuensi" name="frekuensi"
+                            class="mt-2 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option disabled selected>Frekuensi Obat</option>
+                            <option value="setelah makan">Setelah Makan</option>
+                            <option value="sebelum makan">Sebelum Makan</option>
+                        </select>
+                        <div class="mt-2">
+                            <input type="number" id="durasi_hari"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="durasi_hari" placeholder="Durasi hari penggunaan obat" autofocus required />
+                        </div>
+                        <div class="mt-2">
+                            <input type="text" id="unit"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="cara_penggunaan" placeholder="Cara penggunaan" autofocus required />
+                        </div>
+                        <div class="flex flex-wrap justify-between">
+                            <!-- Tombol Kembali -->
+                            <div class="col-span-2 text-center mt-4">
+                                <button type="button" id="back-to-step-2"
+                                    class="group w-[150px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m15 19-7-7 7-7" />
+                                    </svg>
+                                    Kembali
+                                </button>
+                            </div>
+                            <!-- Tombol Diagnosa -->
+                            <div class="col-span-2 text-center mt-4">
+                                <button type="button" id="next-step-3"
+                                    class="w-[150px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    Diagnosa
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -270,11 +386,13 @@
     document.addEventListener('DOMContentLoaded', function() {
         const diagnosaButtons = document.querySelectorAll('button[data-pasien]');
         const modalForm = document.getElementById('modal-diagnosa-form');
-        const errorsMessages = document.getElementById('errors-messages');
         const step1 = document.querySelector('.modal-step-1');
         const step2 = document.querySelector('.modal-step-2');
+        const step3 = document.querySelector('.modal-step-3');
         const nextStep1Button = document.getElementById('next-step-1');
+        const nextStep2Button = document.getElementById('next-step-2');
         const backToStep1Button = document.getElementById('back-to-step-1');
+        const backToStep2Button = document.getElementById('back-to-step-2');
 
         diagnosaButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -289,9 +407,10 @@
                 document.getElementById('jenis_kelamin').value = pasienData.jenis_kelamin;
                 document.getElementById('riwayat_penyakit').value = pasienData.riwayat_penyakit;
 
-                // Reset step1 and step2 visibility
+                // Reset step visibility
                 step1.classList.remove('hidden');
                 step2.classList.add('hidden');
+                step3.classList.add('hidden');
 
                 // Debug
                 console.log(pasienData);
@@ -299,32 +418,57 @@
         });
 
         nextStep1Button.addEventListener('click', function() {
-            // Ambil data riwayat_penyakit dan tampilkan di input keluhan
             document.getElementById('keluhan').value = document.getElementById('riwayat_penyakit').value;
-            // Validasi input step1 jika diperlukan
+
+            // Validasi input step1
             if (
-                (document.getElementById('saturasi_oksigen').value === '') || 
-                (document.getElementById('detak_jantung').value === '') || 
-                (document.getElementById('suhu_badan').value === '') || 
-                (document.getElementById('berat_badan').value === '') || 
-                (document.getElementById('tekanan_darah_sistol').value === '') || 
-                (document.getElementById('tekanan_darah_diastol').value === '')
+                !document.getElementById('saturasi_oksigen').value || 
+                !document.getElementById('detak_jantung').value || 
+                !document.getElementById('suhu_badan').value || 
+                !document.getElementById('berat_badan').value || 
+                !document.getElementById('tekanan_darah_sistol').value || 
+                !document.getElementById('tekanan_darah_diastol').value
             ) {
                 alert('Data tidak boleh ada yang kosong!');
                 return;
             }
-            // Hide step1, show step2
+
+            // Ubah visibilitas
             step1.classList.add('hidden');
             step2.classList.remove('hidden');
+            step3.classList.add('hidden');
         });
 
-            // Logika tombol Kembali
-            backToStep1Button.addEventListener('click', function() {
-            // Hide step2, show step1
-            step2.classList.add('hidden');
+        backToStep1Button.addEventListener('click', function() {
             step1.classList.remove('hidden');
+            step2.classList.add('hidden');
+            step3.classList.add('hidden');
+        });
+
+        nextStep2Button.addEventListener('click', function() {
+            if (
+                !document.getElementById('kode_icd').value ||
+                !document.getElementById('catatan').value ||
+                !document.getElementById('deskripsi').value ||
+                !document.getElementById('rekomendasi').value
+            ) {
+                alert('Data tidak boleh ada yang kosong!');
+                return;
+            }
+
+            // Ubah visibilitas
+            step1.classList.add('hidden');
+            step2.classList.add('hidden');
+            step3.classList.remove('hidden');
+        });
+
+        backToStep2Button.addEventListener('click', function() {
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+            step3.classList.add('hidden');
         });
     });
 </script>
+
 
 @endsection
