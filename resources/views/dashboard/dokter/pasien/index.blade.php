@@ -80,7 +80,27 @@
                 {{ $pasien->riwayat_penyakit }}
             </td>
             <td class="px-6 py-4">
-                {{ $pasien->status }}
+                @if ($pasien->status === 'selesai')
+                {{-- Selesai --}}
+                <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
+                    <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <span class="text-green-500">{{ $pasien->status }}</span>
+                </div>
+                @else
+                {{-- Menunggu --}}
+                <div class="inline-flex items-center gap-1 border-orange-500 border-2 p-2 rounded-lg">
+                    <svg class="w-6 h-6 text-orange-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 9a3 3 0 0 1 3-3m-2 15h4m0-3c0-4.1 4-4.9 4-9A6 6 0 1 0 6 9c0 4 4 5 4 9h4Z" />
+                    </svg>
+                    <span class="text-orange-500">{{ $pasien->status }}</span>
+                </div>
+                @endif
             </td>
             <td class="px-6 py-4">
                 <div
