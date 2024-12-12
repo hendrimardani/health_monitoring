@@ -10,7 +10,7 @@ class Obat extends Model
     public function farmasi() 
     {
         // One to One
-        return $this->belongsTo(Farmasi::class, 'id_perusahaan');
+        return $this->belongsTo(Farmasi::class, 'id_obat');
     }
 
     public function reseps() 
