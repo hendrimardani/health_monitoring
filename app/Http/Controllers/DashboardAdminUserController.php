@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class DashboardAdminUserController extends Controller
 {
@@ -34,13 +35,17 @@ class DashboardAdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required',
-            'password' => 'required',
-            'email' => 'required'
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'password' => 'required',
+                'email' => 'required',
+            ]);
+        } catch(ValidationException $e) {
+            dd($e->errors());
+        }
         $validatedData['password'] = bcrypt($validatedData['password']);
-
+        $validatedData['role'] = 'dokter';
         User::create($validatedData);
 
         return redirect('/dashboard/admin/user')->with('success', 'Data Berhasil Ditambahkan');
