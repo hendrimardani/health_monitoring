@@ -40,12 +40,12 @@ class DashboardAdminUserController extends Controller
                 'nama' => 'required',
                 'password' => 'required',
                 'email' => 'required',
+                'role' => 'required|in:pasien,dokter'
             ]);
-        } catch(ValidationException $e) {
+        } catch (ValidationException $e) {
             dd($e->errors());
         }
         $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['role'] = 'dokter';
         User::create($validatedData);
 
         return redirect('/dashboard/admin/user')->with('success', 'Data Berhasil Ditambahkan');
