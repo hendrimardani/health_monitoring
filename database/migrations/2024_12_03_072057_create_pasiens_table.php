@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->unsignedBigInteger('id_pasien')->primary(); // Foreign key diubah menjadi primary key
-            $table->string('nama_pasien');
-            $table->string('nik');
-            $table->string('no_telepon');
-            $table->string('usia');
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
-            $table->string('alamat');
-            $table->string('riwayat_penyakit');
+            $table->string('nama');
+            $table->string('nik')->nullable();
+            $table->string('no_telepon')->nullable();
+            $table->string('usia')->nullable();
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('riwayat_penyakit')->nullable();
             $table->enum('status', ['menunggu', 'selesai'])->default('menunggu');
             $table->timestamps();
             

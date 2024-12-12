@@ -231,7 +231,7 @@ class DatabaseSeeder extends Seeder
 
         Pasien::create([
             'id_pasien' => 1,
-            'nama_pasien' => 'Erik Mardani',
+            'nama' => 'Erik Mardani',
             'nik' => '3290182948291',
             'no_telepon' => '08290291028192',
             'usia' => '20',

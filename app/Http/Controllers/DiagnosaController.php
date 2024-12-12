@@ -35,7 +35,7 @@ class DiagnosaController extends Controller
         try {
             $validatedPasien = $request->validate([
                 'id_pasien' => 'required',
-                'nama_pasien' => 'required',
+                'nama' => 'required',
                 'nik' => 'required',
                 'no_telepon' => 'required',
                 'usia' => 'required',

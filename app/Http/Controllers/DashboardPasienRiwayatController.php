@@ -16,10 +16,16 @@ class DashboardPasienRiwayatController extends Controller
     {
         // user saat ini login
         $pasien = Pasien::where('id_pasien', auth()->id())->first();
-        return view('dashboard.pasien.riwayat', [
-            'title' => 'Riwayat Saya',
-            'pasien' => $pasien,
-        ]);
+
+        if ($pasien->nik === null) {
+            $title = 'Akun Saya';
+            return view('dashboard.pasien.akun', compact('title', 'pasien'));
+        } else {
+            return view('dashboard.pasien.riwayat', [
+                'title' => 'Riwayat Saya',
+                'pasien' => $pasien,
+            ]);
+        }
     }
 
     /**

@@ -65,7 +65,7 @@
                 {{ $loop->iteration }}
             </th>
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ $pasien->nama_pasien }}
+                {{ $pasien->nama }}
             </th>
             <td class="px-6 py-4">
                 {{ $pasien->nik }}
@@ -103,6 +103,16 @@
                 @endif
             </td>
             <td class="px-6 py-4">
+                @if ($pasien->status === 'selesai')
+                <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
+                    <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <span class="text-green-500">Sudah diagnosa</span>
+                </div>
+                @else
                 <div
                     class="group inline-flex items-center gap-1 border-orange-500 border-2 p-2 rounded-lg hover:bg-orange-500 hover:text-white transition duration-500">
                     {{-- Fungsi dari '@json($pasien)' untuk mengirimkan data ke modal --}}
@@ -116,6 +126,7 @@
                         <span class="text-orange-500 group-hover:text-white">Diagnosa</span>
                     </button>
                 </div>
+                @endif
             </td>
         </tr>
         @endforeach
@@ -151,7 +162,7 @@
                     <div class="modal-step modal-step-1">
                         <!-- Hidden Inputs -->
                         <input type="hidden" name="id_pasien" id="id_pasien">
-                        <input type="hidden" id="nama_pasien" name="nama_pasien" value="" required readonly />
+                        <input type="hidden" id="nama" name="nama" value="" required readonly />
                         <input type="hidden" id="nik" name="nik" value="" required readonly />
                         <input type="hidden" id="no_telepon" name="no_telepon" value="" required readonly />
                         <input type="hidden" id="usia" name="usia" value="" required readonly />
@@ -442,7 +453,7 @@
                 const pasienData = JSON.parse(this.getAttribute('data-pasien'));
 
                 document.getElementById('id_pasien').value = pasienData.id_pasien;
-                document.getElementById('nama_pasien').value = pasienData.nama_pasien;
+                document.getElementById('nama').value = pasienData.nama;
                 document.getElementById('nik').value = pasienData.nik;
                 document.getElementById('no_telepon').value = pasienData.no_telepon;
                 document.getElementById('alamat').value = pasienData.alamat;    

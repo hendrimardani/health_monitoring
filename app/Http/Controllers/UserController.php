@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Pasien;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -30,17 +31,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedUser = $request->validate([
             'nama' => 'required|max:255',
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
-    
-        // Encrypt password
-        $validatedData['password'] = bcrypt($validatedData['password']);
-    
-        // Save to database
-        User::create($validatedData);
+        $validatedUser['password'] = bcrypt($validatedUser['password']);
+        $user = User::create($validatedUser);
+
+        $validatedPasien = $request->validate([
+            'nama' => 'required'
+        ]);
+        $validatedPasien['id_pasien'] = $user->id;
+        Pasien::create($validatedPasien);
     
         // Redirect with success message
         return redirect('/login')->with('success', 'Berhasil Registrasi');  

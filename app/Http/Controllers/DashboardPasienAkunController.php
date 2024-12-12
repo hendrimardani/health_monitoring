@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class DashboardPasienAkunController extends Controller
 {
@@ -61,7 +62,24 @@ class DashboardPasienAkunController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $validatedPasien = $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'no_telepon' => 'required',
+                'usia' => 'required',
+                'jenis_kelamin' => 'required',
+                'alamat' => 'required',
+                'riwayat_penyakit' => 'required'
+            ]);
+        } catch (ValidationException $e) {
+            dd($e->errors());
+        }
+        $userId = auth()->id();
+        Pasien::where('id_pasien', $userId)
+                ->update($validatedPasien);
+
+        return redirect('/dashboard/pasien/akun')->with('success', 'Data berhasil diubah');
     }
 
     /**
