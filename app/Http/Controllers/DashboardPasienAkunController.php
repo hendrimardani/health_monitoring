@@ -14,7 +14,6 @@ class DashboardPasienAkunController extends Controller
     public function index()
     {
         // ->get(); // Kalau menggunakan get() ini berarti mengembalikan banyak data
-
         $pasienId = auth()->user()->id;
         $pasien = Pasien::with('user')
                         ->where('id_pasien', $pasienId)
@@ -88,5 +87,22 @@ class DashboardPasienAkunController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getDataJson(string $id)
+    {
+        $pasien = Pasien::find($id);
+
+        if ($pasien) {
+            return response()->json([
+                'success' => true,
+                'pasien' => $pasien
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data pasien tidak ditemukan'
+            ], 404);
+        }
     }
 }

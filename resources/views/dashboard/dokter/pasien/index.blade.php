@@ -1,4 +1,5 @@
 @extends('dashboard.layouts.main')
+{{-- JQuery --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('body')
@@ -578,25 +579,26 @@
         }   
     });
 });
+
 function showPemeriksaan(pasienId) {
-        $.ajax({
-            url: '/dashboard/dokter/pasien/' + pasienId,  // URL untuk mengambil data pemeriksaan berdasarkan ID pasien
-            type: 'GET',
-            success: function(response) {
-                // Debug
-                console.log(response);
-                if (response.success) {
-                    document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
-                    document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
-                } else {
-                    alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
-                }
-            },
-            error: function(xhr, status, error) {
-                alert("Terjadi kesalahan: " + error);
+    $.ajax({
+        url: '/dashboard/dokter/pasien/' + pasienId,  // URL untuk mengambil data pemeriksaan berdasarkan ID pasien
+        type: 'GET',
+        success: function(response) {
+            // Debug
+            console.log(response);
+            if (response.success) {
+                document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
+                document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
+            } else {
+                alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
             }
-        });
-    }
+        },
+        error: function(xhr, status, error) {
+            alert("Terjadi kesalahan: " + error);
+        }
+    });
+}
 </script>
 
 

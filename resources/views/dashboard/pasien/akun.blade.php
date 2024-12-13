@@ -1,4 +1,6 @@
 @extends('dashboard.layouts.main')
+{{-- JQuery --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('body')
 
@@ -141,9 +143,9 @@
     </div>
     @enderror
     <div class="mb-5">
-        <input type="test" id="alamat"
-            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus required />
+        <textarea type="text" id="alamat"
+            class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
+            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus requred></textarea>
     </div>
     @error('alamat')
     <div>
@@ -157,10 +159,9 @@
     </div>
     @enderror
     <div class="mb-5">
-        <input type="text" id="riwayat_penyakit"
-            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="Keluhan Anda" name="riwayat_penyakit" value="{{ $pasien->riwayat_penyakit }}" autofocus
-            required />
+        <textarea type="text" id="riwayat_penyakit"
+            class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
+            placeholder="Keluhan Anda" name="riwayat_penyakit" autofocus></textarea>
     </div>
     @error('riwayat_penyakit')
     <div>
@@ -179,4 +180,36 @@
     </button>
 </form>
 
+<script>
+    // Fungsi untuk mengambil data dari server
+    function dataFromJson(pasienId) {
+    fetch(`/dashboard/dokter/pasien/getDataJson/${pasienId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Data diterima:", data);
+            if (data.success) {
+                document.getElementById('alamat').value = data.pasien.alamat || '';
+                document.getElementById('riwayat_penyakit').value = data.pasien.riwayat_penyakit || '';
+            } else {
+                alert("Gagal memuat data: " + data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Terjadi kesalahan:", error);
+        });
+}
+
+
+// Panggil fungsi saat halaman selesai dimuat
+window.onload = function () {
+    const pasienId = {{ $pasien->id_pasien }};
+    dataFromJson(pasienId);
+};
+
+</script>
 @endsection

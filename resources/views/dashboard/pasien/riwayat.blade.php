@@ -178,9 +178,9 @@
                     </div>
                     @enderror
                     <div class="mb-5">
-                        <input type="hidden" id="alamat"
-                            class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus required />
+                        <textarea type="text" id="alamat"
+                            class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
+                            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus></textarea>
                     </div>
                     @error('alamat')
                     <div>
