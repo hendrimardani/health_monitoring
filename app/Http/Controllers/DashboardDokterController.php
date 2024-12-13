@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diagnosa;
 use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\Pemeriksaan;
@@ -17,12 +18,11 @@ class DashboardDokterController extends Controller
     public function index()
     {
         // Dokter yang saat ini sedang login, ambil id nya
-        $user = Auth::user()->id;
+        $userId = Auth::user()->id;
         // // Kode dari pasien.user berarti tabel pasien memanggil tabel user
         // $pemeriksaans = Pemeriksaan::with(['dokter', 'pasien.user'])
         //                             ->where('id_dokter', $user)
         //                             ->get();
-
         $pasiens = Pasien::paginate(10);
         // Mendapatkan data kategori yang unik
         $namaObat = DB::table('obats')
@@ -62,7 +62,22 @@ class DashboardDokterController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Mengambil data pemeriksaan berdasarkan ID pasien atau ID pemeriksaan
+        $pemeriksaan = Pemeriksaan::with(['dokter', 'pasien'])
+                                ->where('id_pasien', $id)  // Mencari pemeriksaan berdasarkan ID
+                                ->first();          // Ambil pemeriksaan pertama yang cocok dengan ID
+        // Cek jika data pemeriksaan ditemukan
+        if ($pemeriksaan) {
+            return response()->json([
+                'success' => true,
+                'pemeriksaan' => $pemeriksaan
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data pemeriksaan tidak ditemukan.'
+            ]);
+        }
     }
 
     /**

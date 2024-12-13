@@ -1,6 +1,8 @@
 @extends('dashboard.layouts.main')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('body')
+
 
 <h1 class="text-3xl text-black mt-2">Pasien Anda</h1>
 
@@ -104,13 +106,18 @@
             </td>
             <td class="px-6 py-4">
                 @if ($pasien->status === 'selesai')
-                <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
-                    <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                    <span class="text-green-500">Sudah diagnosa</span>
+                <div class="flex flex-wrap justify-start gap-4">
+                    <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
+                        <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <span class="text-green-500">Sudah diagnosa</span>
+                    </div>
+                    <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
+                        onclick="showPemeriksaan({{ $pasien->id_pasien }})"
+                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
                 </div>
                 @else
                 <div
@@ -133,6 +140,7 @@
     </tbody>
 </table>
 
+{{-- Diagnosa Modal --}}
 <!-- Main modal -->
 <div id="authentication-modal" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -416,6 +424,40 @@
     </div>
 </div>
 
+{{-- Show Detail Modal --}}
+<!-- Main modal -->
+<div id="show-detail-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Pemeriksa
+                </h3>
+                <button type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto"
+                    data-modal-hide="show-detail-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-4">
+                <span class="text-xl">Nama Dokter</span>
+                <span class="text-xl ml-[40px]">:</span>
+                <span class="text-xl" id="nama-dokter">Hasil Dokter</span> <br>
+                <span class="text-xl">Tanggal Periksa</span>
+                <span class="text-xl ml-[18px]">:</span>
+                <span class="text-xl" id="tanggal-periksa">Hasil Tanggal Periksa</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const diagnosaButtons = document.querySelectorAll('button[data-pasien]');
@@ -437,105 +479,124 @@
         namaObatSelect.addEventListener('change', function() {
         // Mendapatkan elemen option yang dipilih
         const selectedOption = namaObatSelect.options[namaObatSelect.selectedIndex];
-        
+
         // Mengambil data-id dari option yang dipilih
         const idObat = selectedOption.getAttribute('data-id');
 
         // Debug
         console.log(idObat);
-        
+
         // Memasukkan id_obat ke dalam input hidden
         idObatInput.value = idObat;
         });
 
         diagnosaButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const pasienData = JSON.parse(this.getAttribute('data-pasien'));
+        button.addEventListener('click', function() {
+            const pasienData = JSON.parse(this.getAttribute('data-pasien'));
 
-                document.getElementById('id_pasien').value = pasienData.id_pasien;
-                document.getElementById('nama').value = pasienData.nama;
-                document.getElementById('nik').value = pasienData.nik;
-                document.getElementById('no_telepon').value = pasienData.no_telepon;
-                document.getElementById('alamat').value = pasienData.alamat;    
-                document.getElementById('usia').value = pasienData.usia;
-                document.getElementById('jenis_kelamin').value = pasienData.jenis_kelamin;
-                document.getElementById('riwayat_penyakit').value = pasienData.riwayat_penyakit;
+            document.getElementById('id_pasien').value = pasienData.id_pasien;
+            document.getElementById('nama').value = pasienData.nama;
+            document.getElementById('nik').value = pasienData.nik;
+            document.getElementById('no_telepon').value = pasienData.no_telepon;
+            document.getElementById('alamat').value = pasienData.alamat;    
+            document.getElementById('usia').value = pasienData.usia;
+            document.getElementById('jenis_kelamin').value = pasienData.jenis_kelamin;
+            document.getElementById('riwayat_penyakit').value = pasienData.riwayat_penyakit;
 
-                // Reset step visibility
-                step1.classList.remove('hidden');
-                step2.classList.add('hidden');
-                step3.classList.add('hidden');
-
-                // Debug
-                console.log(pasienData);
-            });
-        });
-
-        nextStep1Button.addEventListener('click', function() {
-            document.getElementById('keluhan').value = document.getElementById('riwayat_penyakit').value;
-
-            // Validasi input step1
-            if (
-                !document.getElementById('saturasi_oksigen').value || 
-                !document.getElementById('detak_jantung').value || 
-                !document.getElementById('suhu_badan').value || 
-                !document.getElementById('berat_badan').value || 
-                !document.getElementById('tekanan_darah_sistol').value || 
-                !document.getElementById('tekanan_darah_diastol').value
-            ) {
-                alert('Data tidak boleh ada yang kosong!');
-                return;
-            }
-
-            // Ubah visibilitas
-            step1.classList.add('hidden');
-            step2.classList.remove('hidden');
-            step3.classList.add('hidden');
-        });
-
-        backToStep1Button.addEventListener('click', function() {
+            // Reset step visibility
             step1.classList.remove('hidden');
             step2.classList.add('hidden');
             step3.classList.add('hidden');
+
+            // Debug
+            console.log(pasienData);
+        });
+        });
+
+        nextStep1Button.addEventListener('click', function() {
+        document.getElementById('keluhan').value = document.getElementById('riwayat_penyakit').value;
+
+        // Validasi input step1
+        if (
+            !document.getElementById('saturasi_oksigen').value || 
+            !document.getElementById('detak_jantung').value || 
+            !document.getElementById('suhu_badan').value || 
+            !document.getElementById('berat_badan').value || 
+            !document.getElementById('tekanan_darah_sistol').value || 
+            !document.getElementById('tekanan_darah_diastol').value
+        ) {
+            alert('Data tidak boleh ada yang kosong!');
+            return;
+        }
+
+        // Ubah visibilitas
+        step1.classList.add('hidden');
+        step2.classList.remove('hidden');
+        step3.classList.add('hidden');
+        });
+
+        backToStep1Button.addEventListener('click', function() {
+        step1.classList.remove('hidden');
+        step2.classList.add('hidden');
+        step3.classList.add('hidden');
         });
 
         nextStep2Button.addEventListener('click', function() {
-            if (
-                !document.getElementById('kode_icd').value ||
-                !document.getElementById('catatan').value ||
-                !document.getElementById('deskripsi').value ||
-                !document.getElementById('rekomendasi').value
-            ) {
-                alert('Data tidak boleh ada yang kosong!');
-                return;
-            }
+        if (
+            !document.getElementById('kode_icd').value ||
+            !document.getElementById('catatan').value ||
+            !document.getElementById('deskripsi').value ||
+            !document.getElementById('rekomendasi').value
+        ) {
+            alert('Data tidak boleh ada yang kosong!');
+            return;
+        }
 
-            // Ubah visibilitas
-            step1.classList.add('hidden');
-            step2.classList.add('hidden');
-            step3.classList.remove('hidden');
+        // Ubah visibilitas
+        step1.classList.add('hidden');
+        step2.classList.add('hidden');
+        step3.classList.remove('hidden');
         });
 
         backToStep2Button.addEventListener('click', function() {
-            step1.classList.add('hidden');
-            step2.classList.remove('hidden');
-            step3.classList.add('hidden');
+        step1.classList.add('hidden');
+        step2.classList.remove('hidden');
+        step3.classList.add('hidden');
         });
 
         diagnosaSubmit.addEventListener('click', function() {
-            if (
-                !document.getElementById('nama_obat').value ||
-                !document.getElementById('kategori').value ||
-                !document.getElementById('dosis_tersedia').value ||
-                !document.getElementById('unit').value ||
-                !document.getElementById('frekuensi').value ||
-                !document.getElementById('cara_penggunaan')
-            ) {
-                alert('Data tidak boleh ada yang kosong !');
-                return;
-            }   
-        });
+        if (
+            !document.getElementById('nama_obat').value ||
+            !document.getElementById('kategori').value ||
+            !document.getElementById('dosis_tersedia').value ||
+            !document.getElementById('unit').value ||
+            !document.getElementById('frekuensi').value ||
+            !document.getElementById('cara_penggunaan')
+        ) {
+            alert('Data tidak boleh ada yang kosong !');
+            return;
+        }   
     });
+});
+function showPemeriksaan(pasienId) {
+        $.ajax({
+            url: '/dashboard/dokter/pasien/' + pasienId,  // URL untuk mengambil data pemeriksaan berdasarkan ID pasien
+            type: 'GET',
+            success: function(response) {
+                // Debug
+                console.log(response);
+                if (response.success) {
+                    document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
+                    document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
+                } else {
+                    alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Terjadi kesalahan: " + error);
+            }
+        });
+    }
 </script>
 
 
