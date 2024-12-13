@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dokter;
+use App\Models\Pasien;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -40,13 +42,56 @@ class DashboardAdminUserController extends Controller
                 'nama' => 'required',
                 'password' => 'required',
                 'email' => 'required',
-                'role' => 'required|in:pasien,dokter'
+                // Validasi khusus pasien
+                'role' => 'required|in:pasien,dokter|nullable',
+                'nik' => 'required_if:role,pasien|nullable',
+                'no_telepon' => 'required_if:role,pasien|nullable',
+                'usia' => 'required_if:role,pasien|nullable',
+                'jenis_kelamin' => 'required_if:role,pasien|nullable',
+                'alamat' => 'required_if:role,pasien|nullable',
+                'riwayat_penyakit' => 'required_if:role,pasien|nullable',
+                // Validasi khusus dokter
+                'no_telepon_dokter' => 'required_if:role,dokter|nullable',
+                'spesialisasi' => 'required_if:role,dokter|nullable'
             ]);
         } catch (ValidationException $e) {
             dd($e->errors());
         }
         $validatedData['password'] = bcrypt($validatedData['password']);
-        User::create($validatedData);
+        // Data untuk tabel `users`
+        $userData = [
+            'nama' => $validatedData['nama'],
+            'password' => $validatedData['password'],
+            'email' => $validatedData['email'],
+            'role' => $validatedData['role']
+        ];
+        User::create($userData);
+        // Simpan data berdasarkan role
+        if ($request->role === 'pasien') {
+            // Data untuk tabel `pasiens`
+            $userId = User::latest()->first();
+            $pasienData = [
+                'id_pasien' => $userId->id,
+                'nama' => $validatedData['nama'],
+                'nik' => $validatedData['nik'],
+                'no_telepon' => $validatedData['no_telepon'],
+                'usia' => $validatedData['usia'],
+                'jenis_kelamin' => $validatedData['jenis_kelamin'],
+                'alamat' => $validatedData['alamat'],
+                'riwayat_penyakit' => $validatedData['riwayat_penyakit']
+            ]; 
+            Pasien::create($pasienData);
+        } else {
+            // Data untuk tabel `dokters`
+            $userId = User::latest()->first();
+            $dokterData = [
+                'id_dokter' => $userId->id,
+                'nama_dokter' => $validatedData['nama'],
+                'no_telepon_dokter' => $validatedData['no_telepon_dokter'],
+                'spesialisasi' => $validatedData['spesialisasi']
+            ];
+            Dokter::create($dokterData);
+        }
 
         return redirect('/dashboard/admin/user')->with('success', 'Data Berhasil Ditambahkan');
     }

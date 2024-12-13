@@ -2,7 +2,7 @@
 
 @section('body')
 
-@if ($pasien->status === 'selesai')
+{{-- @if ($pasien->status === 'selesai') --}}
 {{-- Modal Toggled --}}
 <div class="flex flex-wrap justify-start gap-4">
     <div>
@@ -12,7 +12,7 @@
         </button>
     </div>
     <div>
-        <button
+        <a href="{{ route('export-pdf') }}"
             class="group w-[100px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
             <svg class="w-6 h-6 text-blue-500 group-hover:text-white" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -20,10 +20,10 @@
                     d="M16.444 18H19a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2.556M17 11V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6h10ZM7 15h10v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4Z" />
             </svg>
             Cetak
-        </button>
+        </a>
     </div>
 </div>
-@endif
+{{-- @endif --}}
 
 <!-- Main modal -->
 <div id="authentication-modal" tabindex="-1" aria-hidden="true"

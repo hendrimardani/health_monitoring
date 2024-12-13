@@ -185,7 +185,7 @@ class DatabaseSeeder extends Seeder
         Dokter::create([
             'id_dokter' => 2,
             'nama_dokter' => 'Dr. Johan Marohan',
-            'no_telepon' => '082499030928',
+            'no_telepon_dokter' => '082499030928',
             'spesialisasi' => 'Penyakit Dalam (Internist)'
         ]);
 

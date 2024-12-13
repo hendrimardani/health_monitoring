@@ -389,9 +389,9 @@
                         </div>
                         <div class="flex flex-wrap justify-between">
                             <!-- Tombol Kembali -->
-                            <div class="col-span-2 text-center mt-4">
+                            <div class="mt-4">
                                 <button type="button" id="back-to-step-2"
-                                    class="group w-[150px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-500 border border-blue-500">
                                     <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                         viewBox="0 0 24 24">
@@ -404,7 +404,7 @@
                             <!-- Tombol Diagnosa -->
                             <div class="col-span-2 text-center mt-4">
                                 <button type="submit" id="diagnosa-submit"
-                                    class="w-[150px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    class="w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
                                     Diagnosa
                                 </button>
                             </div>

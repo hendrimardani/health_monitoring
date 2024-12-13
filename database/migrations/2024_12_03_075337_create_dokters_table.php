@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('dokters', function (Blueprint $table) {
             $table->unsignedBigInteger('id_dokter')->primary(); // Foreign key dijadikan primary key
             $table->string('nama_dokter');
-            $table->string('no_telepon');
+            $table->string('no_telepon_dokter');
             $table->string('spesialisasi');
             $table->timestamps();
             
