@@ -42,8 +42,8 @@ class DashboardAdminUserController extends Controller
                 'nama' => 'required',
                 'password' => 'required',
                 'email' => 'required',
+                'role' => 'required|in:pasien,dokter',
                 // Validasi khusus pasien
-                'role' => 'required|in:pasien,dokter|nullable',
                 'nik' => 'required_if:role,pasien|nullable',
                 'no_telepon' => 'required_if:role,pasien|nullable',
                 'usia' => 'required_if:role,pasien|nullable',
