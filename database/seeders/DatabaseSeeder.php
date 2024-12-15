@@ -9,7 +9,6 @@ use App\Models\VitalSign;
 use App\Models\Obat;
 use App\Models\Farmasi;
 use App\Models\Resep;
-use App\Models\Pemeriksaan;
 use App\Models\Pasien;
 use App\Models\RiwayatPenyakit;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -27,6 +26,12 @@ class DatabaseSeeder extends Seeder
         User::create([
             'nama' => 'Erik Mardani',
             'email' => 'erikmardani@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
+
+        User::create([
+            'nama' => 'Doddy Saputra',
+            'email' => 'doddysaputra@gmail.com',
             'password' => bcrypt('12345678')
         ]);
 
@@ -239,9 +244,26 @@ class DatabaseSeeder extends Seeder
             'status' => 'menunggu'
         ]);
 
+        Pasien::create([
+            'id_pasien' => 2,
+            'nama' => 'Doddy Saputra',
+            'nik' => '32780601902910298',
+            'no_telepon' => '088292819228',
+            'usia' => '40',
+            'jenis_kelamin' => 'laki-laki',
+            'alamat' => 'Jalan Gunung Putri',
+            'status' => 'menunggu'
+        ]);
+
         RiwayatPenyakit::create([
             'pasien_id_pasien' => 1,
             'keluhan' => 'Sakit kepala',
+        ]);
+
+        
+        RiwayatPenyakit::create([
+            'pasien_id_pasien' => 2,
+            'keluhan' => 'Demam',
         ]);
 
         Diagnosa::create([

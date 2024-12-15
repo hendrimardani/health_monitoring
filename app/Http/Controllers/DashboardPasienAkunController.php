@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class DashboardPasienAkunController extends Controller
@@ -90,9 +92,10 @@ class DashboardPasienAkunController extends Controller
 
         $validatedRiwayatPenyakit = [
             'keluhan' => $validatedData['keluhan'],
-            'id_pasien' => $userId
+            'pasien_id_pasien' => $userId
         ];
-        RiwayatPenyakit::create($validatedRiwayatPenyakit);
+        RiwayatPenyakit::where('pasien_id_pasien', $userId)
+                        ->update($validatedRiwayatPenyakit);
 
         return redirect('/dashboard/pasien/akun')->with('success', 'Data berhasil diubah');
     }
@@ -107,7 +110,14 @@ class DashboardPasienAkunController extends Controller
 
     public function getDataJson(string $id)
     {
-        $pasien = RiwayatPenyakit::with(['pasien'])->find($id);
+        // Jika data json ini tidak tertangkap gunakan yang bawah
+        // $pasien = RiwayatPenyakit::with(['pasien'])->findOrFail($id);
+
+        $pasien = DB::table('riwayat_penyakits')
+        ->leftJoin('pasiens', 'riwayat_penyakits.pasien_id_pasien', '=', 'pasiens.id_pasien')
+        ->where('riwayat_penyakits.pasien_id_pasien', $id)
+        ->first();
+        Log::info('Data pasien menggunakan query builder:', ['pasien' => $pasien]);
 
         if ($pasien) {
             return response()->json([

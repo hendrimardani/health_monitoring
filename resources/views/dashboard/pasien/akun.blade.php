@@ -29,8 +29,8 @@
 </div>
 @endif
 
-{{-- @if ($pasien->keluhan === null) --}}
-{{-- <div id="alert-3"
+@if ($pasien->keluhan === null)
+<div id="alert-3"
     class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
     role="alert">
     <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -52,8 +52,8 @@
                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
         </svg>
     </button>
-</div> --}}
-{{-- @endif --}}
+</div>
+@endif
 
 
 <form action="/dashboard/pasien/akun/{{ $pasien->pasien_id_pasien }}" method="post" class="mt-5">
@@ -147,7 +147,7 @@
     <div class="mb-5">
         <textarea type="text" id="alamat"
             class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->pasien->alamat }}" autofocus requred></textarea>
+            placeholder="Alamat Anda" name="alamat" autofocus requred></textarea>
     </div>
     @error('alamat')
     <div>
@@ -187,6 +187,8 @@
     function dataFromJson(pasienId) {
     fetch(`/dashboard/dokter/pasien/getDataJson/${pasienId}`)
         .then(response => {
+            console.log("Response status:", response.status); 
+            console.log("Response text:");
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -194,8 +196,9 @@
         })
         .then(data => {
             console.log("Data diterima:", data);
+            console.log("Data test:", data.pasien.id);
             if (data.success) {
-                document.getElementById('alamat').value = data.pasien.pasien.alamat || '';
+                document.getElementById('alamat').value = data.pasien.alamat || '';
                 document.getElementById('keluhan').value = data.pasien.keluhan || '';
             } else {
                 alert("Gagal memuat data: " + data.message);

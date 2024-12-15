@@ -67,7 +67,7 @@ Route::prefix('dashboard')->middleware(['auth', 'role:dokter'])->group(function(
     Route::resource('/dokter/pasien/diagnosa', DiagnosaController::class);
 });
 // Dipisah karena ia mengambil data menggunakan AJAX (tanpa menggunakan role)
-Route::get('dashboard/dokter/pasien/getDataJson/{id}', [DashboardPasienAkunController::class, 'getDataJson'])->withoutMiddleware(['role:dokter']);
+Route::get('/dashboard/dokter/pasien/getDataJson/{id}', [DashboardPasienAkunController::class, 'getDataJson'])->withoutMiddleware(['role:dokter']);
 
 Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function() {
     Route::get('/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
