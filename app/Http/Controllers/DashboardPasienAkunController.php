@@ -17,7 +17,7 @@ class DashboardPasienAkunController extends Controller
         // ->get(); // Kalau menggunakan get() ini berarti mengembalikan banyak data
         $pasienId = auth()->user()->id;
         $riwayatPenyakit = RiwayatPenyakit::with(['pasien.user'])
-                        ->where('id_pasien', $pasienId)
+                        ->where('pasien_id_pasien', $pasienId)
                         ->first();
         return view('dashboard.pasien.akun', [
             'title' => 'Pasien',

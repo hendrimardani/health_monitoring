@@ -56,7 +56,7 @@
 @endif
 
 
-<form action="/dashboard/pasien/akun/{{ $pasien->id_pasien }}" method="post" class="mt-5">
+<form action="/dashboard/pasien/akun/{{ $pasien->pasien_id_pasien }}" method="post" class="mt-5">
     @csrf
     @method('PUT')
     <div class="mb-5">
@@ -209,7 +209,7 @@
 
 // Panggil fungsi saat halaman selesai dimuat
 window.onload = function () {
-    const pasienId = {{ $pasien->id_pasien }};
+    const pasienId = {{ $pasien->pasien_id_pasien }};
     dataFromJson(pasienId);
 };
 
