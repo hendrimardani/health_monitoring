@@ -29,7 +29,7 @@
 </div>
 @endif
 
-@if ($pasien->nik === null)
+@if ($pasien->keluhan === null)
 <div id="alert-3"
     class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
     role="alert">
@@ -40,7 +40,8 @@
     </svg>
     <span class="sr-only">Info</span>
     <div class="ms-3 text-sm font-medium">
-        <strong>Identitas anda masih ada yang kosong !</strong> Silahkan isi terlebih dahulu identitas anda.
+        <strong>Identitas atau keluhan anda masih ada yang kosong !</strong> Silahkan isi terlebih dahulu identitas
+        anda.
     </div>
     <button type="button"
         class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"
@@ -61,7 +62,7 @@
     <div class="mb-5">
         <input type="text" id="nama"
             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="Nama Anda" name="nama" value="{{ $pasien->nama }}" autofocus required />
+            placeholder="Nama Anda" name="nama" value="{{ $pasien->pasien->nama }}" autofocus required />
     </div>
     @error('nama')
     <div>
@@ -77,7 +78,7 @@
     <div class="mb-5">
         <input type="number" id="nik"
             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="NIK Anda" name="nik" value="{{ $pasien->nik }}" autofocus required />
+            placeholder="NIK Anda" name="nik" value="{{ $pasien->pasien->nik }}" autofocus required />
     </div>
     @error('nik')
     <div>
@@ -93,7 +94,8 @@
     <div class="mb-5">
         <input type="number" id="no_telepon"
             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="No Telepon Anda" name="no_telepon" value="{{ $pasien->no_telepon }}" autofocus required />
+            placeholder="No Telepon Anda" name="no_telepon" value="{{ $pasien->pasien->no_telepon }}" autofocus
+            required />
     </div>
     @error('no_telepon')
     <div>
@@ -109,7 +111,7 @@
     <div class="mb-5">
         <input type="number" id="usia"
             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="Usia Anda" name="usia" value="{{ $pasien->usia }}" autofocus required />
+            placeholder="Usia Anda" name="usia" value="{{ $pasien->pasien->usia }}" autofocus required />
     </div>
     @error('usia')
     <div>
@@ -145,7 +147,7 @@
     <div class="mb-5">
         <textarea type="text" id="alamat"
             class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus requred></textarea>
+            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->pasien->alamat }}" autofocus requred></textarea>
     </div>
     @error('alamat')
     <div>
@@ -159,12 +161,11 @@
     </div>
     @enderror
     <div class="mb-5">
-        <textarea type="text" id="riwayat_penyakit"
+        <textarea type="text" id="keluhan"
             class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="Tulis Riwayat Penyakit Anda Misalnya: Pernah mengalami sesak nafas dalam jangka berapa hari, atau panas yang tidak sembuh-sembuh"
-            name="riwayat_penyakit" autofocus></textarea>
+            placeholder="Keluhan Anda" name="keluhan" autofocus></textarea>
     </div>
-    @error('riwayat_penyakit')
+    @error('keluhan')
     <div>
         <div class="relative">
             <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
@@ -194,8 +195,8 @@
         .then(data => {
             console.log("Data diterima:", data);
             if (data.success) {
-                document.getElementById('alamat').value = data.pasien.alamat || '';
-                document.getElementById('riwayat_penyakit').value = data.pasien.riwayat_penyakit || '';
+                document.getElementById('alamat').value = data.pasien.pasien.alamat || '';
+                document.getElementById('keluhan').value = data.pasien.keluhan || '';
             } else {
                 alert("Gagal memuat data: " + data.message);
             }

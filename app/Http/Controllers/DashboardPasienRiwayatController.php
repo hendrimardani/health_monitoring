@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use App\Models\RiwayatPenyakit;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,8 @@ class DashboardPasienRiwayatController extends Controller
     public function index()
     {
         // user saat ini login
-        $pasien = Pasien::where('id_pasien', auth()->id())->first();
+        $pasien = RiwayatPenyakit::with(['pasien'])
+                                ->where('id_pasien', auth()->id())->first();
 
         if ($pasien->nik === null) {
             $title = 'Akun Saya';
@@ -44,13 +46,7 @@ class DashboardPasienRiwayatController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'nama' => 'required',
-                'nik' => 'required',
-                'no_telepon' => 'required',
-                'usia' => 'required',
-                'alamat' => 'required|max:255',
-                'jenis_kelamin' => 'required',
-                'riwayat_penyakit' => 'required|max:255'
+                'keluhan' => 'required|max:255'
             ]);
         } catch (ValidationException $e) {
             dd($e->errors());

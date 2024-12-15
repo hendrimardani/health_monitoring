@@ -197,15 +197,15 @@
                     <div class="-mt-2">
 
                     </div>
-                    <label for="riwayat_penyakit"
-                        class="block mb-2 -mt-[30px] text-sm font-medium text-gray-900 dark:text-white">Riwayat
-                        Penyakit</label>
-                    <textarea id="riwayat_penyakit" rows="4"
+                    <label for="keluhan"
+                        class="block mb-2 -mt-[30px] text-sm font-medium text-gray-900 dark:text-white">Keluhan
+                        Anda</label>
+                    <textarea id="keluhan" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Tulis Riwayat Penyakit Anda Misalnya: Pernah mengalami sesak nafas dalam jangka berapa hari, atau panas yang tidak sembuh-sembuh"
-                        name="riwayat_penyakit"></textarea>
+                        name="keluhan"></textarea>
                     </textarea>
-                    @error('riwayat_Penyakit')
+                    @error('keluhan')
                     <div>
                         <div class="relative">
                             <input type="text" id="outlined_error" aria-describedby="outlined_error_help"

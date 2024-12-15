@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -15,12 +16,12 @@ class DashboardPasienAkunController extends Controller
     {
         // ->get(); // Kalau menggunakan get() ini berarti mengembalikan banyak data
         $pasienId = auth()->user()->id;
-        $pasien = Pasien::with('user')
+        $riwayatPenyakit = RiwayatPenyakit::with(['pasien.user'])
                         ->where('id_pasien', $pasienId)
                         ->first();
         return view('dashboard.pasien.akun', [
             'title' => 'Pasien',
-            'pasien' => $pasien
+            'pasien' => $riwayatPenyakit
         ]);
     }
 
@@ -91,7 +92,7 @@ class DashboardPasienAkunController extends Controller
 
     public function getDataJson(string $id)
     {
-        $pasien = Pasien::find($id);
+        $pasien = RiwayatPenyakit::with(['pasien'])->find($id);
 
         if ($pasien) {
             return response()->json([
