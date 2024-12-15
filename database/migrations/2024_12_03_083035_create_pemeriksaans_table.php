@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_diagnosa');
             $table->unsignedBigInteger('id_vital_sign'); 
             $table->unsignedBigInteger('id_dokter');
-            $table->string('keluhan');
+            $table->string('keluhan_pasien');
             $table->string('catatan');
             $table->timestamp('waktu_pemeriksaan');
             $table->timestamps();

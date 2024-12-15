@@ -79,7 +79,8 @@
                 {{ $pasien->pasien->jenis_kelamin }}
             </td>
             <td class="px-6 py-4">
-                {{ $pasien->pasien->riwayat_penyakit }}
+                {{-- Ngambil dari entitas riwayat_penyakit --}}
+                {{ $pasien->keluhan }}
             </td>
             <td class="px-6 py-4">
                 @if ($pasien->pasien->status === 'selesai')
@@ -188,7 +189,7 @@
                         </div>
 
                         <!-- Riwayat Penyakit & Status -->
-                        <input type="hidden" id="riwayat_penyakit" name="riwayat_penyakit" value="" required readonly />
+                        <input type="hidden" id="keluhan" name="keluhan" value="" required readonly />
                         <input type="hidden" id="status" name="status" value="selesai" required readonly />
 
                         <!-- Vital Signs -->
@@ -281,11 +282,12 @@
                                 name="kode_icd" placeholder="Cnth: A001" required />
                         </div>
                         <div>
-                            <label for="keluhan"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keluhan</label>
-                            <input type="text" id="keluhan"
+                            <label for="keluhan_pasien"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keluhan
+                                Pasien</label>
+                            <input type="text" id="keluhan_pasien"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="keluhan" placeholder="Keluhan" required readonly />
+                                name="keluhan_pasien" placeholder="Keluhan Pasien" required readonly />
                         </div>
                         <div>
                             <label for="catatan"
@@ -495,14 +497,14 @@
             const pasienData = JSON.parse(this.getAttribute('data-pasien'));
             console.log('DATA TERTANGKAP : ' + pasienData);
 
-            document.getElementById('id_pasien').value = pasienData.id_pasien;
-            document.getElementById('nama').value = pasienData.nama;
-            document.getElementById('nik').value = pasienData.nik;
-            document.getElementById('no_telepon').value = pasienData.no_telepon;
-            document.getElementById('alamat').value = pasienData.alamat;    
-            document.getElementById('usia').value = pasienData.usia;
-            document.getElementById('jenis_kelamin').value = pasienData.jenis_kelamin;
-            document.getElementById('riwayat_penyakit').value = pasienData.riwayat_penyakit;
+            document.getElementById('id_pasien').value = pasienData.pasien.id_pasien;
+            document.getElementById('nama').value = pasienData.pasien.nama;
+            document.getElementById('nik').value = pasienData.pasien.nik;
+            document.getElementById('no_telepon').value = pasienData.pasien.no_telepon;
+            document.getElementById('alamat').value = pasienData.pasien.alamat;    
+            document.getElementById('usia').value = pasienData.pasien.usia;
+            document.getElementById('jenis_kelamin').value = pasienData.pasien.jenis_kelamin;
+            document.getElementById('keluhan').value = pasienData.keluhan;
 
             // Reset step visibility
             step1.classList.remove('hidden');
@@ -515,7 +517,7 @@
         });
 
         nextStep1Button.addEventListener('click', function() {
-        document.getElementById('keluhan').value = document.getElementById('riwayat_penyakit').value;
+        document.getElementById('keluhan_pasien').value = document.getElementById('keluhan').value;
 
         // Validasi input step1
         if (

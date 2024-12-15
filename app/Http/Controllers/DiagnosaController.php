@@ -41,7 +41,6 @@ class DiagnosaController extends Controller
                 'usia' => 'required',
                 'alamat' => 'required',
                 'jenis_kelamin' => 'required|in:laki-laki,perempuan',
-                'riwayat_penyakit' => 'required',
                 'status' => 'required',
             ]);
             $validatedVitalSign = $request->validate([
@@ -66,7 +65,7 @@ class DiagnosaController extends Controller
                 'cara_penggunaan' => 'required'
             ]);
             $validatedPemeriksaan = $request->validate([
-                'keluhan' => 'required',
+                'keluhan_pasien' => 'required',
                 'catatan' => 'required',
                 'waktu_pemeriksaan' => 'required'
             ]);
