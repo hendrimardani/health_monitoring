@@ -240,7 +240,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         RiwayatPenyakit::create([
-            'id_pasien' => 1,
+            'pasien_id_pasien' => 1,
             'keluhan' => 'Sakit kepala',
         ]);
 

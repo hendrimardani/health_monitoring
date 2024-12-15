@@ -25,7 +25,7 @@ class DashboardDokterController extends Controller
         //                             ->where('id_dokter', $user)
         //                             ->get();
         $pasiens = RiwayatPenyakit::with('pasien')
-        ->paginate(10);
+                ->paginate(10);
     
         // Mendapatkan data kategori yang unik
         $namaObat = DB::table('obats')

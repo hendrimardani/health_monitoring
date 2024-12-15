@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('riwayat_penyakits', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pasien'); // Foreign key
+            $table->unsignedBigInteger('pasien_id_pasien'); // Foreign key
             $table->string('keluhan');
             $table->timestamps();
 
-            $table->foreign('id_pasien')->references('id_pasien')->on('pasiens')->onDelete('cascade');
+            $table->foreign('pasien_id_pasien')->references('id_pasien')->on('pasiens')->onDelete('cascade');
         });
     }
 
