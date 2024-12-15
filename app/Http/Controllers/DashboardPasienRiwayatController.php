@@ -18,12 +18,12 @@ class DashboardPasienRiwayatController extends Controller
     {
         // user saat ini login
         $pasiens = RiwayatPenyakit::with(['pasien.user'])
-                                ->where('id_pasien', auth()->id())
+                                ->where('pasien_id_pasien', auth()->id())
                                 ->paginate(7);
         $pasien = RiwayatPenyakit::with(['pasien.user'])
-                                ->where('id_pasien', auth()->id())
+                                ->where('pasien_id_pasien', auth()->id())
                                 ->first();
-        $riwayatPenyakit = RiwayatPenyakit::where('id_pasien', auth()->id())
+        $riwayatPenyakit = RiwayatPenyakit::where('pasien_id_pasien', auth()->id())
                                 ->first();
 
         if ($riwayatPenyakit->keluhan === null) {
@@ -58,7 +58,7 @@ class DashboardPasienRiwayatController extends Controller
         } catch (ValidationException $e) {
             dd($e->errors());
         }
-        $validatedData['id_pasien'] = Auth::id();
+        $validatedData['pasien_id_pasien'] = Auth::id();
 
         RiwayatPenyakit::create($validatedData);
         

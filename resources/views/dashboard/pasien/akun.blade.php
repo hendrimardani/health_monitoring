@@ -29,8 +29,8 @@
 </div>
 @endif
 
-@if ($pasien->keluhan === null)
-<div id="alert-3"
+{{-- @if ($pasien->keluhan === null) --}}
+{{-- <div id="alert-3"
     class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
     role="alert">
     <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -52,8 +52,8 @@
                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
         </svg>
     </button>
-</div>
-@endif
+</div> --}}
+{{-- @endif --}}
 
 
 <form action="/dashboard/pasien/akun/{{ $pasien->pasien_id_pasien }}" method="post" class="mt-5">
