@@ -6,6 +6,7 @@ use App\Models\Diagnosa;
 use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\Pemeriksaan;
+use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,9 @@ class DashboardDokterController extends Controller
         // $pemeriksaans = Pemeriksaan::with(['dokter', 'pasien.user'])
         //                             ->where('id_dokter', $user)
         //                             ->get();
-        $pasiens = Pasien::paginate(10);
+        $pasiens = RiwayatPenyakit::with('pasien')
+        ->paginate(10);
+    
         // Mendapatkan data kategori yang unik
         $namaObat = DB::table('obats')
                         ->select('id_obat', 'nama_obat')

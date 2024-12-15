@@ -4,7 +4,6 @@
 
 @section('body')
 
-
 <h1 class="text-3xl text-black mt-2">Pasien Anda</h1>
 
 @if (session()->has('success'))
@@ -68,22 +67,22 @@
                 {{ $loop->iteration }}
             </th>
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ $pasien->nama }}
+                {{ $pasien->pasien->nama }}
             </th>
             <td class="px-6 py-4">
-                {{ $pasien->nik }}
+                {{ $pasien->pasien->nik }}
             </td>
             <td class="px-6 py-4">
-                {{ $pasien->usia }}
+                {{ $pasien->pasien->usia }}
             </td>
             <td class="px-6 py-4">
-                {{ $pasien->jenis_kelamin }}
+                {{ $pasien->pasien->jenis_kelamin }}
             </td>
             <td class="px-6 py-4">
-                {{ $pasien->riwayat_penyakit }}
+                {{ $pasien->pasien->riwayat_penyakit }}
             </td>
             <td class="px-6 py-4">
-                @if ($pasien->status === 'selesai')
+                @if ($pasien->pasien->status === 'selesai')
                 {{-- Selesai --}}
                 <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
                     <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
@@ -91,7 +90,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
-                    <span class="text-green-500">{{ $pasien->status }}</span>
+                    <span class="text-green-500">{{ $pasien->pasien->status }}</span>
                 </div>
                 @else
                 {{-- Menunggu --}}
@@ -101,12 +100,12 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 9a3 3 0 0 1 3-3m-2 15h4m0-3c0-4.1 4-4.9 4-9A6 6 0 1 0 6 9c0 4 4 5 4 9h4Z" />
                     </svg>
-                    <span class="text-orange-500">{{ $pasien->status }}</span>
+                    <span class="text-orange-500">{{ $pasien->pasien->status }}</span>
                 </div>
                 @endif
             </td>
             <td class="px-6 py-4">
-                @if ($pasien->status === 'selesai')
+                @if ($pasien->pasien->status === 'selesai')
                 <div class="flex flex-wrap justify-start gap-4">
                     <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
                         <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
@@ -117,7 +116,7 @@
                         <span class="text-green-500">Sudah diagnosa</span>
                     </div>
                     <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
-                        onclick="showPemeriksaan({{ $pasien->id_pasien }})"
+                        onclick="showPemeriksaan({{ $pasien->pasien->id_pasien }})"
                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
                 </div>
                 @else
@@ -494,6 +493,7 @@
         diagnosaButtons.forEach(button => {
         button.addEventListener('click', function() {
             const pasienData = JSON.parse(this.getAttribute('data-pasien'));
+            console.log('DATA TERTANGKAP : ' + pasienData);
 
             document.getElementById('id_pasien').value = pasienData.id_pasien;
             document.getElementById('nama').value = pasienData.nama;

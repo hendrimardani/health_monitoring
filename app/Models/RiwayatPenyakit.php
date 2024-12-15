@@ -10,7 +10,7 @@ class RiwayatPenyakit extends Model
     // Tentukan nama tabel jika tidak menggunakan tabel default (plural form dari nama model)
     protected $table = 'riwayat_penyakits';
      
-     public function Pasien() {
+     public function pasien() {
         return $this->belongsTo(Pasien::class, 'id_pasien');
     }
 }

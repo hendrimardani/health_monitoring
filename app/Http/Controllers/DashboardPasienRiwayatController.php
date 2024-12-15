@@ -17,18 +17,24 @@ class DashboardPasienRiwayatController extends Controller
     public function index()
     {
         // user saat ini login
-        $pasien = RiwayatPenyakit::with(['pasien'])
-                                ->where('id_pasien', auth()->id())->first();
+        $pasiens = RiwayatPenyakit::with(['pasien.user'])
+                                ->where('id_pasien', auth()->id())
+                                ->get();
+        $pasien = RiwayatPenyakit::with(['pasien.user'])
+                                ->where('id_pasien', auth()->id())
+                                ->first();
+        $riwayatPenyakit = RiwayatPenyakit::where('id_pasien', auth()->id());
 
-        if ($pasien->nik === null) {
-            $title = 'Akun Saya';
-            return view('dashboard.pasien.akun', compact('title', 'pasien'));
-        } else {
+        // if ($riwayatPenyakit->keluhan === null) {
+        //     $title = 'Akun Saya';
+        //     return view('dashboard.pasien.akun', compact('title', 'pasien'));
+        // } else {
             return view('dashboard.pasien.riwayat', [
                 'title' => 'Riwayat Saya',
-                'pasien' => $pasien,
+                'pasiens' => $pasiens,
+                'pasien' => $pasien
             ]);
-        }
+        // }
     }
 
     /**
@@ -53,9 +59,9 @@ class DashboardPasienRiwayatController extends Controller
         }
         $validatedData['id_pasien'] = Auth::id();
 
-        Pasien::create($validatedData);
+        RiwayatPenyakit::create($validatedData);
         
-        return redirect('/dashboard/riwayat')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('/dashboard/pasien/riwayat')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

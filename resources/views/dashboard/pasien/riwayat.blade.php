@@ -54,7 +54,8 @@
                     <div class="mb-5">
                         <input type="hidden" id="nama"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Nama Anda" name="nama" value="{{ $pasien->user->nama }}" autofocus required />
+                            placeholder="Nama Anda" name="nama" value="{{ $pasien->pasien->user->nama }}" autofocus
+                            required />
                     </div>
                     @error('nama')
                     <div>
@@ -71,8 +72,8 @@
                     <div class="mb-5">
                         <input type="hidden" id="email_pasien"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Email Anda" name="email_pasien" value="{{ $pasien->user->email }}" autofocus
-                            required />
+                            placeholder="Email Anda" name="email_pasien" value="{{ $pasien->pasien->user->email }}"
+                            autofocus required />
                     </div>
                     @error('email_pasien')
                     <div>
@@ -89,8 +90,8 @@
                     <div class="mb-5">
                         <input type="hidden" id="password"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder=" Password Anda" name="password" value="{{ $pasien->user->password }}" autofocus
-                            required />
+                            placeholder=" Password Anda" name="password" value="{{ $pasien->pasien->user->password }}"
+                            autofocus required />
                     </div>
                     @error('password')
                     <div>
@@ -107,7 +108,7 @@
                     <div class="mb-5">
                         <input type="hidden" id="nik"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="NIK Anda" name="nik" value="{{ $pasien->nik }}" autofocus required />
+                            placeholder="NIK Anda" name="nik" value="{{ $pasien->pasien->nik }}" autofocus required />
                     </div>
                     @error('nik')
                     <div>
@@ -124,8 +125,8 @@
                     <div class="mb-5">
                         <input type="hidden" id="no_telepon"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="No Telepon Anda" name="no_telepon" value="{{ $pasien->no_telepon }}" autofocus
-                            required />
+                            placeholder="No Telepon Anda" name="no_telepon" value="{{ $pasien->pasien->no_telepon }}"
+                            autofocus required />
                     </div>
                     @error('no_telepon')
                     <div>
@@ -142,7 +143,8 @@
                     <div class="mb-5">
                         <input type="hidden" id="usia"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Usia Anda" name="usia" value="{{ $pasien->usia }}" autofocus required />
+                            placeholder="Usia Anda" name="usia" value="{{ $pasien->pasien->usia }}" autofocus
+                            required />
                     </div>
                     @error('usia')
                     <div>
@@ -179,7 +181,7 @@
                     <div class="mb-5">
                         <input type="hidden" id="alamat"
                             class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-                            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus>
+                            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->pasien->alamat }}" autofocus>
                         </input>
                     </div>
                     @error('alamat')
@@ -261,20 +263,21 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Nama Pasien</th>
-                    <th scope="col" class="px-6 py-3">Riwayat Penyakit</th>
+                    <th scope="col" class="px-6 py-3">Keluhan</th>
                     <th scope="col" class="px-6 py-3">Status</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($pasiens as $pasien)
                 <tr class="border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $pasien->nama }}
+                        {{ $pasien->pasien->nama }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $pasien->riwayat_penyakit }}
+                        {{ $pasien->keluhan }}
                     </td>
                     <td class="px-6 py-4">
-                        @if ($pasien->status === 'selesai')
+                        @if ($pasien->pasien->status === 'selesai')
                         {{-- Selesai --}}
                         <div class="flex flex-wrap justify-start gap-4">
                             <div>
@@ -286,7 +289,7 @@
                                             stroke-width="2"
                                             d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                     </svg>
-                                    <span class="text-green-500">{{ $pasien->status }}</span>
+                                    <span class="text-green-500">{{ $pasien->pasien->status }}</span>
                                 </div>
                             </div>
                             <div>
@@ -314,11 +317,12 @@
                                     stroke-width="2"
                                     d="M9 9a3 3 0 0 1 3-3m-2 15h4m0-3c0-4.1 4-4.9 4-9A6 6 0 1 0 6 9c0 4 4 5 4 9h4Z" />
                             </svg>
-                            <span class="text-orange-500">{{ $pasien->status }}</span>
+                            <span class="text-orange-500">{{ $pasien->pasien->status }}</span>
                         </div>
                         @endif
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
