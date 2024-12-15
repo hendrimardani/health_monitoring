@@ -6,6 +6,7 @@ use App\Models\Pasien;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class DashboardPasienRiwayatController extends Controller
 {
@@ -41,16 +42,20 @@ class DashboardPasienRiwayatController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama_pasien' => 'required',
-            'nik' => 'required',
-            'no_telepon' => 'required',
-            'usia' => 'required',
-            'alamat' => 'required|max:255',
-            'jenis_kelamin' => 'required',
-            'riwayat_penyakit' => 'required|max:255'
-        ]);
-        $validatedData['id_user'] = Auth::id();
+        try {
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'no_telepon' => 'required',
+                'usia' => 'required',
+                'alamat' => 'required|max:255',
+                'jenis_kelamin' => 'required',
+                'riwayat_penyakit' => 'required|max:255'
+            ]);
+        } catch (ValidationException $e) {
+            dd($e->errors());
+        }
+        $validatedData['id_pasien'] = Auth::id();
 
         Pasien::create($validatedData);
         
@@ -89,7 +94,7 @@ class DashboardPasienRiwayatController extends Controller
         //
     }
 
-    public function exportPDF()
+    public function exportRiwayatPDF()
     {
         // Data yang akan ditampilkan pada PDF
         $data = [
@@ -106,6 +111,29 @@ class DashboardPasienRiwayatController extends Controller
 
         // Tampilkan PDF di browser
         return $pdf->stream('laporan-produk.pdf');
+
+        // // Download file PDF
+        // return $pdf->download('laporan-user.pdf');
+    }
+
+    public function exportDiagnosaPDF()
+    {
+        // $pemeriksaan = Pemeriksaan::with([''])
+        // Data yang akan ditampilkan pada PDF
+        $data = [
+            'title' => 'Laporan Data User',
+            'date' => date('m/d/Y'),
+            'users' => [
+                ['name' => 'John Doe', 'email' => 'john@example.com'],
+                ['name' => 'Jane Doe', 'email' => 'jane@example.com'],
+            ]
+        ];
+
+        // Load view untuk PDF
+        $pdf = PDF::loadView('pdf.riwayat', $data);
+
+        // Tampilkan PDF di browser
+        return $pdf->stream('laporan-riwayat.pdf');
 
         // // Download file PDF
         // return $pdf->download('laporan-user.pdf');

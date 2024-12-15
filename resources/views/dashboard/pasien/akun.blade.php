@@ -161,7 +161,8 @@
     <div class="mb-5">
         <textarea type="text" id="riwayat_penyakit"
             class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-            placeholder="Keluhan Anda" name="riwayat_penyakit" autofocus></textarea>
+            placeholder="Tulis Riwayat Penyakit Anda Misalnya: Pernah mengalami sesak nafas dalam jangka berapa hari, atau panas yang tidak sembuh-sembuh"
+            name="riwayat_penyakit" autofocus></textarea>
     </div>
     @error('riwayat_penyakit')
     <div>

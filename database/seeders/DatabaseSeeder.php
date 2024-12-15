@@ -11,8 +11,7 @@ use App\Models\Farmasi;
 use App\Models\Resep;
 use App\Models\Pemeriksaan;
 use App\Models\Pasien;
-
-
+use App\Models\RiwayatPenyakit;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -237,8 +236,12 @@ class DatabaseSeeder extends Seeder
             'usia' => '20',
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jalan Cagak',
-            'riwayat_penyakit' => 'Sakit kepala',
             'status' => 'menunggu'
+        ]);
+
+        RiwayatPenyakit::create([
+            'id_pasien' => 1,
+            'keluhan' => 'Sakit kepala',
         ]);
 
         Diagnosa::create([

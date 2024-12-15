@@ -12,14 +12,14 @@
         </button>
     </div>
     <div>
-        <a href="{{ route('export-pdf') }}"
-            class="group w-[100px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
-            <svg class="w-6 h-6 text-blue-500 group-hover:text-white" aria-hidden="true"
+        <a href="{{ route('export-riwayat-pdf') }}"
+            class="group w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
+            <svg class="w-6 h-6 text-blue-500 group-hover:text-white mr-2" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
                     d="M16.444 18H19a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2.556M17 11V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6h10ZM7 15h10v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4Z" />
             </svg>
-            Cetak
+            Cetak Riwayat
         </a>
     </div>
 </div>
@@ -52,12 +52,11 @@
                 <form action="/dashboard/pasien/riwayat" method="post">
                     @csrf
                     <div class="mb-5">
-                        <input type="hidden" id="nama_pasien"
+                        <input type="hidden" id="nama"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Nama Anda" name="nama_pasien" value="{{ $pasien->user->nama }}" autofocus
-                            required />
+                            placeholder="Nama Anda" name="nama" value="{{ $pasien->user->nama }}" autofocus required />
                     </div>
-                    @error('nama_pasien')
+                    @error('nama')
                     <div>
                         <div class="relative">
                             <input type="hidden" id="outlined_error" aria-describedby="outlined_error_help"
@@ -178,9 +177,10 @@
                     </div>
                     @enderror
                     <div class="mb-5">
-                        <textarea type="text" id="alamat"
+                        <input type="hidden" id="alamat"
                             class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-                            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus></textarea>
+                            placeholder="Alamat Anda" name="alamat" value="{{ $pasien->alamat }}" autofocus>
+                        </input>
                     </div>
                     @error('alamat')
                     <div>
@@ -218,7 +218,8 @@
                     </div>
                     @enderror
                     <button type="submit"
-                        class="mt-9 px-[162px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">Tambah</button>
+                        class="mt-9 px-[132px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 transition ease-in-out duration-500">Tambah
+                        Keluhan</button>
                 </form>
 
             </div>
@@ -275,15 +276,35 @@
                     <td class="px-6 py-4">
                         @if ($pasien->status === 'selesai')
                         {{-- Selesai --}}
-                        <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
-                            <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-                            <span class="text-green-500">{{ $pasien->status }}</span>
+                        <div class="flex flex-wrap justify-start gap-4">
+                            <div>
+                                <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
+                                    <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                    <span class="text-green-500">{{ $pasien->status }}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="{{ route('export-diagnosa-pdf') }}"
+                                    class="group w-[190px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center border border-blue-500 rounded-md justify-center p-[10px] transition ease-in-out duration-500">
+                                    <svg class="w-6 h-6 text-blue-500 group-hover:text-white mr-2" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                                            d="M16.444 18H19a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2.556M17 11V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6h10ZM7 15h10v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4Z" />
+                                    </svg>
+                                    Cetak Diagnosa
+                                </a>
+                            </div>
+                            <div>
+                            </div>
                         </div>
+
                         @else
                         {{-- Menunggu --}}
                         <div class="inline-flex items-center gap-1 border-orange-500 border-2 p-2 rounded-lg">

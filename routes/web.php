@@ -53,7 +53,10 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::prefix('dashboard')->middleware(['auth', 'role:pasien'])->group(function() {
     Route::get('/pasien', [DashboardController::class, 'pasien'])->name('dashboard.pasien');
     Route::resource('/pasien/riwayat', DashboardPasienRiwayatController::class);
-    Route::get('/export-pdf', [DashboardPasienRiwayatController::class, 'exportPDF'])->name('export-pdf');
+    Route::get('/export-riwayat-pdf', [DashboardPasienRiwayatController::class, 'exportRiwayatPDF'])
+        ->name('export-riwayat-pdf');
+    Route::get('export-diagnosa-pdf', [DashboardPasienRiwayatController::class, 'exportDiagnosaPDF'])
+        ->name('export-diagnosa-pdf');
     Route::resource('/pasien/akun', DashboardPasienAkunController::class);
 });
 
