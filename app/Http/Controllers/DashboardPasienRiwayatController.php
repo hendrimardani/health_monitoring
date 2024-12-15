@@ -19,7 +19,7 @@ class DashboardPasienRiwayatController extends Controller
         // user saat ini login
         $pasiens = RiwayatPenyakit::with(['pasien.user'])
                                 ->where('id_pasien', auth()->id())
-                                ->get();
+                                ->paginate(7);
         $pasien = RiwayatPenyakit::with(['pasien.user'])
                                 ->where('id_pasien', auth()->id())
                                 ->first();
