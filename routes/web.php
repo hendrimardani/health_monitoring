@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardPasienRiwayatController;
 use App\Http\Controllers\DashboardPasienAkunController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 
@@ -43,8 +44,8 @@ Route::get('/tentang-kami', function() {
     ]);
 });
 
-Route::get('/register', [UserController::class, 'index']);
-Route::post('/register', [UserController::class, 'store'])->name('register');
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticated'])->name('login');

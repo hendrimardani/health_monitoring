@@ -13,9 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('register.index', [
-            'title' => 'Registrasi Pasien'
-        ]);
+        //
     }
 
     /**
@@ -31,22 +29,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedUser = $request->validate([
-            'nama' => 'required|max:255',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-        ]);
-        $validatedUser['password'] = bcrypt($validatedUser['password']);
-        $user = User::create($validatedUser);
-
-        $validatedPasien = $request->validate([
-            'nama' => 'required'
-        ]);
-        $validatedPasien['id_pasien'] = $user->id;
-        Pasien::create($validatedPasien);
-    
-        // Redirect with success message
-        return redirect('/login')->with('success', 'Berhasil Registrasi');  
+        //
     }
 
     /**
