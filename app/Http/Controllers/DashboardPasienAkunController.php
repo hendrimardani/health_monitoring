@@ -63,16 +63,36 @@ class DashboardPasienAkunController extends Controller
     public function update(Request $request, string $id)
     {
         try {
-            $validatedPasien = $request->validate([
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'no_telepon' => 'required',
+                'usia' => 'required',
+                'jenis_kelamin' => 'required',
+                'alamat' => 'required',
                 'keluhan' => 'required'
             ]);
         } catch (ValidationException $e) {
             dd($e->errors());
         }
-
+        
         $userId = auth()->id();
-        $validatedPasien['id_pasien'] = $userId;
-        RiwayatPenyakit::create($validatedPasien);
+        $validatedPasien = [
+            'nama' => $validatedData['nama'],
+            'nik' => $validatedData['nik'],
+            'no_telepon' => $validatedData['no_telepon'],
+            'usia' => $validatedData['usia'],
+            'jenis_kelamin' => $validatedData['jenis_kelamin'],
+            'alamat' => $validatedData['alamat'],
+        ];
+        Pasien::where('id_pasien', $userId)
+                ->update($validatedPasien);
+
+        $validatedRiwayatPenyakit = [
+            'keluhan' => $validatedData['keluhan'],
+            'id_pasien' => $userId
+        ];
+        RiwayatPenyakit::create($validatedRiwayatPenyakit);
 
         return redirect('/dashboard/pasien/akun')->with('success', 'Data berhasil diubah');
     }
