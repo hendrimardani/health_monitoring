@@ -23,18 +23,19 @@ class DashboardPasienRiwayatController extends Controller
         $pasien = RiwayatPenyakit::with(['pasien.user'])
                                 ->where('id_pasien', auth()->id())
                                 ->first();
-        $riwayatPenyakit = RiwayatPenyakit::where('id_pasien', auth()->id());
+        $riwayatPenyakit = RiwayatPenyakit::where('id_pasien', auth()->id())
+                                ->first();
 
-        // if ($riwayatPenyakit->keluhan === null) {
-        //     $title = 'Akun Saya';
-        //     return view('dashboard.pasien.akun', compact('title', 'pasien'));
-        // } else {
+        if ($riwayatPenyakit->keluhan === null) {
+            $title = 'Akun Saya';
+            return view('dashboard.pasien.akun', compact('title', 'pasien'));
+        } else {
             return view('dashboard.pasien.riwayat', [
                 'title' => 'Riwayat Saya',
                 'pasiens' => $pasiens,
                 'pasien' => $pasien
             ]);
-        // }
+        }
     }
 
     /**
