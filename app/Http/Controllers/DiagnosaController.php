@@ -6,6 +6,7 @@ use App\Models\Diagnosa;
 use App\Models\Pasien;
 use App\Models\Pemeriksaan;
 use App\Models\Resep;
+use App\Models\RiwayatPenyakit;
 use App\Models\VitalSign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,11 +71,17 @@ class DiagnosaController extends Controller
                 'catatan' => 'required',
                 'waktu_pemeriksaan' => 'required'
             ]);
+            $validatedRiwayatPenyakit = $request->validate([
+                'id' => 'required|exists:riwayat_penyakits,id',
+                'keluhan' => 'required',
+                'status' => 'required'
+            ]);
         } catch (ValidationException $e) {
             dd($e->errors());
         }
-        Pasien::where('id_pasien', $validatedPasien['id_pasien'])
-            ->update($validatedPasien);
+        // $validatedRiwayatPenyakit['pasien_id_pasien'] = $validatedPasien['id_pasien'];
+        RiwayatPenyakit::where('id', $validatedRiwayatPenyakit['id'])
+                        ->update($validatedRiwayatPenyakit);
 
         $vitalSign = VitalSign::create($validatedVitalSign);
         

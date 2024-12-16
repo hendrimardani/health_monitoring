@@ -83,7 +83,7 @@
                 {{ $pasien->keluhan }}
             </td>
             <td class="px-6 py-4">
-                @if ($pasien->pasien->status === 'selesai')
+                @if ($pasien->status === 'selesai')
                 {{-- Selesai --}}
                 <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
                     <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
@@ -91,7 +91,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
-                    <span class="text-green-500">{{ $pasien->pasien->status }}</span>
+                    <span class="text-green-500">{{ $pasien->status }}</span>
                 </div>
                 @else
                 {{-- Menunggu --}}
@@ -106,7 +106,7 @@
                 @endif
             </td>
             <td class="px-6 py-4">
-                @if ($pasien->pasien->status === 'selesai')
+                @if ($pasien->status === 'selesai')
                 <div class="flex flex-wrap justify-start gap-4">
                     <div class="inline-flex items-center gap-1 border-green-500 border-2 p-2 rounded-lg">
                         <svg class="w-6 h-6 text-green-500 group-hover:text-white" aria-hidden="true"
@@ -176,6 +176,7 @@
                         <input type="hidden" id="no_telepon" name="no_telepon" value="" required readonly />
                         <input type="hidden" id="usia" name="usia" value="" required readonly />
                         <input type="hidden" id="alamat" name="alamat" value="" required readonly />
+                        <input type="hidden" name="id" id="id_riwayat_penyakit">
 
                         <!-- Jenis Kelamin -->
                         <div>
@@ -505,6 +506,7 @@
             document.getElementById('usia').value = pasienData.pasien.usia;
             document.getElementById('jenis_kelamin').value = pasienData.pasien.jenis_kelamin;
             document.getElementById('keluhan').value = pasienData.keluhan;
+            document.getElementById('id_riwayat_penyakit').value = pasienData.id;
 
             // Reset step visibility
             step1.classList.remove('hidden');

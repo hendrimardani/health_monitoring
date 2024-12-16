@@ -241,7 +241,6 @@ class DatabaseSeeder extends Seeder
             'usia' => '20',
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jalan Cagak',
-            'status' => 'menunggu'
         ]);
 
         Pasien::create([
@@ -252,18 +251,19 @@ class DatabaseSeeder extends Seeder
             'usia' => '40',
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jalan Gunung Putri',
-            'status' => 'menunggu'
         ]);
 
         RiwayatPenyakit::create([
             'pasien_id_pasien' => 1,
             'keluhan' => 'Sakit kepala',
+            'status' => 'menunggu'
         ]);
 
         
         RiwayatPenyakit::create([
             'pasien_id_pasien' => 3,
             'keluhan' => 'Demam',
+            'status' => 'menunggu'
         ]);
 
         Diagnosa::create([

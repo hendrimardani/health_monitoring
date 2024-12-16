@@ -240,7 +240,7 @@
     </svg>
     <span class="sr-only">Info</span>
     <div class="ms-3 text-sm font-medium">
-        <strong>Data Berhasil Ditambahkan</strong> Cek di Riwayat Saya !
+        <strong>{{ session('success') }}</strong>
     </div>
     <button type="button"
         class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"
@@ -277,7 +277,7 @@
                         {{ $pasien->keluhan }}
                     </td>
                     <td class="px-6 py-4">
-                        @if ($pasien->pasien->status === 'selesai')
+                        @if ($pasien->status === 'selesai')
                         {{-- Selesai --}}
                         <div class="flex flex-wrap justify-start gap-4">
                             <div>
@@ -289,7 +289,7 @@
                                             stroke-width="2"
                                             d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                     </svg>
-                                    <span class="text-green-500">{{ $pasien->pasien->status }}</span>
+                                    <span class="text-green-500">{{ $pasien->status }}</span>
                                 </div>
                             </div>
                             <div>
@@ -317,7 +317,7 @@
                                     stroke-width="2"
                                     d="M9 9a3 3 0 0 1 3-3m-2 15h4m0-3c0-4.1 4-4.9 4-9A6 6 0 1 0 6 9c0 4 4 5 4 9h4Z" />
                             </svg>
-                            <span class="text-orange-500">{{ $pasien->pasien->status }}</span>
+                            <span class="text-orange-500">{{ $pasien->status }}</span>
                         </div>
                         @endif
                     </td>

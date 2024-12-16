@@ -53,14 +53,30 @@ class DashboardPasienRiwayatController extends Controller
     {
         try {
             $validatedData = $request->validate([
+                'nama' => 'required',
+                'nik' => 'required',
+                'no_telepon' => 'required',
+                'usia' => 'required',
+                'jenis_kelamin' => 'required',
+                'alamat' => 'required',
                 'keluhan' => 'required|max:255'
             ]);
+            $validatedPasien = [
+                'nama' => $validatedData['nama'],
+                'nik' => $validatedData['nik'],
+                'no_telepon' => $validatedData['no_telepon'],
+                'usia' => $validatedData['usia'],
+                'jenis_kelamin' => $validatedData['jenis_kelamin'],
+                'alamat' => $validatedData['alamat'],
+            ];
         } catch (ValidationException $e) {
             dd($e->errors());
         }
-        $validatedData['pasien_id_pasien'] = Auth::id();
-
+        $userId = Auth::id();
+        $validatedData['pasien_id_pasien'] = $userId;
         RiwayatPenyakit::create($validatedData);
+        Pasien::where('id_pasien', $userId)
+            ->update($validatedPasien);
         
         return redirect('/dashboard/pasien/riwayat')->with('success', 'Data Berhasil Ditambahkan');
     }

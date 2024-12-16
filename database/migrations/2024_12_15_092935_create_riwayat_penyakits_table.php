@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('pasien_id_pasien'); // Foreign key
             $table->string('keluhan')->nullable();
+            $table->enum('status', ['menunggu', 'selesai'])->default('menunggu');
             $table->timestamps();
 
             $table->foreign('pasien_id_pasien')->references('id_pasien')->on('pasiens')->onDelete('cascade');

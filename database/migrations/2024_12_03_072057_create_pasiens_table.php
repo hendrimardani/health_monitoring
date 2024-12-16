@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('usia')->nullable();
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->nullable();
             $table->string('alamat')->nullable();
-            $table->enum('status', ['menunggu', 'selesai'])->default('menunggu');
             $table->timestamps();
             
             // Relasi tabel
