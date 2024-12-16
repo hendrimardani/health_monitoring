@@ -8,6 +8,7 @@ use App\Models\Pemeriksaan;
 use App\Models\Resep;
 use App\Models\VitalSign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class DiagnosaController extends Controller

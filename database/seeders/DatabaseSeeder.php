@@ -30,16 +30,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'nama' => 'Doddy Saputra',
-            'email' => 'doddysaputra@gmail.com',
-            'password' => bcrypt('12345678')
-        ]);
-
-        User::create([
             'nama' => 'Dr.Johan Marohan',
             'email' => 'johanmarohan@gmail.com',
             'password' => bcrypt('12345678'),
             'role' => 'dokter',
+        ]);
+
+        User::create([
+            'nama' => 'Doddy Saputra',
+            'email' => 'doddysaputra@gmail.com',
+            'password' => bcrypt('12345678')
         ]);
 
         User::create([
@@ -245,7 +245,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pasien::create([
-            'id_pasien' => 2,
+            'id_pasien' => 3,
             'nama' => 'Doddy Saputra',
             'nik' => '32780601902910298',
             'no_telepon' => '088292819228',
@@ -262,7 +262,7 @@ class DatabaseSeeder extends Seeder
 
         
         RiwayatPenyakit::create([
-            'pasien_id_pasien' => 2,
+            'pasien_id_pasien' => 3,
             'keluhan' => 'Demam',
         ]);
 
