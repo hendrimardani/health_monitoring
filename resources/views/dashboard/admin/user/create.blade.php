@@ -116,7 +116,7 @@
         <div>
             <textarea type="text" id="alamat"
                 class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-                placeholder="Alamat Pasien" name="alamat" autofocus required></textarea>
+                placeholder="Alamat Pasien" name="alamat" autofocus></textarea>
         </div>
         <div>
             <textarea type="text" id="riwayat_penyakit"
@@ -140,7 +140,9 @@
         const pasienInput = document.getElementById('pasien-input');
         const dokterInput = document.getElementById('dokter-input');
 
-        console.log("Role", role); // debug
+        console.log("Role:", role); // Log peran yang dipilih
+        console.log("Pasien Input:", pasienInput);
+        console.log("Dokter Input:", dokterInput);
 
         if (role === 'pasien') {
             pasienInput.classList.remove('hidden');
