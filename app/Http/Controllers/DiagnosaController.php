@@ -79,7 +79,6 @@ class DiagnosaController extends Controller
         } catch (ValidationException $e) {
             dd($e->errors());
         }
-        // $validatedRiwayatPenyakit['pasien_id_pasien'] = $validatedPasien['id_pasien'];
         RiwayatPenyakit::where('id', $validatedRiwayatPenyakit['id'])
                         ->update($validatedRiwayatPenyakit);
 

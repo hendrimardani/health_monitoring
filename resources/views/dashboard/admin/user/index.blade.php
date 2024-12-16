@@ -2,7 +2,6 @@
 
 @section('body')
 
-
 {{-- Modal delete --}}
 <div id="popup-modal" tabindex="-1"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -126,6 +125,17 @@
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex flex-wrap justify-start gap-4">
+                        @if ($user->nama === 'admin')
+                        <div class="inline-flex items-center gap-1 p-2">
+                            <svg class="w-6 h-6 text-red-500 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18 17.94 6M18 18 6.06 6" />
+                            </svg>
+                            <span class="text-red-500">Tidak bisa dihapus</span>
+                        </div>
+                        @else
                         <div
                             class="inline-block border-[1px] border-orange-500 p-1 hover:bg-orange-500 transition ease-in-out duration-500">
                             <a href="/dashboard/admin/user/{{ $user->id }}/edit">
@@ -153,6 +163,7 @@
                                 </button>
                             </form>
                         </div>
+                        @endif
                     </div>
                 </td>
             </tr>
