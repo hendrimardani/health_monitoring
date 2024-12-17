@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_diagnosa');
             $table->unsignedBigInteger('id_vital_sign'); 
             $table->unsignedBigInteger('id_dokter');
+            $table->unsignedBigInteger('id_resep');
             $table->string('catatan');
             $table->timestamp('waktu_pemeriksaan');
             $table->timestamps();
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->foreign('id_vital_sign')->references('id')->on('vital_signs')->onDelete('cascade');
             // id_dokter pada metode references adalah id_dokter dari tabel dokters
             $table->foreign('id_dokter')->references('id_dokter')->on('dokters')->onDelete('cascade');
+            $table->foreign('id_resep')->references('id')->on('reseps')->onDelete('cascade');
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Resep extends Model
 {
@@ -12,8 +13,13 @@ class Resep extends Model
         return $this->belongsTo(Obat::class);
     }
 
-    public function dokters()
+    public function dokter()
     {
         return $this->belongsTo(Dokter::class, 'id_dokter');
+    }
+
+    public function pemeriksaan()
+    {
+        return $this->belongsTo(Pemeriksaan::class);
     }
 }

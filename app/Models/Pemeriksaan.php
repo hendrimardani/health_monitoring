@@ -31,4 +31,9 @@ class Pemeriksaan extends Model
     {
         return $this->belongsTo(RiwayatPenyakit::class);
     }
+
+    public function reseps()
+    {
+        return $this->hasMany(Resep::class, 'id_resep');
+    }
 }
