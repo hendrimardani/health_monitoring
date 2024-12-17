@@ -115,11 +115,13 @@
                         </svg>
                         <span class="text-green-500">Sudah diagnosa</span>
                     </div>
+                    @if ($pasien->pemeriksaan->count() === 1)
                     @foreach ($pasien->pemeriksaan as $pemeriksaan)
                     <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
                         onclick="showPemeriksaan({{ $pemeriksaan->id }}, {{ $pemeriksaan->id_pasien }}, {{ $pemeriksaan->id_dokter }})"
                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
                     @endforeach
+                    @endif
                 </div>
                 @else
                 <div
