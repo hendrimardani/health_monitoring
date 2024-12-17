@@ -15,6 +15,6 @@ class RiwayatPenyakit extends Model
     }
 
     public function pemeriksaan() {
-        return $this->hasMany(Pemeriksaan::class);
+        return $this->hasMany(Pemeriksaan::class, 'id');
     }
 }

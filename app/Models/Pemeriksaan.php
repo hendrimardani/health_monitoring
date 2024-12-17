@@ -29,6 +29,6 @@ class Pemeriksaan extends Model
 
     public function riwayat_penyakit()
     {
-        return $this->belongsTo(RiwayatPenyakit::class, 'id_riwayat_penyakit');
+        return $this->belongsTo(RiwayatPenyakit::class);
     }
 }

@@ -3,7 +3,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('body')
-
 <h1 class="text-3xl text-black mt-2">Pasien Anda</h1>
 
 @if (session()->has('success'))
@@ -105,7 +104,6 @@
                 </div>
                 @endif
             </td>
-            @endforeach
             <td class="px-6 py-4">
                 @if ($pasien->status === 'selesai')
                 <div class="flex flex-wrap justify-start gap-4">
@@ -117,7 +115,7 @@
                         </svg>
                         <span class="text-green-500">Sudah diagnosa</span>
                     </div>
-                    @foreach ($pemerikaans as $pemeriksaan)
+                    @foreach ($pasien->pemeriksaan as $pemeriksaan)
                     <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
                         onclick="showPemeriksaan({{ $pemeriksaan->id_pasien }}, {{ $pemeriksaan->id_dokter }})"
                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
@@ -140,6 +138,7 @@
                 @endif
             </td>
         </tr>
+        @endforeach
     </tbody>
 </table>
 
@@ -592,10 +591,10 @@ function showPemeriksaan(idPasien, idDokter) {
         type: 'GET',
         success: function(response) {
             // Debug
-            console.log(response);
+            console.log(response.pemeriksaan.dokter.nama_dokter);
             if (response.success) {
-                document.getElementById('nama-dokter').innerHTML = response.pemeriksaan[0].dokter.nama_dokter;
-                document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan[0].waktu_pemeriksaan;
+                document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
+                document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
             } else {
                 alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
             }
