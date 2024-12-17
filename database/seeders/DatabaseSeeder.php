@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'nama' => 'Dr.Johan Marohan',
-            'email' => 'johanmarohan@gmail.com',
+            'nama' => 'Dr. Johan Marohan',
+            'email' => 'dr.johanmarohan@gmail.com',
             'password' => bcrypt('12345678'),
             'role' => 'dokter',
         ]);
@@ -156,7 +156,7 @@ class DatabaseSeeder extends Seeder
 
         Obat::create([
             'id_obat' => 3,
-            'nama_obat' => 'Obat Lambung',
+            'nama_obat' => 'obat lambung',
             'kategori' => 'tablet',
             'dosis_tersedia' => '100 mg',
             'unit' => '45'
@@ -164,7 +164,7 @@ class DatabaseSeeder extends Seeder
 
         Obat::create([
             'id_obat' => 3,
-            'nama_obat' => 'Obat Lambung',
+            'nama_obat' => 'obat lambung',
             'kategori' => 'tablet',
             'dosis_tersedia' => '200 mg',
             'unit' => '15'
@@ -172,7 +172,7 @@ class DatabaseSeeder extends Seeder
 
         Obat::create([
             'id_obat' => 3,
-            'nama_obat' => 'Obat Lambung',
+            'nama_obat' => 'obat lambung',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
             'unit' => '15'
@@ -180,7 +180,7 @@ class DatabaseSeeder extends Seeder
 
         Obat::create([
             'id_obat' => 3,
-            'nama_obat' => 'Obat Lambung',
+            'nama_obat' => 'obat lambung',
             'kategori' => 'cair',
             'dosis_tersedia' => '200 mg',
             'unit' => '15'
@@ -196,7 +196,7 @@ class DatabaseSeeder extends Seeder
         Resep::create([
             'id_obat' => 1,
             'id_dokter' => 2,
-            'frekuensi' => 'Setelah makan',
+            'frekuensi' => 'setelah makan',
             'cara_penggunaan' => 'ditelan dengan air setelah makan',
             'durasi_hari' => 2
         ]);
@@ -204,7 +204,7 @@ class DatabaseSeeder extends Seeder
         Resep::create([
             'id_obat' => 1,
             'id_dokter' => 2,
-            'frekuensi' => 'Setelah makan',
+            'frekuensi' => 'setelah makan',
             'cara_penggunaan' => 'ditelan dengan air setelah makan',
             'durasi_hari' => 3
         ]);
@@ -212,7 +212,7 @@ class DatabaseSeeder extends Seeder
         Resep::create([
             'id_obat' => 1,
             'id_dokter' => 2,
-            'frekuensi' => 'Sebelum makan',
+            'frekuensi' => 'sebelum makan',
             'cara_penggunaan' => 'ditelan dengan air sebelum makan',
             'durasi_hari' => 4
         ]);
@@ -220,7 +220,7 @@ class DatabaseSeeder extends Seeder
         Resep::create([
             'id_obat' => 2,
             'id_dokter' => 2,
-            'frekuensi' => 'Setelah makan',
+            'frekuensi' => 'setelah makan',
             'cara_penggunaan' => 'ditelan dengan air setelah makan',
             'durasi_hari' => 2
         ]);
@@ -228,7 +228,7 @@ class DatabaseSeeder extends Seeder
         Resep::create([
             'id_obat' => 2,
             'id_dokter' => 2,
-            'frekuensi' => 'Sebelum makan',
+            'frekuensi' => 'sebelum makan',
             'cara_penggunaan' => 'ditelan dengan air setelah makan',
             'durasi_hari' => 3
         ]);

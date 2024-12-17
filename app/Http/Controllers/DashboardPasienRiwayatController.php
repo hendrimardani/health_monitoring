@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use App\Models\Pemeriksaan;
 use App\Models\RiwayatPenyakit;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
@@ -135,21 +136,20 @@ class DashboardPasienRiwayatController extends Controller
         // return $pdf->download('laporan-user.pdf');
     }
 
-    public function exportDiagnosaPDF()
+    public function exportDiagnosaPDF(string $idPemeriksaan)
     {
-        // $pemeriksaan = Pemeriksaan::with([''])
+        
         // Data yang akan ditampilkan pada PDF
-        $data = [
-            'title' => 'Laporan Data User',
-            'date' => date('m/d/Y'),
-            'users' => [
-                ['name' => 'John Doe', 'email' => 'john@example.com'],
-                ['name' => 'Jane Doe', 'email' => 'jane@example.com'],
-            ]
-        ];
-
+        $pemeriksaan = Pemeriksaan::with(['pasien', 'diagnosa', 'vital_sign', 'dokter'])
+                                    ->where('id', $idPemeriksaan)
+                                    ->first();
+        $riwayatPenyakit = RiwayatPenyakit::where('pemeriksaan_id_pemeriksaan', $idPemeriksaan)
+                                        ->first();
         // Load view untuk PDF
-        $pdf = PDF::loadView('pdf.riwayat', $data);
+        $pdf = PDF::loadView('pdf.riwayat', [
+            'pemeriksaan' => $pemeriksaan,
+            'riwayatPenyakit' => $riwayatPenyakit
+        ]);
 
         // Tampilkan PDF di browser
         return $pdf->stream('laporan-riwayat.pdf');

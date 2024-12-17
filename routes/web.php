@@ -56,7 +56,7 @@ Route::prefix('dashboard')->middleware(['auth', 'role:pasien'])->group(function(
     Route::resource('/pasien/riwayat', DashboardPasienRiwayatController::class);
     Route::get('/export-riwayat-pdf', [DashboardPasienRiwayatController::class, 'exportRiwayatPDF'])
         ->name('export-riwayat-pdf');
-    Route::get('export-diagnosa-pdf', [DashboardPasienRiwayatController::class, 'exportDiagnosaPDF'])
+    Route::get('/export-diagnosa-pdf/{idPemeriksaan}', [DashboardPasienRiwayatController::class, 'exportDiagnosaPDF'])
         ->name('export-diagnosa-pdf');
     Route::resource('/pasien/akun', DashboardPasienAkunController::class);
 });
