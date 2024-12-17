@@ -62,13 +62,14 @@ class DashboardDokterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $idPasien, string $idDokter)
+    public function show(string $idPemeriksaan, string $idPasien, string $idDokter)
     {
         // $riwayatPenyakit = RiwayatPenyakit::where('id', $id)->first();
         // $idPasien = $riwayatPenyakit->pasien_id_pasien;
 
         // Mengambil data pemeriksaan berdasarkan ID pasien atau ID pemeriksaan
         $pemeriksaan = Pemeriksaan::with(['dokter', 'pasien'])
+                                ->where('id', $idPemeriksaan)
                                 ->where('id_pasien', $idPasien)  // Mencari pemeriksaan berdasarkan ID
                                 ->where('id_dokter', $idDokter)
                                 ->first();          // Ambil pemeriksaan pertama yang cocok dengan ID

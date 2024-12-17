@@ -79,8 +79,6 @@ class DiagnosaController extends Controller
         } catch (ValidationException $e) {
             dd($e->errors());
         }
-        RiwayatPenyakit::where('id', $validatedRiwayatPenyakit['id'])
-                        ->update($validatedRiwayatPenyakit);
 
         $vitalSign = VitalSign::create($validatedVitalSign);
         
@@ -95,7 +93,12 @@ class DiagnosaController extends Controller
         $validatedPemeriksaan['id_diagnosa'] = $diagnosa->id; // ID diagnosa yang baru dibuat
         $validatedPemeriksaan['id_vital_sign'] = $vitalSign->id;
         $validatedPemeriksaan['id_dokter'] = $userId; // ID dokter yang sedang login
-        Pemeriksaan::create($validatedPemeriksaan);
+        $pemeriksaan = Pemeriksaan::create($validatedPemeriksaan);
+
+        // Ambil id yang baru saja ditambahkan pada entitas Pemeriksaan
+        $validatedRiwayatPenyakit['pemeriksaan_id_pemeriksaan'] = $pemeriksaan->id;
+        RiwayatPenyakit::where('id', $validatedRiwayatPenyakit['id'])
+                        ->update($validatedRiwayatPenyakit);
 
         return redirect('/dashboard/dokter/pasien')->with('success', 'Pasien berhasil didiagnosa');
     }
