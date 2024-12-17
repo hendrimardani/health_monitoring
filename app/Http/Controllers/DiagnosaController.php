@@ -67,7 +67,6 @@ class DiagnosaController extends Controller
                 'cara_penggunaan' => 'required'
             ]);
             $validatedPemeriksaan = $request->validate([
-                'keluhan_pasien' => 'required',
                 'catatan' => 'required',
                 'waktu_pemeriksaan' => 'required'
             ]);

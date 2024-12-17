@@ -60,7 +60,6 @@
         <option disabled selected>Role</option>
         <option value="pasien">pasien</option>
         <option value="dokter">dokter</option>
-        <option value="admin">admin</option>
     </select>
     @error('role')
     <div>

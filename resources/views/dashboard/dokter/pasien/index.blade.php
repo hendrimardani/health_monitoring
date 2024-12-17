@@ -115,13 +115,13 @@
                         </svg>
                         <span class="text-green-500">Sudah diagnosa</span>
                     </div>
-                    @if ($pasien->pemeriksaan->count() === 1)
+                    {{-- @if ($pasien->pemeriksaan->count() === 1) --}}
                     @foreach ($pasien->pemeriksaan as $pemeriksaan)
                     <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
                         onclick="showPemeriksaan({{ $pemeriksaan->id }}, {{ $pemeriksaan->id_pasien }}, {{ $pemeriksaan->id_dokter }})"
                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
                     @endforeach
-                    @endif
+                    {{-- @endif --}}
                 </div>
                 @else
                 <div
@@ -193,7 +193,6 @@
                         </div>
 
                         <!-- Riwayat Penyakit & Status -->
-                        <input type="hidden" id="keluhan" name="keluhan" value="" required readonly />
                         <input type="hidden" id="status" name="status" value="selesai" required readonly />
 
                         <!-- Vital Signs -->
@@ -286,12 +285,12 @@
                                 name="kode_icd" placeholder="Cnth: A001" required />
                         </div>
                         <div>
-                            <label for="keluhan_pasien"
+                            <label for="keluhan"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keluhan
                                 Pasien</label>
-                            <input type="text" id="keluhan_pasien"
+                            <input type="text" id="keluhan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="keluhan_pasien" placeholder="Keluhan Pasien" required readonly />
+                                name="keluhan" placeholder="Keluhan Pasien" required readonly />
                         </div>
                         <div>
                             <label for="catatan"
@@ -522,8 +521,6 @@
         });
 
         nextStep1Button.addEventListener('click', function() {
-        document.getElementById('keluhan_pasien').value = document.getElementById('keluhan').value;
-
         // Validasi input step1
         if (
             !document.getElementById('saturasi_oksigen').value || 

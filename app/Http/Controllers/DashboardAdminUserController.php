@@ -125,7 +125,7 @@ class DashboardAdminUserController extends Controller
             'nama' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'role' => 'required'
+            'role' => 'required|in:pasien,dokter'
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);
