@@ -26,4 +26,9 @@ class Pemeriksaan extends Model
     {
         return $this->belongsTo(Dokter::class, 'id_dokter');
     }
+
+    public function riwayat_penyakit()
+    {
+        return $this->belongsTo(RiwayatPenyakit::class, 'id_riwayat_penyakit');
+    }
 }

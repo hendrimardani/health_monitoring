@@ -105,6 +105,7 @@
                 </div>
                 @endif
             </td>
+            @endforeach
             <td class="px-6 py-4">
                 @if ($pasien->status === 'selesai')
                 <div class="flex flex-wrap justify-start gap-4">
@@ -116,9 +117,11 @@
                         </svg>
                         <span class="text-green-500">Sudah diagnosa</span>
                     </div>
+                    @foreach ($pemerikaans as $pemeriksaan)
                     <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
-                        onclick="showPemeriksaan({{ $pasien->pasien->id_pasien }})"
+                        onclick="showPemeriksaan({{ $pemeriksaan->id_pasien }}, {{ $pemeriksaan->id_dokter }})"
                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
+                    @endforeach
                 </div>
                 @else
                 <div
@@ -137,7 +140,6 @@
                 @endif
             </td>
         </tr>
-        @endforeach
     </tbody>
 </table>
 
@@ -584,16 +586,16 @@
     });
 });
 
-function showPemeriksaan(pasienId) {
+function showPemeriksaan(idPasien, idDokter) {
     $.ajax({
-        url: '/dashboard/dokter/pasien/' + pasienId,  // URL untuk mengambil data pemeriksaan berdasarkan ID pasien
+        url: '/dashboard/dokter/pasien/' + idPasien + '/' + idDokter,  // URL untuk mengirim data id riwayat
         type: 'GET',
         success: function(response) {
             // Debug
             console.log(response);
             if (response.success) {
-                document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
-                document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
+                document.getElementById('nama-dokter').innerHTML = response.pemeriksaan[0].dokter.nama_dokter;
+                document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan[0].waktu_pemeriksaan;
             } else {
                 alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
             }

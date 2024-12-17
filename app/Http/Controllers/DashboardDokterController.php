@@ -26,6 +26,8 @@ class DashboardDokterController extends Controller
         //                             ->get();
         $pasiens = RiwayatPenyakit::with('pasien')
                 ->paginate(10);
+
+        $pemeriksaans = Pemeriksaan::all();
     
         // Mendapatkan data kategori yang unik
         $namaObat = DB::table('obats')
@@ -39,6 +41,7 @@ class DashboardDokterController extends Controller
         return view('dashboard.dokter.pasien.index', [
             'title' => 'Dashboard Dokter',
             'pasiens' => $pasiens,
+            'pemerikaans' => $pemeriksaans,
             'namaObat' => $namaObat,
             'kategoriObat' => $kategoriObat
         ]);
@@ -63,11 +66,15 @@ class DashboardDokterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $idPasien, string $idDokter)
     {
+        // $riwayatPenyakit = RiwayatPenyakit::where('id', $id)->first();
+        // $idPasien = $riwayatPenyakit->pasien_id_pasien;
+
         // Mengambil data pemeriksaan berdasarkan ID pasien atau ID pemeriksaan
         $pemeriksaan = Pemeriksaan::with(['dokter', 'pasien'])
-                                ->where('id_pasien', $id)  // Mencari pemeriksaan berdasarkan ID
+                                ->where('id_pasien', $idPasien)  // Mencari pemeriksaan berdasarkan ID
+                                ->where('id_dokter', $idDokter)
                                 ->first();          // Ambil pemeriksaan pertama yang cocok dengan ID
         // Cek jika data pemeriksaan ditemukan
         if ($pemeriksaan) {

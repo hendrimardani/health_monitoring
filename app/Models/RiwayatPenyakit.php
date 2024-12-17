@@ -13,4 +13,8 @@ class RiwayatPenyakit extends Model
      public function pasien() {
         return $this->belongsTo(Pasien::class, 'pasien_id_pasien');
     }
+
+    public function pemeriksaan() {
+        return $this->hasMany(Pemeriksaan::class);
+    }
 }

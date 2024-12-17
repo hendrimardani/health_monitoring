@@ -38,7 +38,6 @@ class DashboardAdminUserController extends Controller
     public function store(Request $request)
     {
         try {
-            dd($request->all());
             $validatedData = $request->validate([
                 'nama' => 'required',
                 'password' => 'required',

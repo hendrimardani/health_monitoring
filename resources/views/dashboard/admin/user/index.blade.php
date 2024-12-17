@@ -105,6 +105,9 @@
                 <th scope="col" class="px-6 py-3">
                     Role
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    Aksi
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -133,7 +136,7 @@
                                 <path stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M6 18 17.94 6M18 18 6.06 6" />
                             </svg>
-                            <span class="text-red-500">Tidak bisa dihapus</span>
+                            <span class="text-red-500">Tidak bisa dihapus atau diedit</span>
                         </div>
                         @else
                         <div
