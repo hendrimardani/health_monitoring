@@ -65,7 +65,7 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
 <body>
     <div class="kop-surat">
         <!-- Logo (Opsional) -->
-        <img src="logo.png" alt="Logo Perusahaan/Instansi">
+        {{-- <img src="{{ $image }}" alt=""> --}}
 
         <!-- Nama Instansi/Perusahaan -->
         <h1>iHealth</h1>
@@ -132,59 +132,93 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
                 <tbody>
                     <tr>
                         <td>Kode ICD</td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->diagnosa->kode_icd }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->diagnosa->kode_icd }}</td>
                     </tr>
                     <tr>
                         <td>Saturasi Oksigen</td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->saturasi_oksigen }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->saturasi_oksigen }} %</td>
                     </tr>
                     <tr>
                         <td>Detak Jantung </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->detak_jantung }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->detak_jantung }} Bpm</td>
                     </tr>
                     <tr>
                         <td>Suhu Badan </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->suhu_badan }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->suhu_badan }} °C</td>
                     </tr>
                     <tr>
                         <td>Tekanan Darah Sistol </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->tekanan_darah_sistol }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->tekanan_darah_sistol }} mmHg</td>
                     </tr>
                     <tr>
                         <td>Tekanan Darah Diastol </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->tekanan_darah_diastol }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->tekanan_darah_diastol }} mmHg</td>
                     </tr>
                 </tbody>
             </table>
-            <table style="margin-left: 90px">
+            <table style="margin-left: 50px">
                 <tbody>
+                    @foreach ($pemeriksaan->resep as $resep)
                     <tr>
-                        <td>Deskripsi</td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->diagnosa->deskripsi }}</td>
+                        <td>Frekuensi</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $resep->frekuensi }}</td>
                     </tr>
                     <tr>
-                        <td>Rekomendasi</td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->diagnosa->rekomendasi }}</td>
+                        <td>Durasi Hari</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $resep->durasi_hari }} kali dalam sehari</td>
                     </tr>
                     <tr>
-                        <td>Catatan</td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->catatan }}</td>
+                        <td>Cara Penggunaan</td>
+                        <td style="word-wrap: break-word; max-width: 250px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
+                            $resep->cara_penggunaan }}
+                        </td>
                     </tr>
+                    @endforeach
                     <tr>
                         <td>Status</td>
-                        <td>&nbsp;&nbsp;{{ $riwayatPenyakit->status }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $riwayatPenyakit->status }}</td>
                     </tr>
                     <tr>
                         <td>Waktu Pengukuran</td>
-                        <td>&nbsp;&nbsp;{{ $waktu }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $waktu }}</td>
                     </tr>
                     <tr>
                         <td>Tanggal Pengukuran</td>
-                        <td>&nbsp;&nbsp;{{ $tanggal }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $tanggal }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+    <div>
+        <table style="margin-top: 180px; margin-left: 2px;">
+            <tbody>
+                <tr>
+                    <td>Deskripsi</td>
+                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->diagnosa->deskripsi }}</td>
+                </tr>
+                <tr>
+                    <td>Rekomendasi</td>
+                    <td style="word-wrap: break-word; max-width: 350px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
+                        $pemeriksaan->diagnosa->rekomendasi }}</td>
+                </tr>
+                <tr>
+                    <td>Catatan</td>
+                    <td style="word-wrap: break-word; max-width: 350px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
+                        $pemeriksaan->catatan }}</td>
+                </tr>
+            </tbody>
+            {{--
+        </table>
+        <table>
+            <tbody>
+                <tr>Nama Obat</tr>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->nama_obat }}</td>
+            </tbody>
+        </table> --}}
+    </div>
+    <div style="margin-top: 40px; margin-left: 2px;">
+        <span>Hasil pemeriksaan menunjukkan bahwa <strong>{{ $pemeriksaan->diagnosa->rekomendasi }}<strong></span>
     </div>
 </body>
 

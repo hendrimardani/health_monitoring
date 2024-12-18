@@ -9,6 +9,8 @@ use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\File;
+
 
 class DashboardPasienRiwayatController extends Controller
 {
@@ -138,15 +140,24 @@ class DashboardPasienRiwayatController extends Controller
 
     public function exportDiagnosaPDF(string $idPemeriksaan)
     {
-        
         // Data yang akan ditampilkan pada PDF
-        $pemeriksaan = Pemeriksaan::with(['pasien', 'diagnosa', 'vital_sign', 'dokter'])
+        $pemeriksaan = Pemeriksaan::with(['pasien', 'diagnosa', 'vital_sign', 'dokter', 'resep'])
                                     ->where('id', $idPemeriksaan)
                                     ->first();
+        $idResep = $pemeriksaan->id_resep;
+        // $obat = Obat::where('id')
         $riwayatPenyakit = RiwayatPenyakit::where('pemeriksaan_id_pemeriksaan', $idPemeriksaan)
                                         ->first();
+
+        // Path gambar di folder public
+        $path = public_path('assets/2-2.png');
+        
+        // Membaca gambar dan mengonversi menjadi base64
+        $imageData = base64_encode(File::get($path));
+        $imageSrc = 'data:image/png;base64,' . $imageData;  // Format base64
         // Load view untuk PDF
         $pdf = PDF::loadView('pdf.riwayat', [
+            'image' => $imageSrc,
             'pemeriksaan' => $pemeriksaan,
             'riwayatPenyakit' => $riwayatPenyakit
         ]);

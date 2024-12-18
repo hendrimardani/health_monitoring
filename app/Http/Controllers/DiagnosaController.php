@@ -86,11 +86,12 @@ class DiagnosaController extends Controller
         $diagnosa = Diagnosa::create($validatedDiagnosa);
 
         $validatedResep['id_dokter'] = $userId;
-        Resep::create($validatedResep);
+        $resep = Resep::create($validatedResep);
 
         $validatedPemeriksaan['id_pasien'] = $validatedPasien['id_pasien']; // Gunakan ID pasien yang valid
         $validatedPemeriksaan['id_diagnosa'] = $diagnosa->id; // ID diagnosa yang baru dibuat
         $validatedPemeriksaan['id_vital_sign'] = $vitalSign->id;
+        $validatedPemeriksaan['id_resep'] = $resep->id;
         $validatedPemeriksaan['id_dokter'] = $userId; // ID dokter yang sedang login
         $pemeriksaan = Pemeriksaan::create($validatedPemeriksaan);
 
