@@ -13,22 +13,22 @@ return new class extends Migration
     {
         Schema::create('pemeriksaans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pasien');
-            $table->unsignedBigInteger('id_diagnosa');
-            $table->unsignedBigInteger('id_vital_sign'); 
-            $table->unsignedBigInteger('id_dokter');
-            $table->unsignedBigInteger('id_resep');
+            $table->unsignedBigInteger('pasien_id');
+            $table->unsignedBigInteger('diagnosa_id');
+            $table->unsignedBigInteger('vital_sign_id'); 
+            $table->unsignedBigInteger('dokter_id');
+            $table->unsignedBigInteger('resep_id');
             $table->string('catatan');
             $table->timestamp('waktu_pemeriksaan');
             $table->timestamps();
             
             // Relasi tabel
-            $table->foreign('id_pasien')->references('id_pasien')->on('pasiens')->onDelete('cascade');
-            $table->foreign('id_diagnosa')->references('id')->on('diagnosas')->onDelete('cascade');
-            $table->foreign('id_vital_sign')->references('id')->on('vital_signs')->onDelete('cascade');
+            $table->foreign('pasien_id')->references('id_pasien')->on('pasiens')->onDelete('cascade');
+            $table->foreign('diagnosa_id')->references('id')->on('diagnosas')->onDelete('cascade');
+            $table->foreign('vital_sign_id')->references('id')->on('vital_signs')->onDelete('cascade');
             // id_dokter pada metode references adalah id_dokter dari tabel dokters
-            $table->foreign('id_dokter')->references('id_dokter')->on('dokters')->onDelete('cascade');
-            $table->foreign('id_resep')->references('id')->on('reseps')->onDelete('cascade');
+            $table->foreign('dokter_id')->references('id_dokter')->on('dokters')->onDelete('cascade');
+            $table->foreign('resep_id')->references('id')->on('reseps')->onDelete('cascade');
         });
     }
 

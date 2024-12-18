@@ -340,20 +340,20 @@ class DatabaseSeeder extends Seeder
         ]);
 
         RiwayatPenyakit::create([
-            'pasien_id_pasien' => 1,
+            'pasien_id' => 1,
             'keluhan' => 'Sakit kepala',
             'status' => 'menunggu'
         ]);
 
         
         RiwayatPenyakit::create([
-            'pasien_id_pasien' => 3,
+            'pasien_id' => 3,
             'keluhan' => 'Demam',
             'status' => 'menunggu'
         ]);
 
         Diagnosa::create([
-            'id_dokter' => 2,
+            'dokter_id' => 2,
             'kode_icd' => 'A001',
             'deskripsi' => 'Kondisi tekanan darah pasien lebih tinggi dari normal dengan tekanan sistolik > 140 mmHg dan diastolik > 90 mmHg. Gejala meliputi sakit kepala, pusing, dan kelelahan',
             'rekomendasi' => 'Pasien disarankan untuk mengurangi konsumsi garam, melakukan aktivitas fisik ringan secara rutin, dan memonitor tekanan darah setiap hari. Jika tekanan darah terus meningkat, segera konsultasi ke dokter spesialis.'

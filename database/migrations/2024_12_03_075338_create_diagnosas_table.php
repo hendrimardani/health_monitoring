@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('diagnosas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_dokter'); // Foreign Key
+            $table->unsignedBigInteger('dokter_id'); // Foreign Key
             $table->string('kode_icd');
             $table->string('deskripsi');
             $table->string('rekomendasi');
             $table->timestamps();
             
             // Relasi tabel
-            $table->foreign('id_dokter')->references('id_dokter')->on('dokters')->onDelete('cascade');
+            $table->foreign('dokter_id')->references('id_dokter')->on('dokters')->onDelete('cascade');
         });
     }
 

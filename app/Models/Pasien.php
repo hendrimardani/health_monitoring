@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pasien extends Model
 {
     protected $guarded = ['id'];
-    // Tentukan nama tabel jika tidak menggunakan tabel default (plural form dari nama model)
-    protected $table = 'pasiens';
 
     // Tentukan primary key untuk model ini
     protected $primaryKey = 'id_pasien'; // id_user sebagai primary key

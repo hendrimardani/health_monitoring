@@ -11,10 +11,10 @@ class RiwayatPenyakit extends Model
     protected $table = 'riwayat_penyakits';
      
      public function pasien() {
-        return $this->belongsTo(Pasien::class, 'pasien_id_pasien');
+        return $this->belongsTo(Pasien::class, 'pasien_id');
     }
 
     public function pemeriksaan() {
-        return $this->hasMany(Pemeriksaan::class, 'id');
+        return $this->hasMany(Pemeriksaan::class, 'pemeriksaan_id');
     }
 }
