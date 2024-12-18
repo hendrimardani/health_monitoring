@@ -12,18 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reseps', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->unsignedBigInteger('id_obat');
-            $table->unsignedBigInteger('id_dokter');
+            $table->id();
+            $table->unsignedBigInteger('obat_id');
+            $table->unsignedBigInteger('dokter_id');
             $table->string('frekuensi');
             $table->string('durasi_hari');
             $table->string('cara_penggunaan');
             $table->timestamps();
 
             // pada references('id_obat') adalah primary key dari entitas obats
-            $table->foreign('id_obat')->references('id_obat')->on('obats')->onDelete('cascade');
+            $table->foreign('obat_id')->references('id')->on('obats')->onDelete('cascade');
             // pada references('id_dokter') adalah primary key dari entitas dokters
-            $table->foreign('id_dokter')->references('id_dokter')->on('dokters')->onDelete('cascade');
+            $table->foreign('dokter_id')->references('id_dokter')->on('dokters')->onDelete('cascade');
         });
     }
 

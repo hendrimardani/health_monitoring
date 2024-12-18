@@ -9,12 +9,17 @@ class Obat extends Model
     protected $guarded = ['id'];
     public function farmasi() 
     {
-        // One to One
-        return $this->belongsTo(Farmasi::class, 'id_obat');
+        // One to Many
+        return $this->hasMany(Farmasi::class, 'farmasi_id');
     }
 
-    public function reseps() 
+    public function resep() 
     {
         return $this->hasMany(Resep::class);
+    }
+
+    public function kategori_obat()
+    {
+        return $this->hasMany(KategoriObat::class, 'kategori_id');
     }
 }
