@@ -6,12 +6,12 @@
 <form action="/dashboard/admin/obat/{{ $obat->id }}" method="post" class="mt-5">
     @csrf
     @method('PUT')
-    <select id="id_perusahaan" name="id_perusahaan"
+    <select id="farmasi_id" name="farmasi_id"
         class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         autofocus required>
         <option disabled selected>Pilih Perusahaan</option>
         @foreach ($farmasis as $farmasi)
-        <option value="{{ $farmasi->id }}" {{ old('id_perusahaan', $obat->id_perusahaan) == $farmasi->id ? 'selected' :
+        <option value="{{ $farmasi->id }}" {{ old('farmasi_id', $obat->farmasi_id) == $farmasi->id ? 'selected' :
             '' }}>
             {{ $farmasi->nama_perusahaan }}
         </option>

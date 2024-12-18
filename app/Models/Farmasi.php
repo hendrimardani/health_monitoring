@@ -8,8 +8,8 @@ class Farmasi extends Model
 {
     protected $guarded = ['id'];
 
-    public function obat() {
-        // One to One
+    public function obat() 
+    {
         return $this->belongsTo(Obat::class);
     }
 }

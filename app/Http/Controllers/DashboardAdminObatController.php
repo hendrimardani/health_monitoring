@@ -40,7 +40,7 @@ class DashboardAdminObatController extends Controller
         $validatedData = $request->validate([
             'id_perusahaan' => 'required|exists:farmasis,id',
             'nama_obat' => 'required',
-            'kategori' => 'required',
+            // 'kategori' => 'required',
             'dosis_tersedia' => 'required',
             'unit' => 'required'
         ]);
@@ -78,7 +78,7 @@ class DashboardAdminObatController extends Controller
     public function update(Request $request, Obat $obat)
     {
         $validatedData = $request->validate([
-            'id_perusahaan' => 'required|exists:farmasis,id',
+            'farmasi_id' => 'required|exists:farmasis,id',
             'nama_obat' => 'required',
             'kategori' => 'required',
             'unit' => 'required'

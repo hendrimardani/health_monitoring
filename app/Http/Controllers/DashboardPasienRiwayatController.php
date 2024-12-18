@@ -21,12 +21,12 @@ class DashboardPasienRiwayatController extends Controller
     {
         // user saat ini login
         $pasiens = RiwayatPenyakit::with(['pasien.user'])
-                                ->where('pasien_id_pasien', auth()->id())
+                                ->where('pasien_id', auth()->id())
                                 ->paginate(7);
         $pasien = RiwayatPenyakit::with(['pasien.user'])
-                                ->where('pasien_id_pasien', auth()->id())
+                                ->where('pasien_id', auth()->id())
                                 ->first();
-        $riwayatPenyakit = RiwayatPenyakit::where('pasien_id_pasien', auth()->id())
+        $riwayatPenyakit = RiwayatPenyakit::where('pasien_id', auth()->id())
                                 ->first();
 
         if ($riwayatPenyakit->keluhan === null) {
@@ -76,7 +76,7 @@ class DashboardPasienRiwayatController extends Controller
             dd($e->errors());
         }
         $userId = Auth::id();
-        $validatedData['pasien_id_pasien'] = $userId;
+        $validatedData['pasien_id'] = $userId;
         RiwayatPenyakit::create($validatedData);
         Pasien::where('id_pasien', $userId)
             ->update($validatedPasien);
@@ -146,7 +146,7 @@ class DashboardPasienRiwayatController extends Controller
                                     ->first();
         $idResep = $pemeriksaan->id_resep;
         // $obat = Obat::where('id')
-        $riwayatPenyakit = RiwayatPenyakit::where('pemeriksaan_id_pemeriksaan', $idPemeriksaan)
+        $riwayatPenyakit = RiwayatPenyakit::where('pemeriksaan_id', $idPemeriksaan)
                                         ->first();
 
         // Path gambar di folder public

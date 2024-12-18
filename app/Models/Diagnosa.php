@@ -15,6 +15,6 @@ class Diagnosa extends Model
 
     public function dokter()
     {
-        return $this->belongsTo(Dokter::class, 'dokter_id');
+        return $this->belongsTo(Dokter::class, 'id_dokter');
     }
 }

@@ -19,7 +19,7 @@ class DashboardPasienAkunController extends Controller
         // ->get(); // Kalau menggunakan get() ini berarti mengembalikan banyak data
         $pasienId = auth()->user()->id;
         $riwayatPenyakit = RiwayatPenyakit::with(['pasien.user'])
-                        ->where('pasien_id_pasien', $pasienId)
+                        ->where('pasien_id', $pasienId)
                         ->first();
         return view('dashboard.pasien.akun', [
             'title' => 'Pasien',
@@ -92,9 +92,9 @@ class DashboardPasienAkunController extends Controller
 
         $validatedRiwayatPenyakit = [
             'keluhan' => $validatedData['keluhan'],
-            'pasien_id_pasien' => $userId
+            'pasien_id' => $userId
         ];
-        RiwayatPenyakit::where('pasien_id_pasien', $userId)
+        RiwayatPenyakit::where('pasien_id', $userId)
                         ->update($validatedRiwayatPenyakit);
 
         return redirect('/dashboard/pasien/akun')->with('success', 'Data berhasil diubah');
@@ -114,8 +114,8 @@ class DashboardPasienAkunController extends Controller
         // $pasien = RiwayatPenyakit::with(['pasien'])->findOrFail($id);
 
         $pasien = DB::table('riwayat_penyakits')
-        ->leftJoin('pasiens', 'riwayat_penyakits.pasien_id_pasien', '=', 'pasiens.id_pasien')
-        ->where('riwayat_penyakits.pasien_id_pasien', $id)
+        ->leftJoin('pasiens', 'riwayat_penyakits.pasien_id', '=', 'pasiens.id_pasien')
+        ->where('riwayat_penyakits.pasien_id', $id)
         ->first();
         Log::info('Data pasien menggunakan query builder:', ['pasien' => $pasien]);
 

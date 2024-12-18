@@ -20,6 +20,6 @@ class Resep extends Model
 
     public function pemeriksaan()
     {
-        return $this->belongsTo(Pemeriksaan::class);
+        return $this->hasMany(Pemeriksaan::class);
     }
 }
