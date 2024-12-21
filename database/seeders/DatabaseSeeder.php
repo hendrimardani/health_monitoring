@@ -90,41 +90,11 @@ class DatabaseSeeder extends Seeder
             'deskripsi' => 'Obat untuk menurunkan demam'
         ]);
 
-        KategoriObat::create([
-            'nama_kategori' => 'tablet',
-            'deskripsi' => 'Obat untuk mengobati infeksi bakteri'
-        ]);
-
-        KategoriObat::create([
-            'nama_kategori' => 'kapsul',
-            'deskripsi' => 'Obat untuk mengobati infeksi bakteri'
-        ]);
-
-        KategoriObat::create([
-            'nama_kategori' => 'cair',
-            'deskripsi' => 'Obat untuk mengobati infeksi bakteri'
-        ]);
-
-        KategoriObat::create([
-            'nama_kategori' => 'tablet',
-            'deskripsi' => 'untuk mengatasi berbagai masalah pencernaan, terutama yang berhubungan dengan produksi asam lambung berlebih atau iritasi pada lambung.'
-        ]);
-
-        KategoriObat::create([
-            'nama_kategori' => 'kapsul',
-            'deskripsi' => 'untuk mengatasi berbagai masalah pencernaan, terutama yang berhubungan dengan produksi asam lambung berlebih atau iritasi pada lambung.'
-        ]);
-
-        KategoriObat::create([
-            'nama_kategori' => 'cair',
-            'deskripsi' => 'untuk mengatasi berbagai masalah pencernaan, terutama yang berhubungan dengan produksi asam lambung berlebih atau iritasi pada lambung.'
-        ]);
-
         Obat::create([
             'farmasi_id' => 1,
             'kategori_id' => 1,
             'nama_obat' => 'paracetamol',
-            'dosis_tersedia' => '300 mg',
+            'dosis_tersedia' => '100 mg',
             'unit' => '5'
         ]);
 
@@ -186,18 +156,18 @@ class DatabaseSeeder extends Seeder
 
         Obat::create([
             'farmasi_id' => 2,
-            'kategori_id' => 1,
+            'kategori_id' => 2,
             'nama_obat' => 'antibiotik',
             'dosis_tersedia' => '100 mg',
+            'unit' => '5'
+        ]);
+
+        Obat::create([
+            'farmasi_id' => 2,
+            'kategori_id' => 2,
+            'nama_obat' => 'antibiotik',
+            'dosis_tersedia' => '200 mg',
             'unit' => '35'
-        ]);
-
-        Obat::create([
-            'farmasi_id' => 2,
-            'kategori_id' => 2,
-            'nama_obat' => 'antibiotik',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '5'
         ]);
 
         Obat::create([
@@ -214,14 +184,6 @@ class DatabaseSeeder extends Seeder
             'nama_obat' => 'antibiotik',
             'dosis_tersedia' => '200 mg',
             'unit' => '5'
-        ]);
-
-        Obat::create([
-            'farmasi_id' => 2,
-            'kategori_id' => 3,
-            'nama_obat' => 'antibiotik',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '15'
         ]);
 
         Obat::create([
@@ -244,7 +206,7 @@ class DatabaseSeeder extends Seeder
             'farmasi_id' => 3,
             'kategori_id' => 2,
             'nama_obat' => 'obat lambung',
-            'dosis_tersedia' => '200 mg',
+            'dosis_tersedia' => '100 mg',
             'unit' => '15'
         ]);
 
@@ -252,14 +214,6 @@ class DatabaseSeeder extends Seeder
             'farmasi_id' => 3,
             'kategori_id' => 2,
             'nama_obat' => 'obat lambung',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '15'
-        ]);
-
-        Obat::create([
-            'farmasi_id' => 3,
-            'kategori_id' => 3,
-            'nama_obat' => 'obat lambung',
             'dosis_tersedia' => '200 mg',
             'unit' => '15'
         ]);
@@ -270,6 +224,14 @@ class DatabaseSeeder extends Seeder
             'nama_obat' => 'obat lambung',
             'dosis_tersedia' => '100 mg',
             'unit' => '15'
+        ]);
+
+        Obat::create([
+            'farmasi_id' => 3,
+            'kategori_id' => 3,
+            'nama_obat' => 'obat lambung',
+            'dosis_tersedia' => '200 mg',
+            'unit' => '35'
         ]);
         
         Dokter::create([

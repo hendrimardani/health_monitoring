@@ -9,7 +9,6 @@ use App\Models\Resep;
 use App\Models\RiwayatPenyakit;
 use App\Models\VitalSign;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class DiagnosaController extends Controller
@@ -34,6 +33,7 @@ class DiagnosaController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         try {
             $validatedPasien = $request->validate([
                 'id_pasien' => 'required',
@@ -61,7 +61,7 @@ class DiagnosaController extends Controller
                 'rekomendasi' => 'required',
             ]);
             $validatedResep = $request->validate([
-                'id_obat' => 'required',
+                'obat_id' => 'required',
                 'frekuensi' => 'required',
                 'durasi_hari' => 'required',
                 'cara_penggunaan' => 'required'

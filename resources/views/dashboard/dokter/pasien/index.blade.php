@@ -117,7 +117,7 @@
                     </div>
                     @foreach ($pasien->pemeriksaan as $pemeriksaan)
                     <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
-                        onclick="showPemeriksaan({{ $pemeriksaan->id }}, {{ $pemeriksaan->id_pasien }}, {{ $pemeriksaan->id_dokter }})"
+                        onclick="showPemeriksaan({{ $pemeriksaan->id }}, {{ $pemeriksaan->pasien_id }}, {{ $pemeriksaan->dokter_id }})"
                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
                     @endforeach
                 </div>
@@ -165,8 +165,7 @@
             </div>
             <!-- Modal Body -->
             <div class="p-4">
-                <form action="/dashboard/dokter/pasien/diagnosa" method="post" id="modal-diagnosa-form"
-                    class="modal-diagnosa-form mt-5">
+                <form action="" method="post" id="modal-diagnosa-form" class="modal-diagnosa-form mt-5">
                     @csrf
                     <!-- Step 1 -->
                     <div class="modal-step modal-step-1">
@@ -270,9 +269,9 @@
                     <!-- Step 2 -->
                     <div class="modal-step modal-step-2 hidden">
                         <div class="mt-2">
-                            <input type="hidden" id="id_dokter"
+                            <input type="hidden" id="dokter_id"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="id_dokter" autofocus required />
+                                name="dokter_id" autofocus required />
                         </div>
                         <div>
                             <label for="kode_icd"
@@ -307,9 +306,14 @@
                         <div class="mt-2">
                             <label for="rekomendasi"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rekomendasi</label>
-                            <input type="text" id="rekomendasi"
+                            {{-- <input type="text" id="rekomendasi"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="rekomendasi" placeholder="Rekomendasi" autofocus required />
+                                name="rekomendasi" placeholder="Rekomendasi" autofocus required /> --}}
+                            <textarea type="text" id="rekomendasi"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="rekomendasi"
+                                placeholder="Cnt: Pasien disarankan istirahat dan melakukan konsultasi lagi dalam jangk 3 hari setelah pemeriksaan"
+                                rows="4" cols="50" autofocus required></textarea>
                         </div>
                         <div class="mt-2">
                             <label for="waktu_pemeriksaan"
@@ -352,22 +356,23 @@
 
                     <!-- Step 3 -->
                     <div class="modal-step modal-step-3 hidden">
-                        <input type="hidden" id="id_obat"
+                        <input type="hidden" id="obat_id"
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            name="id_obat" autofocus required />
+                            name="obat_id" autofocus required />
                         <select id="nama_obat" name="nama_obat"
                             class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option disabled selected>Pilih Obat</option>
-                            @foreach ($namaObat as $itemObat)
-                            <option value="{{ $itemObat->nama_obat }}" data-id="{{ $itemObat->id_obat }}">{{
-                                $itemObat->nama_obat }}</option>
+                            @foreach ($namaObats as $namaObat)
+                            <option value="{{ $namaObat->nama_obat }}" data-id="{{ $namaObat->id }}">{{
+                                $namaObat->nama_obat }}</option>
                             @endforeach
                         </select>
-                        <select id="kategori" name="kategori"
+                        <select id="kategori_obat" name="kategori_obat"
                             class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option disabled selected>Kategori Obat</option>
-                            @foreach ($kategoriObat as $itemObat)
-                            <option value="{{ $itemObat->kategori }}">{{ $itemObat->kategori }}</option>
+                            @foreach ($kategoriObats as $kategoriObat)
+                            <option value="{{ $kategoriObat->id }}">{{ $kategoriObat->nama_kategori }}
+                            </option>
                             @endforeach
                         </select>
                         <select id="dosis_tersedia" name="dosis_tersedia"
@@ -375,9 +380,10 @@
                             <option disabled selected>Dosis Obat</option>
                             <option value="100 mg">100 mg</option>
                             <option value="200 mg">200 mg</option>
-                            <option value="300 mg">300 mg</option>
                         </select>
                         <div class="mt-2">
+                            <label for="unit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit
+                                Obat</label>
                             <input type="number" id="unit"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="unit" placeholder="Unit Obat" autofocus required />
@@ -389,14 +395,25 @@
                             <option value="sebelum makan">Sebelum Makan</option>
                         </select>
                         <div class="mt-2">
+                            <label for="durasi_hari"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Durasi Hari
+                                Penggunaan Obat</label>
                             <input type="number" id="durasi_hari"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="durasi_hari" placeholder="Durasi hari penggunaan obat" autofocus required />
                         </div>
                         <div class="mt-2">
-                            <input type="text" id="cara_penggunaan"
+                            <label for="cara_penggunaan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cara
+                                Penggunaan</label>
+                            {{-- <input type="text" id="cara_penggunaan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="cara_penggunaan" placeholder="Cara penggunaan" autofocus required />
+                                name="cara_penggunaan" placeholder="Cara penggunaan" autofocus required /> --}}
+                            <textarea type="text" id="cara_penggunaan"
+                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                name="cara_penggunaan" placeholder="Cnt: 
+1. Dikonsumsi secara oral (diminum) dengan segelas air.
+2. Hindari penggunaan lebih dari 8 tablet dalam 24 jam." rows="4" cols="50" autofocus required></textarea>
                         </div>
                         <div class="flex flex-wrap justify-between">
                             <!-- Tombol Kembali -->
@@ -463,6 +480,25 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+
+    function fetchObat(modalForm, obatIdInput, kategoriId, namaObat, dosis) {
+        $.ajax({
+            url: '/cari-obat-json/' + kategoriId + '/' + namaObat + '/' + dosis,  // Mengirimkan data ke URL
+            type: 'GET',
+            success: function(response) {
+                console.log(response.obats[0]); // Debug
+                if (response.success) {
+                    obatIdInput.value = response.obats[0].id;
+                    // modalForm.action = '/dashboard/dokter/pasien/diagnosa';
+                } else {
+                    alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Terjadi kesalahan: " + error);
+            }
+        });
+    }
         const diagnosaButtons = document.querySelectorAll('button[data-pasien]');
         const modalForm = document.getElementById('modal-diagnosa-form');
         const step1 = document.querySelector('.modal-step-1');
@@ -476,21 +512,33 @@
 
         // Mendapatkan elemen select dan input hidden
         const namaObatSelect = document.getElementById('nama_obat');
-        const idObatInput = document.getElementById('id_obat');
+        const obatIdInput = document.getElementById('obat_id');
 
-        // Menangani perubahan pada select nama_obat
-        namaObatSelect.addEventListener('change', function() {
-        // Mendapatkan elemen option yang dipilih
-        const selectedOption = namaObatSelect.options[namaObatSelect.selectedIndex];
+        document.getElementById('kategori_obat').addEventListener('change', function() {
+            const kategoriId = this.value;
+            const namaObat = document.getElementById('nama_obat').value;
+            const dosis = document.getElementById('dosis_tersedia').value
 
-        // Mengambil data-id dari option yang dipilih
-        const idObat = selectedOption.getAttribute('data-id');
+            // Panggil fungsi fetchObat
+            fetchObat(modalForm, obatIdInput, kategoriId, namaObat, dosis);
+        });
 
-        // Debug
-        console.log(idObat);
+        document.getElementById('nama_obat').addEventListener('change', function() {
+            const kategoriId = document.getElementById('kategori_obat').value;
+            const namaObat = this.value;
+            const dosis = document.getElementById('dosis_tersedia').value
 
-        // Memasukkan id_obat ke dalam input hidden
-        idObatInput.value = idObat;
+            // Panggil fungsi fetchObat
+            fetchObat(modalForm, obatIdInput, kategoriId, namaObat, dosis);
+        });
+
+        document.getElementById('dosis_tersedia').addEventListener('change', function() {
+            const kategoriId = document.getElementById('kategori_obat').value;
+            const namaObat = document.getElementById('nama_obat').value;
+            const dosis = this.value; // Ambil nilai dosis yang dipilih
+
+            // Panggil fungsi fetchObat
+            fetchObat(modalForm, obatIdInput, kategoriId, namaObat, dosis);
         });
 
         diagnosaButtons.forEach(button => {
@@ -578,7 +626,7 @@
         ) {
             alert('Data tidak boleh ada yang kosong !');
             return;
-        }   
+        }
     });
 });
 

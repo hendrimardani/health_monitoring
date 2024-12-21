@@ -7,59 +7,26 @@ use Illuminate\Http\Request;
 
 class ObatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function cariObatJson(string $kategoriId, string $namaObat, string $dosis)
     {
-        //
-    }
+        // Query Eloquent untuk mencari obat
+        $obats = Obat::where('kategori_id', $kategoriId)
+                    ->where('nama_obat', $namaObat)
+                    ->where('dosis_tersedia', $dosis)
+                    ->select('id', 'nama_obat') // Pilih kolom yang dibutuhkan
+                    ->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Obat $obat)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Obat $obat)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Obat $obat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Obat $obat)
-    {
-        //
+        // Cek jika data obat ditemukan
+        if ($obats) {
+            return response()->json([
+                'success' => true,
+                'obats' => $obats
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data obat tidak ditemukan.'
+            ]);
+        }
     }
 }

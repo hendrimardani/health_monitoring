@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardPasienRiwayatController;
 use App\Http\Controllers\DashboardPasienAkunController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ObatController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
@@ -66,7 +67,10 @@ Route::prefix('dashboard')->middleware(['auth', 'role:dokter'])->group(function(
     Route::resource('/dokter/pasien', DashboardDokterController::class);
     Route::resource('/dokter/pasien/diagnosa', DiagnosaController::class);
 });
-Route::get('/dashboard/dokter/pasien/{idPemeriksaan}/{idPasien}/{idDokter}', [DashboardDokterController::class, 'show'])->withoutMiddleware(['role:pasien']);
+Route::get('/cari-obat-json/{kategoriId}/{namaObat}/{dosis}', [ObatController::class, 'cariObatJson'])->withoutMiddleware(['role:dokter']);
+
+Route::get('/dashboard/dokter/pasien/{idPemeriksaan}/{idPasien}/{idDokter}', [DashboardDokterController::class, 'show'])->withoutMiddleware(['role:dokter']);
+
 // Dipisah karena ia mengambil data menggunakan AJAX (tanpa menggunakan role)
 Route::get('/dashboard/dokter/pasien/getDataJson/{id}', [DashboardPasienAkunController::class, 'getDataJson'])->withoutMiddleware(['role:dokter']);
 

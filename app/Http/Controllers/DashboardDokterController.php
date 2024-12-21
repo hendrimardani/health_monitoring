@@ -27,19 +27,20 @@ class DashboardDokterController extends Controller
         $pasiens = RiwayatPenyakit::with('pemeriksaan')
                 ->paginate(10); 
         // Mendapatkan data kategori yang unik
-        $namaObat = DB::table('obats')
-                        ->select('id', 'nama_obat')
-                        ->distinct()
+        $namaObats = DB::table('obats')
+                    ->selectRaw('MIN(id) as id, nama_obat') // Pilih id terkecil untuk setiap nama_obat
+                    ->groupBy('nama_obat')
+                    ->get();
+
+        $kategoriObats = DB::table('kategori_obats')
+                        ->selectRaw('MIN(id) as id, nama_kategori')  // Pilih id terkecil untuk setiap nama_kategori
+                        ->groupBy('nama_kategori')
                         ->get();
-        // $kategoriObat = DB::table('obats')
-        //                 ->select('kategori')
-        //                 ->distinct()
-        //                 ->get();
         return view('dashboard.dokter.pasien.index', [
             'title' => 'Dashboard Dokter',
             'pasiens' => $pasiens,
-            'namaObat' => $namaObat,
-            // 'kategoriObat' => $kategoriObat
+            'namaObats' => $namaObats,
+            'kategoriObats' => $kategoriObats
         ]);
     }
 
