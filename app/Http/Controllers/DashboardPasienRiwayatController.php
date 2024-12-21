@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\Pemeriksaan;
+use App\Models\Resep;
 use App\Models\RiwayatPenyakit;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Log;
 
 class DashboardPasienRiwayatController extends Controller
 {
@@ -144,10 +146,11 @@ class DashboardPasienRiwayatController extends Controller
         $pemeriksaan = Pemeriksaan::with(['pasien', 'diagnosa', 'vital_sign', 'dokter', 'resep'])
                                     ->where('id', $idPemeriksaan)
                                     ->first();
-        $idResep = $pemeriksaan->id_resep;
-        // $obat = Obat::where('id')
+        Log::info('PEMERIKSAAN :', ['pemeriksaan' => $pemeriksaan]);
+
         $riwayatPenyakit = RiwayatPenyakit::where('pemeriksaan_id', $idPemeriksaan)
                                         ->first();
+        Log::info('riwayatPenyakit :', ['riwayat_penyakit' => $riwayatPenyakit]);
 
         // Path gambar di folder public
         $path = public_path('assets/2-2.png');

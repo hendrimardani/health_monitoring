@@ -71,61 +71,62 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
         <h1>iHealth</h1>
 
         <!-- Alamat -->
-        <p>Jl. Contoh Alamat No.123, Kota, Provinsi, Kode Pos</p>
+        <p> Jalan Kesehatan No.2, Jakarta, Indonesia</p>
 
         <!-- Kontak -->
-        <p>Telepon: (021) 12345678 | Email: info@instansi.com | Website: www.instansi.com</p>
+        <p>Telepon: (021) 12345678 | Email: support@ihealth.com | Website: www.iHealth.com</p>
     </div>
 
     <div class="content">
         <h3>Identitas Pasien</h3>
-        <table>
-            <tbody>
-                <tr>
-                    <td>Nama </td>
-                    <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->nama }}</td>
-                </tr>
-                <tr>
-                    <td>NIK </td>
-                    <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->nik }}</td>
-                </tr>
-                <tr>
-                    <td>Jenis Kelamin </td>
-                    <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->jenis_kelamin }}</td>
-                </tr>
-                <tr>
-                    <td>Usia </td>
-                    <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->usia }} tahun</td>
-                </tr>
-                <tr>
-                    <td>Alamat </td>
-                    <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->alamat }}</td>
-                </tr>
-                <tr>
-                    <td>Keluhan </td>
-                    <td>&nbsp;&nbsp;{{ $riwayatPenyakit->keluhan }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="dashed"></div>
-        <h3>Pemeriksa</h3>
-        <table>
-            <tbody>
-                <tr>
-                    <td>Nama Dokter</td>
-                    <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->nama_dokter }}</td>
-                </tr>
-                <tr>
-                    <td>No Tlp Dokter </td>
-                    <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->no_telepon_dokter }}</td>
-                </tr>
-                <tr>
-                    <td>Spesialisasi </td>
-                    <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->spesialisasi }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="dashed"></div>
+        <div class="container-table">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Nama </td>
+                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->nama }}</td>
+                    </tr>
+                    <tr>
+                        <td>NIK </td>
+                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->nik }}</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Kelamin </td>
+                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->jenis_kelamin }}</td>
+                    </tr>
+                    <tr>
+                        <td>Usia </td>
+                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->usia }} tahun</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat </td>
+                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <td>Keluhan </td>
+                        <td>&nbsp;&nbsp;{{ $riwayatPenyakit->keluhan }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 style="margin-left: 419px; margin-top: -40px">Pemeriksa</h3>
+            <table style="margin-left: 180px;">
+                <tbody>
+                    <tr>
+                        <td>Nama Dokter</td>
+                        <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->nama_dokter }}</td>
+                    </tr>
+                    <tr>
+                        <td>No Tlp Dokter </td>
+                        <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->no_telepon_dokter }}</td>
+                    </tr>
+                    <tr>
+                        <td>Spesialisasi </td>
+                        <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->spesialisasi }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="dashed" style="margin-top: 160px;"></div>
         <h3>Hasil Pemeriksaan</h3>
         <div class="container-table">
             <table>
@@ -158,22 +159,6 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
             </table>
             <table style="margin-left: 50px">
                 <tbody>
-                    @foreach ($pemeriksaan->resep as $resep)
-                    <tr>
-                        <td>Frekuensi</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $resep->frekuensi }}</td>
-                    </tr>
-                    <tr>
-                        <td>Durasi Hari</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $resep->durasi_hari }} kali dalam sehari</td>
-                    </tr>
-                    <tr>
-                        <td>Cara Penggunaan</td>
-                        <td style="word-wrap: break-word; max-width: 250px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
-                            $resep->cara_penggunaan }}
-                        </td>
-                    </tr>
-                    @endforeach
                     <tr>
                         <td>Status</td>
                         <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $riwayatPenyakit->status }}</td>
@@ -191,7 +176,7 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
         </div>
     </div>
     <div>
-        <table style="margin-top: 180px; margin-left: 2px;">
+        <table style="margin-top: 150px;">
             <tbody>
                 <tr>
                     <td>Deskripsi</td>
@@ -208,14 +193,43 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
                         $pemeriksaan->catatan }}</td>
                 </tr>
             </tbody>
-            {{--
         </table>
-        <table>
-            <tbody>
-                <tr>Nama Obat</tr>
-                <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->nama_obat }}</td>
-            </tbody>
-        </table> --}}
+        <div>
+            <table style="margin-top:10px;">
+                <tbody>
+                    <tr>
+                        <td>Nama Obat</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->nama_obat }}</td>
+                    </tr>
+                    <tr>
+                        <td>Kategori Obat</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->kategori_obat->nama_kategori }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dosis Obat</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->dosis_tersedia }}</td>
+                    </tr>
+                    <tr>
+                        <td>Unit Obat</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->unit }} unit</td>
+                    </tr>
+                    <tr>
+                        <td>Frekuensi</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->frekuensi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Durasi Hari</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->durasi_hari }} kali dalam sehari</td>
+                    </tr>
+                    <tr>
+                        <td>Cara Penggunaan</td>
+                        <td style="word-wrap: break-word; max-width: 400px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
+                            $pemeriksaan->resep->cara_penggunaan }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div style="margin-top: 40px; margin-left: 2px;">
         <span>Hasil pemeriksaan menunjukkan bahwa <strong>{{ $pemeriksaan->diagnosa->rekomendasi }}<strong></span>
