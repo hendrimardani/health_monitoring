@@ -6,6 +6,7 @@ use App\Models\Dokter;
 use App\Models\Pasien;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class DashboardAdminUserController extends Controller
@@ -65,11 +66,11 @@ class DashboardAdminUserController extends Controller
             'email' => $validatedData['email'],
             'role' => $validatedData['role']
         ];
-        User::create($userData);
+        $userId = User::create($userData);
         // Simpan data berdasarkan role
         if ($request->role === 'pasien') {
             // Data untuk tabel `pasiens`
-            $userId = User::latest()->first();
+            // $userId = User::latest()->first();
             $pasienData = [
                 'id_pasien' => $userId->id,
                 'nama' => $validatedData['nama'],
@@ -83,9 +84,10 @@ class DashboardAdminUserController extends Controller
             Pasien::create($pasienData);
         } else {
             // Data untuk tabel `dokters`
-            $userId = User::latest()->first();
+            // $userId = User::latest()->first();
+            Log::info('User ID:', ['id' => $userId->id]);
             $dokterData = [
-                'id_dokter' => $userId->id,
+                'id_dokter' => $userId->id ?? null,
                 'nama_dokter' => $validatedData['nama'],
                 'no_telepon_dokter' => $validatedData['no_telepon_dokter'],
                 'spesialisasi' => $validatedData['spesialisasi']

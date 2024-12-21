@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dokter extends Model
 {
-    protected $guarded = ['id_dokter'];
+    protected $fillable = ['id_dokter', 'nama_dokter', 'no_telepon_dokter', 'spesialisasi'];
     // Tentukan primary key untuk model ini
     protected $primaryKey = 'id_dokter'; // id_user sebagai primary key
 
