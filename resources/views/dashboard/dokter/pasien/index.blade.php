@@ -115,11 +115,9 @@
                         </svg>
                         <span class="text-green-500">Sudah diagnosa</span>
                     </div>
-                    @foreach ($pasien->pemeriksaan as $pemeriksaan)
                     <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
-                        onclick="showPemeriksaan({{ $pemeriksaan->id }}, {{ $pemeriksaan->pasien_id }}, {{ $pemeriksaan->dokter_id }})"
+                        onclick="showPemeriksaan({{ $pasien->pemeriksaan->id }}, {{ $pasien->pemeriksaan->pasien_id }}, {{ $pasien->pemeriksaan->dokter_id }})"
                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
-                    @endforeach
                 </div>
                 @else
                 <div
@@ -165,7 +163,8 @@
             </div>
             <!-- Modal Body -->
             <div class="p-4">
-                <form action="" method="post" id="modal-diagnosa-form" class="modal-diagnosa-form mt-5">
+                <form action="/dashboard/dokter/pasien/diagnosa" method="post" id="modal-diagnosa-form"
+                    class="modal-diagnosa-form mt-5">
                     @csrf
                     <!-- Step 1 -->
                     <div class="modal-step modal-step-1">
@@ -499,6 +498,26 @@
             }
         });
     }
+
+    function showPemeriksaan(idPemeriksaan, idPasien, idDokter) {
+        $.ajax({
+            url: '/dashboard/dokter/pasien/' + idPemeriksaan + '/' + idPasien + '/' + idDokter,  // Mengirimkan data ke URL
+            type: 'GET',
+            success: function(response) {
+                // Debug
+                console.log(response);
+                if (response.success) {
+                    document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
+                    document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
+                } else {
+                    alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Terjadi kesalahan: " + error);
+            }
+        });
+    }
         const diagnosaButtons = document.querySelectorAll('button[data-pasien]');
         const modalForm = document.getElementById('modal-diagnosa-form');
         const step1 = document.querySelector('.modal-step-1');
@@ -629,26 +648,6 @@
         }
     });
 });
-
-function showPemeriksaan(idPemeriksaan, idPasien, idDokter) {
-    $.ajax({
-        url: '/dashboard/dokter/pasien/' + idPemeriksaan + '/' + idPasien + '/' + idDokter,  // Mengirimkan data ke URL
-        type: 'GET',
-        success: function(response) {
-            // Debug
-            console.log(response);
-            if (response.success) {
-                document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
-                document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
-            } else {
-                alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
-            }
-        },
-        error: function(xhr, status, error) {
-            alert("Terjadi kesalahan: " + error);
-        }
-    });
-}
 </script>
 
 

@@ -33,7 +33,6 @@ class DiagnosaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         try {
             $validatedPasien = $request->validate([
                 'id_pasien' => 'required',
@@ -88,7 +87,7 @@ class DiagnosaController extends Controller
         $validatedResep['dokter_id'] = $userId;
         $resep = Resep::create($validatedResep);
 
-        $validatedPemeriksaan['pasien_id'] = $validatedPasien['pasien_id']; // Gunakan ID pasien yang valid
+        $validatedPemeriksaan['pasien_id'] = $validatedPasien['id_pasien']; // Gunakan ID pasien yang valid
         $validatedPemeriksaan['diagnosa_id'] = $diagnosa->id; // ID diagnosa yang baru dibuat
         $validatedPemeriksaan['vital_sign_id'] = $vitalSign->id;
         $validatedPemeriksaan['resep_id'] = $resep->id;
