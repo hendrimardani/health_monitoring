@@ -498,26 +498,6 @@
             }
         });
     }
-
-    function showPemeriksaan(idPemeriksaan, idPasien, idDokter) {
-        $.ajax({
-            url: '/dashboard/dokter/pasien/' + idPemeriksaan + '/' + idPasien + '/' + idDokter,  // Mengirimkan data ke URL
-            type: 'GET',
-            success: function(response) {
-                // Debug
-                console.log(response);
-                if (response.success) {
-                    document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
-                    document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
-                } else {
-                    alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
-                }
-            },
-            error: function(xhr, status, error) {
-                alert("Terjadi kesalahan: " + error);
-            }
-        });
-    }
         const diagnosaButtons = document.querySelectorAll('button[data-pasien]');
         const modalForm = document.getElementById('modal-diagnosa-form');
         const step1 = document.querySelector('.modal-step-1');
@@ -648,6 +628,30 @@
         }
     });
 });
+
+function showPemeriksaan(idPemeriksaan, idPasien, idDokter) {
+        // Debugging untuk memastikan parameter diterima dengan benar
+        console.log("ID Pemeriksaan:", idPemeriksaan);
+        console.log("ID Pasien:", idPasien);
+        console.log("ID Dokter:", idDokter);
+        $.ajax({
+            url: '/dashboard/dokter/pasien/' + idPemeriksaan + '/' + idPasien + '/' + idDokter,  // Mengirimkan data ke URL
+            type: 'GET',
+            success: function(response) {
+                // Debug
+                console.log(response);
+                if (response.success) {
+                    document.getElementById('nama-dokter').innerHTML = response.pemeriksaan.dokter.nama_dokter;
+                    document.getElementById('tanggal-periksa').innerHTML = response.pemeriksaan.waktu_pemeriksaan;
+                } else {
+                    alert("Error euy: " + response.message);  // Jika tidak ada data, tampilkan pesan
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Terjadi kesalahan: " + error);
+            }
+        });
+    }
 </script>
 
 

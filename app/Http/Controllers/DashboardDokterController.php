@@ -71,8 +71,8 @@ class DashboardDokterController extends Controller
         // Mengambil data pemeriksaan berdasarkan ID pasien atau ID pemeriksaan
         $pemeriksaan = Pemeriksaan::with(['dokter', 'pasien'])
                                 ->where('id', $idPemeriksaan)
-                                ->where('id_pasien', $idPasien)  // Mencari pemeriksaan berdasarkan ID
-                                ->where('id_dokter', $idDokter)
+                                ->where('pasien_id', $idPasien)  // Mencari pemeriksaan berdasarkan ID
+                                ->where('dokter_id', $idDokter)
                                 ->first();          // Ambil pemeriksaan pertama yang cocok dengan ID
         // Cek jika data pemeriksaan ditemukan
         if ($pemeriksaan) {
