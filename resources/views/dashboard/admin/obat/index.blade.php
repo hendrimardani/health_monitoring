@@ -91,7 +91,7 @@
                 <td class="px-6 py-4">
                     {{ $obat->unit }}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 max-w-[250px]">
                     {{ $obat->kategori_obat->deskripsi }}
                 </td>
                 <td class="px-6 py-4">
