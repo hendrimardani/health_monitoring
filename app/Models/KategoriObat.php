@@ -9,6 +9,6 @@ class KategoriObat extends Model
     protected $guarded = ['id'];
     public function obat()
     {
-        return $this->belongsTo(Obat::class);
+        return $this->hasMany(Obat::class);
     }
 }

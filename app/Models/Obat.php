@@ -19,6 +19,6 @@ class Obat extends Model
 
     public function kategori_obat()
     {
-        return $this->hasMany(KategoriObat::class, 'kategori_id');
+        return $this->belongsTo(KategoriObat::class, 'kategori_id');
     }
 }

@@ -82,12 +82,12 @@ class DatabaseSeeder extends Seeder
 
         KategoriObat::create([
             'nama_kategori' => 'kapsul',
-            'deskripsi' => 'Obat untuk menurunkan demam'
+            'deskripsi' => 'untuk mengobati infeksi yang disebabkan oleh bakteri'
         ]);
 
         KategoriObat::create([
             'nama_kategori' => 'cair',
-            'deskripsi' => 'Obat untuk menurunkan demam'
+            'deskripsi' => 'untuk mengatasi masalah atau gangguan pada sistem pencernaan, terutama yang berkaitan dengan lambung. Seperti maag atau asam lambung tinggi'
         ]);
 
         Obat::create([

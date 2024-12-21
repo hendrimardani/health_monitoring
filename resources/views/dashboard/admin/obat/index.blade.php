@@ -65,6 +65,7 @@
                 <th scope="col" class="px-6 py-3">Kategori</th>
                 <th scope="col" class="px-6 py-3">Dosis Tersedia</th>
                 <th scope="col" class="px-6 py-3">Unit</th>
+                <th scope="col" class="px-6 py-3">Deskripsi</th>
                 <th scope="col" class="px-6 py-3">Aksi</th>
             </tr>
         </thead>
@@ -82,7 +83,7 @@
                     {{ $obat->nama_obat }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $obat->kategori }}
+                    {{ $obat->kategori_obat->nama_kategori }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $obat->dosis_tersedia }}
@@ -91,10 +92,13 @@
                     {{ $obat->unit }}
                 </td>
                 <td class="px-6 py-4">
+                    {{ $obat->kategori_obat->deskripsi }}
+                </td>
+                <td class="px-6 py-4">
                     <div class="flex flex-wrap justify-start gap-4">
                         <div
                             class="inline-block border-[1px] border-orange-500 p-1 hover:bg-orange-500 transition ease-in-out duration-500">
-                            <a href="/dashboard/admin/obat/{{ $obat->id_obat }}/edit">
+                            <a href="/dashboard/admin/obat/{{ $obat->id }}/edit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange"
                                     class="bi bi-pencil" viewBox="0 0 16 16">
                                     <path
@@ -104,7 +108,7 @@
                         </div>
                         <div
                             class="inline-block border-[1px] border-red-500 p-1 hover:bg-red-500 transition ease-in-out duration-500">
-                            <form action="{{ route('obat.destroy', $obat->id_obat) }}" method="POST">
+                            <form action="{{ route('obat.destroy', $obat->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button>
