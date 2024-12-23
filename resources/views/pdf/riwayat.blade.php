@@ -1,19 +1,11 @@
-@php
-use Carbon\Carbon;
-
-// Misalnya $pemeriksaan->created_at adalah timestamp
-$timestamp = $pemeriksaan->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
-
-// Memisahkan tanggal dan waktu
-$tanggal = Carbon::parse($timestamp)->toDateString(); // '2024-12-17'
-$waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Kop Surat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,12 +15,6 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
             text-align: center;
             border-bottom: 3px solid black;
             padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .dashed {
-            border-bottom: 1px dashed black;
-            margin-top: 20px;
             margin-bottom: 20px;
         }
 
@@ -56,8 +42,16 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
             margin-top: 20px;
         }
 
-        .container-table table {
-            float: left;
+        table {
+            border-collapse: collapse;
+        }
+
+        table th {
+            padding: 5px;
+        }
+
+        table td {
+            padding: 5px;
         }
     </style>
 </head>
@@ -76,163 +70,45 @@ $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
         <!-- Kontak -->
         <p>Telepon: (021) 12345678 | Email: support@ihealth.com | Website: www.iHealth.com</p>
     </div>
-
     <div class="content">
-        <h3>Identitas Pasien</h3>
-        <div class="container-table">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Nama </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->nama }}</td>
-                    </tr>
-                    <tr>
-                        <td>NIK </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->nik }}</td>
-                    </tr>
-                    <tr>
-                        <td>Jenis Kelamin </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->jenis_kelamin }}</td>
-                    </tr>
-                    <tr>
-                        <td>Usia </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->usia }} tahun</td>
-                    </tr>
-                    <tr>
-                        <td>Alamat </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->pasien->alamat }}</td>
-                    </tr>
-                    <tr>
-                        <td>Keluhan </td>
-                        <td>&nbsp;&nbsp;{{ $riwayatPenyakit->keluhan }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3 style="margin-left: 419px; margin-top: -40px">Pemeriksa</h3>
-            <table style="margin-left: 180px;">
-                <tbody>
-                    <tr>
-                        <td>Nama Dokter</td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->nama_dokter }}</td>
-                    </tr>
-                    <tr>
-                        <td>No Tlp Dokter </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->no_telepon_dokter }}</td>
-                    </tr>
-                    <tr>
-                        <td>Spesialisasi </td>
-                        <td>&nbsp;&nbsp;{{ $pemeriksaan->dokter->spesialisasi }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="dashed" style="margin-top: 160px;"></div>
-        <h3>Hasil Pemeriksaan</h3>
-        <div class="container-table">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Kode ICD</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->diagnosa->kode_icd }}</td>
-                    </tr>
-                    <tr>
-                        <td>Saturasi Oksigen</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->saturasi_oksigen }} %</td>
-                    </tr>
-                    <tr>
-                        <td>Detak Jantung </td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->detak_jantung }} Bpm</td>
-                    </tr>
-                    <tr>
-                        <td>Suhu Badan </td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->suhu_badan }} °C</td>
-                    </tr>
-                    <tr>
-                        <td>Tekanan Darah Sistol </td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->tekanan_darah_sistol }} mmHg</td>
-                    </tr>
-                    <tr>
-                        <td>Tekanan Darah Diastol </td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->tekanan_darah_diastol }} mmHg</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table style="margin-left: 50px">
-                <tbody>
-                    <tr>
-                        <td>Status</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $riwayatPenyakit->status }}</td>
-                    </tr>
-                    <tr>
-                        <td>Waktu Pengukuran</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $waktu }}</td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Pengukuran</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $tanggal }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div>
-        <table style="margin-top: 150px;">
+        <p>Berikut adalah riwayat keluhan dan pemeriksaan medis yang telah dilakukan atas nama pasien <strong>{{
+                $namaPasien->nama }}</strong>. Pemeriksaan ini dilakukan pada <strong>{{ $tanggalOld }}</strong>
+            sampai
+            <strong>{{ $tanggalLatest }}</strong>.
+            Harap diperhatikan bahwa hasil ini merupakan catatan kesehatan Anda selama berada di fasilitas kami.
+        </p>
+        <h3>Riwayat Keluhan Anda</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Keluhan</th>
+                    <th>Waktu Pemeriksaan</th>
+                    <th>Tanggal Pemeriksaan</th>
+                    <th>Dokter Pemeriksa</th>
+                    <th>No Telepon Dokter</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
             <tbody>
+                @foreach ($riwayatPenyakits as $riwayatPenyakit)
                 <tr>
-                    <td>Deskripsi</td>
-                    <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->diagnosa->deskripsi }}</td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td style="max-width: 300px; word-wrap: break-word; word-break: break-word; white-space: normal;">
+                        {{
+                        $riwayatPenyakit->keluhan }}</td>
+                    <td>{{ $riwayatPenyakit->waktu }}</td>
+                    <td>{{ $riwayatPenyakit->tanggal }}</td>
+                    <td>{{ $riwayatPenyakit->pemeriksaan->dokter->nama_dokter }}</td>
+                    <td>{{ $riwayatPenyakit->pemeriksaan->dokter->no_telepon_dokter }}</td>
+                    <td>{{ $riwayatPenyakit->status }}</td>
                 </tr>
-                <tr>
-                    <td>Rekomendasi</td>
-                    <td style="word-wrap: break-word; max-width: 350px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
-                        $pemeriksaan->diagnosa->rekomendasi }}</td>
-                </tr>
-                <tr>
-                    <td>Catatan</td>
-                    <td style="word-wrap: break-word; max-width: 350px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
-                        $pemeriksaan->catatan }}</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
-        <div>
-            <table style="margin-top:10px;">
-                <tbody>
-                    <tr>
-                        <td>Nama Obat</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->nama_obat }}</td>
-                    </tr>
-                    <tr>
-                        <td>Kategori Obat</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->kategori_obat->nama_kategori }}</td>
-                    </tr>
-                    <tr>
-                        <td>Dosis Obat</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->dosis_tersedia }}</td>
-                    </tr>
-                    <tr>
-                        <td>Unit Obat</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->unit }} unit</td>
-                    </tr>
-                    <tr>
-                        <td>Frekuensi</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->frekuensi }}</td>
-                    </tr>
-                    <tr>
-                        <td>Durasi Hari</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->durasi_hari }} kali dalam sehari</td>
-                    </tr>
-                    <tr>
-                        <td>Cara Penggunaan</td>
-                        <td style="word-wrap: break-word; max-width: 400px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
-                            $pemeriksaan->resep->cara_penggunaan }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div style="margin-top: 40px; margin-left: 2px;">
-        <span>Hasil pemeriksaan menunjukkan bahwa <strong>{{ $pemeriksaan->diagnosa->rekomendasi }}<strong></span>
+        <p>Untuk
+            informasi lebih lanjut, silakan hubungi dokter yang bersangkutan. Pastikan Anda selalu menjaga pola hidup
+            sehat!</p>
     </div>
 </body>
 

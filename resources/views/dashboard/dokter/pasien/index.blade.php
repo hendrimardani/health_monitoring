@@ -477,6 +477,41 @@
     </div>
 </div>
 
+<!-- Menampilkan navigasi paginasi -->
+@if ($pasiens->hasPages())
+<div class="pagination-container mt-4">
+    <ul class="pagination flex justify-center items-center space-x-2">
+        {{-- Previous Page Link --}}
+        @if ($pasiens->onFirstPage())
+        <li class="disabled px-3 py-1">Sebelum</li>
+        @else
+        <li>
+            <a href="{{ $pasiens->previousPageUrl() }}" class="px-3 py-1">Sebelum</a>
+        </li>
+        @endif
+
+        {{-- Pagination Links --}}
+        @foreach ($pasiens->getUrlRange(1, $pasiens->lastPage()) as $page => $url)
+        <li>
+            <a href="{{ $url }}"
+                class="{{ $page == $pasiens->currentPage() ? 'bg-blue-500 text-white px-3 py-1' : 'bg-white text-blue-500 px-3 py-1' }}">
+                {{ $page }}
+            </a>
+        </li>
+        @endforeach
+
+        {{-- Next Page Link --}}
+        @if ($pasiens->hasMorePages())
+        <li>
+            <a href="{{ $pasiens->nextPageUrl() }}" class="px-3 py-1">Sesudah</a>
+        </li>
+        @else
+        <li class="disabled px-3 py-1">Sesudah</li>
+        @endif
+    </ul>
+</div>
+@endif
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 

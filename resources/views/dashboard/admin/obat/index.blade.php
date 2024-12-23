@@ -129,7 +129,6 @@
         </tbody>
     </table>
 
-
     <!-- Menampilkan navigasi paginasi -->
     @if ($obats->hasPages())
     <div class="pagination-container mt-4">

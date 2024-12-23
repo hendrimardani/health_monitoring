@@ -9,6 +9,7 @@ use App\Models\Resep;
 use App\Models\RiwayatPenyakit;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\File;
@@ -120,24 +121,60 @@ class DashboardPasienRiwayatController extends Controller
 
     public function exportRiwayatPDF()
     {
+        $idPasien = auth()->id();
         // Data yang akan ditampilkan pada PDF
-        $data = [
-            'title' => 'Laporan Data User',
-            'date' => date('m/d/Y'),
-            'users' => [
-                ['name' => 'John Doe', 'email' => 'john@example.com'],
-                ['name' => 'Jane Doe', 'email' => 'jane@example.com'],
-            ]
-        ];
+        $namaPasien = RiwayatPenyakit::with('pasien')
+                                    ->where('pasien_id', $idPasien)
+                                    ->first();
+        $riwayatPenyakits = RiwayatPenyakit::with('pemeriksaan')
+                                            ->where('pasien_id', $idPasien)
+                                            ->get();
+        $pemeriksaans = Pemeriksaan::with('dokter')
+                                    ->where('pasien_id', $idPasien)
+                                    ->get();
+        $pemeriksaanLatest = Pemeriksaan::where('pasien_id', $idPasien)
+                                    ->orderBy('created_at', 'desc')
+                                    ->first();
+        $pemeriksaanOld = Pemeriksaan::where('pasien_id', $idPasien)
+                                    ->orderBy('created_at', 'asc')
+                                    ->first();
+                                    
+        Log::info('riwayatPenyakits : ', ['riwayatPenyakits' => $riwayatPenyakits]);
+        Log::info('pemeriksaans : ', ['pemeriksaans' => $pemeriksaans]);
+        Log::info('pemeriksaanLatest : ', ['pemeriksaanLatest' => $pemeriksaanLatest]);
+        Log::info('pemeriksaanOld : ', ['pemeriksaanOld' => $pemeriksaanOld]);
+
+        // Memisahkan tanggal dan waktu
+        foreach ($riwayatPenyakits as $riwayatPenyakit) {
+            $riwayatPenyakit->waktu = \Carbon\Carbon::parse($riwayatPenyakit->waktu_pengukuran)->toTimeString();
+            $riwayatPenyakit->tanggal = \Carbon\Carbon::parse($riwayatPenyakit->waktu_pengukuran)->toDateString();
+        }
+
+        // Misalnya $pemeriksaan->created_at adalah timestamp
+        $timestampLatest = $pemeriksaanLatest->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
+        $timestampOld = $pemeriksaanOld->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
+
+         // Memisahkan tanggal
+         $tanggalLatest = Carbon::parse($timestampLatest)->translatedFormat('d F Y'); // Contoh: '21 Desember 2024' karena menggunakan metode transslatedFormat()
+         $tanggalOld = Carbon::parse($timestampOld)->translatedFormat('d F Y'); // Contoh: '21 Desember 2024' karena menggunakan metode transslatedFormat()
 
         // Load view untuk PDF
-        $pdf = PDF::loadView('pdf.template', $data);
+        $pdf = PDF::loadView('pdf.riwayat', [
+            'namaPasien' => $namaPasien->pasien,
+            'riwayatPenyakits' => $riwayatPenyakits,
+            'tanggal' => $riwayatPenyakit->tanggal,
+            'waktu' => $riwayatPenyakit->waktu,
+            'pemeriksaans' => $pemeriksaans,
+            'tanggalLatest' => $tanggalLatest,
+            'tanggalOld' => $tanggalOld
+        ]);
 
         // Tampilkan PDF di browser
-        return $pdf->stream('laporan-produk.pdf');
+        $fileName = 'laporan-riwayat-' . str_replace(' ', '_', strtolower($namaPasien->pasien->nama)) . '.pdf';
+        return $pdf->stream($fileName);
 
         // // Download file PDF
-        // return $pdf->download('laporan-user.pdf');
+        // return $pdf->download('laporan-riwayat.pdf');
     }
 
     public function exportDiagnosaPDF(string $idPemeriksaan)
@@ -147,6 +184,13 @@ class DashboardPasienRiwayatController extends Controller
                                     ->where('id', $idPemeriksaan)
                                     ->first();
         Log::info('PEMERIKSAAN :', ['pemeriksaan' => $pemeriksaan]);
+
+        // Misalnya $pemeriksaan->created_at adalah timestamp
+        $timestamp = $pemeriksaan->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
+
+        // Memisahkan tanggal dan waktu
+        $waktu = Carbon::parse($timestamp)->toTimeString(); // '14:35:22'
+        $tanggal = Carbon::parse($timestamp)->toDateString(); // '2024-12-17'
 
         $riwayatPenyakit = RiwayatPenyakit::where('pemeriksaan_id', $idPemeriksaan)
                                         ->first();
@@ -159,16 +203,19 @@ class DashboardPasienRiwayatController extends Controller
         $imageData = base64_encode(File::get($path));
         $imageSrc = 'data:image/png;base64,' . $imageData;  // Format base64
         // Load view untuk PDF
-        $pdf = PDF::loadView('pdf.riwayat', [
+        $pdf = PDF::loadView('pdf.diagnosa', [
             'image' => $imageSrc,
             'pemeriksaan' => $pemeriksaan,
+            'waktu' => $waktu,
+            'tanggal' => $tanggal,
             'riwayatPenyakit' => $riwayatPenyakit
         ]);
 
         // Tampilkan PDF di browser
-        return $pdf->stream('laporan-riwayat.pdf');
+        $fileName = 'laporan-diagnosa-' . str_replace(' ', '_', strtolower($pemeriksaan->pasien->nama)) . '.pdf';
+        return $pdf->stream($fileName);
 
         // // Download file PDF
-        // return $pdf->download('laporan-user.pdf');
+        // return $pdf->download('laporan-diagnosa.pdf');
     }
 }

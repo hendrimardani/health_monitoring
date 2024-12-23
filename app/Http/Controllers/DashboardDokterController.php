@@ -25,7 +25,7 @@ class DashboardDokterController extends Controller
         //                             ->where('id_dokter', $user)
         //                             ->get();
         $pasiens = RiwayatPenyakit::with('pemeriksaan')
-                ->paginate(10); 
+                ->paginate(5); 
         // Mendapatkan data kategori yang unik
         $namaObats = DB::table('obats')
                     ->selectRaw('MIN(id) as id, nama_obat') // Pilih id terkecil untuk setiap nama_obat
