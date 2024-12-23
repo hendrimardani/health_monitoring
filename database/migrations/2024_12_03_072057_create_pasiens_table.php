@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('pasiens', function (Blueprint $table) {
             $table->unsignedBigInteger('id_pasien')->primary(); // Foreign key diubah menjadi primary key
             $table->string('nama');
-            $table->string('nik')->nullable();
+            $table->string('nik')->unique()->nullable();
             $table->string('no_telepon')->nullable();
             $table->string('usia')->nullable();
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->nullable();
-            $table->string('alamat')->nullable();
+            $table->string('alamat', 500)->nullable();
             $table->timestamps();
             
             // Relasi tabel

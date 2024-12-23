@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('dokter_id');
             $table->string('frekuensi');
             $table->string('durasi_hari');
-            $table->string('cara_penggunaan');
+            $table->text('cara_penggunaan');
             $table->timestamps();
 
             // pada references('id_obat') adalah primary key dari entitas obats

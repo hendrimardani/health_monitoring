@@ -149,6 +149,10 @@
                         <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->suhu_badan }} °C</td>
                     </tr>
                     <tr>
+                        <td>Berat Badan </td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->berat_badan }} kg</td>
+                    </tr>
+                    <tr>
                         <td>Tekanan Darah Sistol </td>
                         <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->vital_sign->tekanan_darah_sistol }} mmHg</td>
                     </tr>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('pasien_id'); // Foreign key
             $table->unsignedBigInteger('pemeriksaan_id')->nullable(); // Foreign key
-            $table->string('keluhan')->nullable();
+            $table->text('keluhan')->nullable();
             $table->enum('status', ['menunggu', 'selesai'])->default('menunggu');
             $table->timestamps();
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('vital_sign_id'); 
             $table->unsignedBigInteger('dokter_id');
             $table->unsignedBigInteger('resep_id');
-            $table->string('catatan');
+            $table->text('catatan');
             $table->timestamp('waktu_pemeriksaan');
             $table->timestamps();
             
