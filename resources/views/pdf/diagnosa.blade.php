@@ -17,8 +17,7 @@
 
         .dashed {
             border-bottom: 1px dashed black;
-            margin-top: 230px;
-            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
         .kop-surat img {
@@ -48,6 +47,12 @@
         .container-table table {
             float: left;
         }
+
+        /* Kode ini memastikan bahwa elemen dengan kelas clearfix akan memulai posisi barunya setelah semua elemen dengan float selesai,
+        menghindari konflik layout atau tumpang tindih antara elemen yang melayang.  */
+        .container-table .clearfix {
+            clear: both;
+        }
     </style>
 </head>
 
@@ -65,7 +70,6 @@
         <!-- Kontak -->
         <p>Telepon: (021) 12345678 | Email: support@ihealth.com | Website: www.iHealth.com</p>
     </div>
-
     <div class="content">
         <h3>Identitas Pasien</h3>
         <div class="container-table">
@@ -87,16 +91,6 @@
                         <td>Usia </td>
                         <td>&nbsp;&nbsp;:&nbsp;{{ $pemeriksaan->pasien->usia }} tahun</td>
                     </tr>
-                    <tr>
-                        <td>Alamat </td>
-                        <td>&nbsp;&nbsp;:&nbsp;{{ $pemeriksaan->pasien->alamat }}</td>
-                    </tr>
-                    <tr>
-                        <td>Keluhan </td>
-                        <td
-                            style="max-width: 190px; word-wrap: break-word; word-break: break-word; white-space: normal;">
-                            &nbsp;&nbsp;:&nbsp;{{ $riwayatPenyakit->keluhan }}</td>
-                    </tr>
                 </tbody>
             </table>
             <table style="margin-left: 140px; margin-top: -60px;">
@@ -116,8 +110,24 @@
                     </tr>
                 </tbody>
             </table>
+            {{-- Fungsi clearfix untuk menghilangkan efek float: left, supaya teks tidak meneruskan ke kiri --}}
+            <div class="clearfix"></div>
         </div>
-        <div class="dashed"></div>
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <td>Alamat </td>
+                <td style="padding-left: 50px;">:&nbsp;{{ $pemeriksaan->pasien->alamat }}</td>
+            </tr>
+            <tr>
+                <td>Keluhan </td>
+                <td style="padding-left: 50px;">:&nbsp;{{ $riwayatPenyakit->keluhan }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="dashed"></div>
+    <div class="content">
         <div class="container-table">
             <h3>Hasil Pemeriksaan</h3>
             <table>
@@ -164,10 +174,12 @@
                     </tr>
                 </tbody>
             </table>
+            {{-- Fungsi clearfix untuk menghilangkan efek float: left, supaya teks tidak meneruskan ke kiri --}}
+            <div class="clearfix"></div>
         </div>
     </div>
-    <div>
-        <table style="margin-top: 150px;">
+    <div class="content">
+        <table>
             <tbody>
                 <tr>
                     <td>Deskripsi</td>
@@ -185,8 +197,10 @@
                 </tr>
             </tbody>
         </table>
-        <div>
-            <table style="margin-top:10px;">
+    </div>
+    <div class="content">
+        <div class="container-table">
+            <table>
                 <tbody>
                     <tr>
                         <td>Nama Obat</td>
@@ -194,12 +208,17 @@
                     </tr>
                     <tr>
                         <td>Kategori Obat</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->kategori_obat->nama_kategori }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->kategori_obat->nama_kategori }}
+                        </td>
                     </tr>
                     <tr>
                         <td>Dosis Obat</td>
                         <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->dosis_tersedia }}</td>
                     </tr>
+                </tbody>
+            </table>
+            <table style="margin-left: 95px">
+                <tbody>
                     <tr>
                         <td>Unit Obat</td>
                         <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->unit }} unit</td>
@@ -212,18 +231,23 @@
                         <td>Durasi Hari</td>
                         <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->durasi_hari }} kali dalam sehari</td>
                     </tr>
-                    <tr>
-                        <td>Cara Penggunaan</td>
-                        <td style="word-wrap: break-word; max-width: 400px">&nbsp;&nbsp;:&nbsp;&nbsp;{{
-                            $pemeriksaan->resep->cara_penggunaan }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
+            <div class="clearfix"></div>
         </div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Cara Penggunaan</td>
+                    {{-- menggunakan nl2br() untuk mengganti newline menjadi <br> agar formatnya tetap rapi: --}}
+                    <td style="padding-left: 20px;">:&nbsp;{!! nl2br(e($pemeriksaan->resep->cara_penggunaan)) !!}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div style="margin-top: 40px; margin-left: 2px;">
+    <div class="content" style="margin-left: 2px;">
         <span>Hasil pemeriksaan menunjukkan bahwa <strong>{{ $pemeriksaan->diagnosa->rekomendasi }}<strong></span>
+    </div>
     </div>
 </body>
 

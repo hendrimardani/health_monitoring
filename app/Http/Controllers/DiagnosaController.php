@@ -85,6 +85,9 @@ class DiagnosaController extends Controller
         $diagnosa = Diagnosa::create($validatedDiagnosa);
 
         $validatedResep['dokter_id'] = $userId;
+        // Formatkan komentar agar disimpan dengan tanda newline
+        // Format \r\n berarti ketika kita menekan enter pada text area akan dihasilkan formati ini, dan akan diganti dengan newline
+        $validatedResep['cara_penggunaan'] = str_replace("\r\n", "\n", $validatedResep['cara_penggunaan']);
         $resep = Resep::create($validatedResep);
 
         $validatedPemeriksaan['pasien_id'] = $validatedPasien['id_pasien']; // Gunakan ID pasien yang valid
