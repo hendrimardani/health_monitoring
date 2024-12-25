@@ -217,7 +217,7 @@
                     </tr>
                     <tr>
                         <td>Dosis Obat</td>
-                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->dosis_tersedia }}</td>
+                        <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $pemeriksaan->resep->obat->dosis_tersedia }} mg</td>
                     </tr>
                 </tbody>
             </table>

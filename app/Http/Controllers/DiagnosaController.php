@@ -36,13 +36,6 @@ class DiagnosaController extends Controller
         try {
             $validatedPasien = $request->validate([
                 'id_pasien' => 'required|integer|exists:users,id', // Pastikan ada di tabel users
-                // 'nama' => 'required|string|max:255',               // Maksimal 255 karakter
-                // 'nik' => 'required|string|digits:16|unique:pasiens,nik',   // NIK harus 16 digit dan unik
-                // 'no_telepon' => 'required|string|min:11|max:12', // Format no telepon
-                // 'usia' => 'required|integer|min:0|max:120',        // Usia harus masuk akal
-                // 'alamat' => 'required|string|max:500',             // Maksimal 500 karakter
-                // 'jenis_kelamin' => 'required|in:laki-laki,perempuan', // Pilihan terbatas
-                // 'status' => 'required|string|in:menunggu,selesai',  // Contoh status, sesuaikan dengan aturan Anda
             ]);
             $validatedVitalSign = $request->validate([
                 'saturasi_oksigen' => 'required|numeric|min:0|max:200', // Angka, antara 0-200
