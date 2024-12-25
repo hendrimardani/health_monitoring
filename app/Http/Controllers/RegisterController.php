@@ -31,7 +31,7 @@ class RegisterController extends Controller
         Pasien::create($validatedPasien);
 
         $validatedRiwayatPenyakit = [
-            'pasien_id_pasien' => $user->id
+            'pasien_id' => $user->id
         ];
         RiwayatPenyakit::create($validatedRiwayatPenyakit);
     

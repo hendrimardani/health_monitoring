@@ -212,7 +212,7 @@
 
 // Panggil fungsi saat halaman selesai dimuat
 window.onload = function () {
-    const pasienId = {{ $pasien->pasien_id_pasien }};
+    const pasienId = {{ $pasien->pasien_id }};
     dataFromJson(pasienId);
 };
 
