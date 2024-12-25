@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kategori_obats', function (Blueprint $table) {
             $table->id();
             $table->enum('nama_kategori', ['tablet', 'kapsul', 'cair']);
-            $table->string('deskripsi');
+            $table->string('deskripsi', 500);
             $table->timestamps();
         });
     }

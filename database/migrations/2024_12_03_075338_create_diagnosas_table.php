@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('dokter_id'); // Foreign Key
             $table->string('kode_icd');
-            $table->string('deskripsi');
-            $table->string('rekomendasi');
+            $table->string('deskripsi', 500);
+            $table->string('rekomendasi', 500);
             $table->timestamps();
             
             // Relasi tabel

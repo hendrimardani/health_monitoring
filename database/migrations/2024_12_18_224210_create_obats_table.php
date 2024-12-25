@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('farmasi_id');
             $table->unsignedBigInteger('kategori_id');
             $table->string('nama_obat');
-            $table->string('dosis_tersedia');
-            $table->string('unit');
+            $table->integer('dosis_tersedia');
+            $table->integer('unit');
             $table->timestamps();
 
             // Relasi tabel

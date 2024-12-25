@@ -94,144 +94,144 @@ class DatabaseSeeder extends Seeder
             'farmasi_id' => 1,
             'kategori_id' => 1,
             'nama_obat' => 'paracetamol',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '5'
+            'dosis_tersedia' => 100,
+            'unit' => 5
         ]);
 
         Obat::create([
             'farmasi_id' => 1,
             'kategori_id' => 1,
             'nama_obat' => 'paracetamol',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '15'
+            'dosis_tersedia' => 200,
+            'unit' => 15
         ]);
 
         Obat::create([
             'farmasi_id' => 1,
             'kategori_id' => 2,
             'nama_obat' => 'paracetamol',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '10'
+            'dosis_tersedia' => 100,
+            'unit' => 10
         ]);
 
         Obat::create([
             'farmasi_id' => 1,
             'kategori_id' => 2,
             'nama_obat' => 'paracetamol',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '15'
+            'dosis_tersedia' => 200,
+            'unit' => 15
         ]);
 
         Obat::create([
             'farmasi_id' => 1,
             'kategori_id' => 3,
             'nama_obat' => 'paracetamol',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '10'
+            'dosis_tersedia' => 100,
+            'unit' => 10
         ]);
 
         Obat::create([
             'farmasi_id' => 1,
             'kategori_id' => 3,
             'nama_obat' => 'paracetamol',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '15'
+            'dosis_tersedia' => 200,
+            'unit' => 15
         ]);
 
         Obat::create([
             'farmasi_id' => 2,
             'kategori_id' => 1,
             'nama_obat' => 'antibiotik',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '5'
+            'dosis_tersedia' => 100,
+            'unit' => 5
         ]);
 
         Obat::create([
             'farmasi_id' => 2,
             'kategori_id' => 1,
             'nama_obat' => 'antibiotik',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '15'
+            'dosis_tersedia' => 200,
+            'unit' => 15
         ]);
 
         Obat::create([
             'farmasi_id' => 2,
             'kategori_id' => 2,
             'nama_obat' => 'antibiotik',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '5'
+            'dosis_tersedia' => 100,
+            'unit' => 5       
         ]);
 
         Obat::create([
             'farmasi_id' => 2,
             'kategori_id' => 2,
             'nama_obat' => 'antibiotik',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '35'
+            'dosis_tersedia' => 200,
+            'unit' => 35
         ]);
 
         Obat::create([
             'farmasi_id' => 2,
             'kategori_id' => 3,
             'nama_obat' => 'antibiotik',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '25'
+            'dosis_tersedia' => 100,
+            'unit' => 25
         ]);
 
         Obat::create([
             'farmasi_id' => 2,
             'kategori_id' => 3,
             'nama_obat' => 'antibiotik',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '5'
+            'dosis_tersedia' => 200,
+            'unit' => 5        
+            ]);
+
+        Obat::create([
+            'farmasi_id' => 3,
+            'kategori_id' => 1,
+            'nama_obat' => 'obat lambung',
+            'dosis_tersedia' => 100,
+            'unit' => 45
         ]);
 
         Obat::create([
             'farmasi_id' => 3,
             'kategori_id' => 1,
             'nama_obat' => 'obat lambung',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '45'
-        ]);
-
-        Obat::create([
-            'farmasi_id' => 3,
-            'kategori_id' => 1,
-            'nama_obat' => 'obat lambung',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '15'
+            'dosis_tersedia' => 200,
+            'unit' => 15
         ]);
 
         Obat::create([
             'farmasi_id' => 3,
             'kategori_id' => 2,
             'nama_obat' => 'obat lambung',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '15'
+            'dosis_tersedia' => 100,
+            'unit' => 15
         ]);
 
         Obat::create([
             'farmasi_id' => 3,
             'kategori_id' => 2,
             'nama_obat' => 'obat lambung',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '15'
+            'dosis_tersedia' => 200,
+            'unit' => 15
         ]);
 
         Obat::create([
             'farmasi_id' => 3,
             'kategori_id' => 3,
             'nama_obat' => 'obat lambung',
-            'dosis_tersedia' => '100 mg',
-            'unit' => '15'
+            'dosis_tersedia' => 100,
+            'unit' => 15
         ]);
 
         Obat::create([
             'farmasi_id' => 3,
             'kategori_id' => 3,
             'nama_obat' => 'obat lambung',
-            'dosis_tersedia' => '200 mg',
-            'unit' => '35'
+            'dosis_tersedia' => 200,
+            'unit' => 35
         ]);
         
         Dokter::create([
@@ -284,9 +284,9 @@ class DatabaseSeeder extends Seeder
         Pasien::create([
             'id_pasien' => 1,
             'nama' => 'Erik Mardani',
-            'nik' => '3290182948291',
+            'nik' => '3278062910291020',
             'no_telepon' => '08290291028192',
-            'usia' => '20',
+            'usia' => 20,
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jalan Cagak',
         ]);
@@ -294,9 +294,9 @@ class DatabaseSeeder extends Seeder
         Pasien::create([
             'id_pasien' => 3,
             'nama' => 'Doddy Saputra',
-            'nik' => '32780601902910298',
+            'nik' => '3278062910029381',
             'no_telepon' => '088292819228',
-            'usia' => '40',
+            'usia' => 40,
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jalan Gunung Putri',
         ]);

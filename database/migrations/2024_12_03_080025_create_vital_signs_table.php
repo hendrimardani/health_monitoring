@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('vital_signs', function (Blueprint $table) {
             $table->id();
-            $table->string('saturasi_oksigen');
-            $table->string('detak_jantung');
-            $table->string('suhu_badan');
-            $table->string('berat_badan');
-            $table->string('tekanan_darah_sistol');
-            $table->string('tekanan_darah_diastol');
+            $table->integer('saturasi_oksigen');
+            $table->integer('detak_jantung');
+            $table->float('suhu_badan', 5, 2); // 5 total digit, 2 desimal
+            $table->float('berat_badan', 5, 2); // 5 total digit, 2 desimal
+            $table->integer('tekanan_darah_sistol');
+            $table->integer('tekanan_darah_diastol');
             $table->timestamp('waktu_pengukuran');
             $table->timestamps();
         });
