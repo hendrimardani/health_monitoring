@@ -45,12 +45,12 @@ class DiagnosaController extends Controller
                 // 'status' => 'required|string|in:menunggu,selesai',  // Contoh status, sesuaikan dengan aturan Anda
             ]);
             $validatedVitalSign = $request->validate([
-                'saturasi_oksigen' => 'required|integer|min:0|max:200', // Angka, antara 0-200
-                'detak_jantung' => 'required|integer|min:30|max:200',   // Detak jantung wajar
+                'saturasi_oksigen' => 'required|numeric|min:0|max:200', // Angka, antara 0-200
+                'detak_jantung' => 'required|numeric|min:30|max:200',   // Detak jantung wajar
                 'suhu_badan' => 'required|numeric|min:30|max:45',       // Suhu tubuh wajar dalam °C
                 'berat_badan' => 'required|numeric|min:1|max:200',      // Berat badan wajar dalam kg
-                'tekanan_darah_sistol' => 'required|integer|min:50|max:250', // Sistol wajar
-                'tekanan_darah_diastol' => 'required|integer|min:30|max:150', // Diastol wajar
+                'tekanan_darah_sistol' => 'required|numeric|min:50|max:250', // Sistol wajar
+                'tekanan_darah_diastol' => 'required|numeric|min:30|max:150', // Diastol wajar
                 'waktu_pengukuran' => 'required|date_format:Y-m-d\TH:i:s', // Format waktu 2024-12-25T21:35:36 Huruf T yang digunakan sebagai pemisah antara tanggal dan waktu
             ]);
             $validatedDiagnosa = $request->validate([
