@@ -33,44 +33,43 @@ class DiagnosaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         try {
             $validatedPasien = $request->validate([
-                'id_pasien' => 'required|integer|exists:pasiens,id_pasien', // Pastikan ada di tabel pasien
-                'nama' => 'required|string|max:255',               // Maksimal 255 karakter
-                'nik' => 'required|integer|digits:16|unique:pasiens,nik',   // NIK harus 16 digit dan unik
-                'no_telepon' => 'required|string|min:10|max:12', // Format no telepon
-                'usia' => 'required|integer|min:0|max:120',        // Usia harus masuk akal
-                'alamat' => 'required|string|max:500',             // Maksimal 500 karakter
-                'jenis_kelamin' => 'required|in:laki-laki,perempuan', // Pilihan terbatas
-                'status' => 'required|string|in:menunggu,selesai',  // Contoh status, sesuaikan dengan aturan Anda
+                'id_pasien' => 'required|integer|exists:users,id', // Pastikan ada di tabel users
+                // 'nama' => 'required|string|max:255',               // Maksimal 255 karakter
+                // 'nik' => 'required|string|digits:16|unique:pasiens,nik',   // NIK harus 16 digit dan unik
+                // 'no_telepon' => 'required|string|min:11|max:12', // Format no telepon
+                // 'usia' => 'required|integer|min:0|max:120',        // Usia harus masuk akal
+                // 'alamat' => 'required|string|max:500',             // Maksimal 500 karakter
+                // 'jenis_kelamin' => 'required|in:laki-laki,perempuan', // Pilihan terbatas
+                // 'status' => 'required|string|in:menunggu,selesai',  // Contoh status, sesuaikan dengan aturan Anda
             ]);
             $validatedVitalSign = $request->validate([
-                'saturasi_oksigen' => 'required|numeric|min:0|max:100', // Angka, antara 0-100
+                'saturasi_oksigen' => 'required|integer|min:0|max:200', // Angka, antara 0-200
                 'detak_jantung' => 'required|integer|min:30|max:200',   // Detak jantung wajar
                 'suhu_badan' => 'required|numeric|min:30|max:45',       // Suhu tubuh wajar dalam °C
                 'berat_badan' => 'required|numeric|min:1|max:200',      // Berat badan wajar dalam kg
                 'tekanan_darah_sistol' => 'required|integer|min:50|max:250', // Sistol wajar
                 'tekanan_darah_diastol' => 'required|integer|min:30|max:150', // Diastol wajar
-                'waktu_pengukuran' => 'required|date_format:Y-m-d H:i:s', // Format waktu
+                'waktu_pengukuran' => 'required|date_format:Y-m-d\TH:i:s', // Format waktu 2024-12-25T21:35:36 Huruf T yang digunakan sebagai pemisah antara tanggal dan waktu
             ]);
             $validatedDiagnosa = $request->validate([
-                'kode_icd' => 'required|string|max:10|unique:diagnosis,kode_icd', // Maksimal 10 karakter, unik di tabel diagnosis
+                'kode_icd' => 'required|string|max:10|unique:diagnosas,kode_icd', // Maksimal 10 karakter, unik di tabel diagnosas
                 'deskripsi' => 'required|string|max:500',                        // Maksimal 500 karakter
                 'rekomendasi' => 'required|string|max:2000',                     // Maksimal 2000 karakter
             ]);
             $validatedResep = $request->validate([
-                'obat_id' => 'required|integer|exists:obat,id',  // ID obat harus valid dan ada di tabel obat
-                'frekuensi' => 'required|integer|min:1|max:10', // Frekuensi (misalnya jumlah dosis per hari, 1-10)
-                'durasi_hari' => 'required|integer|min:1|max:365', // Durasi dalam hari (1-365 hari)
+                'obat_id' => 'required|integer|exists:obats,id',  // ID obat harus valid dan ada di tabel obats
+                'frekuensi' => 'required|string', // Frekuensi (misalnya sebelum makan dan setelah makan)
+                'durasi_hari' => 'required|integer|min:1|max:5', // Durasi dalam hari 1 s/d 5
                 'cara_penggunaan' => 'required|string|max:2000',  // Maksimal 2000 karakter                
             ]);
             $validatedPemeriksaan = $request->validate([
                 'catatan' => 'required|string|max:1000',              // Maksimal 1000 karakter
-                'waktu_pemeriksaan' => 'required|date_format:Y-m-d H:i:s', // Format tanggal dan waktu yang valid
+                'waktu_pemeriksaan' => 'required|date_format:Y-m-d\TH:i:s', // Format waktu 2024-12-25T21:35:36 Huruf T yang digunakan sebagai pemisah antara tanggal dan waktu
             ]);
             $validatedRiwayatPenyakit = $request->validate([
-                'id' => 'required|integer|exists:riwayat_penyakits,id', // ID harus valid dan ada di tabel riwayat_penyakits
+                'id' => 'required|integer|exists:riwayat_penyakits,id', // Pastikan ada di tabel riwayat_penyakits
                 'keluhan' => 'required|string|max:2000',               // Maksimal 1000 karakter
                 'status' => 'required|string|in:menunggu,selesai',      // Hanya menerima nilai 'menunggu' atau 'selesai'
             ]);
