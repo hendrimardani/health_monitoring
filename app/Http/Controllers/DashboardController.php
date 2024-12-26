@@ -2,19 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Pasien;
+use App\Models\Pemeriksaan;
+use App\Models\RiwayatPenyakit;
+use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
     public function pasien() {
         // user saat ini login
-        $pasien = Pasien::where('id_pasien', auth()->id())->first();
-        $pasiens = Pasien::with(['user'])->get();
+        $idPasien = auth()->id();
+
+        $pasien = Pasien::where('id_pasien', $idPasien)
+                        ->first();
+        $pasiens = Pasien::with(['user'])
+                        ->get();
+        $pemeriksaanLatest = Pemeriksaan::where('pasien_id', $idPasien)
+                                        ->orderBy('created_at', 'desc')
+                                        ->first();
+        $jumlahKeluhan = RiwayatPenyakit::where('pasien_id', $idPasien)
+                                        ->count();
+        $jumlahKeluhanMenunggu = RiwayatPenyakit::where('pasien_id', $idPasien)
+                                        ->where('status', 'menunggu')
+                                        ->count();
+        $jumlahKeluhanSelesai = RiwayatPenyakit::where('pasien_id', $idPasien)
+                                        ->where('status', 'selesai')
+                                        ->count();
+        // Misalnya $pemeriksaan->created_at adalah timestamp
+        $timestampLatest = $pemeriksaanLatest->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
+
+        // Memisahkan tanggal
+        $tanggalLatest = Carbon::parse($timestampLatest)->translatedFormat('d F Y'); // Contoh: '21 Desember 2024' karena menggunakan metode transslatedFormat()
+        
         return view('dashboard.pasien.index', [
             'title' => 'Dashboard Pasien',
             'pasien' => $pasien,
-            'pasiens' => $pasiens
+            'pasiens' => $pasiens,
+            'tanggalLatest' => $tanggalLatest,
+            'jumlahKeluhan' => $jumlahKeluhan,
+            'jumlahKeluhanMenunggu' => $jumlahKeluhanMenunggu,
+            'jumlahKeluhanSelesai' => $jumlahKeluhanSelesai,
         ]);
     }
 

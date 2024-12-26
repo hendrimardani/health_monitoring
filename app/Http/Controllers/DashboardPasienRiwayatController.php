@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\Pemeriksaan;
-use App\Models\Resep;
 use App\Models\RiwayatPenyakit;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
@@ -144,12 +142,6 @@ class DashboardPasienRiwayatController extends Controller
         Log::info('pemeriksaanLatest : ', ['pemeriksaanLatest' => $pemeriksaanLatest]);
         Log::info('pemeriksaanOld : ', ['pemeriksaanOld' => $pemeriksaanOld]);
 
-        // Memisahkan tanggal dan waktu
-        foreach ($riwayatPenyakits as $riwayatPenyakit) {
-            $riwayatPenyakit->waktu = \Carbon\Carbon::parse($riwayatPenyakit->waktu_pengukuran)->toTimeString();
-            $riwayatPenyakit->tanggal = \Carbon\Carbon::parse($riwayatPenyakit->waktu_pengukuran)->toDateString();
-        }
-
         // Misalnya $pemeriksaan->created_at adalah timestamp
         $timestampLatest = $pemeriksaanLatest->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
         $timestampOld = $pemeriksaanOld->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
@@ -162,8 +154,6 @@ class DashboardPasienRiwayatController extends Controller
         $pdf = PDF::loadView('pdf.riwayat', [
             'namaPasien' => $namaPasien->pasien,
             'riwayatPenyakits' => $riwayatPenyakits,
-            'tanggal' => $riwayatPenyakit->tanggal,
-            'waktu' => $riwayatPenyakit->waktu,
             'pemeriksaans' => $pemeriksaans,
             'tanggalLatest' => $tanggalLatest,
             'tanggalOld' => $tanggalOld

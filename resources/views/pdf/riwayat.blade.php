@@ -1,3 +1,7 @@
+@php
+use Carbon\Carbon;
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +87,7 @@
                 <tr>
                     <th>No</th>
                     <th>Keluhan</th>
-                    <th>Waktu Pemeriksaan</th>
+                    <th>Jam Pemeriksaan</th>
                     <th>Tanggal Pemeriksaan</th>
                     <th>Dokter Pemeriksa</th>
                     <th>No Telepon Dokter</th>
@@ -97,8 +101,12 @@
                     <td style="max-width: 300px; word-wrap: break-word; word-break: break-word; white-space: normal;">
                         {{
                         $riwayatPenyakit->keluhan }}</td>
-                    <td>{{ $riwayatPenyakit->waktu }}</td>
-                    <td>{{ $riwayatPenyakit->tanggal }}</td>
+                    {{-- Konversi ke Jam --}}
+                    <td>{{ Carbon::parse($riwayatPenyakit->pemeriksaan->vital_sign->waktu_pengukuran)->toTimeString() }}
+                    </td>
+                    {{-- Konversi ke Tanggal --}}
+                    <td>{{ Carbon::parse($riwayatPenyakit->pemeriksaan->vital_sign->waktu_pengukuran)->toDateString() }}
+                    </td>
                     <td>{{ $riwayatPenyakit->pemeriksaan->dokter->nama_dokter }}</td>
                     <td>{{ $riwayatPenyakit->pemeriksaan->dokter->no_telepon_dokter }}</td>
                     <td>{{ $riwayatPenyakit->status }}</td>

@@ -169,7 +169,7 @@
                         <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $riwayatPenyakit->status }}</td>
                     </tr>
                     <tr>
-                        <td>Waktu Pengukuran</td>
+                        <td>Jam Pengukuran</td>
                         <td>&nbsp;&nbsp;:&nbsp;&nbsp;{{ $waktu }}</td>
                     </tr>
                     <tr>
