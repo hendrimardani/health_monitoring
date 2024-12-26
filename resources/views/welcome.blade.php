@@ -39,12 +39,13 @@
   <div class="relative">
     <img src="{{ asset('assets/tanya-1.png') }}" alt="" class="w-[650px] -mt-[850px] mx-auto">
   </div>
-  <div class="relative ml-[100px] -mt-[700px]">
+  <div class="relative ml-[100px] -mt-[650px]">
     <h1 class="text-6xl text-white w-[400px] font-bold">Kesehatan Anda adalah prioritas kami.</h1>
   </div>
 
-  <div class="relative ml-[1300px] mt-[120px]">
-    <h1 class="text-6xl text-white w-[600px] font-bold">Bersiaplah untuk memonitor kesehatan Anda dengan cara yang lebih
+  <div class="relative ml-[1400px] mt-[120px]">
+    <h1 class="text-6xl text-white w-[600px] font-bold">Bersiaplah untuk memonitor kesehatan Anda dengan cara
+      yang lebih
       mudah, cepat, dan terpercaya. iHealth hadir untuk Anda.</h1>
   </div>
   <div class="relative -mt-[50px] text-center">
