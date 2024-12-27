@@ -30,7 +30,7 @@
 </div>
 @endif
 
-<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="px-6 py-3">
@@ -61,7 +61,9 @@
     </thead>
     <tbody>
         @foreach ($pasiens as $pasien)
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <tr
+            class="{{ $loop->iteration % 2 == 0 ? 'bg-gray-50' : 'bg-white' }} border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100">
+
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{ $loop->iteration }}
             </th>
@@ -117,11 +119,11 @@
                     </div>
                     <button data-modal-target="show-detail-modal" data-modal-toggle="show-detail-modal"
                         onclick="showPemeriksaan({{ $pasien->pemeriksaan->id }}, {{ $pasien->pemeriksaan->pasien_id }}, {{ $pasien->pemeriksaan->dokter_id }})"
-                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
+                        class="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Lihat</button>
                 </div>
                 @else
                 <div
-                    class="group inline-flex items-center gap-1 border-orange-500 border-2 p-2 rounded-lg hover:bg-orange-500 hover:text-white transition duration-500">
+                    class="group inline-flex items-center gap-1 border-orange-500 border-2 p-2 rounded-lg hover:bg-orange-500 hover:text-white transition duration-700">
                     {{-- Fungsi dari '@json($pasien)' untuk mengirimkan data ke modal --}}
                     <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                         data-pasien='@json($pasien)' class="flex items-center gap-1">
@@ -253,7 +255,7 @@
                         <!-- Tombol Lanjut -->
                         <div class="col-span-2 text-center">
                             <button type="button" id="next-step-1"
-                                class="group w-full text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                class="group w-full text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-700 border border-blue-500">
                                 Lanjut
                                 <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -327,7 +329,7 @@
                             <!-- Tombol Kembali -->
                             <div class="mt-4">
                                 <button type="button" id="back-to-step-1"
-                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-700 border border-blue-500">
                                     <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                         viewBox="0 0 24 24">
@@ -340,7 +342,7 @@
                             <!-- Tombol Lanjut -->
                             <div class="mt-4">
                                 <button type="button" id="next-step-2"
-                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-700 border border-blue-500">
                                     Lanjut
                                     <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -418,7 +420,7 @@
                             <!-- Tombol Kembali -->
                             <div class="mt-4">
                                 <button type="button" id="back-to-step-2"
-                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    class="group w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-between p-[10px] transition ease-in-out duration-700 border border-blue-500">
                                     <svg class="group-hover:text-white w-6 h-6 text-blue-500" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                         viewBox="0 0 24 24">
@@ -431,7 +433,7 @@
                             <!-- Tombol Diagnosa -->
                             <div class="col-span-2 text-center mt-4">
                                 <button type="submit" id="diagnosa-submit"
-                                    class="w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
+                                    class="w-[150px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-700 border border-blue-500">
                                     Diagnosa
                                 </button>
                             </div>

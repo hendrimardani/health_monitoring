@@ -5,15 +5,15 @@
 {{-- @if ($pasien->status === 'selesai') --}}
 {{-- Modal Toggled --}}
 <div class="flex flex-wrap justify-start gap-4">
-    <div>
-        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-            class="w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
+    <div
+        class="shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] rounded-xl group text-blue-500 cta-btn font-semibold mt-5  hover:bg-blue-600 hover:text-white flex flex-wrap justify-center p-[10px] transition ease-in-out duration-700">
+        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="">
             <i class="fas fa-plus mr-[10px]"></i>Tambah Keluhan
         </button>
     </div>
-    <div>
-        <a href="{{ route('export-riwayat-pdf') }}"
-            class="group w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500">
+    <div
+        class="group w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] hover:bg-blue-600 hover:text-white transition ease-in-out duration-700">
+        <a href="{{ route('export-riwayat-pdf') }}" class="flex flex-wrap justify-center p-[10px]">
             <svg class="w-6 h-6 text-blue-500 group-hover:text-white mr-2" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
@@ -220,7 +220,7 @@
                     </div>
                     @enderror
                     <button type="submit"
-                        class="mt-9 px-[132px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 transition ease-in-out duration-500">Tambah
+                        class="mt-9 px-[132px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 transition ease-in-out duration-700">Tambah
                         Keluhan</button>
                 </form>
 
@@ -269,7 +269,8 @@
             </thead>
             <tbody>
                 @foreach ($pasiens as $pasien)
-                <tr class="border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100">
+                <tr
+                    class="{{ $loop->iteration % 2 == 0 ? 'bg-gray-50' : 'bg-white' }} border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $pasien->pasien->nama }}
                     </th>
@@ -292,9 +293,10 @@
                                     <span class="text-green-500">{{ $pasien->status }}</span>
                                 </div>
                             </div>
-                            <div>
+                            <div
+                                class="group w-[190px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white border border-blue-500 rounded-md justify-center p-[10px] transition ease-in-out duration-700 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)]">
                                 <a href="{{ route('export-diagnosa-pdf',  $pasien->pemeriksaan_id) }}"
-                                    class="group w-[190px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white flex items-center border border-blue-500 rounded-md justify-center p-[10px] transition ease-in-out duration-500">
+                                    class="flex flex-wrap justify-center ">
                                     <svg class="w-6 h-6 text-blue-500 group-hover:text-white mr-2" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                         viewBox="0 0 24 24">

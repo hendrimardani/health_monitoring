@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardDokterController;
 use App\Http\Controllers\DashboardPasienRiwayatController;
 use App\Http\Controllers\DashboardPasienAkunController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\RegisterController;
@@ -55,10 +56,12 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::prefix('dashboard')->middleware(['auth', 'role:pasien'])->group(function() {
     Route::get('/pasien', [DashboardController::class, 'pasien'])->name('dashboard.pasien');
     Route::resource('/pasien/riwayat', DashboardPasienRiwayatController::class);
-    Route::get('/export-riwayat-pdf', [DashboardPasienRiwayatController::class, 'exportRiwayatPDF'])
+    Route::get('/export-riwayat-pdf', [ExportController::class, 'exportRiwayatPDF'])
         ->name('export-riwayat-pdf');
-    Route::get('/export-diagnosa-pdf/{idPemeriksaan}', [DashboardPasienRiwayatController::class, 'exportDiagnosaPDF'])
+    Route::get('/export-diagnosa-pdf/{idPemeriksaan}', [ExportController::class, 'exportDiagnosaPDF'])
         ->name('export-diagnosa-pdf');
+    Route::get('/export-antrian-pdf', [ExportController::class, 'exportAntrianPDF'])
+        ->name('export-antrian-pdf');
     Route::resource('/pasien/akun', DashboardPasienAkunController::class);
 });
 

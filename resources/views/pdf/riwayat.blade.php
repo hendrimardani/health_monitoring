@@ -102,10 +102,12 @@ use Carbon\Carbon;
                         {{
                         $riwayatPenyakit->keluhan }}</td>
                     {{-- Konversi ke Jam --}}
-                    <td>{{ Carbon::parse($riwayatPenyakit->pemeriksaan->vital_sign->waktu_pengukuran)->toTimeString() }}
+                    <td>{{
+                        Carbon::parse($riwayatPenyakit->pemeriksaan->vital_sign->waktu_pengukuran)->toTimeString() }}
                     </td>
                     {{-- Konversi ke Tanggal --}}
-                    <td>{{ Carbon::parse($riwayatPenyakit->pemeriksaan->vital_sign->waktu_pengukuran)->toDateString() }}
+                    <td>{{
+                        Carbon::parse($riwayatPenyakit->pemeriksaan->vital_sign->waktu_pengukuran)->toDateString() }}
                     </td>
                     <td>{{ $riwayatPenyakit->pemeriksaan->dokter->nama_dokter }}</td>
                     <td>{{ $riwayatPenyakit->pemeriksaan->dokter->no_telepon_dokter }}</td>
