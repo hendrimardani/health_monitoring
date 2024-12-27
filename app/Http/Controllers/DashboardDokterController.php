@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Diagnosa;
-use App\Models\Obat;
-use App\Models\Pasien;
 use App\Models\Pemeriksaan;
 use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
@@ -25,7 +22,7 @@ class DashboardDokterController extends Controller
         //                             ->where('id_dokter', $user)
         //                             ->get();
         $pasiens = RiwayatPenyakit::with('pemeriksaan')
-                ->paginate(5); 
+                ->paginate(9); 
         // Mendapatkan data kategori yang unik
         $namaObats = DB::table('obats')
                     ->selectRaw('MIN(id) as id, nama_obat') // Pilih id terkecil untuk setiap nama_obat
