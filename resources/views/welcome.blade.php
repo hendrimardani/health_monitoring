@@ -43,7 +43,7 @@
     <h1 class="text-6xl text-white w-[400px] font-bold">Kesehatan Anda adalah prioritas kami.</h1>
   </div>
 
-  <div class="relative ml-[1400px] mt-[100px]">
+  <div class="relative ml-[1300px] mt-[100px]">
     <h1 class="text-6xl text-white w-[600px] font-bold">Bersiaplah untuk memonitor kesehatan Anda dengan cara
       yang lebih
       mudah, cepat, dan terpercaya. iHealth hadir untuk Anda.</h1>
