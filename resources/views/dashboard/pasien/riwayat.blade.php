@@ -294,9 +294,9 @@
                                 </div>
                             </div>
                             <div
-                                class="group w-[190px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white border border-blue-500 rounded-md justify-center p-[10px] transition ease-in-out duration-700 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)]">
+                                class="group w-[190px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white border border-blue-500 rounded-md justify-center p-[10px] transition ease-in-out duration-700">
                                 <a href="{{ route('export-diagnosa-pdf',  $pasien->pemeriksaan_id) }}"
-                                    class="flex flex-wrap justify-center ">
+                                    class="flex flex-wrap justify-center">
                                     <svg class="w-6 h-6 text-blue-500 group-hover:text-white mr-2" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                         viewBox="0 0 24 24">

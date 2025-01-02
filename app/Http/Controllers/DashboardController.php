@@ -28,6 +28,7 @@ class DashboardController extends Controller
         $jumlahKeluhanSelesai = RiwayatPenyakit::where('pasien_id', $idPasien)
                                         ->where('status', 'selesai')
                                         ->count();
+                                        
         // Misalnya $pemeriksaan->created_at adalah timestamp
         $timestampLatest = $pemeriksaanLatest->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
 
@@ -46,6 +47,9 @@ class DashboardController extends Controller
     }
 
     public function dokter() {
+        // user saat ini login
+        $idDokter = auth()->id();
+
         return view('dashboard.dokter.index', [
             'title' => 'Dashboard Dokter',
         ]);

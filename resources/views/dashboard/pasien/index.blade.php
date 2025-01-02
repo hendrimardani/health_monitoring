@@ -2,7 +2,9 @@
 
 @section('body')
 
-<h1 class="text-3xl text-black ">Hallo, {{ auth()->user()->nama }}</h1>
+<h1
+    class="inline-block p-5 text-3xl text-black rounded-xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] bg-white transition ease-in-out duration-700 mt-5 hover:text-white hover:bg-blue-800">
+    Hallo, {{ auth()->user()->nama }}, semoga harimu menyenangkan dan tetap sehat !</h1>
 <div class="container flex flex-wrap justify-start gap-12">
     <div
         class="max-w-[500px] max-w-h-[400px] mt-5 p-5 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-white rounded-xl group hover:bg-blue-800 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)] transition ease-in-out duration-700">

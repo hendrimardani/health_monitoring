@@ -43,12 +43,12 @@
     <h1 class="text-6xl text-white w-[400px] font-bold">Kesehatan Anda adalah prioritas kami.</h1>
   </div>
 
-  <div class="relative ml-[1400px] mt-[120px]">
+  <div class="relative ml-[1400px] mt-[100px]">
     <h1 class="text-6xl text-white w-[600px] font-bold">Bersiaplah untuk memonitor kesehatan Anda dengan cara
       yang lebih
       mudah, cepat, dan terpercaya. iHealth hadir untuk Anda.</h1>
   </div>
-  <div class="relative -mt-[50px] text-center">
+  <div class="relative -mt-[80px] text-center">
     <a href="/login"
       class="relative inline-flex items-center justify-center shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-blue-800 group-hover:from-blue-100 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 group-hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)]">
       <span
