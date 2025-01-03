@@ -12,9 +12,8 @@ use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\PasienController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome', [
@@ -22,10 +21,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/home', function() {
-    return view('home', [
-        'title' => 'Home'
-    ]);
+Route::middleware(['auth', 'role:pasien', 'revalidateBackHistory'])->group(function() {
+    Route::get('/home', [PasienController::class, 'home']);
+    Route::get('/tentang-kami', [PasienController::class, 'tentangKami']);
 });
 
 Route::get('/cek-pasien', function() {
@@ -40,20 +38,18 @@ Route::get('/jadwal-anda', function() {
     ]);
 });
 
-Route::get('/tentang-kami', function() {
-    return view('tentang-kami', [
-        'title' => 'Tentang Kami'
-    ]);
-});
-
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticated'])->name('login');
-Route::post('/logout', [LoginController::class, 'logout']);
+// Fungsi middleware revalidateBackHistory supaya tidak bisa kembali ke 
+// halaman sebelumnya jika sudah login atau logout
+Route::middleware('revalidateBackHistory')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+    Route::post('/login', [LoginController::class, 'authenticated'])->name('login');
+    Route::post('/logout', [LoginController::class, 'logout']);
+});
 
-Route::prefix('dashboard')->middleware(['auth', 'role:pasien'])->group(function() {
+Route::prefix('dashboard')->middleware(['auth', 'role:pasien', 'revalidateBackHistory'])->group(function() {
     Route::get('/pasien', [DashboardController::class, 'pasien'])->name('dashboard.pasien');
     Route::resource('/pasien/riwayat', DashboardPasienRiwayatController::class);
     Route::get('/export-riwayat-pdf', [ExportController::class, 'exportRiwayatPDF'])
