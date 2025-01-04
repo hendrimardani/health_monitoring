@@ -20,15 +20,21 @@
 </style>
 
 <!-- Inactive Image -->
-<img id="inactiveImage" src="https://i.ibb.co/J2xj9zb/ispa2.png" alt="Inactive Image"
+<img id="inactiveImage" src="{{ asset('assets/demam-tifoid.png') }}" alt="Inactive Image"
     class="w-60 h-60 object-cover rounded-lg inactive ml-[1400px] mt-12" />
-<div class="w-[1500px] border border-blue-400">
+<div class="w-[1500px]">
     <div class="flex justify-around">
-        <h1 class="mt-[-130px] ml-[-80px] text-4xl">Apa gejala yang kamu alami ?</h1>
-
+        <div class="ml-[-80px]">
+            <h1 class="mt-[-130px] text-4xl text-white font-bold">Apa gejala yang kamu alami ?</h1>
+            <h1 id="text1" class="text-lg mt-5">Infeksi Saluran Pernapasan Akut (ISPA)</h1>
+            <h1 id="text2" class="text-lg">Demam Tifoid</h1>
+            <h1 id="text3" class="text-lg">Diare</h1>
+            <h1 id="text4" class="text-lg">Cacingan</h1>
+            <h1 id="text5" class="text-lg">DBD</h1>
+        </div>
         <div class="mr-[200px]">
             <div class="text-center mb-4 mt-[-230px]">
-                <h1 class="text-lg font-bold text-blue-700">INFEKSI SALURAN PERNAPASAN AKUT (ISPA)</h1>
+                <h1 id="textTitle" class="text-2xl font-bold text-blue-700">INFEKSI SALURAN PERNAPASAN AKUT (ISPA)</h1>
             </div>
             <!-- Active Image -->
             <img id="activeImage" src="{{ asset('assets/ispa.png') }}" alt="Active Image" width="430" height="430"
@@ -52,7 +58,24 @@
             </div>
         </div>
     </div>
+</div>
 
+<!-- Blur Background -->
+<div class="relative rounded-full bg-blue-400 w-[680px] h-[500px] blur-2xl opacity-80 mt-[-550px] ml-[-90px] -z-10">
+</div>
+
+<!-- Blur Background -->
+<div class="relative rounded-full bg-blue-400 w-[680px] h-[500px] blur-2xl opacity-80 mt-[-400px] ml-[1600px] -z-10">
+</div>
+
+<!-- Blur Background -->
+<div id="bg-blur-1"
+    class="hidden relative rounded-full bg-red-500 w-[680px] h-[500px] blur-2xl opacity-80 mt-[-500px] ml-[-90px] -z-10">
+</div>
+
+<!-- Blur Background -->
+<div id="bg-blur-2"
+    class="hidden relative rounded-full bg-red-500 w-[680px] h-[500px] blur-2xl opacity-80 mt-[-500px] ml-[1200px] -z-10">
 </div>
 
 <script>
@@ -64,50 +87,98 @@
     "{{ asset('assets/dbd.png') }}"
 ];
 
+const texts = [
+    "text1", // ID for "Infeksi Saluran Pernapasan Akut (ISPA)"
+    "text2", // ID for "Demam Tifoid"
+    "text3", // ID for "Diare"
+    "text4", // ID for "Cacingan" 
+    "text5"  // ID for "DBD"
+];
+
 let currentIndex = 0;
 const activeImage = document.getElementById("activeImage");
 const inactiveImage = document.getElementById("inactiveImage");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
+const textTitle = document.getElementById("textTitle");
 let autoplayInterval;
 
-// Update images with drag-and-drop animation
-const updateImages = (direction) => {
+// Update images and texts
+const updateContent = (direction) => {
     const inactiveIndex =
         direction === "next"
             ? (currentIndex + 1) % images.length
             : (currentIndex - 1 + images.length) % images.length;
 
-    // Apply drag-and-drop animation
+    // Update inactive image animation
     inactiveImage.src = images[inactiveIndex];
     inactiveImage.classList.remove("translate-x-0");
-    inactiveImage.classList.add(direction === "next" ? "translate-x-full" : "-translate-x-full", "transition-transform");
+    inactiveImage.classList.add(
+        direction === "next" ? "translate-x-full" : "-translate-x-full",
+        "transition-transform"
+    );
 
     // Move active image out of view
-    activeImage.classList.add(direction === "next" ? "-translate-x-full" : "translate-x-full", "transition-transform");
+    activeImage.classList.add(
+        direction === "next" ? "-translate-x-full" : "translate-x-full",
+        "transition-transform"
+    );
 
     setTimeout(() => {
-        // Swap images
+        // Update active image
         activeImage.src = images[currentIndex];
         activeImage.classList.remove("-translate-x-full", "translate-x-full");
         activeImage.classList.add("translate-x-0", "transition-transform");
 
+        // Update inactive image position
         inactiveImage.classList.remove("translate-x-full", "-translate-x-full");
         inactiveImage.classList.add("translate-x-0");
+
+        // Update text colors and title
+        updateTextColors();
+        updateTextTitle();
     }, 500); // Match animation duration
+};
+
+// Update text colors based on the current index
+const updateTextColors = () => {
+    texts.forEach((textId, index) => {
+        const textElement = document.getElementById(textId);
+        if (index === currentIndex) {
+            textElement.style.color = "white"; // Active text
+        } else {
+            textElement.style.color = "black"; // Inactive text
+        }
+    });
+};
+
+// Update text title based on the current index
+const updateTextTitle = () => {
+    const activeTextId = texts[currentIndex];
+    const activeTextElement = document.getElementById(activeTextId);
+    if (activeTextElement) {
+        textTitle.innerHTML = activeTextElement.innerHTML; // Copy content of active text
+    }
+    if (activeTextElement.innerHTML === "Demam Tifoid") {
+        document.getElementById('bg-blur-1').classList.remove('hidden');
+        document.getElementById('bg-blur-2').classList.remove('hidden');
+    } else {
+        document.getElementById('bg-blur-1').classList.add('hidden');
+        document.getElementById('bg-blur-2').classList.add('hidden');
+    }
 };
 
 // Next button functionality
 next.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % images.length;
-    updateImages("next");
+    updateContent("next");
     restartAutoplay();
 });
 
 // Previous button functionality
 prev.addEventListener("click", () => {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImages("prev");
+    updateContent("prev");
     restartAutoplay();
 });
 
@@ -115,8 +186,8 @@ prev.addEventListener("click", () => {
 const startAutoplay = () => {
     autoplayInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % images.length;
-        updateImages("next");
-    }, 3000); // Change image every 3 seconds
+        updateContent("next");
+    }, 3000); // Change every 3 seconds
 };
 
 const stopAutoplay = () => {
@@ -128,9 +199,12 @@ const restartAutoplay = () => {
     startAutoplay();
 };
 
-// Start autoplay on page load
-window.addEventListener("DOMContentLoaded", startAutoplay);
+// Initialize on page load
+window.addEventListener("DOMContentLoaded", () => {
+    updateTextColors(); // Set initial text colors
+    updateTextTitle(); // Set initial title
+    startAutoplay();
+});
 
 </script>
-
 @endsection
