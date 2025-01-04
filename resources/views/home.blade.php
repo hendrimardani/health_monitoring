@@ -47,7 +47,10 @@
 
 <div class="text-center -mt-[500px]">
   <h1 class="text-8xl font-bold">Sudah Lebih Dari</h1>
-  <h1 class="text-8xl font-bold">1.000.0000++</h1>
+  <span class="text-8xl font-bold" id="counter">
+    <!-- Tampilkan nomor disini -->
+  </span>
+  <span class="text-8xl font-bold">++</span>
   <h1 class="text-8xl font-bold">Pengguna<br>Mempercayai Kami</h1>
 </div>
 
@@ -84,5 +87,23 @@
   <h1 class="text-6xl text-black text-center font-bold">Kesehatan Terjaga dengan</h1>
   <img src="{{ asset('assets/2-4.png') }}" alt="" class="mx-auto">
 </div>
+
+<script>
+  // Counter
+  let currentNumber = 0;
+      const targetNumber = 1000000;
+      const counterElement = document.getElementById('counter');
+      
+      function incrementNumber() {
+          if (currentNumber <= targetNumber) {
+              counterElement.innerText = currentNumber;
+              currentNumber += 25000;
+              setTimeout(incrementNumber, 50); // Delay 50ms
+          }
+      }
+
+      // Mulai animasi
+      incrementNumber();
+</script>
 
 @endsection

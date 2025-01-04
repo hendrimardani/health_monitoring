@@ -24,7 +24,8 @@
                 <img src="{{ asset('assets/2-1.png') }}" alt="" class="w-[700px] -mt-[450px]">
             </div>
         </div>
-        <div class="mt-[200px] border-2 border-[#183e9f] p-9 rounded-2xl w-[500px]">
+        <div
+            class="mt-[200px] border-2  p-9 rounded-2xl w-[500px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)] transition-all duration-700">
             @if (session()->has('success'))
             <div id="alert-3"
                 class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
@@ -52,7 +53,14 @@
             @endif
             <form action="{{ route('login') }}" method="post">
                 @csrf
-                <h1 class="text-4xl font-bold mb-5 text-center">Masuk</h1>
+                <div class="flex justify-center gap-5">
+                    <svg class="w-11 h-11 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2" />
+                    </svg>
+                    <h1 class="text-4xl font-bold mb-5 text-center">Masuk</h1>
+                </div>
                 <div class="mb-5">
                     <input type="email" id="email"
                         class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"

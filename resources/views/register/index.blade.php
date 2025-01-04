@@ -24,7 +24,8 @@
                 <img src="{{ asset('assets/2-1.png') }}" alt="" class="w-[700px] -mt-[450px]">
             </div>
         </div>
-        <div class="mt-[200px] border-2 border-[#183e9f] p-9 rounded-2xl w-[500px] h-[400px]">
+        <div
+            class="mt-[200px] border-2 p-9 rounded-2xl w-[500px] h-[400px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)] transition-all duration-700">
             <form action="{{ route('register') }}" method="post">
                 @csrf
                 <h1 class="text-4xl font-bold mb-5 text-center">{{ $title }}</h1>
@@ -81,7 +82,7 @@
                             login</a></span>
                 </div>
                 <button type="submit"
-                    class="px-[190px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">Daftar</button>
+                    class="px-[190px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 transition-all duration-700">Daftar</button>
             </form>
         </div>
     </div>

@@ -34,9 +34,19 @@
 </div>
 
 <div>
-    <p class="text-5xl font-bold text-center text-black mb-12">
-        TEMUI DOKTER-DOKTER <br>PROFESIONAL KAMI
-    </p>
+    <div class="bg-blue-800 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] rouded rounded-xl p-8 mb-12">
+        <p class="text-5xl font-bold text-center text-white">
+            TEMUI DOKTER-DOKTER <br>PROFESIONAL KAMI
+        </p>
+        <div class="flex flex-wrap justify-center">
+            <img src="{{ asset('assets/icons8-doctor-female-32.png') }}" alt=""
+                class="w-[60px] h-[60px] filter brightness-0 invert" /> <span
+                class="text-5xl font-bold text-center text-white">Spesialis &nbsp;</span>
+            <span id="word-container" class="text-5xl font-bold text-center text-white">
+                <!-- Kata akan ditampilkan di sini -->
+            </span>
+        </div>
+    </div>
     <div class="flex flex-wrap justify-center gap-12">
         <!-- Card 1 -->
         <div
@@ -87,7 +97,7 @@
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-6.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Emily Smith" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Emily Smith</p>
-            <p class="text-xl font-bold text-center text-black mt-4">Paru (Pulmonolog)</p>
+            <p class="text-xl font-bold text-center text-black mt-4">Paru-paru (Pulmonolog)</p>
         </div>
         <!-- Card 7 -->
         <div
@@ -127,7 +137,7 @@
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-11.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Emma Williams" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Emma Williams</p>
-            <p class="text-xl font-bold text-center text-black mt-4">Paru (Pulmonolog)</p>
+            <p class="text-xl font-bold text-center text-black mt-4">Paru-paru (Pulmonolog)</p>
         </div>
         <!-- Card 12 -->
         <div
@@ -144,7 +154,11 @@
     <!-- Text Content -->
     <div class="text-center text-white mb-10">
         <h1 class="text-4xl font-bold">TERBUKTI DENGAN ADANYA KAMI</h1>
-        <h2 class="text-8xl font-bold mt-4">100.000 ORANG</h2>
+        <h1></h1>
+        <span class="text-8xl font-bold mt-4" id="counter">
+            <!-- Tampilkan nomor disini -->
+        </span>
+        <span class="text-8xl font-bold">&nbsp;ORANG</span>
         <p class="text-2xl font-bold mt-4">MENJADI SEHAT KEMBALI DENGAN BANTUAN DOKTER KAMI</p>
     </div>
     <!-- Carousel Container -->
@@ -179,24 +193,25 @@
 
 <div>
     <h1 class="text-6xl font-bold text-center mt-[200px]">VISI & MISI KITA</h1>
-    <div class="flex flex-wrap justify-around items-center">
-        <div class="flex justify-center items-center">
+    <div class="flex flex-wrap justify-center gap-[700px]">
+        <div>
             <h1 class="text-4xl font-bold">VISI</h1>
         </div>
-        <div class="flex justify-center items-center">
+        <div>
             <h1 class="text-4xl font-bold">MISI</h1>
         </div>
     </div>
     <div class="flex flex-wrap justify-around items-center">
         <div class="flex justify-center items-center gap-8">
-            <div class="relative bg-[#183e9f] p-9 -mt-[200px] rounded-lg w-[700px] h-[300px]">
+            <div
+                class="relative bg-[#183e9f] p-9 -mt-[200px] rounded-lg w-[700px] h-[300px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)]">
                 <h1 class="text-3xl text-white">
                     Menjadi platform kesehatan terdepan yang memberikan akses mudah dan cepat untuk
                     layanan kesehatan berkualitas, memberdayakan masyarakat untuk hidup lebih sehat dan lebih baik.
                 </h1>
             </div>
             <div class="flex justify-center items-center">
-                <div class="bg-[#183e9f] p-9 rounded-lg w-[700px]">
+                <div class="bg-[#183e9f] p-9 rounded-lg w-[700px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)]">
                     <h1 class="text-3xl text-white">
                         1. Memberikan Akses Kesehatan yang Mudah: Menyediakan layanan kesehatanyang
                         dapat diakses kapan saja dan di mana saja melalui teknologi digital. <br>
@@ -222,14 +237,50 @@
 
 <script>
     // Initialize Swiper
-        const swiper = new Swiper('.swiper', {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        autoplay: {
-            delay: 1500,
-            disableOnInteraction: false,
-        },
-        });
+    const swiper = new Swiper('.swiper', {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+    },
+    });
+
+    // Counter
+    let currentNumber = 0;
+    const targetNumber = 100000;
+    const counterElement = document.getElementById('counter');
+    
+    function incrementNumber() {
+        if (currentNumber <= targetNumber) {
+            counterElement.innerText = currentNumber;
+            currentNumber += 2500;
+            setTimeout(incrementNumber, 50);
+        }
+    }
+
+    // Mulai animasi
+    incrementNumber();
+
+    // Animasi kata
+    const words = ["Penyakit Dalam (Internist)", "Bedah (Surgeon)", "Saraf (Neurolog)", "Paru-paru (Pulmonolog)", "Jantung dan Pembuluh Darah (Kardiolog)"];
+    let currentWordIndex = 0;
+    const wordContainer = document.getElementById('word-container');
+
+    function displayWord() {
+        wordContainer.innerHTML = ''; // Menghapus kata sebelumnya
+        wordContainer.innerText = words[currentWordIndex];
+        wordContainer.classList.add('fade-in'); // Menambahkan animasi fade-in
+
+        // Update index kata selanjutnya setelah 2 detik
+        currentWordIndex = (currentWordIndex + 1) % words.length;
+
+        // Setelah kata tampil selama 2 detik, tampilkan kata berikutnya
+        setTimeout(displayWord, 2000); // Ganti kata setiap 3 detik
+    }
+
+    // Mulai animasi dengan kata pertama
+    displayWord();
 </script>
 @endsection

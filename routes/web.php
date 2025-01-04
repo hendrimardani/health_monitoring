@@ -9,16 +9,19 @@ use App\Http\Controllers\DashboardDokterController;
 use App\Http\Controllers\DashboardPasienRiwayatController;
 use App\Http\Controllers\DashboardPasienAkunController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\DokterController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\RegisterController;
 
-Route::get('/', function () {
-    return view('welcome', [
-        'title' => 'Selamat Datang'
-    ]);
+Route::middleware(['guest', 'revalidateBackHistory'])->group(function() {
+    Route::get('/', function () {
+        return view('welcome', [
+            'title' => 'Selamat Datang'
+        ]);
+    });
 });
 
 Route::middleware(['auth', 'role:pasien', 'revalidateBackHistory'])->group(function() {
@@ -26,28 +29,20 @@ Route::middleware(['auth', 'role:pasien', 'revalidateBackHistory'])->group(funct
     Route::get('/tentang-kami', [PasienController::class, 'tentangKami']);
 });
 
-Route::get('/cek-pasien', function() {
-    return view('cek-pasien', [
-        'title' => 'Cek Pasien'
-    ]);
+Route::middleware(['auth', 'role:dokter', 'revalidateBackHistory'])->group(function() {
+    Route::get('/cek-pasien', [DokterController::class, 'cekPasien']);
+    Route::get('/jadwal-anda', [DokterController::class, 'jadwalAnda']);
 });
-
-Route::get('/jadwal-anda', function() {
-    return view('jadwal-anda', [
-        'title' => 'Jadwal Anda'
-    ]);
-});
-
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
 // Fungsi middleware revalidateBackHistory supaya tidak bisa kembali ke 
 // halaman sebelumnya jika sudah login atau logout
-Route::middleware('revalidateBackHistory')->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::middleware(['guest', 'revalidateBackHistory'])->group(function() {
+    Route::get('/register', [RegisterController::class, 'index']);
+    Route::post('/register', [RegisterController::class, 'store'])->name('register');
+    Route::get('/login', [LoginController::class, 'index']);
     Route::post('/login', [LoginController::class, 'authenticated'])->name('login');
-    Route::post('/logout', [LoginController::class, 'logout']);
 });
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::prefix('dashboard')->middleware(['auth', 'role:pasien', 'revalidateBackHistory'])->group(function() {
     Route::get('/pasien', [DashboardController::class, 'pasien'])->name('dashboard.pasien');
@@ -61,7 +56,7 @@ Route::prefix('dashboard')->middleware(['auth', 'role:pasien', 'revalidateBackHi
     Route::resource('/pasien/akun', DashboardPasienAkunController::class);
 });
 
-Route::prefix('dashboard')->middleware(['auth', 'role:dokter'])->group(function() {
+Route::prefix('dashboard')->middleware(['auth', 'role:dokter', 'revalidateBackHistory'])->group(function() {
     Route::get('/dokter', [DashboardController::class, 'dokter'])->name('dashboard.dokter');
     Route::resource('/dokter/pasien', DashboardDokterController::class);
     Route::resource('/dokter/pasien/diagnosa', DiagnosaController::class);
@@ -73,7 +68,7 @@ Route::get('/dashboard/dokter/pasien/{idPemeriksaan}/{idPasien}/{idDokter}', [Da
 // Dipisah karena ia mengambil data menggunakan AJAX (tanpa menggunakan role)
 Route::get('/dashboard/dokter/pasien/getDataJson/{id}', [DashboardPasienAkunController::class, 'getDataJson'])->withoutMiddleware(['role:dokter']);
 
-Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function() {
+Route::prefix('dashboard')->middleware(['auth', 'role:admin', 'revalidateBackHistory'])->group(function() {
     Route::get('/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
     Route::resource('/admin/farmasi', DashboardAdminFarmasiController::class);
     Route::post('/admin/farmasi/{id}', [DashboardAdminFarmasiController::class, 'destroy'])->name('farmasi.destroy');
