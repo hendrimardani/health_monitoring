@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokter;
 use App\Models\Pasien;
+use App\Models\RiwayatPenyakit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -50,7 +51,7 @@ class DashboardAdminUserController extends Controller
                 'usia' => 'required_if:role,pasien|nullable',
                 'jenis_kelamin' => 'required_if:role,pasien|nullable',
                 'alamat' => 'required_if:role,pasien|nullable',
-                'riwayat_penyakit' => 'required_if:role,pasien|nullable',
+                'keluhan' => 'required_if:role,pasien|nullable',
                 // Validasi khusus dokter
                 'no_telepon_dokter' => 'required_if:role,dokter|nullable',
                 'spesialisasi' => 'required_if:role,dokter|nullable'
@@ -79,9 +80,14 @@ class DashboardAdminUserController extends Controller
                 'usia' => $validatedData['usia'],
                 'jenis_kelamin' => $validatedData['jenis_kelamin'],
                 'alamat' => $validatedData['alamat'],
-                'riwayat_penyakit' => $validatedData['riwayat_penyakit']
             ]; 
             Pasien::create($pasienData);
+
+            $riwayatPenyakitData = [
+                'pasien_id' => $userId->id,
+                'keluhan' => $validatedData['keluhan']
+            ];
+            RiwayatPenyakit::create($riwayatPenyakitData);
         } else {
             // Data untuk tabel `dokters`
             // $userId = User::latest()->first();

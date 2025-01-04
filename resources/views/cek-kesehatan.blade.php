@@ -187,7 +187,7 @@ const startAutoplay = () => {
     autoplayInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % images.length;
         updateContent("next");
-    }, 3000); // Change every 3 seconds
+    }, 2000); // Change every 2 seconds
 };
 
 const stopAutoplay = () => {

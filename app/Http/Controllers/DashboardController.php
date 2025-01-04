@@ -6,6 +6,7 @@ use App\Models\Pasien;
 use App\Models\Pemeriksaan;
 use App\Models\RiwayatPenyakit;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -28,13 +29,14 @@ class DashboardController extends Controller
         $jumlahKeluhanSelesai = RiwayatPenyakit::where('pasien_id', $idPasien)
                                         ->where('status', 'selesai')
                                         ->count();
-                                        
-        // Misalnya $pemeriksaan->created_at adalah timestamp
-        $timestampLatest = $pemeriksaanLatest->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
-
-        // Memisahkan tanggal
-        $tanggalLatest = Carbon::parse($timestampLatest)->translatedFormat('d F Y'); // Contoh: '21 Desember 2024' karena menggunakan metode transslatedFormat()
-        
+        $tanggalLatest = null;
+        if ($pemeriksaanLatest != null) {
+            // Misalnya $pemeriksaan->created_at adalah timestamp
+            $timestampLatest = $pemeriksaanLatest->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
+            // Memisahkan tanggal
+            // Contoh: '21 Desember 2024' karena menggunakan metode transslatedFormat()
+            $tanggalLatest = Carbon::parse($timestampLatest)->translatedFormat('d F Y');
+        }
         return view('dashboard.pasien.index', [
             'title' => 'Dashboard Pasien',
             'pasien' => $pasien,

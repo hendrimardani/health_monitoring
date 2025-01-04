@@ -70,11 +70,19 @@
         <h1
             class="relative mt-[-90px] ml-[100px] text-xl text-gray-400 font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]">
             Keluhan Terakhir Anda</h1>
+        @if ($tanggalLatest === null)
+        <div style="relative margin-top:-50px;">
+            <h1 class="text-[30px] text-center text-black font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]"
+                style="margin-top:10px; margin-left:100px;">
+                Belum ada data</h1>
+        </div>
+        @else
         <div style="relative margin-top:-50px;">
             <h1 class="text-[30px] text-center text-black font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]"
                 style="margin-top:10px; margin-left:100px;">
                 {{ $tanggalLatest }}</h1>
         </div>
+        @endif
     </div>
 </div>
 

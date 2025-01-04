@@ -55,7 +55,7 @@
 </div>
 @endif
 
-<div class="flex flex-wrap justify-center">
+<div class="flex flex-wrap justify-start">
     <form action="/dashboard/pasien/akun/{{ $pasien->pasien_id_pasien }}" method="post"
         class="inline-block p-5 mt-5 rounded-xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] transition-all ease-in-out duration-700">
         @csrf

@@ -21,6 +21,7 @@ class DashboardPasienAkunController extends Controller
         $riwayatPenyakit = RiwayatPenyakit::with(['pasien.user'])
                         ->where('pasien_id', $pasienId)
                         ->first();
+                        
         return view('dashboard.pasien.akun', [
             'title' => 'Pasien',
             'pasien' => $riwayatPenyakit
