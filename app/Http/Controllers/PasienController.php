@@ -20,4 +20,11 @@ class PasienController extends Controller
             'title' => 'Tentang Kami'
         ]);
     }
+
+    public function cekKesehatan()
+    {
+        return view('cek-kesehatan', [
+            'title' => 'Cek Kesehatan'
+        ]);
+    }
 }

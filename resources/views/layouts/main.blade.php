@@ -26,6 +26,61 @@
                 opacity: 1;
             }
         }
+
+        // Animasi cek-kesehatan
+        .fade-enter {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .fade-active {
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .inactive {
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
+
+        /* Animasi Transisi */
+        .fade-enter {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
     </style>
 </head>
 

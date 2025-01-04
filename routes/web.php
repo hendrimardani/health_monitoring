@@ -27,6 +27,7 @@ Route::middleware(['guest', 'revalidateBackHistory'])->group(function() {
 Route::middleware(['auth', 'role:pasien', 'revalidateBackHistory'])->group(function() {
     Route::get('/home', [PasienController::class, 'home']);
     Route::get('/tentang-kami', [PasienController::class, 'tentangKami']);
+    Route::get('/cek-kesehatan', [PasienController::class, 'cekKesehatan']);
 });
 
 Route::middleware(['auth', 'role:dokter', 'revalidateBackHistory'])->group(function() {
