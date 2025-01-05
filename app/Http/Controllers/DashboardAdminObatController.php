@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Farmasi;
+use App\Models\KategoriObat;
 use App\Models\Obat;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class DashboardAdminObatController extends Controller
 {
@@ -26,9 +28,11 @@ class DashboardAdminObatController extends Controller
     public function create()
     {
         $farmasis = Farmasi::all();
+        $kategoriObats = KategoriObat::all();
         return view('dashboard.admin.obat.create', [
             'title' => 'Obat',
-            'farmasis' => $farmasis
+            'farmasis' => $farmasis,
+            'kategoriObats' => $kategoriObats
         ]);
     }
 
@@ -37,16 +41,18 @@ class DashboardAdminObatController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'id_perusahaan' => 'required|exists:farmasis,id',
-            'nama_obat' => 'required',
-            // 'kategori' => 'required',
-            'dosis_tersedia' => 'required',
-            'unit' => 'required'
-        ]);
-
+        try {
+            $validatedData = $request->validate([
+                'farmasi_id' => 'required|integer|exists:farmasis,id',
+                'nama_obat' => 'required|string|min:6',
+                'kategori_id' => 'required|integer|exists:kategori_obats,id',
+                'dosis_tersedia' => 'required',
+                'unit' => 'required'
+            ]);
+        } catch (ValidationException $e) {
+            dd($e->errors());
+        }
         Obat::create($validatedData);
-
         return redirect('/dashboard/admin/obat')->with('success', 'Data Berhasil Ditambahkan');
     }
 
