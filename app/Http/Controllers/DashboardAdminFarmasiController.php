@@ -11,7 +11,7 @@ class DashboardAdminFarmasiController extends Controller
      */
     public function index()
     {
-        $farmasis = Farmasi::paginate(10);
+        $farmasis = Farmasi::paginate(8);
         return view('dashboard.admin.farmasi.index', [
             'title' => 'Farmasi',
             'farmasis' => $farmasis
@@ -34,8 +34,8 @@ class DashboardAdminFarmasiController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_perusahaan' => 'required',
-            'alamat_perusahaan' => 'required'
+            'nama_perusahaan' => 'required|string|min:6',
+            'alamat_perusahaan' => 'required|string|min:6'
         ]);
 
         Farmasi::create($validatedData);

@@ -30,7 +30,7 @@ class DashboardPasienRiwayatController extends Controller
                                 ->first();
         $jumlahKeluhan = RiwayatPenyakit::where('pasien_id', $pasienId)
                                         ->count();
-
+        
         return view('dashboard.pasien.riwayat', [
             'title' => 'Riwayat Saya',
             'pasiens' => $pasiens,

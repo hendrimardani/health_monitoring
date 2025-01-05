@@ -25,63 +25,20 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($pasiens as $pasien)
             <tr class="bg-blue-500 ">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    <h1 class="text-3xl text-white ">Michael Anderson</h1>
+                    <h1 class="text-3xl text-white ">{{ $pasien->pasien->nama }}</h1>
                 </td>
                 <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Demam tinggi selama tiga hari, disertai sakit kepala dan nyeri otot
+                    <h1 class="text-3xl text-white">{{ $pasien->keluhan }}
                     </h1>
                 </td>
                 <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Antrian ke-10</h1>
+                    <h1 class="text-3xl text-white">Antrian Ke- {{ $pasien->antrian }}</h1>
                 </td>
             </tr>
-            <tr class="bg-blue-500 ">
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <h1 class="text-3xl text-white">Sarah Williams</h1>
-                </td>
-                <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Batuk kering lebih dari dua minggu, terkadang sulit bernapas.</h1>
-                </td>
-                <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Antrian ke-11</h1>
-                </td>
-            </tr>
-            <tr class="bg-blue-500">
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <h1 class="text-3xl text-white">James Taylor</h1>
-                </td>
-                <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Nyeri di punggung bawah, terutama saat berdiri terlalu lama.</h1>
-                </td>
-                <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Antrian ke-12</h1>
-                </td>
-            </tr>
-            <tr class="bg-blue-500">
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <h1 class="text-3xl text-white">Emily Carter</h1>
-                </td>
-                <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Ruam merah di kulit tangan yang terasa gatal, muncul sejak dua hari
-                        lalu.</h1>
-                </td>
-                <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Antrian ke-13</h1>
-                </td>
-            </tr>
-            <tr class="bg-blue-500">
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <h1 class="text-3xl text-white">Daniel Foster</h1>
-                </td>
-                <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Rasa mual setelah makan dan perut kembung selama seminggu.</h1>
-                </td>
-                <td class="px-6 py-4">
-                    <h1 class="text-3xl text-white">Antrian ke-14</h1>
-                </td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
