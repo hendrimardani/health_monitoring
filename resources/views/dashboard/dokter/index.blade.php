@@ -2,7 +2,9 @@
 
 @section('body')
 
-<h1 class="text-3xl text-black ">Hallo, {{ auth()->user()->nama }}</h1>
+<h1
+    class="inline-block p-5 text-3xl text-black rounded-xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] bg-white transition ease-in-out duration-700 mt-5 hover:text-white hover:bg-blue-800">
+    Hallo, {{ auth()->user()->nama }}, pasien sudah menunggu anda untuk diperiksa !</h1>
 <div class="container flex flex-wrap gap-6">
     <div
         class="max-w-[500px] max-w-h-[400px] mt-5 p-5 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-white rounded-xl group hover:bg-blue-800 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)] transition ease-in-out duration-700">
@@ -18,8 +20,8 @@
             Total Pasien</h1>
         <div style="relative margin-top:-50px;">
             <h1 class="text-[30px] text-center text-black font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]"
-                style="margin-top:10px; margin-left:50px;">
-                keluhan</h1>
+                style="margin-top:10px; margin-left:100px;">
+                {{ $jumlahKeluhan }} keluhan</h1>
         </div>
     </div>
     <div
@@ -34,7 +36,7 @@
         <h1
             class="relative mt-[-90px] ml-[100px] text-xl text-gray-400 font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]">
             Total Status Pasien</h1>
-        <div class="flex flex-wrap gap-2 justify-center mt-[10px] ml-[50px]">
+        <div class="flex flex-wrap gap-2 justify-center mt-[10px] ml-[80px]">
             <svg class="group-hover:text-white w-6 h-6 text-orange-500 transition ease-in-out duration-700"
                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                 viewBox="0 0 24 24">
@@ -43,9 +45,9 @@
             </svg>
             <h1
                 class="text-xl text-center text-orange-500 font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]">
-                pasien menunggu</h1>
+                {{ $jumlahKeluhanMenunggu }} pasien menunggu</h1>
         </div>
-        <div class="flex flex-wrap gap-2 justify-center mt-[10px] ml-[15px]">
+        <div class="flex flex-wrap gap-2 justify-center mt-[10px] ml-[48px]">
             <svg class="group-hover:text-white w-6 h-6 text-green-500 transition ease-in-out duration-700"
                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                 viewBox="0 0 24 24">
@@ -54,7 +56,7 @@
             </svg>
             <h1
                 class="text-xl text-center text-green-500 font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]">
-                pasien selesai</h1>
+                {{ $jumlahKeluhanSelesai }} pasien selesai</h1>
         </div>
     </div>
     <div
@@ -69,11 +71,21 @@
         <h1
             class="relative mt-[-90px] ml-[100px] text-xl text-gray-400 font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]">
             Tanggal Terakhir Pekeriksaan</h1>
+        @if ($tanggalLatest === null)
         <div style="relative margin-top:-50px;">
             <h1 class="text-[30px] text-center text-black font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]"
                 style="margin-top:10px; margin-left:100px;">
+                Belum ada data
             </h1>
         </div>
+        @else
+        <div style="relative margin-top:-50px;">
+            <h1 class="text-[30px] text-center text-black font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]"
+                style="margin-top:10px; margin-left:100px;">
+                {{ $tanggalLatest }}
+            </h1>
+        </div>
+        @endif
     </div>
     <div
         class="max-w-[500px] max-h-[400px] mt-5 p-5 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] bg-white rounded-xl group hover:bg-blue-800 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)] transition ease-in-out duration-700">
@@ -88,11 +100,19 @@
         <h1
             class="relative mt-[-90px] ml-[100px] text-xl text-gray-400 font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]">
             Total Pasien yang Anda Periksa</h1>
+        @if ($totalPasienDiperiksa === null || $totalPasienDiperiksa === 0)
         <div style="relative margin-top:-50px;">
             <h1 class="text-[30px] text-center text-black font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]"
                 style="margin-top:10px; margin-left:100px;">
-                askdoaskdoaksos</h1>
+                0 pasien</h1>
         </div>
+        @else
+        <div style="relative margin-top:-50px;">
+            <h1 class="text-[30px] text-center text-black font-bold group-hover:text-white transition ease-in-out duration-700 mt-[-2px]"
+                style="margin-top:10px; margin-left:100px;">
+                {{ $totalPasienDiperiksa }} pasien</h1>
+        </div>
+        @endif
     </div>
 </div>
 

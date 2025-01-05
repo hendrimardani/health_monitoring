@@ -118,10 +118,6 @@ class ExportController extends Controller
                                             ->where('status', 'menunggu')
                                             ->orderBy('created_at', 'desc')
                                             ->first();
-        // $jumlahAntrian = RiwayatPenyakit::where('created_at', '<=', Carbon::now())
-        //                                 ->where('status', 'menunggu')
-        //                                 ->count();
-        // Log::info('TEST ANTRIAN', ['Antrian' => $jumlahAntrian]);
 
         // Misalnya $riwayatPenyakit->created_at adalah timestamp
         $timestamp = $riwayatPenyakit->created_at; // Contoh: '2024-12-17 14:35:22'

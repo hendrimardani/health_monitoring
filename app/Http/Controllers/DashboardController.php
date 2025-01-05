@@ -52,8 +52,32 @@ class DashboardController extends Controller
         // user saat ini login
         $idDokter = auth()->id();
 
+        $jumlahKeluhan = RiwayatPenyakit::all()
+                                        ->count();
+        $pemeriksaanLatest = Pemeriksaan::where('dokter_id', $idDokter)
+                                        ->orderBy('created_at', 'desc')
+                                        ->first();
+        $jumlahKeluhanMenunggu = RiwayatPenyakit::where('status', 'menunggu')
+                                                ->count();
+        $jumlahKeluhanSelesai = RiwayatPenyakit::where('status', 'selesai')
+                                                ->count();
+        $totalPasienDiperiksa = Pemeriksaan::where('dokter_id', $idDokter)
+                                            ->count();
+        $tanggalLatest = null;
+        if ($pemeriksaanLatest != null) {
+            // Misalnya $pemeriksaan->created_at adalah timestamp
+            $timestampLatest = $pemeriksaanLatest->vital_sign->waktu_pengukuran; // Contoh: '2024-12-17 14:35:22'
+            // Memisahkan tanggal
+            // Contoh: '21 Desember 2024' karena menggunakan metode transslatedFormat()
+            $tanggalLatest = Carbon::parse($timestampLatest)->translatedFormat('d F Y');
+        }
         return view('dashboard.dokter.index', [
             'title' => 'Dashboard Dokter',
+            'jumlahKeluhan' => $jumlahKeluhan,
+            'tanggalLatest' => $tanggalLatest,
+            'jumlahKeluhanMenunggu' => $jumlahKeluhanMenunggu,
+            'jumlahKeluhanSelesai' => $jumlahKeluhanSelesai,
+            'totalPasienDiperiksa' => $totalPasienDiperiksa
         ]);
     }
 
