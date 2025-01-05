@@ -114,10 +114,14 @@ class ExportController extends Controller
                                 ->where('pasien_id', $idPasien)
                                 ->where('status', 'menunggu')
                                 ->first();
-        $jumlahAntrian = RiwayatPenyakit::where('created_at', '<=', Carbon::now())
-                                        ->where('status', 'menunggu')
-                                        ->count();
-        Log::info('TEST ANTRIAN', ['Antrian' => $jumlahAntrian]);
+        $riwayatPenyakits = RiwayatPenyakit::where('pasien_id', $idPasien)
+                                            ->where('status', 'menunggu')
+                                            ->orderBy('created_at', 'desc')
+                                            ->first();
+        // $jumlahAntrian = RiwayatPenyakit::where('created_at', '<=', Carbon::now())
+        //                                 ->where('status', 'menunggu')
+        //                                 ->count();
+        // Log::info('TEST ANTRIAN', ['Antrian' => $jumlahAntrian]);
 
         // Misalnya $riwayatPenyakit->created_at adalah timestamp
         $timestamp = $riwayatPenyakit->created_at; // Contoh: '2024-12-17 14:35:22'
@@ -139,7 +143,7 @@ class ExportController extends Controller
         
         // Load view untuk PDF
         $pdf = PDF::loadView('pdf.antrian', [
-            'jumlahAntrian' => $jumlahAntrian,
+            'riwayatPenyakits' => $riwayatPenyakits,
             'riwayatPenyakit' => $riwayatPenyakit,
             'tanggal' => $tanggal,
             'jam' => $jam,

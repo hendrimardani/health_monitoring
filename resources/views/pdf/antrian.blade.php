@@ -26,7 +26,7 @@
         <li>Tanggal Pendaftaran &nbsp;&nbsp;: {{ $tanggal }}</li>
         <li>Antrian
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-            Ke- {{ $jumlahAntrian }}</li>
+            Ke- {{ $riwayatPenyakits->antrian }}</li>
     </ul>
     <span>Saudara/i dimohon untuk hadir pada pukul <strong>{{ $tambahTigaJam }}</strong> untuk melakukan pemeriksaan.
     </span><br><br>

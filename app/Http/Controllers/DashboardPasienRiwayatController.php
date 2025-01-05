@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class DashboardPasienRiwayatController extends Controller
@@ -61,22 +63,32 @@ class DashboardPasienRiwayatController extends Controller
                 'alamat' => 'required',
                 'keluhan' => 'required|max:255'
             ]);
-            $validatedPasien = [
-                'nama' => $validatedData['nama'],
-                'nik' => $validatedData['nik'],
-                'no_telepon' => $validatedData['no_telepon'],
-                'usia' => $validatedData['usia'],
-                'jenis_kelamin' => $validatedData['jenis_kelamin'],
-                'alamat' => $validatedData['alamat'],
-            ];
         } catch (ValidationException $e) {
             dd($e->errors());
         }
+
+        // User sedang login
         $userId = Auth::id();
-        $validatedData['pasien_id'] = $userId;
-        RiwayatPenyakit::create($validatedData);
+        $validatedPasien = [
+            'nama' => $validatedData['nama'],
+            'nik' => $validatedData['nik'],
+            'no_telepon' => $validatedData['no_telepon'],
+            'usia' => $validatedData['usia'],
+            'jenis_kelamin' => $validatedData['jenis_kelamin'],
+            'alamat' => $validatedData['alamat'],
+        ];
         Pasien::where('id_pasien', $userId)
-            ->update($validatedPasien);
+        ->update($validatedPasien);
+
+        $antrian = RiwayatPenyakit::where('created_at', '<=', Carbon::now())
+                                ->count();
+
+        $validatedRiwayatPenyakit = [
+            'pasien_id' => $userId,
+            'keluhan' => $validatedData['keluhan'],
+            'antrian' => $antrian + 1 // Supaya bertambah 1, tidak duplicate dari data awal
+        ];
+        RiwayatPenyakit::create($validatedRiwayatPenyakit);
         
         return redirect('/dashboard/pasien/riwayat')->with('success', 'Data Berhasil Ditambahkan');
     }
