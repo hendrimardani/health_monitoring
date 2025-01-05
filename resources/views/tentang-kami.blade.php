@@ -5,7 +5,7 @@
 <div class="-mt-[200px]">
     <div class="flex justify-between mb-[300px]">
         <!-- Div pertama -->
-        <div class="flex items-center justify-center ml-[200px] mt-20">
+        <div class="flex items-center justify-center ml-[200px] mt-20" data-aos="fade-down" data-aos-duration="3000">
             <!-- Blur Background and Image -->
             <div class="relative flex items-center justify-center">
                 <!-- Blur Background -->
@@ -16,7 +16,7 @@
             </div>
         </div>
         <!-- Div kedua -->
-        <div class="mt-[450px] w-[800px]">
+        <div class="mt-[450px] w-[800px]" data-aos="fade-up" data-aos-duration="3000">
             <!-- Blur Background -->
             <div class="absolute rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl opacity-80">
             </div>
