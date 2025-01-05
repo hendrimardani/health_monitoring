@@ -1,15 +1,18 @@
 @extends('layouts.main')
 
 @section('container')
-<h1 class="text-6xl font-bold text-center font-serif">PASIEN ANDA <br> HARI INI</h1>
+<h1 class="text-6xl font-bold text-center font-serif" data-aos="fade-up" data-aos-duration="3000">PASIEN ANDA <br>
+    HARI INI</h1>
 
 <!-- Blur Background -->
 <div>
-    <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[300px] -ml-[400px] opacity-80">
+    <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[300px] -ml-[400px] opacity-80"
+        data-aos="fade-right" data-aos-duration="3000">
     </div>
 </div>
 
-<div class="relative rounded-3xl overflow-hidden shadow-2xl mx-20 -mt-[200px]">
+<div class="relative rounded-3xl overflow-hidden shadow-2xl mx-20 -mt-[200px]" data-aos="flip-left"
+    data-aos-duration="3000">
     <table class="w-full text-sm text-left rtl:text-right">
         <thead class="text-xs text-white bg-[#183e9f]">
             <tr class="bg-[#183e9f]">
@@ -46,16 +49,22 @@
 
 <!-- Blur Background -->
 <div class="relative overflow-x-clip">
-    <div
-        class="relative rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[400px] ml-[1600px] -z-[100] opacity-80">
+    <div class="relative rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[200px] ml-[1600px] -z-[100] opacity-80"
+        data-aos="fade-down" data-aos-duration="3000">
     </div>
 </div>
 
-<div class="flex justify-around mt-[300px]">
+<div class="flex justify-around mt-[300px]" data-aos="zoom-in-left" data-aos-duration="3000">
     <img src="{{ asset('assets/2-4.png') }}" alt="">
     <img src="{{ asset('assets/2-4.png') }}" alt="">
     <img src="{{ asset('assets/2-4.png') }}" alt="">
     <img src="{{ asset('assets/2-4.png') }}" alt="">
 </div>
 
+<script>
+    // AOS Init
+document.addEventListener('DOMContentLoaded', () => {
+  AOS.init();
+});
+</script>
 @endsection

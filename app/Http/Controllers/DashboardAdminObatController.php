@@ -15,7 +15,7 @@ class DashboardAdminObatController extends Controller
      */
     public function index()
     {
-        $obats = Obat::with(['farmasi', 'kategori_obat'])->paginate(8);
+        $obats = Obat::with(['farmasi', 'kategori_obat'])->paginate(7);
         return view('dashboard.admin.obat.index', [
             'title' => 'Obat',
             'obats' => $obats

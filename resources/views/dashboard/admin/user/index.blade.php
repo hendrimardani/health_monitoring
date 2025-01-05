@@ -3,13 +3,13 @@
 @section('body')
 
 {{-- Modal delete --}}
-<div id="popup-modal" tabindex="-1"
+<div id="delete-modal" tabindex="-1"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <button type="button"
                 class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                data-modal-hide="popup-modal">
+                data-modal-hide="delete-modal">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 14 14">
                     <path stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -29,7 +29,7 @@
                     class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                     Ya
                 </button>
-                <button data-modal-hide="popup-modal" type="button"
+                <button data-modal-hide="delete-modal" type="button"
                     class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak</button>
             </div>
         </div>
@@ -154,7 +154,7 @@
                             <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                <button type="button" data-modal-target="delete-modal" data-modal-toggle="delete-modal"
                                     data-id="{{ $user->id }}" class="delete-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red"
                                         class="bi bi-trash" viewBox="0 0 16 16">
@@ -173,6 +173,42 @@
             @endforeach
         </tbody>
     </table>
+
+    <!-- Menampilkan navigasi paginasi -->
+    @if ($users->hasPages())
+    <div class="pagination-container mt-4">
+        <ul class="pagination flex justify-center items-center space-x-2">
+            {{-- Previous Page Link --}}
+            @if ($users->onFirstPage())
+            <li class="disabled px-3 py-1">Sebelum</li>
+            @else
+            <li>
+                <a href="{{ $users->previousPageUrl() }}" class="px-3 py-1">Sebelum</a>
+            </li>
+            @endif
+
+            {{-- Pagination Links --}}
+            @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
+            <li>
+                <a href="{{ $url }}"
+                    class="{{ $page == $users->currentPage() ? 'bg-blue-500 text-white px-3 py-1' : 'bg-white text-blue-500 px-3 py-1' }}">
+                    {{ $page }}
+                </a>
+            </li>
+            @endforeach
+
+            {{-- Next Page Link --}}
+            @if ($users->hasMorePages())
+            <li>
+                <a href="{{ $users->nextPageUrl() }}" class="px-3 py-1">Sesudah</a>
+            </li>
+            @else
+            <li class="disabled px-3 py-1">Sesudah</li>
+            @endif
+        </ul>
+    </div>
+    @endif
+
 </div>
 
 <script>
