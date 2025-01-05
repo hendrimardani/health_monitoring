@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use App\Models\RiwayatPenyakit;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -65,19 +66,15 @@ class DashboardPasienAkunController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        try {
-            $validatedData = $request->validate([
-                'nama' => 'required',
-                'nik' => 'required',
-                'no_telepon' => 'required',
-                'usia' => 'required',
-                'jenis_kelamin' => 'required',
-                'alamat' => 'required',
-                'keluhan' => 'required'
-            ]);
-        } catch (ValidationException $e) {
-            dd($e->errors());
-        }
+        $validatedData = $request->validate([
+            'nama' => 'required|string|min:3',
+            'nik' => 'required|string|digits:16',
+            'no_telepon' => 'required|string|min:11|max:12',
+            'usia' => 'required|string|max:100',
+            'jenis_kelamin' => 'required|string|in:laki-laki,perempuan',
+            'alamat' => 'required|string|max:500',
+            'keluhan' => 'required|string|max:255'
+        ]);
         
         $userId = auth()->id();
         $validatedPasien = [
@@ -90,7 +87,13 @@ class DashboardPasienAkunController extends Controller
         ];
         Pasien::where('id_pasien', $userId)
                 ->update($validatedPasien);
-
+        
+        $validatedUser = [
+            'nama' => $validatedPasien['nama']
+        ];
+        User::where('id', $userId)
+            ->update($validatedUser);
+            
         $validatedRiwayatPenyakit = [
             'keluhan' => $validatedData['keluhan'],
             'pasien_id' => $userId

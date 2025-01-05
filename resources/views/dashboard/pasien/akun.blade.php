@@ -30,78 +30,58 @@
 @endif
 
 <div class="flex flex-wrap justify-start">
-    <form action="/dashboard/pasien/akun/{{ $pasien->pasien_id_pasien }}" method="post"
+    <form action="/dashboard/pasien/akun/{{ $pasien->pasien_id }}" method="post"
         class="inline-block p-5 mt-5 rounded-xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] transition-all ease-in-out duration-700">
         @csrf
         @method('PUT')
-        <div class="mb-5">
+        <div>
             <input type="text" id="nama"
                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
                 placeholder="Nama Anda" name="nama" value="{{ $pasien->pasien->nama }}" autofocus required />
         </div>
         @error('nama')
-        <div>
-            <div class="relative">
-                <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                    class="block px-2.5 pb-2.5 pt-4 w-[500px] text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder=" " />
-            </div>
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{
-                    $message }}</span></p>
-        </div>
+        <p class="text-xs text-red-600 dark:text-red-400">
+            <span class="font-medium">{{
+                $message }}</span>
+        </p>
         @enderror
-        <div class="mb-5">
+        <div class="mt-5">
             <input type="number" id="nik"
                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
                 placeholder="NIK Anda" name="nik" value="{{ $pasien->pasien->nik }}" autofocus required />
         </div>
         @error('nik')
-        <div>
-            <div class="relative">
-                <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                    class="block px-2.5 pb-2.5 pt-4 w-[500px] text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder=" " />
-            </div>
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{
-                    $message }}</span></p>
-        </div>
+        <p class="text-xs text-red-600 dark:text-red-400">
+            <span class="font-medium">{{
+                $message }}</span>
+        </p>
         @enderror
-        <div class="mb-5">
+        <div class="mt-5">
             <input type="number" id="no_telepon"
                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
                 placeholder="No Telepon Anda" name="no_telepon" value="{{ $pasien->pasien->no_telepon }}" autofocus
                 required />
         </div>
         @error('no_telepon')
-        <div>
-            <div class="relative">
-                <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                    class="block px-2.5 pb-2.5 pt-4 w-[500px] text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder=" " />
-            </div>
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{
-                    $message }}</span></p>
-        </div>
+        <p class="text-xs text-red-600 dark:text-red-400">
+            <span class="font-medium">{{
+                $message }}</span>
+        </p>
         @enderror
-        <div class="mb-5">
+        <div class="mt-5">
             <input type="number" id="usia"
                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
                 placeholder="Usia Anda" name="usia" value="{{ $pasien->pasien->usia }}" autofocus required />
         </div>
         @error('usia')
-        <div>
-            <div class="relative">
-                <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                    class="block px-2.5 pb-2.5 pt-4 w-[500px] text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder=" " />
-            </div>
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{
-                    $message }}</span></p>
-        </div>
+        <p class="text-xs text-red-600 dark:text-red-400">
+            <span class="font-medium">{{
+                $message }}</span>
+        </p>
         @enderror
-        <div class="mb-5">
+        <div class="mt-5">
             <select id="jenis_kelamin" name="jenis_kelamin"
-                class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('jenis_kelamin') border-red-500 @enderror"
                 autofocus required>
                 <option disabled>Jenis Kelamin</option>
                 <option value="laki-laki" selected>laki-laki</option>
@@ -109,31 +89,32 @@
             </select>
         </div>
         @error('jenis_kelamin')
-        <div>
-            <div class="relative">
-                <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                    class="block px-2.5 pb-2.5 pt-4 w-[500px] text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder=" " />
-            </div>
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{
-                    $message }}</span></p>
-        </div>
+        <p class="text-xs text-red-600 dark:text-red-400">
+            <span class="font-medium">{{
+                $message }}</span>
+        </p>
         @enderror
-        <div class="mb-5">
+        <div class="mt-5">
             <textarea type="text" id="alamat"
                 class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
                 placeholder="Alamat Anda" name="alamat" autofocus requred></textarea>
         </div>
         @error('alamat')
-        <div>
-            <div class="relative">
-                <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                    class="block px-2.5 pb-2.5 pt-4 w-[500px] text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                    placeholder=" " />
-            </div>
-            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{
-                    $message }}</span></p>
+        <p class="text-xs text-red-600 dark:text-red-400">
+            <span class="font-medium">{{
+                $message }}</span>
+        </p>
+        @enderror
+        <div class="mt-5">
+            <input type="hidden" id="keluhan"
+                class="mb-5 border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
+                placeholder="Keluhan Anda" name="keluhan" autofocus requred />
         </div>
+        @error('keluhan')
+        <p class="text-xs text-red-600 dark:text-red-400">
+            <span class="font-medium">{{
+                $message }}</span>
+        </p>
         @enderror
         <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
             class="w-[200px] ml-[140px] group flex flex-wrap justify-center gap-5 text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] hover:bg-blue-600 hover:text-white flex items-center justify-center p-[10px] transition ease-in-out duration-500 border border-blue-500">
@@ -165,6 +146,7 @@
             console.log("Data test:", data.pasien.id);
             if (data.success) {
                 document.getElementById('alamat').value = data.pasien.alamat || '';
+                document.getElementById('keluhan').value = data.pasien.keluhan || '';
             } else {
                 alert("Gagal memuat data: " + data.message);
             }

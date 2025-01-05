@@ -19,7 +19,7 @@ class DashboardPasienRiwayatController extends Controller
     {
         // user saat ini 
         $pasienId = auth()->id();
-        $pasiens = RiwayatPenyakit::with(['pasien.user'])
+        $pasiens = RiwayatPenyakit::with(['pasien.user', 'pemeriksaan'])
                                 ->where('pasien_id', $pasienId)
                                 ->paginate(7);
         $pasien = RiwayatPenyakit::with(['pasien.user'])
@@ -53,20 +53,16 @@ class DashboardPasienRiwayatController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $validatedData = $request->validate([
-                'nama' => 'required',
-                'nik' => 'required',
-                'no_telepon' => 'required',
-                'usia' => 'required',
-                'jenis_kelamin' => 'required',
-                'alamat' => 'required',
-                'keluhan' => 'required|max:255'
-            ]);
-        } catch (ValidationException $e) {
-            dd($e->errors());
-        }
-
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'nik' => 'required',
+            'no_telepon' => 'required',
+            'usia' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'keluhan' => 'required|max:255'
+        ]);
+        
         // User sedang login
         $userId = Auth::id();
         $validatedPasien = [

@@ -5,6 +5,24 @@
 @section('body')
 <h1 class="text-3xl text-black mt-2">Pasien Anda</h1>
 
+@if ($errors->any())
+<div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor" viewBox="0 0 20 20">
+        <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+    </svg>
+    <div>
+        <span class="font-medium">Diagnosa Gagal, Pastikan Memasukkan Data yang Valid !</span>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+@endif
+
 @if (session()->has('success'))
 <div id="alert-3"
     class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
@@ -201,6 +219,12 @@
                             <input type="number" step="0.01" id="saturasi_oksigen"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Cnth: 70.5" name="saturasi_oksigen" required />
+                            @error('saturasi_oksigen')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div>
                             <label for="detak_jantung"
@@ -209,6 +233,12 @@
                             <input type="number" step="0.01" id="detak_jantung"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Cnth: 120" name="detak_jantung" required />
+                            @error('detak_jantung')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div>
                             <label for="suhu_badan"
@@ -217,6 +247,12 @@
                             <input type="number" step="0.01" id="suhu_badan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Cnth: 37.5" name="suhu_badan" required />
+                            @error('suhu_badan')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div>
                             <label for="berat_badan"
@@ -225,6 +261,12 @@
                             <input type="number" step="0.01" id="berat_badan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Cnth: 160" name="berat_badan" required />
+                            @error('berat_badan')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div>
                             <label for="tekanan_darah_sistol"
@@ -233,6 +275,12 @@
                             <input type="number" step="0.01" id="tekanan_darah_sistol"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Cnth: 120" name="tekanan_darah_sistol" required />
+                            @error('tekanan_darah_sistol')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div>
                             <label for="tekanan_darah_diastol"
@@ -241,6 +289,12 @@
                             <input type="number" step="0.01" id="tekanan_darah_diastol"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Cnth: 120" name="tekanan_darah_diastol" required />
+                            @error('tekanan_darah_diastol')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div class="mt-2">
                             <label for="waktu_pengukuran"
@@ -250,7 +304,12 @@
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="waktu_pengukuran" value="{{ now()->format('Y-m-d\TH:i:s') }}" autofocus required
                                 readonly />
-
+                            @error('waktu_pengukuran')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <!-- Tombol Lanjut -->
                         <div class="col-span-2 text-center">
@@ -281,6 +340,12 @@
                             <input type="text" id="kode_icd"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="kode_icd" placeholder="Cnth: A001" required />
+                            @error('kode_icd')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div>
                             <label for="keluhan"
@@ -289,6 +354,12 @@
                             <input type="text" id="keluhan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="keluhan" placeholder="Keluhan Pasien" required readonly />
+                            @error('keluhan')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div>
                             <label for="catatan"
@@ -296,6 +367,12 @@
                             <input type="text" id="catatan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="catatan" placeholder="Catatan" required />
+                            @error('catatan')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div class="mt-2">
                             <label for="deskripsi"
@@ -303,18 +380,27 @@
                             <input type="text" id="deskripsi"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="deskripsi" placeholder="Deskripsi" autofocus required />
+                            @error('deskripsi')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div class="mt-2">
                             <label for="rekomendasi"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rekomendasi</label>
-                            {{-- <input type="text" id="rekomendasi"
-                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="rekomendasi" placeholder="Rekomendasi" autofocus required /> --}}
                             <textarea type="text" id="rekomendasi"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="rekomendasi"
                                 placeholder="Cnt: Pasien disarankan istirahat dan melakukan konsultasi lagi dalam jangka 3 hari setelah pemeriksaan"
                                 rows="4" cols="50" autofocus required></textarea>
+                            @error('rekomendasi')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div class="mt-2">
                             <label for="waktu_pemeriksaan"
@@ -324,6 +410,12 @@
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="waktu_pemeriksaan" value="{{ now()->format('Y-m-d\TH:i:s') }}" autofocus required
                                 readonly />
+                            @error('waktu_pemeriksaan')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div class="flex flex-wrap justify-between">
                             <!-- Tombol Kembali -->
@@ -361,40 +453,70 @@
                             class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             name="obat_id" autofocus required />
                         <select id="nama_obat" name="nama_obat"
-                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('nama_obat') border-red-500 @enderror">
                             <option disabled selected>Pilih Obat</option>
                             @foreach ($namaObats as $namaObat)
                             <option value="{{ $namaObat->nama_obat }}" data-id="{{ $namaObat->id }}">{{
                                 $namaObat->nama_obat }}</option>
                             @endforeach
                         </select>
+                        @error('nama_obat')
+                        <p class="text-xs text-red-600 dark:text-red-400">
+                            <span class="font-medium">{{
+                                $message }}</span>
+                        </p>
+                        @enderror
                         <select id="kategori_obat" name="kategori_obat"
-                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('kategori_obat') border-red-500 @enderror">
                             <option disabled selected>Kategori Obat</option>
                             @foreach ($kategoriObats as $kategoriObat)
                             <option value="{{ $kategoriObat->id }}">{{ $kategoriObat->nama_kategori }}
                             </option>
                             @endforeach
                         </select>
+                        @error('kategori_obat')
+                        <p class="text-xs text-red-600 dark:text-red-400">
+                            <span class="font-medium">{{
+                                $message }}</span>
+                        </p>
+                        @enderror
                         <select id="dosis_tersedia" name="dosis_tersedia"
-                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="mb-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('dosis_tersedia') border-red-500 @enderror">
                             <option disabled selected>Dosis Obat</option>
                             <option value="100 mg">100 mg</option>
                             <option value="200 mg">200 mg</option>
                         </select>
+                        @error('dosis_tersedia')
+                        <p class="text-xs text-red-600 dark:text-red-400">
+                            <span class="font-medium">{{
+                                $message }}</span>
+                        </p>
+                        @enderror
                         <div class="mt-2">
                             <label for="unit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit
                                 Obat</label>
                             <input type="number" id="unit"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="unit" placeholder="Unit Obat" autofocus required />
+                            @error('unit')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <select id="frekuensi" name="frekuensi"
-                            class="mt-2 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="mt-2 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('frekuensi') border-red-500 @enderror">
                             <option disabled selected>Frekuensi Obat</option>
                             <option value="setelah makan">Setelah Makan</option>
                             <option value="sebelum makan">Sebelum Makan</option>
                         </select>
+                        @error('frekuensi')
+                        <p class="text-xs text-red-600 dark:text-red-400">
+                            <span class="font-medium">{{
+                                $message }}</span>
+                        </p>
+                        @enderror
                         <div class="mt-2">
                             <label for="durasi_hari"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Durasi Hari
@@ -402,19 +524,28 @@
                             <input type="number" id="durasi_hari"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="durasi_hari" placeholder="Durasi hari penggunaan obat" autofocus required />
+                            @error('durasi_hari')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div class="mt-2">
                             <label for="cara_penggunaan"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cara
                                 Penggunaan</label>
-                            {{-- <input type="text" id="cara_penggunaan"
-                                class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="cara_penggunaan" placeholder="Cara penggunaan" autofocus required /> --}}
                             <textarea type="text" id="cara_penggunaan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="cara_penggunaan" placeholder="Cnt: 
 1. Dikonsumsi secara oral (diminum) dengan segelas air.
 2. Hindari penggunaan lebih dari 8 tablet dalam 24 jam." rows="4" cols="50" autofocus required></textarea>
+                            @error('cara_penggunaan')
+                            <p class="text-xs text-red-600 dark:text-red-400">
+                                <span class="font-medium">{{
+                                    $message }}</span>
+                            </p>
+                            @enderror
                         </div>
                         <div class="flex flex-wrap justify-between">
                             <!-- Tombol Kembali -->

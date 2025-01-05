@@ -41,7 +41,7 @@ class DashboardAdminUserController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|string|min:3',
             'password' => 'required|min:6',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'role' => 'required|in:pasien,dokter',
             // Validasi khusus pasien
             'nik' => 'required_if:role,pasien|nullable',

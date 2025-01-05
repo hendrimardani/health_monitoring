@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -18,28 +19,40 @@ class LoginController extends Controller
     }
         
     public function authenticated(Request $request) {
-        $credentials = $request->validate([
-            'email' => 'required|email',
+       // Validasi input
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {  
-            // Regenerasi sesi untuk mencegah serangan session 
+        // Jika validasi gagal
+        if ($validator->fails()) {
+            return redirect()->back()
+                            ->withErrors($validator)
+                            ->withInput()
+                            ->with('errorValidation', 'Validasi gagal. Silakan periksa input Anda.');
+        }
+
+        // Mencoba autentikasi
+        if (Auth::attempt($request->only('email', 'password'))) {
+            // Regenerasi sesi untuk mencegah serangan session fixation
             $request->session()->regenerate();
             $user = Auth::user();
 
+            // Redirect berdasarkan peran pengguna
             if ($user->role === 'dokter') {
-                return redirect('/cek-pasien');
+                return redirect()->intended('/cek-pasien');
             } elseif ($user->role === 'pasien') {
-                return redirect('/home');
+                return redirect()->intended('/home');
             } elseif ($user->role === 'admin') {
-                return redirect()->route('dashboard.admin');
+                return redirect()->intended(route('dashboard.admin'));
             }
-        
-            // Jika maksa akses ke dashboard diatas maka akan redirect ke login
-            return redirect()->intended('/login');
         }
-        return back()->with('loginError', 'Login failed !');
+
+        // Jika autentikasi gagal
+        return redirect()->back()
+                        ->withInput()
+                        ->with('errorLogin', 'Email atau password salah.');
     }
 
     public function logout(Request $request) {
