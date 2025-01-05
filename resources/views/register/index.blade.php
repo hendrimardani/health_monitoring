@@ -29,53 +29,38 @@
             <form action="{{ route('register') }}" method="post">
                 @csrf
                 <h1 class="text-4xl font-bold mb-5 text-center">{{ $title }}</h1>
-                <div class="mb-5">
+                <div class="mt-5">
                     <input type="text" id="nama"
                         class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Nama Anda" name="nama" value="{{ old('nama') }}" required />
                 </div>
                 @error('nama')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
+                <p class="text-xs text-red-600 dark:text-red-400">
+                    <span class="font-medium">{{
+                        $message }}</span>
+                </p>
                 @enderror
-                <div class="mb-5">
+                <div class="mt-5">
                     <input type="email" id="email"
                         class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Email Anda" name="email" value="{{ old('email') }}" autofocus required />
                 </div>
                 @error('email')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
+                <p class="text-xs text-red-600 dark:text-red-400">
+                    <span class="font-medium">{{
+                        $message }}</span>
+                </p>
                 @enderror
-                <div class="mb-5">
+                <div class="mt-5">
                     <input type="password" id="password"
                         class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder=" Password Anda" name="password" autofocus required />
                 </div>
                 @error('password')
-                <div>
-                    <div class="relative">
-                        <input type="text" id="outlined_error" aria-describedby="outlined_error_help"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
-                            placeholder=" " />
-                    </div>
-                    <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                            class="font-medium">{{ $message }}</span></p>
-                </div>
+                <p class="text-xs text-red-600 dark:text-red-400">
+                    <span class="font-medium">{{
+                        $message }}</span>
+                </p>
                 @enderror
                 <div class="flex items-start mb-5">
                     <span>Sudah memiliki akun ? <a href="/login" class="text-blue-500">

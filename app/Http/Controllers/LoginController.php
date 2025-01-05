@@ -29,7 +29,7 @@ class LoginController extends Controller
         if ($validator->fails()) {
             return redirect()->back()
                             ->withErrors($validator)
-                            ->withInput()
+                            ->withInput() // Supaya tidak mereset lagi valuenya ke awal
                             ->with('errorValidation', 'Validasi gagal. Silakan periksa input Anda.');
         }
 

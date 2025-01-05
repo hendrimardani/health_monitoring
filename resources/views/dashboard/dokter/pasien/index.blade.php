@@ -13,7 +13,7 @@
             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
     </svg>
     <div>
-        <span class="font-medium">Diagnosa Gagal, Pastikan Memasukkan Data yang Valid !</span>
+        <span class="font-medium"><strong>Diagnosa Gagal</strong>, Pastikan Memasukkan Data yang Valid !</span>
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -260,7 +260,7 @@
                                 Badan</label>
                             <input type="number" step="0.01" id="berat_badan"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="Cnth: 160" name="berat_badan" required />
+                                placeholder="Cnth: 60" name="berat_badan" required />
                             @error('berat_badan')
                             <p class="text-xs text-red-600 dark:text-red-400">
                                 <span class="font-medium">{{
@@ -339,7 +339,7 @@
                                 ICD</label>
                             <input type="text" id="kode_icd"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                name="kode_icd" placeholder="Cnth: A001" required />
+                                name="kode_icd" placeholder="Cnth: A004" required />
                             @error('kode_icd')
                             <p class="text-xs text-red-600 dark:text-red-400">
                                 <span class="font-medium">{{
