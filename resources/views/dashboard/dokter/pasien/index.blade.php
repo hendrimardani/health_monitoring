@@ -313,7 +313,7 @@
                             <textarea type="text" id="rekomendasi"
                                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 name="rekomendasi"
-                                placeholder="Cnt: Pasien disarankan istirahat dan melakukan konsultasi lagi dalam jangk 3 hari setelah pemeriksaan"
+                                placeholder="Cnt: Pasien disarankan istirahat dan melakukan konsultasi lagi dalam jangka 3 hari setelah pemeriksaan"
                                 rows="4" cols="50" autofocus required></textarea>
                         </div>
                         <div class="mt-2">

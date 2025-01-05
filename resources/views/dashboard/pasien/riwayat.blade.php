@@ -2,7 +2,7 @@
 
 @section('body')
 
-{{-- @if ($pasien->status === 'selesai') --}}
+@if ($inputLatest->status === 'selesai' && $jumlahKeluhan !== 1)
 {{-- Modal Toggled --}}
 <div class="flex flex-wrap justify-start gap-4">
     <div
@@ -23,7 +23,19 @@
         </a>
     </div>
 </div>
-{{-- @endif --}}
+@else
+<div
+    class="group w-[200px] text-blue-500 cta-btn font-semibold mt-5 rounded-xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,1)] hover:bg-blue-600 hover:text-white transition ease-in-out duration-700">
+    <a href="{{ route('export.antrian.pdf') }}" class="flex flex-wrap justify-center p-[10px]">
+        <svg class="w-6 h-6 text-blue-500 group-hover:text-white mr-2" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linejoin="round" stroke-width="2"
+                d="M16.444 18H19a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2.556M17 11V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6h10ZM7 15h10v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4Z" />
+        </svg>
+        Lihat Antrian
+    </a>
+</div>
+@endif
 
 <!-- Main modal -->
 <div id="authentication-modal" tabindex="-1" aria-hidden="true"
@@ -240,7 +252,7 @@
     </svg>
     <span class="sr-only">Info</span>
     <div class="ms-3 text-sm font-medium">
-        <strong>{{ session('success') }}</strong>
+        <strong>{{ session('success') }}</strong>, silahkan tunggu sesuai nomor antrian anda
     </div>
     <button type="button"
         class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"
@@ -295,7 +307,7 @@
                             </div>
                             <div
                                 class="group w-[190px] text-blue-500 cta-btn font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-blue-600 hover:text-white border border-blue-500 rounded-md justify-center p-[10px] transition ease-in-out duration-700">
-                                <a href="{{ route('export-diagnosa-pdf',  $pasien->pemeriksaan_id) }}"
+                                <a href="{{ route('export.diagnosa.pdf',  $pasien->pemeriksaan_id) }}"
                                     class="flex flex-wrap justify-center">
                                     <svg class="w-6 h-6 text-blue-500 group-hover:text-white mr-2" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"

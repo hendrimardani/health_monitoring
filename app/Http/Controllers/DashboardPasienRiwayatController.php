@@ -15,26 +15,27 @@ class DashboardPasienRiwayatController extends Controller
      */
     public function index()
     {
-        // user saat ini login
+        // user saat ini 
+        $pasienId = auth()->id();
         $pasiens = RiwayatPenyakit::with(['pasien.user'])
-                                ->where('pasien_id', auth()->id())
+                                ->where('pasien_id', $pasienId)
                                 ->paginate(7);
         $pasien = RiwayatPenyakit::with(['pasien.user'])
-                                ->where('pasien_id', auth()->id())
+                                ->where('pasien_id', $pasienId)
                                 ->first();
-        $riwayatPenyakit = RiwayatPenyakit::where('pasien_id', auth()->id())
+        $inputLatest = RiwayatPenyakit::where('pasien_id', $pasienId)
+                                ->orderBy('created_at', 'desc')
                                 ->first();
+        $jumlahKeluhan = RiwayatPenyakit::where('pasien_id', $pasienId)
+                                        ->count();
 
-        if ($riwayatPenyakit->keluhan === null) {
-            $title = 'Akun Saya';
-            return view('dashboard.pasien.akun', compact('title', 'pasien'));
-        } else {
-            return view('dashboard.pasien.riwayat', [
-                'title' => 'Riwayat Saya',
-                'pasiens' => $pasiens,
-                'pasien' => $pasien
-            ]);
-        }
+        return view('dashboard.pasien.riwayat', [
+            'title' => 'Riwayat Saya',
+            'pasiens' => $pasiens,
+            'pasien' => $pasien,
+            'inputLatest' => $inputLatest,
+            'jumlahKeluhan' => $jumlahKeluhan
+        ]);
     }
 
     /**

@@ -7,7 +7,7 @@
     <h1 class="text-8xl font-sans text-center">PRAKTIK ANDA HARI INI</h1>
 </div>
 
-<div class="flex flex-wrap justify-center gap-20 mt-24 mb-[500px]">
+<div class="flex flex-wrap justify-center gap-20 mt-24 mb-[900px]">
     <div
         class="bg-[#183e9f] w-[500px] h-[500px] rounded-tl-[50px] rounded-br-[50px] shadow-2xl hover:bg-blue-500 hover:scale-[1.1] transition duration-300">
         <h1 class="text-6xl text-center text-white py-5">SENIN</h1>

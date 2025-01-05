@@ -304,14 +304,16 @@ class DatabaseSeeder extends Seeder
         RiwayatPenyakit::create([
             'pasien_id' => 1,
             'keluhan' => 'Sakit kepala',
-            'status' => 'menunggu'
+            'status' => 'menunggu',
+            'antrian' => '1'
         ]);
 
         
         RiwayatPenyakit::create([
             'pasien_id' => 3,
             'keluhan' => 'Demam',
-            'status' => 'menunggu'
+            'status' => 'menunggu',
+            'antrian' => '2'
         ]);
 
         Diagnosa::create([

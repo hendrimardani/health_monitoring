@@ -51,9 +51,9 @@ Route::prefix('dashboard')->middleware(['auth', 'role:pasien', 'revalidateBackHi
     Route::get('/export-riwayat-pdf', [ExportController::class, 'exportRiwayatPDF'])
         ->name('export-riwayat-pdf');
     Route::get('/export-diagnosa-pdf/{idPemeriksaan}', [ExportController::class, 'exportDiagnosaPDF'])
-        ->name('export-diagnosa-pdf');
+        ->name('export.diagnosa.pdf');
     Route::get('/export-antrian-pdf', [ExportController::class, 'exportAntrianPDF'])
-        ->name('export-antrian-pdf');
+        ->name('export.antrian.pdf');
     Route::resource('/pasien/akun', DashboardPasienAkunController::class);
 });
 
