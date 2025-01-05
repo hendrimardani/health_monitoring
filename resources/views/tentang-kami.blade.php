@@ -34,23 +34,26 @@
 </div>
 
 <div>
-    <div class="bg-blue-800 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] rouded rounded-xl p-8 mb-12">
-        <p class="text-5xl font-bold text-center text-white">
+    <div class="bg-blue-800 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] rouded rounded-xl p-8 mb-12"
+        data-aos="fade-right" data-aos-duration="3000">
+        <p class="text-5xl font-bold text-center text-white" data-aos="fade-up" data-aos-duration="3000">
             TEMUI DOKTER-DOKTER <br>PROFESIONAL KAMI
         </p>
         <div class="flex flex-wrap justify-center">
             <img src="{{ asset('assets/icons8-doctor-female-32.png') }}" alt=""
-                class="w-[60px] h-[60px] filter brightness-0 invert" /> <span
-                class="text-5xl font-bold text-center text-white">Spesialis &nbsp;</span>
-            <span id="word-container" class="text-5xl font-bold text-center text-white">
+                class="w-[60px] h-[60px] filter brightness-0 invert" data-aos="fade-down" data-aos-duration="3000" />
+            <span class="text-5xl font-bold text-center text-white" data-aos="fade-up"
+                data-aos-duration="3000">Spesialis &nbsp;</span>
+            <span id="word-container" class="text-5xl font-bold text-center text-white" data-aos="flip-left"
+                data-aos-duration="3000">
                 <!-- Kata akan ditampilkan di sini -->
             </span>
         </div>
     </div>
     <div class="flex flex-wrap justify-center gap-12">
         <!-- Card 1 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-down" data-aos-duration="3000">
             <!-- Shadow -->
             <div class="absolute inset-0 w-[335px] h-[335px] rounded-lg"></div>
             <!-- Gambar -->
@@ -60,88 +63,88 @@
             <p class="text-xl font-bold text-center text-black mt-4">Penyakit Dalam (Internist)</p>
         </div>
         <!-- Card 2 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-left" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-2.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Alexander King" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Chelsea Island</p>
             <p class="text-xl font-bold text-center text-black mt-4">Bedah (Surgeon)</p>
         </div>
         <!-- Card 3 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-right" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-3.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Mia Parker" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Mia Parker</p>
             <p class="text-xl font-bold text-center text-black mt-4">Saraf (Neurolog)</p>
         </div>
         <!-- Card 4 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="flip-left" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-4.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Liam Foste" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Amanda Davis</p>
             <p class="text-xl font-bold text-center text-black mt-4">Jantung dan Pembuluh Darah (Kardiolog)</p>
         </div>
         <!-- Card 5 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-right" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-5.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Benjamin Reed" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Benjamin Reed</p>
             <p class="text-xl font-bold text-center text-black mt-4">Saraf (Neurolog)</p>
         </div>
         <!-- Card 6 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-up" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-6.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Emily Smith" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Emily Smith</p>
             <p class="text-xl font-bold text-center text-black mt-4">Paru-paru (Pulmonolog)</p>
         </div>
         <!-- Card 7 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="zoom-in-left" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-7.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Alexander King" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Alexander King</p>
             <p class="text-xl font-bold text-center text-black mt-4">Saraf (Neurolog)</p>
         </div>
         <!-- Card 8 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="zoom-in-right" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-8.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Natalie Anderson" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Natalie Anderson</p>
             <p class="text-xl font-bold text-center text-black mt-4">Bedah (Surgeon)</p>
         </div>
         <!-- Card 9 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-up" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-9.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. John Wilson" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. John Wilson</p>
             <p class="text-xl font-bold text-center text-black mt-4">Penyakit Dalam (Internist)</p>
         </div>
         <!-- Card 10 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-down" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-10.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Anthony Hill" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Anthony Hill</p>
             <p class="text-xl font-bold text-center text-black mt-4">Jantung dan Pembuluh Darah (Kardiolog)</p>
         </div>
         <!-- Card 11 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-left" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-11.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Emma Williams" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Emma Williams</p>
             <p class="text-xl font-bold text-center text-black mt-4">Paru-paru (Pulmonolog)</p>
         </div>
         <!-- Card 12 -->
-        <div
-            class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200">
+        <div class="flex flex-col items-center shadow-2xl shadow-blue-500/50 p-9 basis-1/8 hover:scale-105 transition-transform duration-300 hover:bg-blue-100 rounded-3xl bg-slate-200"
+            data-aos="fade-right" data-aos-duration="3000">
             <img src="{{ asset('assets/_(1000-x-1000-piksel)-(1)-12.png') }}" class="w-[335px] h-[335px] object-cover"
                 alt="Dr. Liam Foste" />
             <p class="text-2xl font-bold text-center text-black mt-4">Dr. Liam Foste</p>
@@ -150,16 +153,18 @@
     </div>
 </div>
 
-<div class="bg-[#183e9f] py-16 mt-[200px] rounded-[200px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)]">
+<div class="bg-[#183e9f] py-16 mt-[200px] rounded-[200px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)]"
+    data-aos="fade-down" data-aos-duration="3000">
     <!-- Text Content -->
     <div class="text-center text-white mb-10">
-        <h1 class="text-4xl font-bold">TERBUKTI DENGAN ADANYA KAMI</h1>
+        <h1 class="text-4xl font-bold" data-aos="fade-left" data-aos-duration="3000">TERBUKTI DENGAN ADANYA KAMI</h1>
         <h1></h1>
-        <span class="text-8xl font-bold mt-4" id="counter">
+        <span class="text-8xl font-bold mt-4" id="counter" data-aos="fade-right" data-aos-duration="3000">
             <!-- Tampilkan nomor disini -->
         </span>
-        <span class="text-8xl font-bold">&nbsp;ORANG</span>
-        <p class="text-2xl font-bold mt-4">MENJADI SEHAT KEMBALI DENGAN BANTUAN DOKTER KAMI</p>
+        <span class="text-8xl font-bold" data-aos="fade-up" data-aos-duration="3000">&nbsp;ORANG</span>
+        <p class="text-2xl font-bold mt-4" data-aos="flip-left" data-aos-duration="3000">MENJADI SEHAT KEMBALI DENGAN
+            BANTUAN DOKTER KAMI</p>
     </div>
     <!-- Carousel Container -->
     <div class="container mx-auto">
@@ -192,26 +197,28 @@
 </div>
 
 <div>
-    <h1 class="text-6xl font-bold text-center mt-[200px]">VISI & MISI KITA</h1>
-    <div class="flex flex-wrap justify-center gap-[700px]">
+    <h1 class="text-6xl font-bold text-center mt-[200px]" data-aos="fade-left" data-aos-duration="3000">VISI & MISI KITA
+    </h1>
+    <div class="flex flex-wrap justify-center gap-[700px]" data-aos="fade-right" data-aos-duration="3000">
         <div>
-            <h1 class="text-4xl font-bold">VISI</h1>
+            <h1 class="text-4xl font-bold" data-aos="fade-down" data-aos-duration="3000">VISI</h1>
         </div>
         <div>
-            <h1 class="text-4xl font-bold">MISI</h1>
+            <h1 class="text-4xl font-bold" data-aos="fade-up" data-aos-duration="3000">MISI</h1>
         </div>
     </div>
     <div class="flex flex-wrap justify-around items-center">
         <div class="flex justify-center items-center gap-8">
-            <div
-                class="relative bg-[#183e9f] p-9 -mt-[200px] rounded-lg w-[700px] h-[300px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)]">
+            <div class="relative bg-[#183e9f] p-9 -mt-[200px] rounded-lg w-[700px] h-[300px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)]"
+                data-aos="flip-left" data-aos-duration="3000">
                 <h1 class="text-3xl text-white">
                     Menjadi platform kesehatan terdepan yang memberikan akses mudah dan cepat untuk
                     layanan kesehatan berkualitas, memberdayakan masyarakat untuk hidup lebih sehat dan lebih baik.
                 </h1>
             </div>
             <div class="flex justify-center items-center">
-                <div class="bg-[#183e9f] p-9 rounded-lg w-[700px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)]">
+                <div class="bg-[#183e9f] p-9 rounded-lg w-[700px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)]"
+                    data-aos="flip-right" data-aos-duration="3000">
                     <h1 class="text-3xl text-white">
                         1. Memberikan Akses Kesehatan yang Mudah: Menyediakan layanan kesehatanyang
                         dapat diakses kapan saja dan di mana saja melalui teknologi digital. <br>
@@ -226,16 +233,19 @@
     </div>
     <div class="flex flex-wrap justify-center mt-[200px]">
         <div class="flex justify-center items-center">
-            <img src="{{ asset('assets/2-2.png') }}" alt="">
+            <img src="{{ asset('assets/2-2.png') }}" alt="" data-aos="fade-left" data-aos-duration="3000">
         </div>
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center" data-aos="fade-right" data-aos-duration="3000">
             <h1 class="text-4xl font-bold">Partnermu menuju kesembuhan</h1>
         </div>
-
     </div>
 </div>
 
 <script>
+    // AOS Init
+document.addEventListener('DOMContentLoaded', () => {
+  AOS.init();
+});
     // Initialize Swiper
     const swiper = new Swiper('.swiper', {
     loop: true,

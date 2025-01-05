@@ -10,6 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- AOS JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
@@ -17,15 +21,17 @@
         <div>
             <!-- Blur Background -->
             <div>
-                <div class="rounded-full bg-[#183e9f] w-[700pxs h-[700px] blur-2xl mt-28 opacity-80">
+                <div class="rounded-full bg-[#183e9f] w-[700pxs h-[700px] blur-2xl mt-28 opacity-80" data-aos="fade-up"
+                    data-aos-duration="3000">
                 </div>
             </div>
             <div class="relative">
-                <img src="{{ asset('assets/2-1.png') }}" alt="" class="w-[700px] -mt-[450px]">
+                <img src="{{ asset('assets/2-1.png') }}" alt="" class="w-[700px] -mt-[450px]" data-aos="fade-down"
+                    data-aos-duration="3000">
             </div>
         </div>
-        <div
-            class="mt-[200px] border-2 p-9 rounded-2xl w-[500px] h-[400px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)] transition-all duration-700">
+        <div class="mt-[200px] border-2 p-9 rounded-2xl w-[500px] h-[400px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)] transition ease-in-out duration-700"
+            data-aos="flip-left" data-aos-duration="3000">
             <form action="{{ route('register') }}" method="post">
                 @csrf
                 <h1 class="text-4xl font-bold mb-5 text-center">{{ $title }}</h1>
@@ -67,10 +73,16 @@
                             login</a></span>
                 </div>
                 <button type="submit"
-                    class="px-[190px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 transition-all duration-700">Daftar</button>
+                    class="px-[190px] py-2 text-sm font-medium text-gray-900 bg-transparent border border-[#183e9f] rounded-lg hover:bg-[#183e9f] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 transition ease-in-out duration-700">Daftar</button>
             </form>
         </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  AOS.init();
+});
+</script>
 
 </html>

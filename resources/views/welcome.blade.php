@@ -10,40 +10,45 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- AOS JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body class="overflow-clip">
   <div>
-    <img src="{{ asset('assets/2-2.png') }}" alt="" class="w-[300px] mx-auto mb-20">
+    <img src="{{ asset('assets/2-2.png') }}" alt="" class="w-[300px] mx-auto mb-20" data-aos="flip-left"
+      data-aos-duration="500">
   </div>
   <!-- Blur Background -->
-  <div class="overflow-x-clip">
+  <div class="overflow-x-clip" data-aos="fade-up" data-aos-duration="3000">
     <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[200px] -ml-[200px] opacity-80">
     </div>
   </div>
   <!-- Blur Background -->
-  <div class="overflow-x-clip">
+  <div class="overflow-x-clip" data-aos="fade-right" data-aos-duration="3000">
     <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[200px] ml-[80px] opacity-80">
     </div>
   </div>
   <!-- Blur Background -->
-  <div class="overflow-x-clip">
+  <div class="overflow-x-clip" data-aos="zoom-in-right" data-aos-duration="3000">
     <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[800px] ml-[1400px] opacity-80">
     </div>
   </div>
   <!-- Blur Background -->
-  <div class="overflow-x-clip">
+  <div class="overflow-x-clip" data-aos="zoom-in-right" data-aos-duration="3000">
     <div class="rounded-full bg-[#183e9f] w-[700px] h-[700px] blur-2xl -mt-[800px] ml-[1000px] opacity-80">
     </div>
   </div>
-  <div class="relative">
+  <div class="relative" data-aos="fade-down" data-aos-duration="3000">
     <img src="{{ asset('assets/tanya-1.png') }}" alt="" class="w-[650px] -mt-[850px] mx-auto">
   </div>
-  <div class="relative ml-[100px] -mt-[650px]">
+  <div class="relative ml-[100px] -mt-[650px]" data-aos="zoom-in-right" data-aos-duration="3000">
     <h1 class="text-6xl text-white w-[400px] font-bold">Kesehatan Anda adalah prioritas kami.</h1>
   </div>
 
-  <div class="relative ml-[1300px] mt-[70px]">
+  <div class="relative ml-[1300px] mt-[70px]" data-aos="zoom-in-right" data-aos-duration="3000">
     <h1 class="text-6xl text-white w-[600px] font-bold">Bersiaplah untuk memonitor kesehatan Anda dengan cara
       yang lebih
       mudah, cepat, dan terpercaya. iHealth hadir untuk Anda.</h1>
@@ -63,5 +68,11 @@
     </a>
   </div>
 </body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  AOS.init();
+});
+</script>
 
 </html>
