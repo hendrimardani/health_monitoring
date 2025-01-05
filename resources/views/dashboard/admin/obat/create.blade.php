@@ -7,7 +7,7 @@
     <form action="/dashboard/admin/obat" method="post" class="mt-5">
         @csrf
         <select id="farmasi_id" name="farmasi_id"
-            class="bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('farmasi_id') border-red-500 @enderror"
             autofocus required>
             <option disabled selected>Pilih Perusahaan</option>
             @foreach ($farmasis as $farmasi)
@@ -23,7 +23,7 @@
         <div class="mt-5">
             <input type="text" id="nama_obat"
                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-                placeholder="Nama Obat" name="nama_obat" value="" autofocus required />
+                placeholder="Nama Obat" name="nama_obat" value="{{ old('nama_obat') }}" autofocus required />
         </div>
         @error('nama_obat')
         <p class="text-xs text-red-600 dark:text-red-400">
@@ -31,8 +31,8 @@
                 $message }}</span>
         </p>
         @enderror
-        <select id="kategori_id" name="kategori_id"
-            class="mt-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <select id="kategori_id" name="kategori_id" class="mt-5 bg-gray-50 border border-solid border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+        @error('kategori_id') border-red-500 @enderror">
             <option disabled selected>Kategori Obat</option>
             @foreach ($kategoriObats as $kategori)
             <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
@@ -40,12 +40,11 @@
         </select>
         @error('kategori_id')
         <p class="text-xs text-red-600 dark:text-red-400">
-            <span class="font-medium">{{
-                $message }}</span>
+            <span class="font-medium">{{ $message }}</span>
         </p>
         @enderror
         <select id="dosis_tersedia" name="dosis_tersedia"
-            class="mt-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="mt-5 bg-gray-50 border border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('dosis_tersedia') border-red-500 @enderror"
             autofocus required>
             <option disabled selected>Dosis Tersedia</option>
             <option value="100">100</option>
@@ -60,7 +59,7 @@
         <div class="mt-5">
             <input type="number" id="unit"
                 class="border border-[#183e9f] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[500px] p-2.5"
-                placeholder="Unit" name="unit" value="" autofocus required />
+                placeholder="Unit" name="unit" value="{{ old('unit') }}" autofocus required />
         </div>
         @error('unit')
         <p class="text-xs text-red-600 dark:text-red-400">

@@ -69,8 +69,8 @@ class DashboardAdminFarmasiController extends Controller
     public function update(Request $request, Farmasi $farmasi)
     {
         $rules = [
-            'nama_perusahaan' => 'required',
-            'alamat_perusahaan' => 'required'
+            'nama_perusahaan' => 'required|string|min:6',
+            'alamat_perusahaan' => 'required|string|min:6'
         ];
 
         $validatedData = $request->validate($rules);

@@ -8,7 +8,6 @@ use App\Models\RiwayatPenyakit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Validation\ValidationException;
 
 class DashboardAdminUserController extends Controller
 {
@@ -39,26 +38,22 @@ class DashboardAdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $validatedData = $request->validate([
-                'nama' => 'required',
-                'password' => 'required',
-                'email' => 'required',
-                'role' => 'required|in:pasien,dokter',
-                // Validasi khusus pasien
-                'nik' => 'required_if:role,pasien|nullable',
-                'no_telepon' => 'required_if:role,pasien|nullable',
-                'usia' => 'required_if:role,pasien|nullable',
-                'jenis_kelamin' => 'required_if:role,pasien|nullable',
-                'alamat' => 'required_if:role,pasien|nullable',
-                'keluhan' => 'required_if:role,pasien|nullable',
-                // Validasi khusus dokter
-                'no_telepon_dokter' => 'required_if:role,dokter|nullable',
-                'spesialisasi' => 'required_if:role,dokter|nullable'
-            ]);
-        } catch (ValidationException $e) {
-            dd($e->errors());
-        }
+        $validatedData = $request->validate([
+            'nama' => 'required|string|min:3',
+            'password' => 'required|min:6',
+            'email' => 'required|email',
+            'role' => 'required|in:pasien,dokter',
+            // Validasi khusus pasien
+            'nik' => 'required_if:role,pasien|nullable',
+            'no_telepon' => 'required_if:role,pasien|nullable',
+            'usia' => 'required_if:role,pasien|nullable',
+            'jenis_kelamin' => 'required_if:role,pasien|nullable',
+            'alamat' => 'required_if:role,pasien|nullable',
+            'keluhan' => 'required_if:role,pasien|nullable',
+            // Validasi khusus dokter
+            'no_telepon_dokter' => 'required_if:role,dokter|nullable',
+            'spesialisasi' => 'required_if:role,dokter|nullable'
+        ]);
         $validatedData['password'] = bcrypt($validatedData['password']);
         // Data untuk tabel `users`
         $userData = [

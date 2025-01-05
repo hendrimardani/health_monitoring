@@ -41,17 +41,13 @@ class DashboardAdminObatController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $validatedData = $request->validate([
-                'farmasi_id' => 'required|integer|exists:farmasis,id',
-                'nama_obat' => 'required|string|min:6',
-                'kategori_id' => 'required|integer|exists:kategori_obats,id',
-                'dosis_tersedia' => 'required',
-                'unit' => 'required'
-            ]);
-        } catch (ValidationException $e) {
-            dd($e->errors());
-        }
+        $validatedData = $request->validate([
+            'farmasi_id' => 'required|integer|exists:farmasis,id',
+            'nama_obat' => 'required|string|min:6',
+            'kategori_id' => 'required|integer|exists:kategori_obats,id',
+            'dosis_tersedia' => 'required|integer',
+            'unit' => 'required|integer'
+        ]);
         Obat::create($validatedData);
         return redirect('/dashboard/admin/obat')->with('success', 'Data Berhasil Ditambahkan');
     }
